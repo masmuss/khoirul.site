@@ -35,7 +35,7 @@ export default defineConfig({
     presetUno(),
     presetAttributify(),
     presetIcons({
-      scale: 1,
+      scale: 1.2,
       prefix: 'i-',
       extraProperties: {
         display: 'inline-block',

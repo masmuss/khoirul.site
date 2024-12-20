@@ -1,10 +1,14 @@
 export const siteConfig = {
   author: 'Khoirul',
-  title: 'A little bit of my journey',
-  subtitle: 'Navigating the Sea of Reflections',
+  title: 'Khoirul',
+  subtitle: 'Pixels and Progress.',
   description:
-    'Setiap tulisan merupakan dunia tersendiri, yang terapung-apung antara dunia kenyataan dan dunia impian.',
+    'Fullstack wizard with a camera, weaving elegant websites while capturing the world through a lens. Transforming visions into digital and visual masterpieces.',
   email: 'ahmusafir.khoirul@gmail.com',
+  image: {
+    src: 'https://khoirul.site/og.jpg',
+    alt: 'Open Graph',
+  },
   socialLinks: [
     {
       text: 'GitHub',
