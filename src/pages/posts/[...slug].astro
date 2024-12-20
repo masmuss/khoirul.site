@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import type { CollectionPosts } from '@/types'
+import { getPosts, readTimeCount } from '@/utils/posts'
+
+export async function getStaticPaths() {
+  const posts = await getPosts()
+  return posts.map((post: CollectionPosts) => {
+    return {
+      params: { slug: post.slug },
+      props: {
+        post,
+      },
+    }
+  })
+}
+
+type Props = { post: CollectionPosts }
+
+const { post } = Astro.props
+const { title, image, description, date, tag } = post.data
+
+const { Content } = await post.render()
+
+function getDate(date: string) {
+  return new Date(date).toISOString()
+}
+---
+
+<BaseLayout title={title} description={description} pageType="article">
+  <article class="prose">
+    <h1>{title}</h1>
+    <p op-50>
+      {date && <time datetime={getDate(date)}>{date.split(',')}</time>}
+      <span>· { readTimeCount(post.body) } min reads</span>
+      {tag && <span>· {tag}</span>}
+    </p>
+    {
+      image && (
+        <p>
+          <img src={image.src} alt={image.alt || ''} />
+        </p>
+      )
+    }
+    <Content />
+  </article>
+</BaseLayout>

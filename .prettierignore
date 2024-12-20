@@ -1,0 +1,18 @@
+# Ignore artifacts:
+build
+coverage
+.astro
+
+# Libraries:
+node_modules
+
+# OS:
+.DS_Store
+
+# IDE:
+.vscode
+.idea
+
+# Config:
+.prettierignore
+.prettierrc

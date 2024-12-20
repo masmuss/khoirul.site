@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import siteConfig from '@/site-config';
+import { Content } from '@/content/about.md';
+---
+
+<BaseLayout description={siteConfig.description}>
+  <article class="prose">
+    <Content />
+  </article>
+</BaseLayout>
