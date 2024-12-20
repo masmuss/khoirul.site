@@ -122,7 +122,7 @@ function toggleNavDrawer(): void {
     </div>
   </header>
   <nav class="nav-drawer sm:hidden">
-    <i i-ri-menu-2-fill />
+    <i i-carbon-close @click="toggleNavDrawer()" />
     <a
       v-for="link in navLinks"
       :key="link.text"
@@ -130,6 +130,7 @@ function toggleNavDrawer(): void {
       :href="link.href"
       :target="getLinkTarget(link.href)"
       nav-link
+      text-sm
       @click="toggleNavDrawer()"
     >
       {{ link.text }}
@@ -150,8 +151,8 @@ function toggleNavDrawer(): void {
 
 .nav-drawer {
   transform: translateX(-100%);
-  --at-apply: box-border fixed h-screen z-999 left-0 top-0 min-w-32vw max-w-50vw
-    bg-main p-6 text-lg flex flex-col gap-5 transition-all;
+  --at-apply: box-border fixed h-screen z-999 left-0 top-0 min-w-70vw
+    max-w-100vw bg-main p-6 text-lg flex flex-col gap-5 transition-all;
 }
 
 .nav-drawer-mask {

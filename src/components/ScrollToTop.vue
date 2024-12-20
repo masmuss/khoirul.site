@@ -15,9 +15,9 @@ function toTop() {
   <button
     aria-label="Scroll to top"
     fixed
-    right-5
+    right-10
     sm:right-30
-    bottom-30
+    bottom-24
     w-12
     h-12
     text-lg

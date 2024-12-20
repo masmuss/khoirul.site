@@ -66,5 +66,6 @@ export default defineConfig({
     'i-carbon-decision-tree',
     'i-carbon-api-1',
     'i-carbon-temperature-water',
+    'i-carbon-close',
   ],
 });

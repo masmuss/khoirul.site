@@ -2,7 +2,7 @@ import type { ProjectData } from '@/types';
 
 export const projectData: ProjectData = [
   {
-    title: 'Web Development',
+    title: 'Website',
     projects: [
       {
         text: 'IdeaHive',
