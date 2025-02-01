@@ -23,12 +23,24 @@ export const projectData: ProjectData = [
         icon: 'i-carbon-temperature-water',
         href: 'https://aquaculturepens.com',
       },
+    ],
+  },
+  {
+    title: 'API',
+    projects: [
       {
         text: 'Qasir API',
         description:
           'Learning NestJS by creating API for Point of Sales system',
         icon: 'i-carbon-api-1',
         href: 'https://github.com/masmuss/qasir-api',
+      },
+      {
+        text: 'Hono API Boilerplate',
+        description:
+          'An API boilerplate was built using Bun, Hono, drizzle ORM and integrated with Scalar API reference',
+        icon: 'i-carbon-api-1',
+        href: 'https://github.com/masmuss/hono-api-boilerplate',
       },
     ],
   },
