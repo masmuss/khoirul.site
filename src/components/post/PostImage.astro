@@ -1,0 +1,20 @@
+---
+interface Props {
+	src: string;
+	alt?: string;
+	class?: string;
+}
+
+const { src, alt, class: customClass } = Astro.props;
+---
+
+<figure class:list={["flex flex-col items-center", customClass]}>
+  <img src={src} alt={alt || ""} />
+
+  {alt && (
+    <figcaption 
+      class="mt-2 text-sm text-center opacity-80" 
+      set:html={alt} 
+    />
+  )}
+</figure>

@@ -1,0 +1,11 @@
+---
+import siteConfig from "@/config/site-config";
+import { Content } from "@/content/about.md";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout description={siteConfig.description}>
+	<article class="prose">
+		<Content />
+	</article>
+</Layout>
