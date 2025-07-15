@@ -42,7 +42,7 @@ export const siteConfig: SiteConfig = {
 	],
 	header: {
 		logo: {
-			src: "/favicon.svg",
+			src: "/logo.svg",
 			alt: "Website Logo",
 		},
 		navLinks: [
