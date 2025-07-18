@@ -5,7 +5,11 @@ import PageLayout from "@/layouts/BaseLayout.astro";
 import { projectData } from "@/lib/constants/projects";
 ---
 
-<PageLayout meta={{ title: "Projects" }}>
+<PageLayout
+	title="Projects"
+	description="Explore my projects that showcase my skills and creativity in various domains."
+	pageType="website"
+>
 	<div class="w-full">
 		<Button title="Back" href="/" style="button">
 			<span class="iconify ri--arrow-left-long-line" slot="icon-before"></span>

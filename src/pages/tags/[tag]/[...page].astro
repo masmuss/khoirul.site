@@ -30,11 +30,6 @@ interface Props {
 const { page } = Astro.props;
 const { tag } = Astro.params;
 
-const meta = {
-	description: `View all posts with the tag - ${tag}`,
-	title: `Tag: ${tag}`,
-};
-
 const paginationProps = {
 	...(page.url.prev && {
 		prevUrl: {
@@ -51,7 +46,11 @@ const paginationProps = {
 };
 ---
 
-<PageLayout meta={meta}>
+<PageLayout
+	title=`Tag: ${tag}`
+	description=`View all posts with the tag - ${tag}`
+	pageType="website"
+>
 	<div class="w-full">
 		<Button title="Back" href="/blog" style="button">
 			<span class="iconify ri--arrow-left-long-line" slot="icon-before"></span>

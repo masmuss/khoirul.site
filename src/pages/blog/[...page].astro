@@ -23,11 +23,6 @@ interface Props {
 
 const { page, uniqueTags } = Astro.props;
 
-const meta = {
-	description: "Posts",
-	title: "Blog",
-};
-
 const paginationProps = {
 	...(page.url.prev && {
 		prevUrl: {
@@ -44,7 +39,11 @@ const paginationProps = {
 };
 ---
 
-<PageLayout meta={meta}>
+<PageLayout
+	title="Blog"
+	description="Read my latest blog posts on various topics including technology, programming, and personal experiences."
+	pageType="website"
+>
 	<div class="w-full">
 		<Button title="Back" href="/" style="button">
 			<span class="iconify ri--arrow-left-long-line" slot="icon-before"></span>

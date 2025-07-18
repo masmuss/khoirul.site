@@ -9,7 +9,7 @@ interface Props {
 	pageType?: "website" | "article";
 }
 
-const { description = "", image = siteConfig.image, pageType = "website" } = Astro.props;
+const { description = "", image = siteConfig.image, pageType = "website" }: Props = Astro.props;
 
 const title = [Astro.props.title, siteConfig.title].filter(Boolean).join(" | ");
 

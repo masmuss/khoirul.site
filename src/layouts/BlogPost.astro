@@ -18,7 +18,7 @@ const {
 const { headings } = await render(post);
 ---
 
-<PageLayout meta={{ description, title }}>
+<PageLayout title={title} description={description} pageType="article">
 	<div class="w-full">
 		<Button title="Back" href="/blog" style="button">
 			<span class="iconify ri--arrow-left-long-line" slot="icon-before"></span>
