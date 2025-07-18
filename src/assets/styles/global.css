@@ -70,12 +70,11 @@
 			--ring: 0 0% 82%; /* woodsmoke-200 */
 		}
 	}
-}
 
-@layer base {
 	* {
 		@apply border-border;
 	}
+
 	body {
 		@apply bg-background text-foreground;
 	}
@@ -116,6 +115,11 @@
 	--color-popover-foreground: hsl(var(--popover-foreground));
 	--color-card: hsl(var(--card));
 	--color-card-foreground: hsl(var(--card-foreground));
+}
+
+@layer components {
+	@import "./components/admonition.css";
+	@import "./components/github-card.css";
 }
 
 html.dark .astro-code,
@@ -162,6 +166,6 @@ article {
 	--at-apply: text-sm mr-1;
 }
 
-pre.mermaid {
-	background-color: transparent;
+.expressive-code {
+	@apply my-4;
 }

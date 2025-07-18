@@ -42,3 +42,5 @@ export type PaginationLink = {
 	text?: string;
 	srLabel?: string;
 };
+
+export type AdmonitionType = "tip" | "note" | "important" | "caution" | "warning";

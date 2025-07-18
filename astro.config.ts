@@ -7,7 +7,12 @@ import { defineConfig } from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import astroMermaid from "astro-mermaid";
+import rehypeExternalLinks from "rehype-external-links";
+import remarkDirective from "remark-directive";
 import remarkGfm from "remark-gfm";
+import { expressiveCodeOptions } from "./src/config/site-config";
+import { remarkAdmonitions } from "./src/plugins/remark-admonitions";
+import { remarkGithubCard } from "./src/plugins/remark-github-card";
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,12 +28,7 @@ export default defineConfig({
 				},
 			},
 		}),
-		expressiveCode({
-			themes: ["github-dark"],
-			shiki: {
-				bundledLangs: ["mermaid"],
-			},
-		}),
+		expressiveCode(expressiveCodeOptions),
 		mdx({
 			gfm: true,
 			remarkPlugins: [remarkGfm],
@@ -49,7 +49,21 @@ export default defineConfig({
 			},
 			wrap: true,
 		},
-		remarkPlugins: [remarkGfm],
+		rehypePlugins: [
+			[
+				rehypeExternalLinks,
+				{
+					rel: ["noreferrer", "noopener"],
+					target: "_blank",
+				},
+			],
+		],
+		remarkPlugins: [remarkGfm, remarkDirective, remarkGithubCard, remarkAdmonitions],
+		remarkRehype: {
+			footnoteLabelProperties: {
+				className: [""],
+			},
+		},
 	},
 	vite: {
 		plugins: [tailwindcss()],

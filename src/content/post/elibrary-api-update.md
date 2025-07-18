@@ -107,4 +107,6 @@ Setelah perbaikan tersebut, saya menjalankan kembali uji beban dengan *rate limi
 
 Seperti yang terlihat pada tabel perbandingan di dokumen Analisis Final & Perbandingan Uji Beban, aplikasi kini sepenuhnya stabil (`http.codes.500: 0`) dan sangat cepat, dengan waktu respons rata-rata di bawah 4 milidetik bahkan di bawah beban tinggi.
 
-Seluruh kode dari proyek ini bersifat open-source dan tersedia di GitHub. Semoga catatan teknis ini bisa memberikan wawasan bagi developer lain yang sedang membangun aplikasi mereka.
+Seluruh kode dari proyek ini bersifat open-source dan tersedia di GitHub dan bisa diakses di link dibawah.
+
+::github{repo="masmuss/hono-elibrary"}
