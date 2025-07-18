@@ -1,7 +1,7 @@
 ---
 title: Khoirul
 description: Khoirul's Portfolio
-image: https://khoirul.site/og.jpg
+coverImage: https://khoirul.site/og.jpg
 ---
 
 Hey, I am Khoirul, a full stack developer and photography enthusiast.

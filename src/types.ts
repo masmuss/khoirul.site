@@ -1,15 +1,44 @@
 import type { CollectionEntry } from "astro:content";
 
-export type PostKey = "blog";
+export type PostKey = "post";
 
 export type CollectionPosts = CollectionEntry<PostKey>;
 
-export type ProjectData = Array<{
+export type Education = {
+	period: string;
+	institution: string;
+	degree: string;
+	gpa?: string;
+	coursework?: string[];
+};
+
+export type Project = {
+	text: string;
+	description?: string;
+	icon?: string;
+	href: string;
+};
+
+export type ProjectCollection = {
 	title: string;
-	projects: Array<{
-		text: string;
-		description?: string;
-		icon?: string;
-		href: string;
-	}>;
-}>;
+	projects: Project[];
+};
+
+export type Experience = {
+	period: string;
+	title: string;
+	company: string;
+	location?: string;
+	highlights: string[];
+};
+
+export type SkillCollection = {
+	title: string;
+	description: string;
+};
+
+export type PaginationLink = {
+	url: string;
+	text?: string;
+	srLabel?: string;
+};

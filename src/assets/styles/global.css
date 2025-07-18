@@ -1,3 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap");
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "@iconify/tailwind4" {
+	prefix: "iconify";
+	/* biome-ignore lint/correctness/noUnknownProperty: This is a valid Tailwind CSS plugin configuration */
+	prefixes: ri, carbon;
+	scale: 1.2;
+}
+
+/* @variant dark (&:where(.dark, .dark *)); */
+@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@utility container {
+	@apply mx-auto p-8;
+}
+
+@layer base {
+	html {
+		color-scheme: light dark;
+
+		&[data-theme="light"] {
+			color-scheme: light;
+
+			/* Woodsmoke Light Theme */
+			--background: 0 0% 96.5%; /* woodsmoke-50 */
+			--foreground: 0 0% 8.6%; /* woodsmoke-950 */
+			--card: 0 0% 100%; /* Default white for cards in light mode is often cleaner */
+			--card-foreground: 0 0% 8.6%; /* woodsmoke-950 */
+			--popover: 0 0% 100%;
+			--popover-foreground: 0 0% 8.6%;
+			--primary: 0 0% 8.6%; /* woodsmoke-950 */
+			--primary-foreground: 0 0% 96.5%; /* woodsmoke-50 */
+			--secondary: 0 0% 90.6%; /* woodsmoke-100 */
+			--secondary-foreground: 0 0% 8.6%;
+			--muted: 0 0% 90.6%;
+			--muted-foreground: 0 0% 40%; /* A mid-tone gray */
+			--accent: 0 0% 90.6%;
+			--accent-foreground: 0 0% 8.6%;
+			--destructive: 0 72.22% 50.59%; /* Kept original red */
+			--destructive-foreground: 0 0% 98%;
+			--border: 0 0% 82%; /* woodsmoke-200 */
+			--input: 0 0% 82%;
+			--ring: 0 0% 8.6%;
+			--radius: 0.5rem;
+		}
+
+		&[data-theme="dark"] {
+			color-scheme: dark;
+
+			/* Woodsmoke Dark Theme */
+			--background: 0 0% 8.6%; /* woodsmoke-950 */
+			--foreground: 0 0% 96.5%; /* woodsmoke-50 */
+			--card: 0 0% 12%; /* A slightly lighter dark for cards */
+			--card-foreground: 0 0% 96.5%;
+			--popover: 0 0% 12%;
+			--popover-foreground: 0 0% 96.5%;
+			--primary: 0 0% 96.5%; /* woodsmoke-50 */
+			--primary-foreground: 0 0% 8.6%; /* woodsmoke-950 */
+			--secondary: 0 0% 23.9%; /* woodsmoke-900 */
+			--secondary-foreground: 0 0% 96.5%;
+			--muted: 0 0% 23.9%;
+			--muted-foreground: 0 0% 60%; /* A mid-tone gray */
+			--accent: 0 0% 23.9%;
+			--accent-foreground: 0 0% 96.5%;
+			--destructive: 0 62.8% 30.6%; /* Kept original red */
+			--destructive-foreground: 0 0% 98%;
+			--border: 0 0% 27.1%; /* woodsmoke-800 */
+			--input: 0 0% 27.1%;
+			--ring: 0 0% 82%; /* woodsmoke-200 */
+		}
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+@theme {
+	--default-font-family: "Geist", sans-serif;
+	--default-mono-font-family: "Geist Mono", monospace;
+	--container-2xl: 1400px;
+
+	--color-woodsmoke-50: #f6f6f6;
+	--color-woodsmoke-100: #e7e7e7;
+	--color-woodsmoke-200: #d1d1d1;
+	--color-woodsmoke-300: #b0b0b0;
+	--color-woodsmoke-400: #888888;
+	--color-woodsmoke-500: #6d6d6d;
+	--color-woodsmoke-600: #5d5d5d;
+	--color-woodsmoke-700: #4f4f4f;
+	--color-woodsmoke-800: #454545;
+	--color-woodsmoke-900: #3d3d3d;
+	--color-woodsmoke-950: #171717;
+
+	--color-border: hsl(var(--border) / 0.8);
+	--color-input: hsl(var(--input));
+	--color-ring: hsl(var(--ring));
+	--color-background: hsl(var(--background));
+	--color-foreground: hsl(var(--foreground));
+	--color-primary: hsl(var(--primary));
+	--color-primary-foreground: hsl(var(--primary-foreground));
+	--color-secondary: hsl(var(--secondary));
+	--color-secondary-foreground: hsl(var(--secondary-foreground));
+	--color-accent: hsl(var(--accent));
+	--color-muted: hsl(var(--muted));
+	--color-muted-foreground: hsl(var(--muted-foreground));
+	--color-destructive: hsl(var(--destructive));
+	--color-destructive-foreground: hsl(var(--destructive-foreground));
+	--color-popover: hsl(var(--popover));
+	--color-popover-foreground: hsl(var(--popover-foreground));
+	--color-card: hsl(var(--card));
+	--color-card-foreground: hsl(var(--card-foreground));
+}
+
 html.dark .astro-code,
 html.dark .astro-code span {
 	color: var(--shiki-dark) !important;
@@ -33,10 +153,10 @@ html:not(.dark) {
 img {
 	--at-apply: rd-1 0.5;
 }
-
+/* 
 article {
 	--at:apply: sm:min-h-38 min-h-28;
-}
+} */
 
 .prose-link i {
 	--at-apply: text-sm mr-1;
@@ -44,25 +164,4 @@ article {
 
 pre.mermaid {
 	background-color: transparent;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-	animation: none;
-	mix-blend-mode: normal;
-}
-
-::view-transition-old(root) {
-	z-index: 1;
-}
-
-::view-transition-new(root) {
-	z-index: 2147483646;
-}
-
-html.dark::view-transition-old(root) {
-	z-index: 2147483646;
-}
-html.dark::view-transition-new(root) {
-	z-index: 1;
 }

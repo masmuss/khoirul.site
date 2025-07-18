@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+
+import astro from "@/assets/images/about-astro.png";
+import Label from "@/components/Label.astro";
+---
+
+<section class="flex flex-col items-center gap-y-7">
+	<Image
+		src={astro}
+		alt="profile photo"
+		class="h-28 w-auto rounded-full bg-[#FFBE98] p-2"
+		loading="eager"
+	/>
+
+	<div class="flex flex-col items-center gap-y-4">
+		<h1 class="text-3xl font-bold">Khoirul Fattah</h1>
+
+		<div class="flex flex-wrap justify-center gap-x-7 gap-y-3">
+			<Label title="Software Engineer">
+				<span class="iconify ri--code-s-slash-line" slot="icon"></span>
+			</Label>
+			<Label title="Sidoarjo, Indonesia">
+				<span class="iconify ri--map-pin-2-line" slot="icon"></span>
+			</Label>
+			<Label
+				title="Connect on Linkedin"
+				as="a"
+				href="https://www.linkedin.com/in/masmuss"
+				target="_blank"
+			>
+				<span class="iconify ri--linkedin-box-line" slot="icon"></span>
+			</Label>
+		</div>
+	</div>
+</section>

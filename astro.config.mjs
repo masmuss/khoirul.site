@@ -1,40 +1,18 @@
 // @ts-check
-import { defineConfig } from "astro/config";
 
 import mdx from "@astrojs/mdx";
-
 import sitemap from "@astrojs/sitemap";
-
-import svelte from "@astrojs/svelte";
-import UnoCSS from "unocss/astro";
-import { presetIcons } from "unocss";
-import remarkGfm from "remark-gfm";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
+import expressiveCode from "astro-expressive-code";
+import icon from "astro-icon";
 import astroMermaid from "astro-mermaid";
+import remarkGfm from "remark-gfm";
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://khoirul.site",
 	integrations: [
-		mdx({
-			gfm: true,
-			remarkPlugins: [remarkGfm],
-		}),
-		sitemap(),
-		UnoCSS({
-			injectReset: true,
-			presets: [
-				presetIcons({
-					extraProperties: {
-						display: "inline-block",
-						height: "10em",
-						width: "10em",
-						"vertical-align": "text-bottom",
-					},
-					mode: "mask",
-				}),
-			],
-		}),
-		svelte(),
 		astroMermaid({
 			theme: "default",
 			autoTheme: true,
@@ -45,6 +23,18 @@ export default defineConfig({
 				},
 			},
 		}),
+		expressiveCode({
+			themes: ["github-dark"],
+			shiki: {
+				bundledLangs: ["mermaid"],
+			},
+		}),
+		mdx({
+			gfm: true,
+			remarkPlugins: [remarkGfm],
+		}),
+		sitemap(),
+		icon(),
 	],
 	markdown: {
 		gfm: true,
@@ -60,5 +50,8 @@ export default defineConfig({
 			wrap: true,
 		},
 		remarkPlugins: [remarkGfm],
+	},
+	vite: {
+		plugins: [tailwindcss()],
 	},
 });

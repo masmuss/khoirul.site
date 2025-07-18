@@ -1,0 +1,33 @@
+---
+import Card from "@/components/Card.astro";
+import Section from "@/components/Section.astro";
+import type { Education } from "@/types";
+
+interface Props {
+	educations: Education[];
+}
+
+const { educations }: Props = Astro.props;
+---
+
+<Section title="Education">
+	{
+		educations.map((education) => (
+			<Card
+				heading={education.institution}
+				subheading={education.degree}
+				date={education.period}
+				imagePath="/src/assets/images/about-astro.png"
+				altText={education.institution}
+				imageClass="h-12 w-auto md:-left-16"
+			>
+				<p>Courseworks: </p>
+				<ul class="text-muted-foreground ml-4 list-disc">
+					{education.coursework?.map((course) => (
+						<li>{course}</li>
+					))}
+				</ul>
+			</Card>
+		))
+	}
+</Section>

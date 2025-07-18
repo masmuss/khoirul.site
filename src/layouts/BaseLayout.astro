@@ -1,0 +1,28 @@
+---
+import { ClientRouter, fade } from "astro:transitions";
+import BaseHead from "@/components/layout/BaseHead.astro";
+import Footer from "@/components/layout/Footer.astro";
+import Header from "@/components/layout/Header.astro";
+import ThemeProvider from "@/components/ThemeProvider.astro";
+
+const { ...head } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead {...head} />
+		<ClientRouter />
+	</head>
+	<body class="bg-background flex justify-center transition-all">
+		<ThemeProvider />
+		<main
+			class="flex min-h-screen w-screen max-w-[60rem] flex-col items-center px-6 pt-7 pb-10 text-[0.92rem] leading-relaxed sm:px-10 lg:px-10"
+			transition:animate={fade({ duration: 300 })}
+		>
+			<Header />
+			<slot />
+			<Footer />
+		</main>
+	</body>
+</html>

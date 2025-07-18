@@ -1,0 +1,25 @@
+---
+import PostPreview from "@/components/post/PostPreview.astro";
+import Section from "@/components/Section.astro";
+import type { CollectionPosts } from "@/types";
+
+interface Props {
+	posts: CollectionPosts[];
+}
+
+const { posts }: Props = Astro.props;
+---
+
+{
+	posts.length > 0 && (
+		<Section title="Posts">
+			<ul class="flex flex-col gap-y-2">
+				{posts.map((p) => (
+					<li class="flex flex-col gap-x-2 sm:flex-row">
+						<PostPreview post={p} />
+					</li>
+				))}
+			</ul>
+		</Section>
+	)
+}

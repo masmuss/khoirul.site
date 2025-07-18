@@ -11,34 +11,42 @@ export const siteConfig: SiteConfig = {
 		src: "https://khoirul.site/og.jpg",
 		alt: "Open Graph",
 	},
+	date: {
+		locale: "id-ID",
+		options: {
+			day: "numeric",
+			month: "short",
+			year: "numeric",
+		},
+	},
 	socialLinks: [
 		{
 			text: "GitHub",
 			href: "https://github.com/masmuss",
-			icon: "ri:github-line",
-			header: "ri:github-line",
+			icon: "ri--github-line",
+			header: "ri--github-line",
 		},
 		{
 			text: "Twitter",
 			href: "https://x.com/rexbocho",
-			icon: "ri:twitter-x-line",
-			header: "ri:twitter-x-line",
+			icon: "ri--twitter-x-line",
+			header: "ri--twitter-x-line",
 		},
 		{
 			text: "LinkedIn",
 			href: "https://www.linkedin.com/in/masmuss",
-			icon: "ri:linkedin-box-line",
+			icon: "ri--linkedin-box-line",
 		},
 		{
 			text: "Instagram",
 			href: "https://www.instagram.com/pictogrammmer",
-			icon: "ri-instagram-line",
+			icon: "ri--instagram-line",
 		},
 		{
 			text: "Threads",
 			href: "https://www.threads.net/@khoe__rul",
-			icon: "ri-threads-line",
-		}
+			icon: "ri--threads-line",
+		},
 	],
 	header: {
 		logo: {
@@ -48,18 +56,13 @@ export const siteConfig: SiteConfig = {
 		navLinks: [
 			{
 				text: "Blog",
-				href: "/posts",
-				icon: "ri:article-line",
-			},
-			{
-				text: "Notes",
-				href: "/notes",
-				icon: "ri:sticky-note-line",
+				href: "/blog",
+				icon: "ri--article-line",
 			},
 			{
 				text: "Projects",
 				href: "/projects",
-				icon: "ri:lightbulb-line",
+				icon: "ri--lightbulb-line",
 			},
 		],
 	},
@@ -67,11 +70,7 @@ export const siteConfig: SiteConfig = {
 		blogLinks: [
 			{
 				text: "Blog",
-				href: "/posts",
-			},
-			{
-				text: "Notes",
-				href: "/notes",
+				href: "/blog",
 			},
 		],
 	},

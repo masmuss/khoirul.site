@@ -1,11 +1,32 @@
 ---
-import siteConfig from "@/config/site-config";
-import { Content } from "@/content/about.md";
-import Layout from "@/layouts/Layout.astro";
+import About from "@/components/sections/home/About.astro";
+import Contact from "@/components/sections/home/Contact.astro";
+import Educations from "@/components/sections/home/Educations.astro";
+import Experiences from "@/components/sections/home/Experiences.astro";
+import Hero from "@/components/sections/home/Hero.astro";
+import Posts from "@/components/sections/home/Posts.astro";
+import Projects from "@/components/sections/home/Projects.astro";
+import Skills from "@/components/sections/home/Skills.astro";
+import PageLayout from "@/layouts/BaseLayout.astro";
+import { educations } from "@/lib/constants/educations";
+import { experiences } from "@/lib/constants/experiences";
+import { skills } from "@/lib/constants/skills";
+import { getAllProjects, getPosts } from "@/lib/utils";
+
+const MAX_POSTS = 5;
+const allPosts = await getPosts(undefined, "post", MAX_POSTS);
+const projectData = getAllProjects(2);
 ---
 
-<Layout description={siteConfig.description}>
-	<article class="prose">
-		<Content />
-	</article>
-</Layout>
+<PageLayout meta={{ title: "Home" }}>
+	<div class="flex w-full flex-col gap-y-10">
+		<Hero />
+		<About />
+		<Posts posts={allPosts} />
+		<Experiences experiences={experiences} />
+		<Educations educations={educations} />
+		<Projects projects={projectData} />
+		<Skills skills={skills} />
+		<Contact />
+	</div>
+</PageLayout>

@@ -1,0 +1,17 @@
+---
+import Section from "@/components/Section.astro";
+import SkillLayout from "@/components/skills/SkillLayout.astro";
+import type { SkillCollection } from "@/types";
+
+interface Props {
+	skills: SkillCollection[];
+}
+
+const { skills }: Props = Astro.props;
+---
+
+<Section title="Skills">
+	<ul class="space-y-4">
+		{skills.map((skill) => <SkillLayout skill={skill} />)}
+	</ul>
+</Section>

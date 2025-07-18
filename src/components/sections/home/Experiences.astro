@@ -1,0 +1,32 @@
+---
+import Card from "@/components/Card.astro";
+import Section from "@/components/Section.astro";
+import type { Experience } from "@/types";
+
+interface Props {
+	experiences: Experience[];
+}
+
+const { experiences }: Props = Astro.props;
+---
+
+<Section title="Experience">
+	{
+		experiences.map((experience) => (
+			<Card
+				heading={experience.title}
+				subheading={experience.company}
+				date={experience.period}
+				imagePath="/src/assets/images/about-astro.png"
+				altText={experience.title}
+				imageClass="h-12 w-auto md:-left-16"
+			>
+				<ul class="text-muted-foreground ml-4 list-disc">
+					{experience.highlights.map((highlight) => (
+						<li>{highlight}</li>
+					))}
+				</ul>
+			</Card>
+		))
+	}
+</Section>

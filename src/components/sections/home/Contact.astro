@@ -1,0 +1,32 @@
+---
+import Section from "@/components/Section.astro";
+import siteConfig from "@/config/site-config";
+---
+
+<Section title="Contact">
+	<ul class="flex flex-col gap-4">
+		<li class="flex flex-row gap-2">
+			<span class="font-medium">Email:</span>
+			<span class="text-muted-foreground">
+				<a href="mailto:ahmusafir.khoirul@gmail.com"> ahmusafir.khoirul@gmail.com </a>
+			</span>
+		</li>
+		<li class="flex flex-row items-center gap-2">
+			<span class="font-medium">Social Links:</span>
+			<div class="flex items-center gap-x-2">
+				{
+					siteConfig.socialLinks.map((link) => (
+						<a
+							class="bg-muted border-border text-muted-foreground flex h-10 w-10 items-center justify-center rounded-full border transition-all hover:invert"
+							href={link.href}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<span class={`iconify ${link.icon} text-lg`} slot="icon-before" />
+						</a>
+					))
+				}
+			</div>
+		</li>
+	</ul>
+</Section>

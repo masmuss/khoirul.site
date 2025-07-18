@@ -1,13 +1,12 @@
-import type { ProjectData } from "@/types";
+import type { ProjectCollection } from "@/types";
 
-export const projectData: ProjectData = [
+export const projectData: ProjectCollection[] = [
 	{
 		title: "Website",
 		projects: [
 			{
 				text: "IdeaHive",
-				description:
-					"Mind-mapping app by PENS Agile PBL and Agileteknik, Laravel, MySQL, Flutter",
+				description: "Mind-mapping app by PENS Agile PBL and Agileteknik, Laravel, MySQL, Flutter",
 				icon: "i-carbon-machine-learning-model",
 				href: "https://secimap.agileteknik.com",
 			},
@@ -25,8 +24,7 @@ export const projectData: ProjectData = [
 			},
 			{
 				text: "ENT Satu Atap",
-				description:
-					"Super app used for administration at EEPIS News and Network Team",
+				description: "Super app used for administration at EEPIS News and Network Team",
 				icon: "i-carbon-network-1",
 				href: "https://ent.pens.ac.id",
 			},
@@ -37,8 +35,7 @@ export const projectData: ProjectData = [
 		projects: [
 			{
 				text: "Qasir API",
-				description:
-					"Learning NestJS by creating API for Point of Sales system",
+				description: "Learning NestJS by creating API for Point of Sales system",
 				icon: "i-carbon-api-1",
 				href: "https://github.com/masmuss/qasir-api",
 			},
@@ -53,8 +50,8 @@ export const projectData: ProjectData = [
 				text: "eLibrary API",
 				description: "An API for eLibrary system built with Hono, Bun, and Scalar API reference",
 				icon: "i-carbon-api-1",
-				href: "https://github.com/masmuss/hono-elibrary.git"
-			}
+				href: "https://github.com/masmuss/hono-elibrary.git",
+			},
 		],
 	},
 	{
@@ -62,8 +59,7 @@ export const projectData: ProjectData = [
 		projects: [
 			{
 				text: "IoT Monitoring and Control",
-				description:
-					"IoT Monitoring and Control App for Hydroponic System, Flutter, Firebase",
+				description: "IoT Monitoring and Control App for Hydroponic System, Flutter, Firebase",
 				icon: "i-carbon-carbon-for-mobile",
 				href: "https://github.com/masmuss/mobile-hydroponic-monitoring",
 			},

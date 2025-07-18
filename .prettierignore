@@ -1,0 +1,13 @@
+*.min.js
+node_modules
+dist
+
+**/.cache
+
+bun.lock
+
+.astro
+.vercel
+.vscode
+.idea
+.gitignore

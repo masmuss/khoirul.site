@@ -1,6 +1,6 @@
-import siteConfig from "@/config/site-config";
-import { getPosts } from "@/lib/utils/posts";
 import rss from "@astrojs/rss";
+import siteConfig from "@/config/site-config";
+import { getPosts } from "@/lib/utils/post";
 
 interface Context {
 	site: string;

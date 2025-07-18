@@ -1,27 +1,44 @@
 ---
-import ProjectsList from "@/components/projects/ProjectList.svelte";
-import Layout from "@/layouts/Layout.astro";
+import Button from "@/components/Button.astro";
+import ProjectCard from "@/components/projects/ProjectCard.astro";
+import PageLayout from "@/layouts/BaseLayout.astro";
 import { projectData } from "@/lib/constants/projects";
 ---
 
-<Layout title="Projects" description="List of projects that I am proud of">
-  <h1 class="nav-link text-3xl font-semibold opacity-80 mb-8">Projects</h1>
-  <div mb-16 sm:mb-24>
-    {
-      projectData.length > 0 && (
-        <div>
-          {projectData.map((projectCategory) => (
-            <div mb-10>
-              <h2 class="pointer-events-none relative h20 select-none">
-                <span class="absolute top-0 text-3.2em color-transparent font-bold text-stroke-1.5 text-stroke-hex-aaa op35 dark:op20">
-                  {projectCategory.title}
-                </span>
-              </h2>
-              <ProjectsList projects={projectCategory.projects} />
-            </div>
-          ))}
-        </div>
-      )
-    }
-  </div>
-</Layout>
+<PageLayout meta={{ title: "Projects" }}>
+	<div class="w-full">
+		<Button title="Back" href="/" style="button">
+			<span class="iconify ri--arrow-left-long-line" slot="icon-before"></span>
+		</Button>
+
+		<div class="mt-5 flex w-full flex-col gap-y-10">
+			<div>
+				<h1 class="mb-1 text-2xl font-bold">Projects</h1>
+				<p>
+					Here you can find a collection of my projects, showcasing various skills and technologies
+					I've worked with.
+				</p>
+			</div>
+
+			{
+				projectData.map((project) => (
+					<div class="mb-6 space-y-2">
+						<h2 class="text-xl font-semibold">{project.title}</h2>
+						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+							{project.projects.map((item) => (
+								<ProjectCard
+									href={item.href}
+									heading={item.text}
+									subheading={item.description}
+									imagePath="/src/assets/images/coming-soon.png"
+									altText={item.text}
+									class="w-full"
+								/>
+							))}
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</PageLayout>
