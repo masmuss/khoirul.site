@@ -17,14 +17,14 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 ---
 
 {
-	content.data.image && (
+	content.data.coverImage && (
 		<div class="aspect-h-9 aspect-w-16 mb-6">
 			<Image
-				alt={content.data.image.alt}
+				alt={content.data.coverImage.alt}
 				class="rounded-2xl object-cover"
 				fetchpriority="high"
 				loading="eager"
-				src={content.data.image.src}
+				src={content.data.coverImage.src}
 				width={1920}
 				height={1080}
 			/>

@@ -24,7 +24,7 @@ import { projectData } from "@/lib/constants/projects";
 				projectData.map((project) => (
 					<div class="mb-6 space-y-2">
 						<h2 class="text-xl font-semibold">{project.title}</h2>
-						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+						<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 							{project.projects.map((item) => (
 								<ProjectCard
 									href={item.href}
