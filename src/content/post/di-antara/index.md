@@ -3,11 +3,7 @@ title: Di Antara
 description: Di tengah langit jingga dan lorong laboratorium yang hening, ia berdiri diam. Bukan karena pintu tak terbuka, tapi karena ia belum tahu ke mana ingin pergi.
 date: 20 September 2024
 coverImage:
-<<<<<<<< HEAD:src/content/post/di-antara.md
-    src: https://ik.imagekit.io/3nj0ldsn3/20240920_171355.jpg?updatedAt=1749979730291
-========
     src: ./cover_image.webp
->>>>>>>> cfa3483 (build(image-compressor): add script for converting post images into .webp format):src/content/post/di-antara/index.md
     alt: Dokumentasi pribadi <a href='https://instagram.com/pictogrammmer'>@pictogrammmer</a>
 tags: ["reflection"]
 ---

@@ -3,11 +3,7 @@ title: Jendela
 description: Siang itu terang dan biasa saja. Di depan jendela, ia berdiri diam—menatap keluar, bukan untuk melihat dunia, tapi untuk bertanya tentang dirinya sendiri:/ bagaimana jika jalan yang dulu tidak diambil... justru yang sebenarnya ia butuhkan?
 date: 25 November 2024
 coverImage:
-<<<<<<<< HEAD:src/content/post/jendela.md
-    src: https://ik.imagekit.io/3nj0ldsn3/20241025_081051_O1TaH0LZh.jpg?updatedAt=1749990667927
-========
     src: ./cover_image.webp
->>>>>>>> cfa3483 (build(image-compressor): add script for converting post images into .webp format):src/content/post/jendela/index.md
     alt: Dokumentasi pribadi <a href='https://instagram.com/pictogrammmer'>@pictogrammmer</a>
 tags: ["story", "reflection"]
 ---

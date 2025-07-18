@@ -3,11 +3,7 @@ title: Perspektif
 description: Mendengarkan masukan orang lain itu penting, namun tidak semua yang mereka inginkan harus aku penuhi
 date: 08 October 2023
 coverImage:
-<<<<<<<< HEAD:src/content/post/perspektif.md
-    src: https://ik.imagekit.io/3nj0ldsn3/IMG20230307161622_V7rJ0NQBf.jpg?updatedAt=1749978316891
-========
     src: ./cover_image.webp
->>>>>>>> cfa3483 (build(image-compressor): add script for converting post images into .webp format):src/content/post/perspektif/index.md
     alt: Dokumentasi pribadi <a href='https://instagram.com/pictogrammmer'>@pictogrammmer</a>
 tags: ["reflection"]
 ---
