@@ -34,7 +34,7 @@ import { projectData } from "@/lib/constants/projects";
 									href={item.href}
 									heading={item.text}
 									subheading={item.description}
-									imagePath="/src/assets/images/coming-soon.png"
+									imagePath={item.thumbnail ?? "/src/assets/images/coming-soon.png"}
 									altText={item.text}
 									class="w-full"
 								/>

@@ -6,7 +6,7 @@ const fs = require("fs").promises;
 const path = require("path");
 const sharp = require("sharp");
 
-const rootDir = path.join(__dirname, "../src/content/post");
+const targetDirs = [path.join(__dirname, "../src/content/post")];
 
 async function processDirectory(dir) {
 	const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -21,7 +21,6 @@ async function processDirectory(dir) {
 				const baseName = path.basename(entry.name, ext);
 				const webpPath = path.join(dir, `${baseName}.webp`);
 
-				// Skip if .webp already exists
 				try {
 					await fs.access(webpPath);
 					continue;
@@ -39,4 +38,8 @@ async function processDirectory(dir) {
 	}
 }
 
-processDirectory(rootDir).catch(console.error);
+(async () => {
+	for (const dir of targetDirs) {
+		await processDirectory(dir);
+	}
+})().catch(console.error);

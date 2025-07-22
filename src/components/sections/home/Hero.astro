@@ -1,20 +1,22 @@
 ---
 import { Image } from "astro:assets";
 
-import astro from "@/assets/images/about-astro.png";
+import avatar from "@/assets/images/avatar.png";
 import Label from "@/components/Label.astro";
+import Status from "@/components/Status.astro";
 ---
 
 <section class="flex flex-col items-center gap-y-7">
 	<Image
-		src={astro}
+		src={avatar}
 		alt="profile photo"
-		class="h-28 w-auto rounded-full bg-[#FFBE98] p-2"
+		class="h-32 w-auto rounded-full bg-[#FFBE98] p-2"
 		loading="eager"
 	/>
 
 	<div class="flex flex-col items-center gap-y-4">
 		<h1 class="text-3xl font-bold">Khoirul Fattah</h1>
+		<Status />
 
 		<div class="flex flex-wrap justify-center gap-x-7 gap-y-3">
 			<Label title="Software Engineer">

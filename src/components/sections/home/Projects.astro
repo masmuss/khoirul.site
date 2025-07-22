@@ -18,7 +18,7 @@ const { projects }: Props = Astro.props;
 					href={project.href}
 					heading={project.text}
 					subheading={project.description}
-					imagePath="/src/assets/images/coming-soon.png"
+					imagePath={project.thumbnail ?? "/src/assets/images/coming-soon.png"}
 					altText={project.text}
 					class="w-full sm:w-1/2"
 				/>

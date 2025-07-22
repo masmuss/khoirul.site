@@ -15,7 +15,7 @@ export type Education = {
 export type Project = {
 	text: string;
 	description?: string;
-	icon?: string;
+	thumbnail?: string;
 	href: string;
 };
 

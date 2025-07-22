@@ -8,6 +8,6 @@ export function getAllProjects(limit = 10): Project[] {
 		.map((project) => ({
 			...project,
 			href: project.href || "#",
-			icon: project.icon || "ri--projector-2-line",
+			thumbnail: project.thumbnail || "/src/assets/images/coming-soon.png",
 		}));
 }
