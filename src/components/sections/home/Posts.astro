@@ -20,6 +20,12 @@ const { posts }: Props = Astro.props;
 					</li>
 				))}
 			</ul>
+			<div class="flex w-full items-end justify-end">
+				<a href="/blog" class="flex items-center gap-x-2">
+					<span>See all posts</span>
+					<span class="iconify ri--arrow-right-long-line" />
+				</a>
+			</div>
 		</Section>
 	)
 }
