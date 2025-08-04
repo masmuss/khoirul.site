@@ -3,74 +3,7 @@ import Button from "@/components/Button.astro";
 import ToolSection from "@/components/ToolSection.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 
-const DESIGN = [
-	{
-		name: "Figma",
-		description: "Design and Prototyping Tool",
-		href: "https://www.figma.com/",
-		iconPath: "figma",
-	},
-];
-
-const PRODUCTIVITY = [
-	{
-		name: "Arc",
-		description: "Browser",
-		href: "https://arc.net/",
-		iconPath: "arc",
-	},
-	{
-		name: "Mozilla Firefox",
-		description: "Browser",
-		href: "https://www.firefox.com/en-US/",
-		iconPath: "firefox",
-	},
-	{
-		name: "Notion",
-		description: "Note Taking",
-		href: "https://www.notion.so/product",
-		iconPath: "notion",
-	},
-	{
-		name: "Raycast",
-		description: "Extendable Launcher and Shortcuts",
-		href: "https://www.raycast.com/",
-		iconPath: "raycast",
-	},
-];
-
-const DEVELOPMENT = [
-	{
-		name: "VS Code",
-		description: "IDE",
-		href: "https://code.visualstudio.com/",
-		iconPath: "vscode",
-	},
-	{
-		name: "JetBrains IDEs",
-		description: "IDE",
-		href: "https://www.jetbrains.com/",
-		iconPath: "jetbrains",
-	},
-	{
-		name: "Docker",
-		description: "Containerization",
-		href: "https://www.docker.com/",
-		iconPath: "docker",
-	},
-	{
-		name: "HTTPie",
-		description: "Command Line HTTP Client",
-		href: "https://httpie.io/",
-		iconPath: "httpie",
-	},
-	{
-		name: "ChatGPT",
-		description: "AI",
-		href: "https://chat.openai.com/",
-		iconPath: "chatgpt",
-	},
-];
+import TOOLS from "@/lib/constants/tools";
 ---
 
 <PageLayout
@@ -89,9 +22,7 @@ const DEVELOPMENT = [
 				<p>Tools and software I use daily</p>
 			</div>
 
-			<ToolSection title="Design" tools={DESIGN} />
-			<ToolSection title="Productivity" tools={PRODUCTIVITY} />
-			<ToolSection title="Development" tools={DEVELOPMENT} />
+			{TOOLS.map((tool) => <ToolSection title={tool.title} tools={tool.tools} />)}
 		</div>
 	</div>
 </PageLayout>

@@ -1,16 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
+import type { Tool } from "@/lib/constants/tools";
 import { cn } from "@/lib/utils";
 
 interface Props {
 	class?: string;
 	title: string;
-	tools: {
-		name: string;
-		description: string;
-		href: string;
-		iconPath: string;
-	}[];
+	tools: Tool[];
 }
 const { class: className, title, tools, ...props }: Props = Astro.props;
 ---
@@ -34,7 +30,7 @@ const { class: className, title, tools, ...props }: Props = Astro.props;
 				>
 					<div class="relative flex flex-row items-center gap-x-4 px-2 py-0.5 transition-all">
 						<div class="border-border bg-muted absolute -inset-0 z-10 rounded-lg border opacity-0 transition-all group-hover:opacity-50" />
-						<Icon name={tool.iconPath} class="bg-muted z-20 h-10 w-10 rounded-lg p-2" />
+						<Icon name={tool.iconPath} class="bg-muted z-20 h-10 w-10 rounded-lg p-2 aspect-square" />
 						<div class="z-20 flex flex-col">
 							<h3 class="font-medium">{tool.name}</h3>
 							<p class="text-muted-foreground">{tool.description}</p>
