@@ -2,7 +2,6 @@
 title: Test TOC
 description: Test TOC
 date: 24 May 2025
-toc: true
 tags: ["tech"]
 draft: true
 ---

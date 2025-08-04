@@ -6,7 +6,6 @@ coverImage:
   src: https://images.unsplash.com/photo-1644792863360-40fa85ea52e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
   alt: Photo by <a href="https://unsplash.com/@claybanks?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Clay Banks</a> on <a href="https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-wooden-desk-8q6e5hu3Ilc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 tags: ["reflection"]
-toc: true
 ---
 
 Ketika melihat kembali perjalanan hidupku, saya tidak bisa menahan senyum saat mengingat kata-kata sederhana yang seringkali diucapkan dalam pemrograman komputer: "Hello, World!" Namun, dalam konteks kehidupan pribadi saya, frasa itu bukan hanya sekadar pesan pertama yang ditampilkan, melainkan sebuah perjalanan menuju pembaruan diri yang menarik dan penuh makna. Artikel ini akan memberikan sudut pandang orang pertama mengenai awal mula perjalanan hidupku menuju transformasi menjadi seseorang yang baru.

@@ -25,7 +25,6 @@ const post = defineCollection({
 				.transform((val: string | number | Date) => new Date(val)),
 			draft: z.boolean().default(false).optional(),
 			tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
-			toc: z.boolean().default(false).optional(),
 		}),
 });
 
