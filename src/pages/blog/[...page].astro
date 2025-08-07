@@ -13,7 +13,7 @@ import { getPosts, getUniqueTags } from "@/lib/utils";
 export const getStaticPaths = (async ({ paginate }) => {
 	const allPosts = await getPosts();
 	const uniqueTags = getUniqueTags(allPosts);
-	return paginate(allPosts, { pageSize: 10, props: { uniqueTags } });
+	return paginate(allPosts, { pageSize: 15, props: { uniqueTags } });
 }) satisfies GetStaticPaths;
 
 interface Props {
