@@ -5,7 +5,7 @@ date: 4 August 2025
 tags: ["tech", "golang"]
 ---
 
-Selamat datang kembali di petualangan **Becoming Gopher**! Di [episode sebelumnya](/blog/otak-program-logika-percabangan-dengan-if-dan-switch), kita sudah sukses memberikan 'otak' pada program kita. Kode kita sekarang bisa menganalisis kondisi dan memilih jalan yang berbeda menggunakan `if` dan `switch`.
+Selamat datang kembali di petualangan **Becoming Gopher**! Di [episode sebelumnya](./otak-program-logika-percabangan-dengan-if-dan-switch), kita sudah sukses memberikan 'otak' pada program kita. Kode kita sekarang bisa menganalisis kondisi dan memilih jalan yang berbeda menggunakan `if` dan `switch`.
 
 Seorang petualang seringkali harus melakukan hal yang sama berulang kali—berjalan ribuan langkah, mendayung puluhan kali, atau memeriksa setiap barang di dalam tas. Program kita juga butuh kemampuan itu. Jika tidak, bagaimana kita bisa memproses ratusan data pengguna atau menampilkan daftar produk satu per satu?
 

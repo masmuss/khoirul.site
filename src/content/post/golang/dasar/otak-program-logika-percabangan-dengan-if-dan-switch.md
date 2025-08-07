@@ -5,7 +5,7 @@ date: 3 August 2025
 tags: ["tech", "golang"]
 ---
 
-Selamat datang kembali di petualangan **Becoming Gophe**r! [Di bagian sebelumnya](/blog/hello-gopher-kode-pertamamu-dan-tipe-data-dasar), kita sudah berhasil mengumpulkan 'bahan baku' kita: kita sudah tahu cara menyimpan angka, teks, dan logika benar/salah menggunakan variabel dan konstanta. Ransel kita sudah terisi!
+Selamat datang kembali di petualangan **Becoming Gophe**r! [Di bagian sebelumnya](./hello-gopher-kode-pertamamu-dan-tipe-data-dasar), kita sudah berhasil mengumpulkan 'bahan baku' kita: kita sudah tahu cara menyimpan angka, teks, dan logika benar/salah menggunakan variabel dan konstanta. Ransel kita sudah terisi!
 
 Tapi, apa gunanya bahan baku jika hanya disimpan di dalam ransel? Seorang petualang sejati harus bisa mengolahnya untuk bertahan hidup. Hari ini, kita akan belajar cara 'meracik' bahan-bahan tersebut. Kita akan memberikan 'otak' pada program kita agar ia bisa berpikir, membandingkan kondisi, dan memilih jalan yang harus diambil.
 

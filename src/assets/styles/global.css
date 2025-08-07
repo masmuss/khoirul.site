@@ -120,6 +120,36 @@
 @layer components {
 	@import "./components/admonition.css";
 	@import "./components/github-card.css";
+
+	.custom-prose {
+		@apply prose dark:prose-invert mt-12;
+
+		/* Heading */
+		@apply prose-headings:font-semibold prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4;
+
+		/* Table Header */
+		@apply prose-th:before:content-none;
+
+		/* Blockquote */
+		@apply prose-blockquote:font-serif;
+
+		/* Paragraph */
+		@apply prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4;
+
+		/* Pre */
+		@apply prose-pre:bg-secondary prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:font-mono prose-pre:text-sm;
+
+		/* Inline Code */
+		@apply prose-code:bg-secondary prose-code:rounded-md prose-code:px-1.5 prose-code:py-0.5 prose-code:text-pink-600 dark:prose-code:text-pink-400 prose-code:before:content-none prose-code:after:content-none;
+
+		.expressive-code {
+			@apply my-4;
+		}
+
+		.plantuml-img {
+			@apply mx-auto;
+		}
+	}
 }
 
 html.dark .astro-code,
@@ -156,16 +186,4 @@ html:not(.dark) {
 
 img {
 	--at-apply: rd-1 0.5;
-}
-/* 
-article {
-	--at:apply: sm:min-h-38 min-h-28;
-} */
-
-.prose-link i {
-	--at-apply: text-sm mr-1;
-}
-
-.expressive-code {
-	@apply my-4;
 }

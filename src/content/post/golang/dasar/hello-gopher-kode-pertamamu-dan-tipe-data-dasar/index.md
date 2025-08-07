@@ -5,7 +5,7 @@ date: 2 August 2025
 tags: ["tech", "golang"]
 ---
 
-Selamat datang kembali di seri **Becoming Gopher**! Jika kamu sudah [mengikuti bagian pertama](/blog/from-zero-menyiapkan-arena-ngoding-go/), itu artinya 'arena' kita sudah siap tempur. Go sudah terpasang, *code editor* sudah siap, dan sebuah modul kosong menanti untuk kita isi. *Well done*!
+Selamat datang kembali di seri **Becoming Gopher**! Jika kamu sudah [mengikuti bagian pertama](./from-zero-menyiapkan-arena-ngoding-go), itu artinya 'arena' kita sudah siap tempur. Go sudah terpasang, *code editor* sudah siap, dan sebuah modul kosong menanti untuk kita isi. *Well done*!
 
 Bayangkan di postingan sebelumnya kita baru saja mengemas ransel, memeriksa peta, dan tiba di kaki gunung. Hari ini, kita akan benar-benar mengambil langkah pertama di jalur pendakian. Kita akan meninggalkan jejak pertama kita di dunia Go.
 
@@ -252,6 +252,28 @@ fmt.Println("Seconds in a day:", day) // Seconds in a day: 86400
 fmt.Println("Seconds in a month:", month) // Seconds in a month: 2592000
 fmt.Println("Seconds in a year:", year) // Seconds in a year: 31536000
 ```
+
+## Type Declaration: Membuat Tipe Data Sendiri (Versi Sederhana)
+
+Terkadang, menggunakan nama tipe data bawaan seperti `string` atau `int` terasa kurang deskriptif. Go memungkinkan kita untuk membuat 'alias' atau nama baru untuk tipe data yang sudah ada. Ini disebut **Type Declaration**.
+
+Tujuannya adalah untuk membuat kode lebih mudah dibaca dan dimengerti. Misalnya, daripada menggunakan `string` untuk menyimpan KTP dan email, kita bisa membuat tipe baru.
+
+```go
+func main() {
+    // Membuat tipe data baru bernama NoKTP dan Email dari string
+	type NoKTP string
+	type Email string
+
+	var ktpBudi NoKTP = "1234567890"
+	var emailBudi Email = "budi@email.com"
+
+	fmt.Println("No KTP Budi:", ktpBudi)
+	fmt.Println("Email Budi:", emailBudi)
+}
+```
+
+Meskipun di belakang layar `NoKTP` dan `Email` adalah `string`, penggunaan *type declaration* membuat maksud dari variabel tersebut menjadi jauh lebih jelas.
 
 ## Petualangan Hari Ini Selesai!
 
