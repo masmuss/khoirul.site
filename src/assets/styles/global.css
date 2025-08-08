@@ -141,24 +141,19 @@
 
 		/* Inline Code */
 		@apply prose-code:bg-secondary prose-code:rounded-md prose-code:px-1.5 prose-code:py-0.5 prose-code:text-pink-600 dark:prose-code:text-pink-400 prose-code:before:content-none prose-code:after:content-none;
+	}
 
-		.expressive-code {
-			@apply my-4;
-		}
+	.expressive-code {
+		@apply my-4;
+	}
 
-		.plantuml-img {
-			@apply mx-auto;
-		}
+	.plantuml-img {
+		@apply mx-auto;
 	}
 }
 
-html.dark .astro-code,
-html.dark .astro-code span {
-	color: var(--shiki-dark) !important;
-	background-color: #161b22 !important;
-	font-style: var(--shiki-dark-font-style) !important;
-	font-weight: var(--shiki-dark-font-weight) !important;
-	text-decoration: var(--shiki-dark-text-decoration) !important;
+html {
+	scroll-behavior: smooth;
 }
 
 html.dark {

@@ -106,8 +106,7 @@ Di Go, tidak ada kata kunci `public` atau `private`. Aturannya sederhana dan jen
 - Nama yang diawali **Huruf Besar** (`Add`, `Book`) bersifat **Exported** (publik) dan bisa diakses dari *package* lain.
 - Nama yang diawali **huruf kecil** (`add`, `book`) bersifat **unexported** (privat) dan hanya bisa diakses dari dalam *package* yang sama.
 
-```go
-// file: user/user.go
+```go title=user/user.go
 package user
 
 // Diekspor, bisa diakses dari luar
@@ -132,8 +131,7 @@ Terkadang kita perlu menjalankan kode persiapan saat sebuah *package* pertama ka
 
 Fungsi `init()` akan **dijalankan otomatis sekali** oleh Go saat *package* diimpor, tanpa perlu kita panggil.
 
-```go
-// file: config/config.go
+```go title=config/config.go
 package config
 
 import "fmt"

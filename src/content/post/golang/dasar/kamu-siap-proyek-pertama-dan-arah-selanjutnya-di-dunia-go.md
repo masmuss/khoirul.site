@@ -155,6 +155,25 @@ func main() {
 **Jalankan Programnya!**
 Simpan semua kode di atas dalam satu file `main.go`, lalu jalankan dengan `go run main.go`. Selamat, Anda telah membangun aplikasi pertama Anda!
 
+## Level Up: Versi Proyek dengan Pointer dan Error Handling
+
+Proyek di atas adalah awal yang sangat baik dan fungsional! Namun, seiring kita menjadi Gopher yang lebih profesional, ada beberapa hal yang bisa kita tingkatkan agar kode kita lebih tangguh, efisien, dan sesuai dengan praktik terbaik di Go.
+
+Saya telah membuat versi yang lebih canggih dari aplikasi ini yang menerapkan konsep `pointer` dan `error handling` secara lebih mendalam, seperti yang telah kita bahas di bab-bab sebelumnya.
+
+Beberapa peningkatan utama dalam versi baru ini adalah:
+* **Penggunaan Pointer pada Fungsi:** Perhatikan bagaimana fungsi seperti `addTodo` kini menerima `*[]Todo` (pointer ke slice) dan `*int` (pointer ke int). Ini adalah cara yang lebih idiomatis untuk secara eksplisit menunjukkan bahwa sebuah fungsi akan memodifikasi data asli yang dikirimkan kepadanya.
+* **Error Handling Eksplisit:** Setiap fungsi kini mengembalikan nilai `error`. Ini adalah cara standar Go untuk memberi sinyal jika terjadi kesalahan. Di dalam fungsi `main`, kita sekarang selalu memeriksa `if err != nil` setelah setiap pemanggilan fungsi. Ini membuat program kita lebih tangguh karena tidak mengabaikan potensi masalah.
+* **Penggunaan `panic` dan `recover` yang Terkendali:** Untuk kasus-kasus yang seharusnya tidak terjadi (seperti mencoba menyelesaikan tugas dengan ID yang tidak ada), versi ini menggunakan `panic`. Namun, `panic` tersebut langsung ditangkap dengan `defer` dan `recover`, lalu diubah menjadi nilai `error` yang rapi. Ini adalah pola lanjutan yang menunjukkan bagaimana `panic` bisa digunakan untuk mengontrol alur dalam kasus-kasus ekstrem tanpa membuat program *crash*.
+* **Manajemen Variabel yang Lebih Baik:** Alih-alih menggunakan variabel global, `todos` dan `nextID` sekarang dimiliki oleh fungsi `main` dan dikirimkan sebagai pointer ke fungsi lain yang membutuhkannya. Ini adalah praktik yang lebih baik karena membuat alur data lebih jelas dan mengurangi *side effects*.
+
+Mempelajari dan membandingkan kedua versi kode ini adalah latihan yang sangat bagus untuk memahami evolusi dari kode pemula menjadi kode yang lebih matang dan idiomatis.
+
+📂 **Lihat Kode Lengkap di GitHub:**
+Anda bisa melihat, mengunduh, dan mencoba versi yang lebih canggih ini langsung dari repositori GitHub saya.
+
+::github{repo="masmuss/cli-todo-app"}
+
 ---
 
 ## Melihat ke Horison - Kekuatan Super Go: Konkurensi

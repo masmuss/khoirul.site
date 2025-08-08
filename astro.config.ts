@@ -40,17 +40,6 @@ export default defineConfig({
 	],
 	markdown: {
 		gfm: true,
-		syntaxHighlight: {
-			type: "shiki",
-			excludeLangs: ["mermaid", "math"],
-		},
-		shikiConfig: {
-			themes: {
-				light: "github-dark-default",
-				dark: "github-dark-default",
-			},
-			wrap: true,
-		},
 		rehypePlugins: [
 			[
 				rehypeExternalLinks,
