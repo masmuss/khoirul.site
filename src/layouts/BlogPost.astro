@@ -23,9 +23,9 @@ const { headings } = await render(post);
 		<Button title="Back" href="/blog" style="button">
 			<span class="iconify ri--arrow-left-long-line" slot="icon-before"></span>
 		</Button>
-		<div class="mt-8 gap-x-10 lg:flex lg:items-start">
+		<div class="mt-8 gap-x-12 lg:flex lg:items-start">
 			{!!headings.length && <TOC headings={headings} />}
-			<article class="flex-grow break-words" data-pagefind-body>
+			<article class="flex-grow break-words max-w-2xl" data-pagefind-body>
 				<div id="blog-hero"><BlogHero content={post} /></div>
 				<div class="custom-prose">
 					<slot />

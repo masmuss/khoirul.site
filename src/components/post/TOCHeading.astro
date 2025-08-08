@@ -13,7 +13,7 @@ const {
 <li class={`${depth > 2 ? "ms-3" : ""}`}>
 	<a
 		aria-label={`Scroll to section: ${text}`}
-		class={`block line-clamp-2  ${depth <= 2 ? "mt-2" : "mt-1 text-sm"} text-foreground/50 transition-all hover:text-foreground`}
+		class={`toc-link block line-clamp-2  ${depth <= 2 ? "mt-2" : "mt-1 text-sm"} text-foreground/40 transition-all hover:text-foreground`}
 		href={`#${slug}`}>{text}</a
 	>
 	{
@@ -26,3 +26,9 @@ const {
 		)
 	}
 </li>
+
+<style>
+.toc-link.active {
+	color: var(--color-foreground);
+}
+</style>
