@@ -3,8 +3,8 @@ import type { SiteConfig } from "./types";
 
 export const siteConfig: SiteConfig = {
 	author: "Khoirul",
-	title: "Khoirul",
-	subtitle: "Pixels and Progress.",
+	title: "pictogrammmer",
+	subtitle: "Khoirul's Personal Website",
 	description:
 		"Fullstack wizard with a camera, weaving elegant websites while capturing the world through a lens. Transforming visions into digital and visual masterpieces.",
 	email: "ahmusafir.khoirul@gmail.com",
