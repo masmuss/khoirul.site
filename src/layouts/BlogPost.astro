@@ -25,7 +25,7 @@ const { headings } = await render(post);
 		</Button>
 		<div class="mt-8 gap-x-12 lg:flex lg:items-start">
 			{!!headings.length && <TOC headings={headings} />}
-			<article class="flex-grow break-words max-w-2xl" data-pagefind-body>
+			<article class="max-w-2xl flex-grow break-words" data-pagefind-body>
 				<div id="blog-hero"><BlogHero content={post} /></div>
 				<div class="custom-prose">
 					<slot />
@@ -34,7 +34,7 @@ const { headings } = await render(post);
 		</div>
 		<button
 			aria-label="Back to Top"
-			class="bg-primary-foreground hover:border-border/75 fixed end-4 bottom-10 z-90 flex h-8 w-8 translate-y-28 items-center justify-center rounded-full border-2 border-transparent text-2xl opacity-0 transition-all duration-300 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8 sm:h-12 sm:w-12"
+			class="bg-primary-foreground hover:border-border/75 fixed end-4 bottom-10 z-90 flex h-8 w-8 translate-y-28 items-center justify-center rounded-full text-2xl opacity-0 transition-all duration-300 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8 sm:h-12 sm:w-12"
 			data-show="false"
 			id="to-top-btn"
 		>
@@ -59,4 +59,20 @@ const { headings } = await render(post);
 
 	const observer = new IntersectionObserver(callback);
 	observer.observe(targetHeader);
+
+	function setProgress() {
+		let scrollTop = window.scrollY;
+		let docHeight = document.body.offsetHeight;
+		let winHeight = window.innerHeight;
+		let scrollPercent = scrollTop / (docHeight - winHeight);
+		let degrees = scrollPercent * 360;
+		const toTopBtn = document.getElementById("to-top-btn");
+
+		if (toTopBtn) {
+			toTopBtn.style.background = `conic-gradient(var(--color-muted) ${degrees}deg, transparent ${degrees}deg)`;
+		}
+	}
+	window.addEventListener("scroll", setProgress, { passive: true });
+	window.addEventListener("resize", setProgress);
+	setProgress();
 </script>

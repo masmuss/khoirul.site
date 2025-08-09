@@ -14,35 +14,37 @@ const toc = generateToc(headings);
 ---
 
 <aside class="sticky top-20 order-2 -me-40 hidden lg:flex lg:flex-col">
-	<h2 class="text-lg font-semibold text-card-foreground">On this page</h2>
+	<h2 class="text-card-foreground text-lg font-semibold">On this page</h2>
 	<ul class="text-card-foreground">
 		{toc.map((heading) => <TOCHeading heading={heading} />)}
 	</ul>
 </aside>
 
 <script is:inline>
-  // Jalankan setelah DOM siap
-  window.addEventListener('DOMContentLoaded', () => {
-    const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
-    const headings = tocLinks.map(link => document.getElementById(link.getAttribute('href').slice(1)));
+	// Jalankan setelah DOM siap
+	window.addEventListener("DOMContentLoaded", () => {
+		const tocLinks = Array.from(document.querySelectorAll(".toc-link"));
+		const headings = tocLinks.map((link) =>
+			document.getElementById(link.getAttribute("href").slice(1)),
+		);
 
-    function onScroll() {
-      let activeIndex = 0;
-      for (let i = 0; i < headings.length; i++) {
-        if (headings[i] && headings[i].getBoundingClientRect().top - 80 < 0) {
-          activeIndex = i;
-        }
-      }
-      tocLinks.forEach((link, i) => {
-        if (i === activeIndex) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
-    }
+		function onScroll() {
+			let activeIndex = 0;
+			for (let i = 0; i < headings.length; i++) {
+				if (headings[i] && headings[i].getBoundingClientRect().top - 80 < 0) {
+					activeIndex = i;
+				}
+			}
+			tocLinks.forEach((link, i) => {
+				if (i === activeIndex) {
+					link.classList.add("active");
+				} else {
+					link.classList.remove("active");
+				}
+			});
+		}
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  });
+		window.addEventListener("scroll", onScroll, { passive: true });
+		onScroll();
+	});
 </script>
