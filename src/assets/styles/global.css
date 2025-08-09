@@ -8,7 +8,6 @@
 	scale: 1.2;
 }
 
-/* @variant dark (&:where(.dark, .dark *)); */
 @variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @utility container {

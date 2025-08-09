@@ -21,7 +21,6 @@ const toc = generateToc(headings);
 </aside>
 
 <script is:inline>
-	// Jalankan setelah DOM siap
 	window.addEventListener("DOMContentLoaded", () => {
 		const tocLinks = Array.from(document.querySelectorAll(".toc-link"));
 		const headings = tocLinks.map((link) =>

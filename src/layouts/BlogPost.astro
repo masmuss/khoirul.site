@@ -34,7 +34,7 @@ const { headings } = await render(post);
 		</div>
 		<button
 			aria-label="Back to Top"
-			class="bg-primary-foreground hover:border-border/75 fixed end-12 bottom-16 z-90 flex h-12 w-12 translate-y-28 items-center justify-center rounded-full text-2xl opacity-0 transition-all duration-300 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 md:end-16"
+			class="bg-muted hover:border-border/75 fixed end-12 bottom-16 z-90 flex h-12 w-12 translate-y-28 items-center justify-center rounded-full text-2xl opacity-0 transition-all duration-300 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 md:end-16"
 			data-show="false"
 			id="to-top-btn"
 		>
@@ -59,20 +59,4 @@ const { headings } = await render(post);
 
 	const observer = new IntersectionObserver(callback);
 	observer.observe(targetHeader);
-
-	function setProgress() {
-		let scrollTop = window.scrollY;
-		let docHeight = document.body.offsetHeight;
-		let winHeight = window.innerHeight;
-		let scrollPercent = scrollTop / (docHeight - winHeight);
-		let degrees = scrollPercent * 360;
-		const toTopBtn = document.getElementById("to-top-btn");
-
-		if (toTopBtn) {
-			toTopBtn.style.background = `conic-gradient(var(--color-muted) ${degrees}deg, transparent ${degrees}deg)`;
-		}
-	}
-	window.addEventListener("scroll", setProgress, { passive: true });
-	window.addEventListener("resize", setProgress);
-	setProgress();
 </script>
