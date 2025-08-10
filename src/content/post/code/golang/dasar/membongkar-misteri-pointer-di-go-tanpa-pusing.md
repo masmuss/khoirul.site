@@ -24,7 +24,7 @@ Sebelum masuk ke teknis, kita harus tahu *mengapa* Go secara eksplisit menggunak
 
 ## Salinan vs. Alamat Asli (`Pass by Value` vs. `Pass by Reference`)
 
-Secara default, Go adalah **`pass by value`**. Artinya, setiap kali Anda mengirim variabel ke sebuah fungsi, Go membuat salinannya.
+Secara default, Go adalah **`pass by value`**. Artinya, setiap kali Kalian mengirim variabel ke sebuah fungsi, Go membuat salinannya.
 
 ```mermaid
 classDiagram
@@ -132,8 +132,8 @@ fmt.Println("Nilai baru:", *ptr) // 100
 ```
 
 ### Kapan pakai `new` vs. `&`?
-- Gunakan `&` jika Anda sudah punya variabel dengan nilai tertentu dan ingin mendapatkan pointernya. (`p := &variabel`)
-- Gunakan `new` jika Anda ingin membuat pointer baru dari nol tanpa harus mendeklarasikan variabelnya terlebih dahulu.
+- Gunakan `&` jika kalian sudah punya variabel dengan nilai tertentu dan ingin mendapatkan pointernya. (`p := &variabel`)
+- Gunakan `new` jika kalian ingin membuat pointer baru dari nol tanpa harus mendeklarasikan variabelnya terlebih dahulu.
 
 ## Pointer dalam Aksi (Fungsi & Method)
 Inilah alasan utama kita belajar pointer: efisiensi dan kemampuan modifikasi.

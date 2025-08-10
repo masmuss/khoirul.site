@@ -83,7 +83,7 @@ package main
 // Mengimpor package lokal bernama 'mathutil'
 import (
 	"fmt"
-	"namamodul/mathutil" // ganti 'namamodul' dengan nama di go.mod Anda
+	"namamodul/mathutil" // ganti 'namamodul' dengan nama di go.mod kalian
 )
 
 func main() {
@@ -100,6 +100,39 @@ namamodul/
 └── mathutil/
     └── add.go 
 ```
+
+## Manajemen Dependensi dengan Go Modules
+
+Saat kita mulai menggunakan `import` untuk memanggil *package* dari luar (baik itu buatan sendiri maupun dari pihak ketiga), kita perlu alat untuk mengelola dependensi tersebut. Inilah fungsi utama dari Go Modules. Selain `go mod init` yang sudah kita bahas di awal, ada dua perintah lagi yang sangat penting.
+
+### `go mod tidy`: Merapikan Dependensi
+
+Bayangkan `go mod tidy` sebagai asisten pribadi yang merapikan daftar belanjaan kalian. Perintah ini akan:
+1.  **Menambahkan** *package* yang kalian `import` di kode tapi belum tercatat di file `go.mod`.
+2.  **Menghapus** *package* yang tercatat di `go.mod` tapi sudah tidak kalian `import` lagi di kode.
+
+Ini adalah perintah yang wajib dijalankan setiap kali kalian selesai mengubah dependensi proyek kalian untuk memastikan file `go.mod` selalu sinkron dengan kode kalian.
+
+```bash
+# Jalankan di root direktori proyek
+go mod tidy
+```
+
+### `go mod vendor`: Menyimpan Salinan Dependensi
+Secara default, Go akan mengunduh dan menyimpan *package* dependensi di sebuah *cache* global di komputer kalian. Namun, terkadang kita ingin proyek kita benar-benar mandiri dan tidak bergantung pada koneksi internet atau *cache* global.
+
+Di sinilah `go mod vendor` berperan. Perintah ini akan menyalin **semua kode dari *package* dependensi** kalian ke dalam sebuah folder baru bernama `vendor` di dalam direktori proyek kalian.
+
+```bash
+# Perintah ini akan membuat folder 'vendor'
+go mod vendor
+```
+
+**Mengapa menggunakan `vendor`?**
+- **Offline Builds**: Kalian bisa melakukan kompilasi proyek bahkan tanpa koneksi internet.
+- **Reproducible Builds**: Menjamin bahwa versi dependensi yang digunakan akan selalu sama persis, karena kodenya tersimpan bersama proyek kalian.
+
+Saat Go mendeteksi adanya folder `vendor`, ia akan otomatis menggunakan *package* dari sana saat kompilasi, bukan dari *cache* global.
 
 ### `Access Modifier` - Penjaga Pintu Public & Private
 Di Go, tidak ada kata kunci `public` atau `private`. Aturannya sederhana dan jenius: **kapitalisasi nama**.

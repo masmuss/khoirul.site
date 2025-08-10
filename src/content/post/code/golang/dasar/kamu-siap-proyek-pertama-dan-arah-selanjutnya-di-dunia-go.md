@@ -153,7 +153,7 @@ func main() {
 ```
 
 **Jalankan Programnya!**
-Simpan semua kode di atas dalam satu file `main.go`, lalu jalankan dengan `go run main.go`. Selamat, Anda telah membangun aplikasi pertama Anda!
+Simpan semua kode di atas dalam satu file `main.go`, lalu jalankan dengan `go run main.go`. Selamat, Kamu telah membangun aplikasi pertamamu!
 
 ## Level Up: Versi Proyek dengan Pointer dan Error Handling
 
@@ -170,7 +170,7 @@ Beberapa peningkatan utama dalam versi baru ini adalah:
 Mempelajari dan membandingkan kedua versi kode ini adalah latihan yang sangat bagus untuk memahami evolusi dari kode pemula menjadi kode yang lebih matang dan idiomatis.
 
 📂 **Lihat Kode Lengkap di GitHub:**
-Anda bisa melihat, mengunduh, dan mencoba versi yang lebih canggih ini langsung dari repositori GitHub saya.
+Kalian bisa melihat, mengunduh, dan mencoba versi yang lebih canggih ini langsung dari repositori GitHub saya.
 
 ::github{repo="masmuss/cli-todo-app"}
 
@@ -185,7 +185,7 @@ Di Go, ini dicapai dengan dua fitur utama:
 - `goroutine`: Bayangkan `goroutine` sebagai sebuah fungsi yang bisa berjalan 'bersamaan' dengan fungsi lainnya, tanpa saling menunggu. Mereka sangat ringan dan mudah dibuat, cukup dengan `go namaFungsi()`.
 - channel: Ini adalah 'pipa' aman bagi para `goroutine` untuk berkomunikasi dan mengirim data satu sama lain tanpa risiko tabrakan data.
 
-Anda tidak perlu memahaminya sekarang, tetapi ketahuilah bahwa konsep inilah yang membuat Go sangat *powerful* untuk membangun server web yang bisa melayani ribuan pengguna sekaligus, memproses data dalam jumlah besar, dan banyak lagi. Inilah petualangan Anda selanjutnya.
+Kalian tidak perlu memahaminya sekarang, tetapi ketahuilah bahwa konsep inilah yang membuat Go sangat *powerful* untuk membangun server web yang bisa melayani ribuan pengguna sekaligus, memproses data dalam jumlah besar, dan banyak lagi. Inilah petualangan kalian selanjutnya.
 
 ---
 
@@ -194,7 +194,7 @@ Dan dengan itu, seri petualangan **Becoming Gopher** kita sampai pada akhirnya. 
 
 Ilmu yang paling berharga adalah ilmu yang dipraktikkan. Teruslah *ngoding*, buat proyek-proyek kecil lainnya, baca kode orang lain, dan yang terpenting, jangan pernah takut membuat kesalahan. Jalan untuk menjadi Gopher sejati adalah sebuah maraton, bukan sprint.
 
-Terima kasih sudah mengikuti perjalanan ini dari awal hingga akhir. Semoga seri ini bermanfaat dan bisa menjadi pijakan yang kokoh untuk petualangan Go Anda selanjutnya.
+Terima kasih sudah mengikuti perjalanan ini dari awal hingga akhir. Semoga seri ini bermanfaat dan bisa menjadi pijakan yang kokoh untuk petualangan Go selanjutnya.
 
 Selamat *ngoding*, Gopher!
 

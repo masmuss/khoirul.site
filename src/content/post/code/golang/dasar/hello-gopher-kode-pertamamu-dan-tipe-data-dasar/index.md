@@ -82,7 +82,7 @@ Oke, program pertama kita berhasil berjalan! Tapi, saat belajar, kita sering mem
 
 Bayangkan setiap *package* `main` adalah sebuah kapal. Sebuah kapal hanya bisa punya satu kapten yang meneriakkan perintah 'Jalan!', yaitu fungsi `main()`. Jika ada dua kapten di kapal yang sama, para kru (`compiler`) akan bingung dan menolak untuk berlayar.
 
-Di Go, nama fungsi yang diekspor (diawali huruf kapital) harus unik dalam **satu package**. Secara khusus, Anda tidak bisa mendeklarasikan lebih dari satu fungsi `main()` di dalam **package `main`**, karena itu akan menyebabkan konflik saat kompilasi.
+Di Go, nama fungsi yang diekspor (diawali huruf kapital) harus unik dalam **satu package**. Secara khusus, kalian tidak bisa mendeklarasikan lebih dari satu fungsi `main()` di dalam **package `main`**, karena itu akan menyebabkan konflik saat kompilasi.
 
 Karena itu jika kita membuat file baru lagi di module sebelumnya dan menulis fungsi `main`, kode tidak dapat dilakukan kompilasi karena terdapat dua fungsi yang sama, yakni fungsi `main`.
 

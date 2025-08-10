@@ -138,7 +138,7 @@ func main() {
 Dengan `method`, `struct` kita kini tidak hanya menyimpan data, tapi juga tahu bagaimana cara memproses datanya sendiri.
 
 ## `Interface`: Kontrak Perilaku Universal
-Konsep ini sedikit abstrak, tapi sangat kuat. Bayangkan sebuah stopkontak di dinding. Stopkontak itu tidak peduli apa yang akan Anda colok: charger HP, adaptor laptop, atau kipas angin. Ia hanya punya satu aturan atau **kontrak**: "Jika kamu punya dua pin logam yang sesuai, kamu bisa terhubung denganku."
+Konsep ini sedikit abstrak, tapi sangat kuat. Bayangkan sebuah stopkontak di dinding. Stopkontak itu tidak peduli apa yang akan kalian colok: charger HP, adaptor laptop, atau kipas angin. Ia hanya punya satu aturan atau **kontrak**: "Jika kamu punya dua pin logam yang sesuai, kamu bisa terhubung denganku."
 
 **Interface** di Go adalah persis seperti itu: sebuah kontrak perilaku. Ia hanya mendefinisikan sekumpulan *method* yang *harus dimiliki*, tanpa peduli siapa yang memilikinya.
 
@@ -197,6 +197,49 @@ func main() {
 ```
 
 Fungsi `displayItem` tidak perlu tahu detail tentang `Book` atau `Magazine`. Ia hanya peduli satu hal: "Apakah benda ini bisa di-`PrintInfo()`?". Fleksibilitas inilah yang membuat interface menjadi pilar utama dalam membangun software yang modular di Go.
+
+### Menggabungkan Interface (Embedding Interfaces)
+Kita bisa membangun interface yang lebih kompleks dengan menyatukan beberapa interface yang lebih kecil. Ini disebut **embedding**. Praktik ini sangat dianjurkan di Go karena mendorong kita untuk membuat interface kecil yang bisa digunakan kembali.
+
+Bayangkan kita butuh sesuatu yang bisa membaca dan menulis data.
+
+```go
+type Reader interface {
+    Read(p []byte) (n int, err error)
+}
+
+type Writer interface {
+    Write(p []byte) (n int, err error)
+}
+
+// ReadWriter adalah interface yang menggabungkan Reader dan Writer.
+// Tipe apa pun yang ingin dianggap ReadWriter HARUS memiliki method Read() DAN Write().
+type ReadWriter interface {
+    Reader
+    Writer
+}
+
+// Contoh implementasi
+type File struct {
+    // ... field internal
+}
+
+func (f *File) Read(p []byte) (n int, err error) {
+    // ... logika membaca file
+    return 0, nil
+}
+
+func (f *File) Write(p []byte) (n int, err error) {
+    // ... logika menulis file
+    return 0, nil
+}
+
+func main() {
+    var file ReadWriter = &File{}
+    // Variabel 'file' sekarang bisa dioperasikan sebagai Reader sekaligus Writer.
+    fmt.Println(file)
+}
+```
 
 ### `interface{}` - Si Super Fleksibel
 Ada satu interface spesial: `interface{}`. Karena ia tidak mensyaratkan *method* apa pun (kontraknya kosong), maka **semua tipe data** di Go secara otomatis memenuhinya. `interface{}` bisa menampung nilai apa saja, menjadikannya tipe data paling fleksibel di Go.

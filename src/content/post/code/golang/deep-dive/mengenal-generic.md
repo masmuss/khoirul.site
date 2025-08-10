@@ -148,7 +148,7 @@ func main() {
 ```
 
 ## Inferensi Tipe (Type Inference)
-Anda mungkin sadar saat memanggil fungsi `Sum`, kita tidak perlu menulis `Sum[int](...)` atau `Sum[float64](...)`. Kita cukup menulis `Sum(...)`.
+Kalian mungkin sadar saat memanggil fungsi `Sum`, kita tidak perlu menulis `Sum[int](...)` atau `Sum[float64](...)`. Kita cukup menulis `Sum(...)`.
 
 Ini karena Go memiliki **Type Inference**. Compiler Go cukup pintar untuk "menebak" atau menyimpulkan tipe apa yang seharusnya digunakan untuk `T` berdasarkan argumen yang kita berikan.
 
@@ -169,6 +169,6 @@ Singkatnya, kita sudah belajar:
 - Pentingnya **Type Constraints** untuk menjamin keamanan tipe.
 - Kemudahan yang diberikan oleh **Type Inference**.
 
-Generics adalah alat yang sangat kuat. Gunakan saat Anda benar-benar membutuhkannya untuk menghindari duplikasi kode. Ini benar-benar penutup dari seri "Becoming Gopher". Selamat atas semua pencapaianmu, dan selamat melanjutkan petualangan *ngoding*-mu di dunia Go yang luas!
+Generics adalah alat yang sangat kuat. Gunakan saat kalian benar-benar membutuhkannya untuk menghindari duplikasi kode. Ini benar-benar penutup dari seri "Becoming Gopher". Selamat atas semua pencapaianmu, dan selamat melanjutkan petualangan *ngoding*-mu di dunia Go yang luas!
 
 <!-- Apa ide fungsi generik pertama yang akan kamu buat? Bagikan di kolom komentar! -->

@@ -81,7 +81,7 @@ Uji beban pertama saya gagal total. Laporan Artillery menunjukkan 100% permintaa
 
 Namun, setelah investigasi mendalam, akar masalahnya adalah **ketidakcocokan data**. Skrip unit test saya (`bun run test`) selalu membersihkan dan membuat data acak, sementara load test berjalan terhadap server pengembangan yang databasenya tidak memiliki pengguna statis (`admin`, `member`) yang didefinisikan di file `.env`. Akibatnya, semua upaya login gagal di tahap validasi.
 
-**Pelajaran**: Pastikan lingkungan pengujian Anda memiliki data yang konsisten dan dapat diprediksi. Solusinya adalah membuat skrip `db:seed` khusus yang dijalankan sebelum setiap sesi uji beban.
+**Pelajaran**: Pastikan lingkungan pengujian kalian memiliki data yang konsisten dan dapat diprediksi. Solusinya adalah membuat skrip `db:seed` khusus yang dijalankan sebelum setiap sesi uji beban.
 
 ### Percobaan Kedua: Menemukan Bottleneck Sebenarnya
 Setelah memperbaiki masalah data dengan skrip seeding, pengujian berhasil melewati tahap login. Namun, masalah baru muncul: `500 Internal Server Error` saat beban mulai meningkat.

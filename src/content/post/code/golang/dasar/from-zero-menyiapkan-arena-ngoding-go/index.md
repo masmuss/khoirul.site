@@ -68,8 +68,8 @@ module learn-go
 
 // versi minimum Go yang digunakan
 // ini adalah versi yang digunakan untuk mengkompilasi kode Go
-// pastikan untuk menggunakan versi Go yang sesuai dengan kode Anda
-// Anda dapat mengubah versi ini sesuai dengan kebutuhan proyek Anda
+// pastikan untuk menggunakan versi Go yang sesuai dengan kode kalian
+// Kalian dapat mengubah versi ini sesuai dengan kebutuhan proyek kalian
 // contoh: go 1.18
 go 1.24.5
 ```

@@ -176,7 +176,7 @@ func main() {
 :::note
 Gunakan anonymous function ketika:
 - Fungsi tersebut hanya akan digunakan sekali di tempat itu.
-- Anda tidak mau repot-repot membuat nama untuk fungsi yang sederhana.
+- Kalian tidak mau repot-repot membuat nama untuk fungsi yang sederhana.
 - Ingin menulis fungsi secara *inline* (misalnya sebagai argumen).
 :::
 
