@@ -3,7 +3,6 @@ title: 'Jurus Pamungkas: Mengenal Generics di Go'
 description: "Pernah merasa menulis fungsi yang sama berulang kali untuk tipe data berbeda? Pelajari Generics, fitur modern Go untuk menulis kode yang fleksibel dan aman."
 date: 12 August 2025
 tags: ["tech", "golang"]
-draft: true
 ---
 
 Selamat datang kembali, Gopher! Di [babak terakhir](/blog/kamu-siap-proyek-pertama-dan-arah-selanjutnya-di-dunia-go), kita sudah menyelesaikan proyek pertama kita dan melihat sekilas ke arah konkurensi. Sebenarnya, petualangan inti kita sudah selesai... tapi ada satu 'jurus pamungkas' lagi yang sengaja kita simpan untuk episode spesial ini.
