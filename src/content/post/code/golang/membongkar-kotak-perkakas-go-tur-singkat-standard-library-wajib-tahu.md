@@ -1,6 +1,6 @@
 ---
 title: "Membongkar Kotak Perkakas Go: Tur Singkat Standard Library Wajib Tahu"
-description: "Go hadir dengan 'kotak perkakas' super lengkap. Mari kita jelajahi beberapa paket standard library paling berguna yang akan sering Anda gunakan, dari `fmt` hingga `net/http`."
+description: "Go hadir dengan 'kotak perkakas' super lengkap. Mari kita jelajahi beberapa paket standard library paling berguna yang akan sering Kalian gunakan, dari `fmt` hingga `net/http`."
 date: 14 August 2025
 tags: ["tech", "golang"]
 ---
@@ -40,7 +40,7 @@ fmt.Println(kalimat)
 ```
 
 ## Paket `strings` - Ahli Manipulasi Teks
-Setiap aplikasi pasti berurusan dengan teks. Paket `strings` menyediakan semua 'jurus' yang Anda butuhkan untuk memanipulasi `string`.
+Setiap aplikasi pasti berurusan dengan teks. Paket `strings` menyediakan semua 'jurus' yang Kalian butuhkan untuk memanipulasi `string`.
 - `Contains`: Memeriksa apakah sebuah string mengandung substring tertentu.
 - `Split`: Memecah string menjadi *slice* berdasarkan pemisah (*separator*).
 - `Join`: Menggabungkan *slice* string menjadi satu string dengan pemisah.
@@ -83,7 +83,7 @@ fmt.Println("Hasil Itoa: " + nomorString) // "456"
 ```
 
 ## Paket `os` - Gerbang Menuju Sistem Operasi
-Paket `os` memberikan Anda akses untuk berinteraksi dengan fungsionalitas sistem operasi, seperti membaca argumen *command-line* dan bekerja dengan file.
+Paket `os` memberikan Kalian akses untuk berinteraksi dengan fungsionalitas sistem operasi, seperti membaca argumen *command-line* dan bekerja dengan file.
 - `os.Args`: Sebuah *slice* `string` yang berisi argumen yang diberikan saat program dijalankan. `os.Args[0]` selalu nama program itu sendiri.
 - `os.ReadFile`: Membaca seluruh isi file dan mengembalikannya sebagai `[]byte`.
 - `os.WriteFile`: Menulis `[]byte` ke dalam sebuah file.
@@ -204,7 +204,7 @@ if err != nil {
 ```
 
 ## Paket `net/http` - Membangun Web Server dalam Sekejap
-Ini adalah salah satu fitur paling "ajaib" dari Go. Anda bisa membuat server web yang berfungsi penuh hanya dengan beberapa baris kode, tanpa perlu *framework* eksternal.
+Ini adalah salah satu fitur paling "ajaib" dari Go. Kalian bisa membuat server web yang berfungsi penuh hanya dengan beberapa baris kode, tanpa perlu *framework* eksternal.
 
 ```go
 package main
