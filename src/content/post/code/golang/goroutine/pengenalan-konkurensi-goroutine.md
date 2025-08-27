@@ -8,7 +8,7 @@ draft: true
 
 Selamat datang di petualangan baru dalam seri **Becoming Gopher**! Sejauh ini, kita telah menguasai fondasi Go, mulai dari tipe data hingga membangun proyek. Sekarang, saatnya kita membuka 'kekuatan super' yang membuat Go begitu istimewa dan dicintai di dunia *backend*: **Konkurensi**.
 
-### Apa itu Konkurensi? (Jangan Tertukar dengan Paralelisme)
+## Apa itu Konkurensi? (Jangan Tertukar dengan Paralelisme)
 
 Sebelum melangkah lebih jauh, mari kita luruskan pemahaman. Bayangkan seorang koki di dapur.
 
@@ -16,8 +16,6 @@ Sebelum melangkah lebih jauh, mari kita luruskan pemahaman. Bayangkan seorang ko
 * **Paralelisme:** Ada empat koki di dapur. Satu merebus air, satu memotong bawang, satu menumis, dan satu lagi menyiapkan piring. Mereka **benar-benar melakukan banyak tugas pada saat yang bersamaan**.
 
 Go memudahkan kita untuk menulis program yang **konkuren**. Jika Kalian memiliki perangkat keras yang mendukung (CPU dengan banyak inti), Go akan secara otomatis menjalankan kode konkuren Kalian secara **paralel**.
-
----
 
 ## Memperkenalkan `goroutine`: Pekerja Super Ringan
 
