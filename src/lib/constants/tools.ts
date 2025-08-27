@@ -187,7 +187,7 @@ const TOOLS: ToolsCollection[] = [
 		],
 	},
 	{
-		title: "Linraries",
+		title: "Libraries",
 		tools: [
 			{
 				name: "Bun",
