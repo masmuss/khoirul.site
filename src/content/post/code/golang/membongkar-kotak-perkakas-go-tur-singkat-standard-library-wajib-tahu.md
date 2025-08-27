@@ -15,8 +15,6 @@ Di postingan ini, kita tidak akan membahas semua paket (karena jumlahnya ratusan
 
 Mari kita buka 'kotak perkakas' kita dan lihat apa saja isinya!
 
----
-
 ## Paket `fmt` - Sang Juru Cetak
 
 Kita sudah sangat akrab dengan paket ini, terutama fungsi `fmt.Println()`. Tapi `fmt` jauh lebih dari itu. Ini adalah paket andalan untuk semua kebutuhan format I/O (*Input/Output*).
