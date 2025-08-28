@@ -2,12 +2,14 @@
 import ThemeToggle from "../ThemeToggle.astro";
 ---
 
-<header class="mb-12 flex w-full flex-wrap pb-3 text-sm sm:flex-nowrap sm:justify-start">
+<header class="mb-12 flex w-full flex-wrap py-8 text-sm sm:flex-nowrap sm:justify-start md:py-12">
 	<nav
 		class="relative mx-auto flex w-full items-center justify-between sm:flex sm:items-center"
 		aria-label="global"
 	>
-		<a class="flex-none text-xl font-semibold" href="/" aria-label="Brand">pictogrammer.</a>
+		<a class="flex-none text-lg font-semibold md:text-2xl" href="/" aria-label="Brand"
+			>pictogrammer<span class="text-teal-500">.</span></a
+		>
 
 		<div class="hidden flex-row items-center justify-center gap-x-5 md:flex">
 			<a

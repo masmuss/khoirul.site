@@ -44,12 +44,8 @@ const paginationProps = {
 	description="Read my latest blog posts on various topics including technology, programming, and personal experiences."
 	pageType="website"
 >
-	<div class="w-full">
-		<Button title="Back" href="/" style="button">
-			<span class="iconify ri--arrow-left-long-line" slot="icon-before"></span>
-		</Button>
-
-		<h1 class="mt-5 mb-6 text-2xl font-bold">Blog</h1>
+	<div class="max-w-4xl">
+		<h1 class="mb-6 text-2xl font-bold">Blog</h1>
 		{page.data.length === 0 && <p>No posts yet.</p>}
 
 		{

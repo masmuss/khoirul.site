@@ -11,6 +11,19 @@ export async function getAllPosts() {
 	});
 }
 
+export async function getRelatedPosts(
+	tags: string[],
+	title: string,
+	limit = 3,
+): Promise<CollectionPosts[]> {
+	return await getCollection("post", (post) => {
+		return (
+			(import.meta.env.PROD ? post.data.draft !== true : true) &&
+			post.data.tags.some((tag) => tags.includes(tag) && post.data.title !== title)
+		);
+	}).then((posts) => sortMDByDate(posts).slice(0, limit));
+}
+
 export function sortMDByDate(posts: Array<CollectionEntry<"post">>) {
 	return posts.sort((a, b) => {
 		const aDate = new Date(a.data.date).valueOf();

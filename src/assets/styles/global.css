@@ -121,13 +121,16 @@
 	@import "./components/github-card.css";
 
 	.custom-prose {
-		@apply prose dark:prose-invert mt-12;
+		@apply prose dark:prose-invert;
 
 		/* Heading */
 		@apply prose-headings:font-semibold prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4;
 
 		/* Table Header */
-		@apply prose-th:before:content-none;
+		@apply prose-th:before:content-none prose-th:after:content-none prose-th:font-semibold prose-th:border-border prose-th:pb-2;
+
+		/* Table content */
+		@apply prose-td:text-xs md:prose-td:text-sm;
 
 		/* Blockquote */
 		@apply prose-blockquote:font-serif;
@@ -139,7 +142,7 @@
 		@apply prose-pre:bg-secondary prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:font-mono prose-pre:text-sm;
 
 		/* Inline Code */
-		@apply prose-code:bg-secondary prose-code:rounded-md prose-code:px-1.5 prose-code:py-0.5 prose-code:text-pink-600 dark:prose-code:text-pink-400 prose-code:before:content-none prose-code:after:content-none;
+		@apply prose-code:rounded-md prose-code:px-1.5 prose-code:py-0.5 prose-code:text-teal-600 prose-code:bg-teal-100 dark:prose-code:text-teal-400 dark:prose-code:bg-teal-900 prose-code:before:content-none prose-code:after:content-none;
 	}
 
 	.expressive-code {

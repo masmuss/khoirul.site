@@ -6,15 +6,15 @@ interface Props {
 }
 
 const {
-	heading: { depth, slug, subheadings, text },
+	heading: { slug, subheadings, text },
 } = Astro.props;
 ---
 
-<li class={`relative ${depth > 2 ? "ms-4" : ""}`}>
+<li class="flex flex-col">
 	<a
 		aria-label={`Scroll to section: ${text}`}
 		class:list={[
-			"toc-link relative block transition-colors",
+			"toc-link block transition-colors",
 			"py-1 text-sm",
 			"text-foreground/40 hover:text-foreground",
 		]}
@@ -22,7 +22,7 @@ const {
 	>
 	{
 		!!subheadings.length && (
-			<ul>
+			<ul class="ms-2 line-clamp-1">
 				{subheadings.map((subheading) => (
 					<Astro.self heading={subheading} />
 				))}

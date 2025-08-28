@@ -33,13 +33,13 @@ const { tag } = Astro.params;
 const paginationProps = {
 	...(page.url.prev && {
 		prevUrl: {
-			text: "← Previous Tags",
+			text: "← Previous Posts",
 			url: page.url.prev,
 		},
 	}),
 	...(page.url.next && {
 		nextUrl: {
-			text: "Next Tags →",
+			text: "Next Posts →",
 			url: page.url.next,
 		},
 	}),
@@ -56,8 +56,7 @@ const paginationProps = {
 			<span class="iconify ri--arrow-left-long-line" slot="icon-before"></span>
 		</Button>
 		<h1 class="mt-5 mb-6 flex items-end gap-x-2 text-2xl font-bold">
-			Tags:
-			<span class="text-xl">#{tag}</span>
+			Tags: #{tag}
 		</h1>
 		<section aria-label="Blog post list">
 			<ul class="flex flex-col gap-y-3 text-start">

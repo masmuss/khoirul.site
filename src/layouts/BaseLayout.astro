@@ -14,10 +14,10 @@ const { ...head } = Astro.props;
 		<BaseHead {...head} />
 		<ClientRouter />
 	</head>
-	<body class="bg-background flex justify-center transition-all">
+	<body class="bg-background flex justify-center antialiased transition-all">
 		<ThemeProvider />
 		<main
-			class="flex min-h-screen w-screen max-w-[60rem] flex-col items-center px-6 pt-7 pb-10 text-[0.92rem] leading-relaxed sm:px-10 lg:px-10"
+			class="mx-auto flex min-h-screen w-screen max-w-2xl flex-col items-center px-5 text-[0.92rem] leading-relaxed md:max-w-6xl md:px-4 lg:px-0"
 			transition:animate={fade({ duration: 300 })}
 		>
 			<Header />

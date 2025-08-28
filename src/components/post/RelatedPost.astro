@@ -1,0 +1,17 @@
+---
+import type { CollectionPosts } from "@/types";
+import PostPreview from "./PostPreview.astro";
+
+interface Props {
+	relatedPosts: CollectionPosts[];
+}
+
+const { relatedPosts } = Astro.props;
+---
+
+<div class="w-full space-y-6 border-t pt-6 lg:mt-0">
+	<h2 class="mb-6 text-lg font-bold dark:text-white">Related Posts</h2>
+	<ul class="flex flex-col gap-3">
+		{relatedPosts.map((post) => <PostPreview post={post} />)}
+	</ul>
+</div>

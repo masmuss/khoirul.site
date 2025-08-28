@@ -1,9 +1,6 @@
 ---
-import { type CollectionEntry, render } from "astro:content";
-import Button from "@/components/Button.astro";
+import type { CollectionEntry } from "astro:content";
 import BlogHero from "@/components/post/Hero.astro";
-import TOC from "@/components/post/TOC.astro";
-
 import PageLayout from "@/layouts/BaseLayout.astro";
 
 interface Props {
@@ -14,20 +11,14 @@ const { post } = Astro.props;
 const {
 	data: { description, title },
 } = post;
-
-const { headings } = await render(post);
 ---
 
 <PageLayout title={title} description={description} pageType="article">
-	<div class="w-full">
-		<Button title="Back" href="/blog" style="button">
-			<span class="iconify ri--arrow-left-long-line" slot="icon-before"></span>
-		</Button>
-		<div class="mt-8 gap-x-12 lg:flex lg:items-start">
-			{!!headings.length && <TOC headings={headings} />}
-			<article class="max-w-2xl flex-grow break-words" data-pagefind-body>
+	<div class="w-full space-y-6">
+		<div class="w-full md:flex md:items-center md:justify-center">
+			<article class="max-w-5xl flex-grow break-words" data-pagefind-body>
 				<div id="blog-hero"><BlogHero content={post} /></div>
-				<div class="custom-prose">
+				<div>
 					<slot />
 				</div>
 			</article>
