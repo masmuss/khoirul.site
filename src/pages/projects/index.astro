@@ -10,35 +10,33 @@ import { projectData } from "@/lib/constants/projects";
 	description="Explore my projects that showcase my skills and creativity in various domains."
 	pageType="website"
 >
-	<div class="max-w-4xl">
-		<div class="flex w-full flex-col gap-y-10">
-			<div>
-				<h1 class="mb-1 text-2xl font-bold">Projects</h1>
-				<p>
-					Here you can find a collection of my projects, showcasing various skills and technologies
-					I've worked with.
-				</p>
-			</div>
-
-			{
-				projectData.map((project) => (
-					<div class="mb-6 space-y-2">
-						<h2 class="text-xl font-semibold">{project.title}</h2>
-						<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-							{project.projects.map((item) => (
-								<ProjectCard
-									href={item.href}
-									heading={item.text}
-									subheading={item.description}
-									imagePath={item.thumbnail ?? "/src/assets/images/coming-soon.png"}
-									altText={item.text}
-									class="w-full"
-								/>
-							))}
-						</div>
-					</div>
-				))
-			}
+	<div class="flex w-full flex-col gap-y-10">
+		<div>
+			<h1 class="mb-1 text-2xl font-bold">Projects</h1>
+			<p>
+				Here you can find a collection of my projects, showcasing various skills and technologies
+				I've worked with.
+			</p>
 		</div>
+
+		{
+			projectData.map((project) => (
+				<div class="mb-6 space-y-2">
+					<h2 class="text-xl font-semibold">{project.title}</h2>
+					<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+						{project.projects.map((item) => (
+							<ProjectCard
+								href={item.href}
+								heading={item.text}
+								subheading={item.description}
+								imagePath={item.thumbnail ?? "/src/assets/images/coming-soon.png"}
+								altText={item.text}
+								class="w-full"
+							/>
+						))}
+					</div>
+				</div>
+			))
+		}
 	</div>
 </PageLayout>
