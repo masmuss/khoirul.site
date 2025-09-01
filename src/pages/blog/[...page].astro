@@ -50,7 +50,7 @@ const paginationProps = {
 
 		{
 			page.data.length > 0 && (
-				<div class="grid gap-y-16 sm:grid-cols-[3fr_1fr] sm:gap-x-8">
+				<div class="grid gap-y-16 sm:gap-x-8 lg:grid-cols-[3fr_1fr]">
 					<section aria-label="Blog posts list">
 						<ul class="flex flex-col gap-y-4 text-start">
 							{page.data.map((p) => (
@@ -60,7 +60,7 @@ const paginationProps = {
 						<Pagination {...paginationProps} />
 					</section>
 					{!!uniqueTags.length && (
-						<aside>
+						<aside class="hidden lg:block">
 							<h2 class="mb-4 flex items-center text-lg font-semibold">
 								<span class="iconify carbon--tag-group stroke-2" />
 								<span class="ml-1">Tags</span>

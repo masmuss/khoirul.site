@@ -21,11 +21,14 @@ const { educations }: Props = Astro.props;
 				imageClass="h-12 w-auto md:-left-16"
 			>
 				<p>Courseworks: </p>
-				<ul class="text-muted-foreground ml-4 list-disc">
-					{education.coursework?.map((course) => (
-						<li>{course}</li>
+				<span>
+					{education.coursework.map((course, index) => (
+						<span class="text-muted-foreground text-sm">
+							{course}
+							{index !== education.coursework.length - 1 ? ", " : ""}
+						</span>
 					))}
-				</ul>
+				</span>
 			</Card>
 		))
 	}

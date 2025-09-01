@@ -7,25 +7,28 @@ import FormattedDate from "../FormattedDate.astro";
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
 	post: CollectionEntry<"post">;
 	withDesc?: boolean;
-	withDate?: boolean;
 };
 
-const { as: Tag = "div", post, withDesc = false, withDate = true } = Astro.props;
+const { as: Tag = "div", post, withDesc = false } = Astro.props;
 const postDate = post.data.date;
 ---
 
 <li class="flex flex-col gap-2 sm:flex-row sm:gap-x-4 [&_q]:basis-full">
-	{withDate && <FormattedDate class="min-w-[120px]" date={postDate} />}
+	<FormattedDate class="min-w-[120px]" date={postDate} />
 
 	<Tag>
 		{post.data.draft && <span class="text-red-500">(Draft) </span>}
 		<a
 			data-astro-prefetch
 			href={`/blog/${post.slug}`}
-			class="hover:text-muted-foreground transition-all"
+			class="hover:text-muted-foreground mb-10 transition-all"
 		>
-			{post.data.title}
+			<h3>{post.data.title}</h3>
+			{
+				withDesc && (
+					<p class="text-muted-foreground line-clamp-2 text-sm">{post.data.description}</p>
+				)
+			}
 		</a>
-		{withDesc && <p class="text-muted-foreground line-clamp-2 text-sm">{post.data.description}</p>}
 	</Tag>
 </li>

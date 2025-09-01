@@ -2,7 +2,7 @@ import type { Experience } from "@/types";
 
 export const experiences: Experience[] = [
 	{
-		period: "Jun 2024 – Present",
+		period: "Jun 2024 – Aug 2025",
 		title: "Software Developer",
 		company: "Yayasan Lingkar Energi Bumi Indonesia Hijau (LEBIH)",
 		location: "Pasuruan",
@@ -31,7 +31,7 @@ export const experiences: Experience[] = [
 		highlights: ["Built a mind mapping productivity app for mobile and web platforms"],
 	},
 	{
-		period: "Sep 2022 – Present",
+		period: "Sep 2022 – Jan 2023",
 		title: "Fullstack Developer",
 		company: "PENS Aquaculture Laboratory",
 		highlights: ["Developed web-based monitoring for IoT-enabled shrimp farming"],
@@ -43,7 +43,7 @@ export const experiences: Experience[] = [
 		highlights: ["Created an online election platform for campus student organization elections"],
 	},
 	{
-		period: "Sep 2021 – Present",
+		period: "Sep 2021 – Aug 2025",
 		title: "Fullstack Developer",
 		company: "EEPIS News and Network Team (ENT)",
 		highlights: [

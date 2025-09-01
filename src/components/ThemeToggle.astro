@@ -1,7 +1,7 @@
 <theme-toggle class="ms-2 sm:ms-4">
 	<button
 		id="toggleDarkMode"
-		class="border-seashell-200 hover:bg-border dark:border-woodsmoke-800 relative flex items-center justify-center rounded-md border p-1.5 transition-all"
+		class="hover:bg-border dark:border-woodsmoke-800 relative flex items-center justify-center rounded-md p-1.5 transition-all"
 		aria-label="Toggle Dark Mode"
 	>
 		<span class="iconify ri--sun-line dark:hidden"></span>
@@ -10,7 +10,6 @@
 </theme-toggle>
 
 <script>
-	// Note that if you fire the theme-change event outside of this component, it will not be reflected in the button's aria-checked attribute. You will need to add an event listener if you want that.
 	import { rootInDarkMode } from "@/lib/utils/domElement";
 
 	class ThemeToggle extends HTMLElement {

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Geist+Mono:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "@iconify/tailwind4" {
@@ -17,73 +17,65 @@
 @layer base {
 	html {
 		color-scheme: light dark;
-
 		&[data-theme="light"] {
 			color-scheme: light;
-
-			/* Woodsmoke Light Theme */
-			--background: 0 0% 96.5%; /* woodsmoke-50 */
-			--foreground: 0 0% 8.6%; /* woodsmoke-950 */
-			--card: 0 0% 100%; /* Default white for cards in light mode is often cleaner */
-			--card-foreground: 0 0% 8.6%; /* woodsmoke-950 */
+			--background: 0 0% 96.5%;
+			--foreground: 0 0% 8.6%;
+			--card: 0 0% 100%;
+			--card-foreground: 0 0% 8.6%;
 			--popover: 0 0% 100%;
 			--popover-foreground: 0 0% 8.6%;
-			--primary: 0 0% 8.6%; /* woodsmoke-950 */
-			--primary-foreground: 0 0% 96.5%; /* woodsmoke-50 */
-			--secondary: 0 0% 90.6%; /* woodsmoke-100 */
+			--primary: 0 0% 8.6%;
+			--primary-foreground: 0 0% 96.5%;
+			--secondary: 0 0% 90.6%;
 			--secondary-foreground: 0 0% 8.6%;
 			--muted: 0 0% 90.6%;
-			--muted-foreground: 0 0% 40%; /* A mid-tone gray */
+			--muted-foreground: 0 0% 40%;
 			--accent: 0 0% 90.6%;
 			--accent-foreground: 0 0% 8.6%;
-			--destructive: 0 72.22% 50.59%; /* Kept original red */
+			--destructive: 0 72.22% 50.59%;
 			--destructive-foreground: 0 0% 98%;
-			--border: 0 0% 82%; /* woodsmoke-200 */
+			--border: 0 0% 82%;
 			--input: 0 0% 82%;
 			--ring: 0 0% 8.6%;
 			--radius: 0.5rem;
 		}
-
 		&[data-theme="dark"] {
 			color-scheme: dark;
-
-			/* Woodsmoke Dark Theme */
-			--background: 0 0% 8.6%; /* woodsmoke-950 */
-			--foreground: 0 0% 96.5%; /* woodsmoke-50 */
-			--card: 0 0% 12%; /* A slightly lighter dark for cards */
+			--background: 0 0% 8.6%;
+			--foreground: 0 0% 96.5%;
+			--card: 0 0% 12%;
 			--card-foreground: 0 0% 96.5%;
 			--popover: 0 0% 12%;
 			--popover-foreground: 0 0% 96.5%;
-			--primary: 0 0% 96.5%; /* woodsmoke-50 */
-			--primary-foreground: 0 0% 8.6%; /* woodsmoke-950 */
-			--secondary: 0 0% 23.9%; /* woodsmoke-900 */
+			--primary: 0 0% 96.5%;
+			--primary-foreground: 0 0% 8.6%;
+			--secondary: 0 0% 23.9%;
 			--secondary-foreground: 0 0% 96.5%;
 			--muted: 0 0% 23.9%;
-			--muted-foreground: 0 0% 60%; /* A mid-tone gray */
+			--muted-foreground: 0 0% 60%;
 			--accent: 0 0% 23.9%;
 			--accent-foreground: 0 0% 96.5%;
-			--destructive: 0 62.8% 30.6%; /* Kept original red */
+			--destructive: 0 62.8% 30.6%;
 			--destructive-foreground: 0 0% 98%;
-			--border: 0 0% 27.1%; /* woodsmoke-800 */
+			--border: 0 0% 27.1%;
 			--input: 0 0% 27.1%;
-			--ring: 0 0% 82%; /* woodsmoke-200 */
+			--ring: 0 0% 82%;
 		}
 	}
-
 	* {
 		@apply border-border;
 	}
-
 	body {
 		@apply bg-background text-foreground;
 	}
 }
 
 @theme {
-	--default-font-family: "Geist", sans-serif;
-	--default-mono-font-family: "Geist Mono", monospace;
+	--font-sans: "Lato", sans-serif;
+	--font-serif: "Arvo", serif;
+	--font-mono: "Geist Mono", monospace;
 	--container-2xl: 1400px;
-
 	--color-woodsmoke-50: #f6f6f6;
 	--color-woodsmoke-100: #e7e7e7;
 	--color-woodsmoke-200: #d1d1d1;
@@ -95,7 +87,6 @@
 	--color-woodsmoke-800: #454545;
 	--color-woodsmoke-900: #3d3d3d;
 	--color-woodsmoke-950: #171717;
-
 	--color-border: hsl(var(--border) / 0.8);
 	--color-input: hsl(var(--input));
 	--color-ring: hsl(var(--ring));
@@ -119,36 +110,22 @@
 @layer components {
 	@import "./components/admonition.css";
 	@import "./components/github-card.css";
-
+	h1 {
+		@apply font-serif;
+	}
 	.custom-prose {
 		@apply prose dark:prose-invert;
-
-		/* Heading */
 		@apply prose-headings:font-semibold prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4;
-
-		/* Table Header */
 		@apply prose-th:before:content-none prose-th:after:content-none prose-th:font-semibold prose-th:border-border prose-th:pb-2;
-
-		/* Table content */
 		@apply prose-td:text-xs md:prose-td:text-sm;
-
-		/* Blockquote */
 		@apply prose-blockquote:font-serif;
-
-		/* Paragraph */
 		@apply prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4;
-
-		/* Pre */
 		@apply prose-pre:bg-secondary prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:font-mono prose-pre:text-sm;
-
-		/* Inline Code */
 		@apply prose-code:rounded-md prose-code:px-1.5 prose-code:py-0.5 prose-code:text-teal-600 prose-code:bg-teal-100 dark:prose-code:text-teal-400 dark:prose-code:bg-teal-900 prose-code:before:content-none prose-code:after:content-none;
 	}
-
 	.expressive-code {
 		@apply my-4;
 	}
-
 	.plantuml-img {
 		@apply mx-auto;
 	}
@@ -157,19 +134,15 @@
 html {
 	scroll-behavior: smooth;
 }
-
 html.dark {
 	color-scheme: dark;
 }
-
 html:not(.dark) {
 	color-scheme: light;
 }
-
 #nprogress {
 	pointer-events: none;
 }
-
 #nprogress .bar {
 	background: #888;
 	opacity: 0.75;
@@ -180,7 +153,6 @@ html:not(.dark) {
 	width: 100%;
 	height: 2px;
 }
-
 img {
 	--at-apply: rd-1 0.5;
 }

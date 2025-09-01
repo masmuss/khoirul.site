@@ -10,6 +10,7 @@ interface Props {
 	heading: string;
 	subheading?: string;
 	date?: string;
+	horizontalDate?: boolean;
 	imagePath?: string;
 	altText: string;
 	imageClass?: string;
@@ -22,19 +23,20 @@ const {
 	heading,
 	subheading,
 	date,
+	horizontalDate = false,
 	imagePath,
 	altText,
 	imageClass,
 }: Props = Astro.props;
+
 const images = import.meta.glob<{ default: ImageMetadata }>(
 	"/src/assets/images/*.{jpeg,jpg,png,gif}",
 );
 
-if (imagePath) {
-	if (!images[imagePath])
-		throw new Error(
-			`"${imagePath}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif}"`,
-		);
+if (imagePath && !images[imagePath]) {
+	throw new Error(
+		`"${imagePath}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif}"`,
+	);
 }
 ---
 
@@ -58,10 +60,26 @@ if (imagePath) {
 	}
 	<div class="flex flex-col gap-y-1.5">
 		<div class="flex flex-col gap-y-0.5">
-			<h1 class="text-lg font-medium">{heading}</h1>
-			<h2 class="text-muted-foreground">{subheading}</h2>
-			<h2 class="text-muted-foreground">{date}</h2>
+			{
+				horizontalDate ? (
+					<div class="flex w-full flex-col items-start justify-between md:flex-row">
+						<div>
+							<h1 class="font-medium">{heading}</h1>
+							{subheading && <h2 class="text-muted-foreground text-sm">{subheading}</h2>}
+						</div>
+						{date && <h2 class="text-muted-foreground text-sm">{date}</h2>}
+					</div>
+				) : (
+					<div>
+						<h1 class="font-medium">{heading}</h1>
+						{subheading && <h2 class="text-muted-foreground text-sm">{subheading}</h2>}
+						{date && <h2 class="text-muted-foreground text-sm">{date}</h2>}
+					</div>
+				)
+			}
 		</div>
-		<slot />
+		<div class="text-muted-foreground mt-2 text-sm">
+			<slot />
+		</div>
 	</div>
 </Tag>

@@ -9,7 +9,7 @@ export type Education = {
 	institution: string;
 	degree: string;
 	gpa?: string;
-	coursework?: string[];
+	coursework: string[];
 };
 
 export type Project = {
