@@ -13,7 +13,7 @@ const { as: Tag = "div", post, withDesc = false } = Astro.props;
 const postDate = post.data.date;
 ---
 
-<li class="flex flex-col gap-2 sm:flex-row sm:gap-x-4 [&_q]:basis-full">
+<li class="flex flex-col gap-2.5 sm:flex-row sm:gap-x-4 [&_q]:basis-full">
 	<FormattedDate class="min-w-[120px]" date={postDate} />
 
 	<Tag>

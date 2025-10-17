@@ -18,6 +18,7 @@
 		"@astrojs/mdx": "4.3.7",
 		"@astrojs/rss": "^4.0.12",
 		"@astrojs/sitemap": "3.6.0",
+		"@fontsource/ia-writer-quattro": "^5.2.5",
 		"@tailwindcss/vite": "^4.1.11",
 		"astro": "5.14.5",
 		"astro-expressive-code": "^0.41.3",

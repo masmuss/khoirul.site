@@ -36,6 +36,20 @@ ___
 
 ## Typographic replacements
 
+The quick brown fox jumps over the lazy dog.
+
+*The quick brown fox jumps over the lazy dog.*
+
+**The quick brown fox jumps over the lazy dog.**
+
+***The quick brown fox jumps over the lazy dog.***
+
+---
+
+01234567890
+
+---
+
 Enable typographer option to see result.
 
 (c) (C) (r) (R) (tm) (TM) (p) (P) +-

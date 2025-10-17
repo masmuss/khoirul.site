@@ -1,4 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Geist+Mono:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Geist+Mono:wght@100..900&display=swap");
+@import "@fontsource/ia-writer-quattro/400.css";
+@import "@fontsource/ia-writer-quattro/700.css";
+@import "@fontsource/ia-writer-quattro/400-italic.css";
+@import "@fontsource/ia-writer-quattro/700-italic.css";
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "@iconify/tailwind4" {
@@ -72,7 +76,7 @@
 }
 
 @theme {
-	--font-sans: "Lato", sans-serif;
+	--font-sans: "iA Writer Quattro", sans-serif;
 	--font-serif: "Arvo", serif;
 	--font-mono: "Geist Mono", monospace;
 	--container-2xl: 1400px;
@@ -118,7 +122,7 @@
 		@apply prose-headings:font-semibold prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4;
 		@apply prose-th:before:content-none prose-th:after:content-none prose-th:font-semibold prose-th:border-border prose-th:pb-2;
 		@apply prose-td:text-xs md:prose-td:text-sm;
-		@apply prose-blockquote:font-serif;
+		@apply prose-blockquote:font-sans;
 		@apply prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4;
 		@apply prose-pre:bg-secondary prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:font-mono prose-pre:text-sm;
 		@apply prose-code:rounded-md prose-code:px-1.5 prose-code:py-0.5 prose-code:text-teal-600 prose-code:bg-teal-100 dark:prose-code:text-teal-400 dark:prose-code:bg-teal-900 prose-code:before:content-none prose-code:after:content-none;
