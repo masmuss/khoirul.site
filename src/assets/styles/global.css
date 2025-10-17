@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Geist+Mono:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
 @import "@fontsource/ia-writer-quattro/400.css";
 @import "@fontsource/ia-writer-quattro/700.css";
 @import "@fontsource/ia-writer-quattro/400-italic.css";
@@ -77,7 +77,7 @@
 
 @theme {
 	--font-sans: "iA Writer Quattro", sans-serif;
-	--font-serif: "Arvo", serif;
+	--font-serif: "Lora", serif;
 	--font-mono: "Geist Mono", monospace;
 	--container-2xl: 1400px;
 	--color-woodsmoke-50: #f6f6f6;
