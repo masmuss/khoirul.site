@@ -2,6 +2,17 @@ import type { Experience } from "@/types";
 
 export const experiences: Experience[] = [
 	{
+		period: "Oct 2025 – present",
+		title: "Creative Technology Staff",
+		company: "Kuanta Indonesia",
+		location: "Surabaya",
+		highlights: [
+			"Responsible for the development and maintenance of EduOS, a web-based school administration platform used for managing academic data, students, and teachers",
+			"Developed and maintained an internal mobile application for employee attendance and task tracking",
+			"Improved system reliability and efficiency through regular code optimization and deployment automation",
+		],
+	},
+	{
 		period: "Jun 2024 – Aug 2025",
 		title: "Software Developer",
 		company: "Yayasan Lingkar Energi Bumi Indonesia Hijau (LEBIH)",
