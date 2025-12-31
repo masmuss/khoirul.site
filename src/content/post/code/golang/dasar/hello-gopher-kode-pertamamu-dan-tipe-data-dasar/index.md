@@ -1,9 +1,11 @@
 ---
+category: "notes"
 title: Hello, Gopher! Kode Pertamamu dan Tipe Data Dasar - Becoming Gopher
 description: 'Kita akan membuat program "Hello, World!" dan menyelami konsep paling fundamental: tipe data dasar, variabel, dan konstanta.'
 date: 2 August 2025
 tags: ["tech", "golang"]
 ---
+category: "notes"
 
 Selamat datang kembali di seri **Becoming Gopher**! Jika kamu sudah [mengikuti bagian pertama](./from-zero-menyiapkan-arena-ngoding-go), itu artinya 'arena' kita sudah siap tempur. Go sudah terpasang, *code editor* sudah siap, dan sebuah modul kosong menanti untuk kita isi. *Well done*!
 

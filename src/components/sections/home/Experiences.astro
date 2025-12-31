@@ -13,14 +13,7 @@ const { experiences }: Props = Astro.props;
 <Section title="Experience">
 	{
 		experiences.map((experience) => (
-			<Card
-				heading={experience.title}
-				subheading={experience.company}
-				date={experience.period}
-				horizontalDate
-				altText={experience.title}
-				imageClass="h-12 w-auto md:-left-16"
-			>
+			<Card heading={experience.title} subheading={experience.company} date={experience.period}>
 				<ul class="text-muted-foreground ml-4 list-disc">
 					{experience.highlights.map((highlight) => (
 						<li>{highlight}</li>

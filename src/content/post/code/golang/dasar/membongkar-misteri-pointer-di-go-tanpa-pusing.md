@@ -1,9 +1,11 @@
 ---
+category: "notes"
 title: 'Membongkar Misteri Pointer di Go (Tanpa Pusing!) - Becoming Gopher'
 description: "Pointer sering dianggap momok, padahal sangat berguna! Pelajari apa itu pointer, mengapa ia penting untuk efisiensi, dan cara menggunakannya di Go dengan mudah."
 date: 8 August 2025
 tags: ["tech", "golang"]
 ---
+category: "notes"
 
 Selamat datang kembali di petualangan **Becoming Gopher**! Di [babak sebelumnya](./membuat-tipe-data-sendiri-struct-method-dan-interface), kita sudah berhasil menjadi desainer handal dengan menciptakan tipe data kita sendiri menggunakan `struct`, `method`, dan `interface`.
 

@@ -1,9 +1,11 @@
 ---
+category: "notes"
 title: "Berbicara Antar Goroutine: Menguasai Channels"
 description: "Bagaimana goroutine berkomunikasi dengan aman? Pelajari Channels, 'pipa' data idiomatis di Go yang menyelesaikan masalah sinkronisasi dan race condition dengan elegan."
 date: 26 August 2025
 tags: ["tech", "golang", "concurrency", "goroutine"]
 ---
+category: "notes"
 
 Selamat datang kembali di seri konkurensi **Becoming Gopher**! Di [episode sebelumnya](./pengenalan-konkurensi-goroutine), kita berhasil melepaskan kekuatan `goroutine` untuk menjalankan banyak pekerjaan sekaligus. Tapi, kita juga menemukan masalah besar: para 'pekerja' kita saling berebut data (*race condition*) dan 'bos' (`main goroutine`) tidak tahu kapan mereka selesai.
 

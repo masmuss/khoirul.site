@@ -1,4 +1,5 @@
 ---
+category: "reflective"
 title: Reflect and Adjust
 description: Kenapa harus mengungkit kegagalan yang udah berlalu?
 date: 22 October 2023

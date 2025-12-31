@@ -1,9 +1,11 @@
 ---
+category: "notes"
 title: 'Membangun Blok Program dengan Fungsi di Go - Becoming Gopher'
 description: "Fungsi adalah jantung dari program yang terstruktur. Mari kita deep dive dari dasar hingga konsep canggih seperti closure, recursive, dan function as a value."
 date: 6 August 2025
 tags: ["tech", "golang"]
 ---
+category: "notes"
 
 Selamat datang kembali di seri **Becoming Gopher**! Di [episode sebelumnya](./jurus-sakti-mengelola-data-deep-dive-slice-dan-map), kita sudah menguasai cara mengelola data secara dinamis menggunakan `slice` dan `map`. Ransel petualangan kita sekarang penuh dengan 'alat' canggih untuk data.
 

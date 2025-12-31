@@ -1,9 +1,11 @@
 ---
+category: "notes"
 title: 'Mekanisme Unik Go: Defer, Panic, Recover, dan Nil - Becoming Gopher'
 description: "Selami lebih dalam filosofi Go dengan mempelajari empat konsep uniknya: defer untuk menunda eksekusi, panic dan recover untuk menangani kesalahan fatal, serta perilaku nil."
 date: 9 August 2025
 tags: ["tech", "golang"]
 ---
+category: "notes"
 
 Selamat datang kembali di petualangan **Becoming Gopher**! Setelah kita [menaklukkan pointer](membongkar-misteri-pointer-di-go-tanpa-pusing), kita sudah memahami bagaimana Go mengelola memori secara efisien. Sekarang, saatnya kita menyelami beberapa konsep yang benar-benar menunjukkan 'kepribadian' unik dari bahasa Go.
 

@@ -1,9 +1,11 @@
 ---
+category: "notes"
 title: "From Zero: Menyiapkan Arena Ngoding Go - Becoming Gopher"
 description: Sebelum menulis baris kode pertama, ada beberapa persiapan penting. Di bagian ini, kita akan mengunduh Go, memasang code editor Visual Studio Code beserta ekstensinya, dan membuat modul Go pertama kita. Anggap ini sebagai pemanasan sebelum petualangan dimulai!
 date: 1 August 2025
 tags: ["tech", "golang"]
 ---
+category: "notes"
 
 Pernahkah kamu ingin membangun aplikasi backend yang super cepat seperti yang digunakan Gojek atau Tokopedia? Atau mungkin kamu sedang mencari bahasa pemrograman pertamamu yang simpel tapi sangat powerful? Jika iya, kamu datang ke tempat yang tepat.
 

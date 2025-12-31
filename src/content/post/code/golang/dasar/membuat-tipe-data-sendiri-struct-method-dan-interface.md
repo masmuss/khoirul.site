@@ -1,9 +1,11 @@
 ---
+category: "notes"
 title: 'Membuat Tipe Data Sendiri: Struct, Method, dan Interface - Becoming Gopher'
 description: "Naik level dari pengguna menjadi pencipta! Pelajari cara merancang blueprint data dengan Struct, memberinya perilaku dengan Method, dan membuat kontrak dengan Interface."
 date: 7 August 2025
 tags: ["tech", "golang"]
 ---
+category: "notes"
 
 Selamat datang kembali di petualangan **Becoming Gopher**! Di [bab sebelumnya](./membangun-blok-program-dengan-fungsi-di-go), kita sudah menjadi arsitek program dengan merakit logika kita ke dalam `function` yang rapi dan bisa digunakan kembali.
 

@@ -1,35 +1,26 @@
 ---
-import { Image } from "astro:assets";
-
-import avatar from "@/assets/images/avatar.png";
-import Label from "@/components/Label.astro";
+import siteConfig from "@/config/site-config";
 ---
 
-<section class="flex flex-col items-center gap-y-7">
-	<Image
-		src={avatar}
-		alt="profile photo"
-		class="h-32 w-auto rounded-full bg-[#FFBE98] p-2"
-		loading="eager"
-	/>
-
-	<div class="flex flex-col items-center gap-y-4">
-		<h1 class="text-3xl font-bold">Khoirul Fattah</h1>
-		<div class="flex flex-col justify-center gap-x-7 gap-y-3 md:flex-row">
-			<Label title="Software Developer">
-				<span class="iconify ri--code-s-slash-line" slot="icon"></span>
-			</Label>
-			<Label title="Surabaya, Indonesia">
-				<span class="iconify ri--map-pin-2-line" slot="icon"></span>
-			</Label>
-			<Label
-				title="Connect on Linkedin"
-				as="a"
-				href="https://www.linkedin.com/in/masmuss"
-				target="_blank"
-			>
-				<span class="iconify ri--linkedin-box-line" slot="icon"></span>
-			</Label>
-		</div>
+<section class="flex flex-col gap-y-4">
+	<h1 class="text-2xl font-semibold">Khoirul Fattah</h1>
+	<p class="text-muted-foreground max-w-md leading-relaxed">
+		Full-stack developer & photographer based in Surabaya. Building web experiences and capturing
+		moments through a lens.
+	</p>
+	<div class="flex items-center gap-4">
+		{
+			siteConfig.socialLinks.map((link) => (
+				<a
+					href={link.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-muted-foreground hover:text-foreground transition-colors"
+					aria-label={link.text}
+				>
+					<span class={`iconify text-xl ${link.icon}`} />
+				</a>
+			))
+		}
 	</div>
 </section>

@@ -1,4 +1,5 @@
 ---
+category: "reflective"
 title: Who am I? Sebuah pencarian identitas yang hilang
 description: Sebuah cerita dari perjalanan seseorang yang penasaran dalam mencari hubungan baru, namun tersesat dalam pencarian diri.
 date: 21 January 2024

@@ -1,9 +1,11 @@
 ---
+category: "notes"
 title: 'Kamu Siap! Proyek Pertama dan Arah Selanjutnya di Dunia Go - Becoming Gopher'
 description: "Babak final dari seri Becoming Gopher! Mari rangkai semua yang telah kita pelajari untuk membangun aplikasi To-Do List dan lihat sekilas kekuatan super Go: Konkurensi."
 date: 11 August 2025
 tags: ["tech", "golang"]
 ---
+category: "notes"
 
 Selamat datang di babak **final** dari seri petualangan **Becoming Gopher**! Kita sudah menempuh perjalanan yang panjang bersama. Mulai dari [menyiapkan 'arena'](./from-zero-menyiapkan-arena-ngoding-go), belajar menyimpan data, memberi 'otak' pada program, merakit `function`, mendesain `struct`, hingga menaklukkan `pointer` dan [menangani `error`](./menjadi-profesional-mengorganisir-kode-and-menangani-error).
 

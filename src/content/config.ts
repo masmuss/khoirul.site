@@ -13,6 +13,7 @@ const post = defineCollection({
 		z.object({
 			title: z.string(),
 			description: z.string().optional(),
+			category: z.enum(["post", "notes", "reflective"]).default("post"),
 			coverImage: z
 				.object({
 					src: image(),

@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getReadTimeCount } from "@/lib/utils";
 import FormattedDate from "../FormattedDate.astro";
-import Tag from "../layout/Tag.astro";
 
 interface Props {
 	content: CollectionEntry<"post">;
@@ -17,26 +16,29 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 ---
 
 <header class="flex flex-col items-center justify-center gap-4">
-	<div class="flex flex-col gap-2">
-		<div class="flex items-center justify-center gap-x-1 text-xs">
-			<p class="text-opacity-50 text-center">
-				Published <FormattedDate
-					date={new Date(content.data.date)}
-					dateTimeOptions={dateTimeOptions}
-				/>
-			</p>
-			&mdash;
-			<p class="text-opacity-50 text-center font-semibold">
-				{getReadTimeCount(content.body!)} min read
-			</p>
+	<div class="flex flex-col items-center gap-3">
+		<div class="text-muted-foreground flex items-center gap-2 text-sm">
+			<FormattedDate date={new Date(content.data.date)} dateTimeOptions={dateTimeOptions} />
+			<span>·</span>
+			<span>{getReadTimeCount(content.body!)} min read</span>
 		</div>
-		<h1 class="text-center text-2xl font-semibold md:pb-2.5 md:text-4xl">
+		<h1 class="text-center text-2xl leading-tight font-semibold md:text-3xl">
 			{content.data.title}
 		</h1>
-	</div>
-
-	<div class="flex flex-wrap items-center justify-center gap-2 gap-y-4 md:gap-5">
-		{content.data.tags.map((tag) => <Tag tag={tag} />)}
+		{
+			content.data.tags.length > 0 && (
+				<div class="flex flex-wrap items-center justify-center gap-2">
+					{content.data.tags.map((tag) => (
+						<a
+							href={`/tags/${tag}/`}
+							class="bg-muted text-muted-foreground hover:text-foreground rounded-full px-3 py-1 text-xs transition-colors"
+						>
+							{tag}
+						</a>
+					))}
+				</div>
+			)
+		}
 	</div>
 </header>
 
@@ -50,11 +52,9 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 				quality={100}
 				format="jpg"
 				loading="eager"
-				class="my-8 max-h-[300px] w-full rounded-md object-cover md:max-h-[500px]"
+				class="my-8 max-h-[300px] w-full rounded-lg object-cover md:max-h-[400px]"
 				alt={content.data.coverImage.alt || content.data.title}
 			/>
 		)
 	}
 </>
-
-<hr class="mt-6" />

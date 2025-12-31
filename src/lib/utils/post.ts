@@ -49,6 +49,30 @@ export async function getPosts(
 		.slice(0, maxPostsCount);
 }
 
+export async function getPostsByCategory(
+	category?: "post" | "notes" | "reflective",
+): Promise<CollectionPosts[]> {
+	return (
+		await getCollection("post", (post: CollectionPosts) => {
+			const notDraft = import.meta.env.PROD ? post.data.draft !== true : true;
+			if (!category) return notDraft;
+			return notDraft && post.data.category === category;
+		})
+	).sort(sortPostsByDate);
+}
+
+export function groupPostsByYear(posts: CollectionPosts[]): Map<number, CollectionPosts[]> {
+	const grouped = new Map<number, CollectionPosts[]>();
+	for (const post of posts) {
+		const year = new Date(post.data.date).getFullYear();
+		if (!grouped.has(year)) {
+			grouped.set(year, []);
+		}
+		grouped.get(year)!.push(post);
+	}
+	return new Map([...grouped.entries()].sort((a, b) => b[0] - a[0]));
+}
+
 export function getAllTags(posts: Array<CollectionEntry<"post">>) {
 	return posts.flatMap((post) => [...post.data.tags]);
 }

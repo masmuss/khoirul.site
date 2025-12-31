@@ -1,5 +1,4 @@
 ---
-import ProjectCard from "@/components/projects/ProjectCard.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { projectData } from "@/lib/constants/projects";
 ---
@@ -11,30 +10,37 @@ import { projectData } from "@/lib/constants/projects";
 >
 	<div class="flex w-full flex-col gap-y-10">
 		<div>
-			<h1 class="mb-1 text-2xl font-bold">Projects</h1>
-			<p>
-				Here you can find a collection of my projects, showcasing various skills and technologies
-				I've worked with.
+			<h1 class="mb-2 text-2xl font-semibold">Projects</h1>
+			<p class="text-muted-foreground">
+				A collection of projects I've worked on, from web applications to experiments.
 			</p>
 		</div>
 
 		{
-			projectData.map((project) => (
-				<div class="mb-6 space-y-2">
-					<h2 class="text-xl font-semibold">{project.title}</h2>
-					<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-						{project.projects.map((item) => (
-							<ProjectCard
-								href={item.href}
-								heading={item.text}
-								subheading={item.description}
-								imagePath={item.thumbnail ?? "/src/assets/images/coming-soon.png"}
-								altText={item.text}
-								class="w-full"
-							/>
+			projectData.map((category) => (
+				<section class="flex flex-col gap-y-4">
+					<h2 class="text-muted-foreground text-sm font-medium tracking-wider uppercase">
+						{category.title}
+					</h2>
+					<div class="flex flex-col">
+						{category.projects.map((project) => (
+							<a
+								href={project.href}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="group hover:bg-muted/30 -mx-3 flex flex-col gap-y-1 rounded-lg px-3 py-3 transition-colors"
+							>
+								<div class="flex items-center gap-2">
+									<span class="font-medium">{project.text}</span>
+									<span class="iconify text-muted-foreground ri--external-link-line text-sm opacity-0 transition-opacity group-hover:opacity-100" />
+								</div>
+								{project.description && (
+									<p class="text-muted-foreground text-sm">{project.description}</p>
+								)}
+							</a>
 						))}
 					</div>
-				</div>
+				</section>
 			))
 		}
 	</div>

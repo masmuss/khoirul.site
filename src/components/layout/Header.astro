@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import logoDark from "@/assets/images/logo-dark.svg";
+import logoLight from "@/assets/images/logo-light.svg";
 import ThemeToggle from "../ThemeToggle.astro";
 ---
 
@@ -7,9 +10,15 @@ import ThemeToggle from "../ThemeToggle.astro";
 		class="relative mx-auto flex w-full items-center justify-between sm:flex sm:items-center"
 		aria-label="global"
 	>
-		<a class="flex-none font-serif text-lg font-bold md:text-2xl" href="/" aria-label="Brand"
-			>pictogrammer<span class="text-teal-500">.</span></a
+		<a
+			class="hidden flex-none font-serif text-lg font-bold md:block md:text-2xl"
+			href="/"
+			aria-label="Brand">pictogrammer<span class="text-teal-500">.</span></a
 		>
+		<a class="block flex-none font-serif md:hidden" href="/" aria-label="Brand">
+			<Image src={logoLight} alt="Logo" class="w-14 dark:hidden" />
+			<Image src={logoDark} alt="Logo" class="hidden w-14 dark:block" />
+		</a>
 
 		<div class="hidden flex-row items-center justify-center gap-x-5 md:flex">
 			<a

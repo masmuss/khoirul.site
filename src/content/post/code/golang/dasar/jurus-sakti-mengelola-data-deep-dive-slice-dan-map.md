@@ -1,9 +1,11 @@
 ---
+category: "notes"
 title: 'Jurus Sakti Mengelola Data: Deep Dive Slice dan Map - Becoming Gopher'
 description: "Array terasa kaku? Saatnya keluarkan dua jurus andalan setiap Gopher! Pelajari cara mengelola data secara fleksibel dengan Slice dan menyimpan data dengan key-value menggunakan Map."
 date: 05 August 2025
 tags: ["tech", "golang"]
 ---
+category: "notes"
 
 Selamat datang kembali di seri **Becoming Gopher**! Di [petualangan terakhir](./mengulang-perintah-mengenal-perulangan-for-dan-array), kita sudah berhasil menyimpan banyak data menggunakan `array` dan mengolahnya dengan `for` loop. Tapi, mungkin kamu mulai merasakan satu hal...
 

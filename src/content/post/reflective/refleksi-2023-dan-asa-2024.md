@@ -1,4 +1,5 @@
 ---
+category: "reflective"
 title: Refleksi 2023 dan Asa 2024
 description: Tahun 2023 memang bukan tahun yang sempurna, tapi aku banyak belajar ditahun ini.
 date: 31 December 2023

@@ -1,4 +1,5 @@
 ---
+category: "reflective"
 title: Pulang (dan kembali lagi)
 description: Kemanapun kau pergi. Sejauh manapun kau pergi melangkah. Kerinduan tetap pada tempat pertama.
 date: 09 September 2023

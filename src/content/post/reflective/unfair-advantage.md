@@ -1,4 +1,5 @@
 ---
+category: "reflective"
 title: Aku lebih suka menyebutnya “Unfair Advantage”
 description: Hidup adalah kompetisi, setidaknya itulah yang sering dibicarakan orang diluar sana. Apa yang terjadi jika aku (dan orang lain tentunya) memiliki kartu AS yang tak bisa dipelajari, diperoleh, atau diusahakan? Apakah itu adalah sebuah kecurangan? Ataukah itu adalah sebuah keberuntungan
 date: 23 March 2024

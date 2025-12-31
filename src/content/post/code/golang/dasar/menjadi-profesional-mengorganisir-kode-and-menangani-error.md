@@ -1,9 +1,11 @@
 ---
+category: "notes"
 title: 'Menjadi Profesional: Mengorganisir Kode & Menangani Error - Becoming Gopher'
 description: "Saatnya naik kelas! Pelajari cara menata proyek dengan package, mengontrol visibilitas, dan menangani error secara elegan dan idiomatis di Go."
 date: 10 August 2025
 tags: ["tech", "golang"]
 ---
+category: "notes"
 
 Selamat datang kembali di petualangan **Becoming Gopher**! Sejauh ini, kita sudah mengumpulkan semua 'alat' dan 'jurus sakti'—mulai dari `struct`, `interface`, hingga menaklukkan `pointer`. Kita sudah bisa membangun fitur-fitur yang kompleks.
 

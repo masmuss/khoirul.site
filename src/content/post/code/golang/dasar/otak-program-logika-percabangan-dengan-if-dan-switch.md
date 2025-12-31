@@ -1,9 +1,11 @@
 ---
+category: "notes"
 title: "Otak Program: Logika Percabangan dengan If & Switch - Becoming Gopher"
 description: Kita akan belajar cara menggunakan operator dan mengontrol alur program dengan if-else dan switch untuk membuat keputusan.
 date: 3 August 2025
 tags: ["tech", "golang"]
 ---
+category: "notes"
 
 Selamat datang kembali di petualangan **Becoming Gophe**r! [Di bagian sebelumnya](./hello-gopher-kode-pertamamu-dan-tipe-data-dasar), kita sudah berhasil mengumpulkan 'bahan baku' kita: kita sudah tahu cara menyimpan angka, teks, dan logika benar/salah menggunakan variabel dan konstanta. Ransel kita sudah terisi!
 

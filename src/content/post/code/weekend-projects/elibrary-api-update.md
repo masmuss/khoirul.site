@@ -1,9 +1,11 @@
 ---
+category: "notes"
 title: "Studi Kasus: Dari Audit Log hingga Uji Beban pada API E-Library - Weekend Project"
 description: Catatan teknis tentang hardening API E-Library, mulai dari audit log hingga load testing untuk menemukan dan memperbaiki bottleneck.
 date: 16 July 2025
 tags: ["tech"]
 ---
+category: "notes"
 
 Pada [artikel sebelumnya](/blog/elibrary-api), saya telah membedah arsitektur dasar dari proyek E-Library API yang saya bangun menggunakan Hono, Bun, dan Drizzle. Saat itu, fokus utamanya adalah membuat fungsionalitas inti berjalan dengan baik. Namun, sebuah aplikasi yang siap untuk produksi membutuhkan lebih dari sekadar fitur yang berfungsi; ia memerlukan ketangguhan (resilience), keamanan, dan performa yang teruji.
 

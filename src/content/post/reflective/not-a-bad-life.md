@@ -1,4 +1,5 @@
 ---
+category: "reflective"
 title: Just a bad day, not a bad life
 description: Acap kali kita sudah merencanakan, mengatur, menyiapkan alur terbaik hidup kita. Namun...
 date: 13 September 2023

@@ -1,4 +1,5 @@
 ---
+category: "reflective"
 title: Lift
 description: Malam dan lift kala itu.
 date: 24 May 2025

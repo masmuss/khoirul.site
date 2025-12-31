@@ -1,4 +1,5 @@
 ---
+category: "reflective"
 title: Hello, world!
 description: Belajar dari masa lalu, hidup untuk hari ini, berharap untuk hari esok.
 date: 08 September 2023

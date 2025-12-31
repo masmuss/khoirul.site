@@ -1,9 +1,11 @@
 ---
+category: "notes"
 title: "Mengulang Perintah: Mengenal Perulangan For dan Array - Becoming Gopher"
 description: Pelajari satu-satunya perulangan di Go, for, dan cara pertama kita untuk menyimpan sekumpulan data sejenis secara berurutan dengan array.
 date: 4 August 2025
 tags: ["tech", "golang"]
 ---
+category: "notes"
 
 Selamat datang kembali di petualangan **Becoming Gopher**! Di [episode sebelumnya](./otak-program-logika-percabangan-dengan-if-dan-switch), kita sudah sukses memberikan 'otak' pada program kita. Kode kita sekarang bisa menganalisis kondisi dan memilih jalan yang berbeda menggunakan `if` dan `switch`.
 

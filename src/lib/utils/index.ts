@@ -5,9 +5,11 @@ export {
 	getAllPosts,
 	getAllTags,
 	getPosts,
+	getPostsByCategory,
 	getReadTimeCount,
 	getUniqueTags,
 	getUniqueTagsWithCount,
+	groupPostsByYear,
 	sortMDByDate,
 	sortPostsByDate,
 } from "./post";
