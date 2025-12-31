@@ -64,10 +64,10 @@ if (imagePath && !images[imagePath]) {
 				horizontalDate ? (
 					<div class="flex w-full flex-col items-start justify-between md:flex-row">
 						<div>
-							<h1 class="font-medium">{heading}</h1>
-							{subheading && <h2 class="text-muted-foreground text-sm">{subheading}</h2>}
+							<strong class="font-medium">{heading}</strong>
+							{subheading && <span class="text-muted-foreground text-sm">{subheading}</span>}
 						</div>
-						{date && <h2 class="text-muted-foreground text-sm">{date}</h2>}
+						{date && <span class="text-muted-foreground text-sm">{date}</span>}
 					</div>
 				) : (
 					<div>

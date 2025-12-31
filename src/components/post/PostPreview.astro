@@ -13,20 +13,22 @@ const { as: Tag = "div", post, withDesc = false } = Astro.props;
 const postDate = post.data.date;
 ---
 
-<li class="flex flex-col gap-2.5 sm:flex-row sm:gap-x-4 [&_q]:basis-full">
-	<FormattedDate class="min-w-[120px]" date={postDate} />
+<li class="flex flex-col gap-1 sm:flex-row sm:gap-x-6 [&_q]:basis-full">
+	<FormattedDate class="text-muted-foreground min-w-[120px] text-sm" date={postDate} />
 
-	<Tag>
+	<Tag class="flex flex-col gap-1">
 		{post.data.draft && <span class="text-red-500">(Draft) </span>}
 		<a
 			data-astro-prefetch
 			href={`/blog/${post.slug}`}
-			class="hover:text-muted-foreground mb-10 transition-all"
+			class="hover:text-muted-foreground transition-all"
 		>
-			<h3>{post.data.title}</h3>
+			<h3 class="text-base leading-snug font-medium">{post.data.title}</h3>
 			{
 				withDesc && (
-					<p class="text-muted-foreground line-clamp-2 text-sm">{post.data.description}</p>
+					<p class="text-muted-foreground mt-1 line-clamp-2 text-sm leading-relaxed">
+						{post.data.description}
+					</p>
 				)
 			}
 		</a>
