@@ -160,3 +160,22 @@ html:not(.dark) {
 img {
 	--at-apply: rd-1 0.5;
 }
+
+/* Icon theming for SVGs with background boxes */
+:root {
+	--nextjs-logo-color: white;
+	--jetbrains-text: #fff;
+	--better-auth-inner: white;
+}
+
+[data-theme="light"] {
+	--nextjs-logo-color: white;
+	--jetbrains-text: #fff;
+	--better-auth-inner: white;
+}
+
+[data-theme="dark"] {
+	--nextjs-logo-color: black;
+	--jetbrains-text: #000;
+	--better-auth-inner: black;
+}

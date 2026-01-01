@@ -17,19 +17,14 @@ const { class: className, title, tools, ...props }: Props = Astro.props;
 		{
 			tools.map((tool) => (
 				<a
-					class="group hover:bg-muted/20 flex flex-col items-center gap-y-2 rounded-lg p-5 text-center transition-colors"
+					class="group hover:bg-muted/20 flex flex-col items-center gap-y-2 rounded-lg p-5 text-center opacity-60 transition-colors hover:opacity-100"
 					href={tool.href}
 					id={tool.name}
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<Icon
-						name={tool.iconPath}
-						class="text-muted-foreground group-hover:text-foreground aspect-square h-8 w-8 transition-colors"
-					/>
-					<span class="text-muted-foreground group-hover:text-foreground text-xs font-medium transition-colors">
-						{tool.name}
-					</span>
+					<Icon name={tool.iconPath} class="aspect-square h-8 w-8 transition-colors" />
+					<span class="text-xs font-medium transition-colors">{tool.name}</span>
 				</a>
 			))
 		}
