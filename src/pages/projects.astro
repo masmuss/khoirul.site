@@ -1,4 +1,5 @@
 ---
+import ProjectCard from "@/components/projects/ProjectCard.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { projectData } from "@/lib/constants/projects";
 ---
@@ -24,20 +25,12 @@ import { projectData } from "@/lib/constants/projects";
 					</h2>
 					<div class="flex flex-col">
 						{category.projects.map((project) => (
-							<a
+							<ProjectCard
 								href={project.href}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="group hover:bg-muted/30 -mx-3 flex flex-col gap-y-1 rounded-lg px-3 py-3 transition-colors"
-							>
-								<div class="flex items-center gap-2">
-									<span class="font-medium">{project.text}</span>
-									<span class="iconify text-muted-foreground ri--external-link-line text-sm opacity-0 transition-opacity group-hover:opacity-100" />
-								</div>
-								{project.description && (
-									<p class="text-muted-foreground text-sm">{project.description}</p>
-								)}
-							</a>
+								heading={project.text}
+								subheading={project.description}
+								class="w-full"
+							/>
 						))}
 					</div>
 				</section>

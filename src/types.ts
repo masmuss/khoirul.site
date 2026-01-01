@@ -32,9 +32,13 @@ export type Experience = {
 	highlights: string[];
 };
 
-export type SkillCollection = {
+export type Certification = {
 	title: string;
-	description: string;
+	issuer: string;
+	date: string;
+	expiredDate?: string;
+	credentialUrl?: string;
+	description?: string;
 };
 
 export type PaginationLink = {

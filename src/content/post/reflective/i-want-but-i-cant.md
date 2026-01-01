@@ -1,5 +1,4 @@
 ---
-category: "reflective"
 title: I want, but I can’t
 description: Kita tak selalu dapat apa yang kita inginkan, begitulah cara dunia bekerja
 date: 21 September 2023

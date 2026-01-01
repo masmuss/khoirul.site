@@ -1,5 +1,4 @@
 ---
-category: "reflective"
 title: Sebuah Perayaan Patah Hati
 description: Adalah tentang perjalanan panjang melalui labirin emosi, melukis kehidupan. Hingga saatnya merayakan pertumbuhan, menemukan kembali diri, dan menghargai dukungan orang-orang terkasih.
 date: 04 February 2024

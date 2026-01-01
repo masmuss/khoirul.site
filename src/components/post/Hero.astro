@@ -1,8 +1,8 @@
 ---
-import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getReadTimeCount } from "@/lib/utils";
 import FormattedDate from "../FormattedDate.astro";
+import PostImage from "./PostImage.astro";
 
 interface Props {
 	content: CollectionEntry<"post">;
@@ -31,9 +31,9 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 					{content.data.tags.map((tag) => (
 						<a
 							href={`/tags/${tag}/`}
-							class="bg-muted text-muted-foreground hover:text-foreground rounded-full px-3 py-1 text-xs transition-colors"
+							class="text-muted-foreground hover:text-foreground px-3 py-1 text-xs transition-colors"
 						>
-							{tag}
+							# {tag}
 						</a>
 					))}
 				</div>
@@ -45,14 +45,8 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 <>
 	{
 		content.data.coverImage && (
-			<Image
+			<PostImage
 				src={content.data.coverImage.src}
-				width={1000}
-				height={500}
-				quality={100}
-				format="jpg"
-				loading="eager"
-				class="my-8 max-h-[300px] w-full rounded-lg object-cover md:max-h-[400px]"
 				alt={content.data.coverImage.alt || content.data.title}
 			/>
 		)

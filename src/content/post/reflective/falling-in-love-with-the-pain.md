@@ -1,5 +1,4 @@
 ---
-category: "reflective"
 title: Falling in love with the pain
 description: Mencintai rasa sakit adalah salah satu kunci untuk tumbuh, karena sejatinya kita tak pernah benar-benar kalah selama kita berani bertaruh pada diri sendiri.
 date: 14 February 2024

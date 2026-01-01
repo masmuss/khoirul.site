@@ -1,5 +1,5 @@
 ---
-import siteConfig from "@/config/site-config";
+import SocialLinks from "@/components/SocialLinks.astro";
 ---
 
 <section class="flex flex-col gap-y-4">
@@ -8,19 +8,5 @@ import siteConfig from "@/config/site-config";
 		Full-stack developer & photographer based in Surabaya. Building web experiences and capturing
 		moments through a lens.
 	</p>
-	<div class="flex items-center gap-4">
-		{
-			siteConfig.socialLinks.map((link) => (
-				<a
-					href={link.href}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="text-muted-foreground hover:text-foreground transition-colors"
-					aria-label={link.text}
-				>
-					<span class={`iconify text-xl ${link.icon}`} />
-				</a>
-			))
-		}
-	</div>
+	<SocialLinks showEmail />
 </section>

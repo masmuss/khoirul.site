@@ -1,5 +1,4 @@
 ---
-category: "reflective"
 title: Bayaran
 description: Tak semua keberhasilan terasa utuh. Kadang yang kita sebut pencapaian… hanyalah cara hal-hal berharga diambil perlahan.
 date: 03 July 2025

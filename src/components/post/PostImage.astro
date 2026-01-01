@@ -1,15 +1,39 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 interface Props {
-	src: string;
+	src: ImageMetadata | string;
 	alt?: string;
 	class?: string;
 }
 
 const { src, alt, class: customClass } = Astro.props;
+const isRemote = typeof src === "string";
 ---
 
 <figure class:list={["flex flex-col items-center", customClass]}>
-	<img src={src} alt={alt || ""} />
+	{
+		isRemote ? (
+			<img
+				src={src}
+				loading="eager"
+				class="my-8 max-h-[300px] w-full rounded-lg object-cover md:max-h-[400px]"
+				alt={alt || ""}
+			/>
+		) : (
+			<Image
+				src={src}
+				width={1000}
+				height={500}
+				quality={100}
+				format="jpg"
+				loading="eager"
+				class="my-8 max-h-[300px] w-full rounded-lg object-cover md:max-h-[400px]"
+				alt={alt || ""}
+			/>
+		)
+	}
 
 	{alt && <figcaption class="mt-2 text-center text-sm opacity-80" set:html={alt} />}
 </figure>

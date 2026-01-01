@@ -19,31 +19,3 @@ const toc = generateToc(headings);
 		{toc.map((heading) => <TOCHeading heading={heading} />)}
 	</ul>
 </aside>
-
-<script is:inline>
-	window.addEventListener("DOMContentLoaded", () => {
-		const tocLinks = Array.from(document.querySelectorAll(".toc-link"));
-		const headings = tocLinks.map((link) =>
-			document.getElementById(link.getAttribute("href").slice(1)),
-		);
-
-		function onScroll() {
-			let activeIndex = 0;
-			for (let i = 0; i < headings.length; i++) {
-				if (headings[i] && headings[i].getBoundingClientRect().top - 80 < 0) {
-					activeIndex = i;
-				}
-			}
-			tocLinks.forEach((link, i) => {
-				if (i === activeIndex) {
-					link.classList.add("active");
-				} else {
-					link.classList.remove("active");
-				}
-			});
-		}
-
-		window.addEventListener("scroll", onScroll, { passive: true });
-		onScroll();
-	});
-</script>

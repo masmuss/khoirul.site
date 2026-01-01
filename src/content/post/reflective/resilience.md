@@ -1,5 +1,4 @@
 ---
-category: "reflective"
 title: Resilience
 description: Perlu waktu sejenak, sebelum kita bertarung lagi
 date: 05 December 2023

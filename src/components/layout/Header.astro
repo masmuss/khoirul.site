@@ -2,7 +2,10 @@
 import { Image } from "astro:assets";
 import logoDark from "@/assets/images/logo-dark.svg";
 import logoLight from "@/assets/images/logo-light.svg";
+import siteConfig from "@/config/site-config";
 import ThemeToggle from "../ThemeToggle.astro";
+
+const { navLinks } = siteConfig.header;
 ---
 
 <header class="mb-12 flex w-full flex-wrap py-8 text-sm sm:flex-nowrap sm:justify-start md:py-12">
@@ -20,48 +23,35 @@ import ThemeToggle from "../ThemeToggle.astro";
 			<Image src={logoDark} alt="Logo" class="hidden w-14 dark:block" />
 		</a>
 
+		<!-- Desktop Navigation -->
 		<div class="hidden flex-row items-center justify-center gap-x-5 md:flex">
-			<a
-				href="/blog"
-				class="hover:text-foreground/75 flex-none text-[1.05rem] font-medium"
-				aria-label="Nav Menu Item"
-				>Blog
-			</a>
-			<a
-				href="/projects"
-				class="hover:text-foreground/75 flex-none text-[1.05rem] font-medium"
-				aria-label="Nav Menu Item"
-				>Projects
-			</a>
-			<a
-				href="/tools"
-				class="hover:text-foreground/75 flex-none text-[1.05rem] font-medium"
-				aria-label="Nav Menu Item"
-				>Tools
-			</a>
-
+			{
+				navLinks.map((link) => (
+					<a
+						href={link.href}
+						class="hover:text-foreground/75 flex-none font-medium"
+						aria-label={link.text}
+					>
+						{link.text}
+					</a>
+				))
+			}
 			<ThemeToggle />
 		</div>
 
+		<!-- Mobile Navigation -->
 		<div class="flex flex-row items-center justify-center gap-x-4 md:hidden">
-			<a href="/blog" class="hover:text-foreground/75 flex items-center" aria-label="Nav Menu Item">
-				<span class="iconify ri--article-line"></span>
-			</a>
-			<a
-				href="/projects"
-				class="hover:text-foreground/75 flex items-center"
-				aria-label="Nav Menu Item"
-			>
-				<span class="iconify ri--code-line"></span>
-			</a>
-			<a
-				href="/tools"
-				class="hover:text-foreground/75 flex items-center"
-				aria-label="Nav Menu Item"
-			>
-				<span class="iconify ri--tools-line"></span>
-			</a>
-
+			{
+				navLinks.map((link) => (
+					<a
+						href={link.href}
+						class="hover:text-foreground/75 flex items-center"
+						aria-label={link.text}
+					>
+						<span class={`iconify ${link.icon}`} />
+					</a>
+				))
+			}
 			<ThemeToggle />
 		</div>
 	</nav>

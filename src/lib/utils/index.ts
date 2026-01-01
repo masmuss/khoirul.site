@@ -5,7 +5,7 @@ export {
 	getAllPosts,
 	getAllTags,
 	getPosts,
-	getPostsByCategory,
+	getPostsByPath,
 	getReadTimeCount,
 	getUniqueTags,
 	getUniqueTagsWithCount,

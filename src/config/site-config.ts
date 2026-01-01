@@ -56,6 +56,11 @@ export const siteConfig: SiteConfig = {
 		},
 		navLinks: [
 			{
+				text: "About",
+				href: "/about",
+				icon: "ri--user-line",
+			},
+			{
 				text: "Blog",
 				href: "/blog",
 				icon: "ri--article-line",
@@ -63,7 +68,12 @@ export const siteConfig: SiteConfig = {
 			{
 				text: "Projects",
 				href: "/projects",
-				icon: "ri--lightbulb-line",
+				icon: "ri--code-line",
+			},
+			{
+				text: "Tools",
+				href: "/tools",
+				icon: "ri--tools-line",
 			},
 		],
 	},

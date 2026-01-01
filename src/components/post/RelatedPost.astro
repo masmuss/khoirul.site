@@ -1,6 +1,6 @@
 ---
-import { getFormattedDate } from "@/lib/utils";
 import type { CollectionPosts } from "@/types";
+import PostPreview from "./PostPreview.astro";
 
 interface Props {
 	relatedPosts: CollectionPosts[];
@@ -17,19 +17,7 @@ const { relatedPosts } = Astro.props;
 			</h2>
 			<ul class="flex flex-col">
 				{relatedPosts.map((post) => (
-					<li>
-						<a
-							href={`/blog/${post.slug}`}
-							class="group hover:bg-muted/30 -mx-3 flex items-baseline gap-4 rounded-lg px-3 py-2 transition-colors"
-						>
-							<span class="text-muted-foreground min-w-[100px] shrink-0 text-sm">
-								{getFormattedDate(post.data.date)}
-							</span>
-							<span class="group-hover:text-foreground font-medium transition-colors">
-								{post.data.title}
-							</span>
-						</a>
-					</li>
+					<PostPreview post={post} />
 				))}
 			</ul>
 		</div>

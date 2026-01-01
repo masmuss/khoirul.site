@@ -1,6 +1,5 @@
 ---
 import About from "@/components/sections/home/About.astro";
-import Contact from "@/components/sections/home/Contact.astro";
 import Hero from "@/components/sections/home/Hero.astro";
 import Posts from "@/components/sections/home/Posts.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
@@ -19,6 +18,5 @@ const allPosts = await getPosts(undefined, "post", MAX_POSTS);
 		<Hero />
 		<About />
 		<Posts posts={allPosts} />
-		<Contact />
 	</div>
 </PageLayout>

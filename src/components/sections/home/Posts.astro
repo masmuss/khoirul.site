@@ -13,13 +13,13 @@ const { posts }: Props = Astro.props;
 {
 	posts.length > 0 && (
 		<Section title="Posts">
-			<ul class="flex flex-col gap-y-3">
+			<ul class="flex flex-col">
 				{posts.map((p) => (
 					<PostPreview post={p} />
 				))}
 			</ul>
 			<div class="flex w-full items-end justify-end">
-				<a href="/blog" class="flex items-center gap-x-2">
+				<a href="/blog" class="flex items-center gap-x-2 text-sm">
 					<span>See all posts</span>
 					<span class="iconify ri--arrow-right-long-line" />
 				</a>

@@ -1,5 +1,4 @@
 ---
-category: "reflective"
 title: Aku Ingin....
 description: Dengan waktu yang tak banyak ini, mimpi mana saja yang bisa aku wujudkan?
 date: 02 November 2023

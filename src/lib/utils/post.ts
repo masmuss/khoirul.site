@@ -49,14 +49,12 @@ export async function getPosts(
 		.slice(0, maxPostsCount);
 }
 
-export async function getPostsByCategory(
-	category?: "post" | "notes" | "reflective",
-): Promise<CollectionPosts[]> {
+export async function getPostsByPath(path?: string): Promise<CollectionPosts[]> {
 	return (
 		await getCollection("post", (post: CollectionPosts) => {
 			const notDraft = import.meta.env.PROD ? post.data.draft !== true : true;
-			if (!category) return notDraft;
-			return notDraft && post.data.category === category;
+			if (!path) return notDraft;
+			return notDraft && post.filePath?.includes(`/post/${path}/`);
 		})
 	).sort(sortPostsByDate);
 }
@@ -68,7 +66,7 @@ export function groupPostsByYear(posts: CollectionPosts[]): Map<number, Collecti
 		if (!grouped.has(year)) {
 			grouped.set(year, []);
 		}
-		grouped.get(year)!.push(post);
+		grouped.get(year)?.push(post);
 	}
 	return new Map([...grouped.entries()].sort((a, b) => b[0] - a[0]));
 }
