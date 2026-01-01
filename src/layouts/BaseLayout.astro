@@ -16,8 +16,15 @@ const { ...head } = Astro.props;
 	</head>
 	<body class="bg-background flex justify-center antialiased transition-all">
 		<ThemeProvider />
+
+		<div
+			class="pointer-events-none fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 invert dark:invert-0"
+			aria-hidden="true"
+		>
+		</div>
+
 		<main
-			class="mx-auto flex min-h-screen w-screen max-w-2xl flex-col items-center px-5 leading-relaxed md:max-w-4xl lg:px-0"
+			class="relative z-10 mx-auto flex min-h-screen w-screen max-w-2xl flex-col items-center px-5 leading-relaxed md:max-w-4xl lg:px-0"
 			transition:animate={fade({ duration: 300 })}
 		>
 			<Header />
