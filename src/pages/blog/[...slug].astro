@@ -30,13 +30,11 @@ const relatedPosts = await getRelatedPosts(post.data.tags, post.data.title, 4);
 ---
 
 <PostLayout post={post}>
-	<div class:list={["mt-8 grid grid-cols-1", headings.length > 0 && "md:grid-cols-[20%_auto]"]}>
+	<div class:list={["relative mt-8 grid grid-cols-1"]}>
 		{
 			headings.length > 0 && (
-				<aside class="hidden flex-col gap-12 md:flex">
-					<div class="sticky top-24 hidden self-start transition-all duration-200 md:block">
-						<TOC {headings} />
-					</div>
+				<aside class="fixed top-24 left-8 hidden w-1/6 xl:block">
+					<TOC {headings} />
 				</aside>
 			)
 		}
@@ -45,10 +43,9 @@ const relatedPosts = await getRelatedPosts(post.data.tags, post.data.title, 4);
 			<div class="custom-prose mx-auto">
 				<Content />
 			</div>
-
-			<footer>
-				<RelatedPost relatedPosts={relatedPosts} />
-			</footer>
 		</article>
 	</div>
+	<footer>
+		<RelatedPost relatedPosts={relatedPosts} />
+	</footer>
 </PostLayout>

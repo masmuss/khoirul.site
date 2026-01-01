@@ -10,7 +10,7 @@ const { class: className, title }: Props = Astro.props;
 ---
 
 <section class={cn(className, "flex flex-col gap-y-4")}>
-	<h2 class="text-muted-foreground text-sm font-medium tracking-wider uppercase">{title}</h2>
+	<h2 class="text-muted-foreground font-medium tracking-wider uppercase">{title}</h2>
 	<div class="flex flex-col gap-y-3">
 		<slot />
 	</div>

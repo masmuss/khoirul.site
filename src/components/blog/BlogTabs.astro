@@ -12,13 +12,13 @@ const tabs = [
 ];
 ---
 
-<nav class="mb-8 flex items-center gap-4">
+<nav class="mb-6 flex items-center gap-4">
 	{
 		tabs.map((tab) => (
 			<a
 				href={tab.href}
 				class:list={[
-					"font-serif text-lg font-semibold transition-colors",
+					"font-serif text-xl font-semibold transition-colors",
 					activeTab === tab.id
 						? "text-foreground font-semibold"
 						: "text-muted-foreground/80 hover:text-foreground",
