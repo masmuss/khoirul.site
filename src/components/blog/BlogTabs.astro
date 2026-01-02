@@ -12,20 +12,29 @@ const tabs = [
 ];
 ---
 
-<nav class="mb-6 flex items-center gap-4">
-	{
-		tabs.map((tab) => (
-			<a
-				href={tab.href}
-				class:list={[
-					"font-serif text-xl font-semibold transition-colors",
-					activeTab === tab.id
-						? "text-foreground font-semibold"
-						: "text-muted-foreground/80 hover:text-foreground",
-				]}
-			>
-				{tab.label}
-			</a>
-		))
-	}
+<nav class="mb-6 flex items-center justify-between">
+	<div class="flex items-center gap-4">
+		{
+			tabs.map((tab) => (
+				<a
+					href={tab.href}
+					class:list={[
+						"font-serif text-xl font-semibold transition-colors",
+						activeTab === tab.id
+							? "text-foreground font-semibold"
+							: "text-muted-foreground/80 hover:text-foreground",
+					]}
+				>
+					{tab.label}
+				</a>
+			))
+		}
+	</div>
+	<a
+		href="/tags"
+		class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 text-sm transition-colors"
+	>
+		<span class="iconify ri--price-tag-3-line"></span>
+		<span>Tags</span>
+	</a>
 </nav>

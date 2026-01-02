@@ -1,52 +1,47 @@
 ---
-import Button from "@/components/Button.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { getAllPosts, getUniqueTagsWithCount } from "@/lib/utils";
 
 const allPosts = await getAllPosts();
 const allTags = getUniqueTagsWithCount(allPosts);
+
+const sortedTags = [...allTags].sort((a, b) => {
+	if (b[1] !== a[1]) return b[1] - a[1];
+	return a[0].localeCompare(b[0]);
+});
 ---
 
 <PageLayout title="All Tags" description="A list of all the topics I've written about in my posts">
-	<div class="w-full">
-		<Button title="Back" href="/blog" style="button">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="14"
-				height="14"
-				viewBox="0 0 24 24"
-				slot="icon-before"
-			>
-				<path
-					fill="currentColor"
-					d="m6.921 12.5l5.792 5.792L12 19l-7-7l7-7l.713.708L6.921 11.5H19v1z"
-				>
-				</path>
-			</svg>
-		</Button>
+	<div class="flex w-full flex-col gap-y-8">
+		<div>
+			<h1 class="mb-2 text-2xl font-semibold">Tags</h1>
+			<p class="text-muted-foreground">A list of all the topics I've written about in my posts</p>
+		</div>
+		<div class="flex max-w-xl flex-col">
+			<p class="text-muted-foreground">
+				{sortedTags.length} tags across {allPosts.length} posts
+			</p>
+		</div>
 
-		<h1 class="mt-5 mb-6 text-2xl font-bold">Tags</h1>
-		{allTags.length === 0 && <p>No posts yet.</p>}
+		{sortedTags.length === 0 && <p class="text-muted-foreground">No posts yet.</p>}
 
 		{
-			allTags.length > 0 && (
-				<ul class="flex flex-col gap-y-3">
-					{allTags.map(([tag, val]) => (
-						<li class="flex items-center gap-x-2">
-							<a
-								class="hover:text-foreground/75 inline-block underline underline-offset-4"
-								data-astro-prefetch
-								href={`/tags/${tag}/`}
-								title={`View posts with the tag: ${tag}`}
-							>
-								&#35;{tag}
-							</a>
-							<span class="inline-block">
-								- {val} post{val > 1 && "s"}
+			sortedTags.length > 0 && (
+				<div class="flex flex-wrap gap-3">
+					{sortedTags.map(([tag, count]) => (
+						<a
+							href={`/tags/${tag}/`}
+							title={`View ${count} post${count > 1 ? "s" : ""} tagged with "${tag}"`}
+							data-astro-prefetch
+							class="group bg-secondary/50 hover:bg-secondary text-foreground/80 hover:text-foreground flex items-center gap-2 rounded-lg px-4 py-2 transition-all"
+						>
+							<span class="font-medium">#{tag}</span>
+							<span class="bg-muted text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground rounded-full px-2 py-0.5 text-xs transition-colors">
+								{count}
 							</span>
-						</li>
+						</a>
 					))}
-				</ul>
+				</div>
 			)
 		}
 	</div>

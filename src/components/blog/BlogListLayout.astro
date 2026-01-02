@@ -20,7 +20,7 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 ---
 
 <PageLayout {title} {description} pageType="website">
-	<div class="flex w-full flex-col gap-y-16">
+	<div class="flex w-full flex-col gap-y-12">
 		<div class="flex w-full flex-col">
 			<BlogTabs {activeTab} />
 
@@ -33,10 +33,10 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 
 		{
 			allPosts.length > 0 && (
-				<div class="flex flex-col gap-y-12">
+				<div class="flex flex-col gap-y-20">
 					{[...postsByYear.entries()].map(([year, posts]) => (
 						<section class="relative">
-							<div class="text-muted-foreground/10 pointer-events-none absolute -top-8 -left-4 text-8xl font-bold select-none md:-left-8 md:text-9xl">
+							<div class="text-muted-foreground/10 pointer-events-none absolute -top-8 -left-4 text-xl font-bold select-none md:-left-8 md:text-9xl">
 								{year}
 							</div>
 							<ul class="group/list relative flex flex-col">

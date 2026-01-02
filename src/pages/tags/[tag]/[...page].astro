@@ -3,7 +3,6 @@ export const prerender = true;
 
 import type { CollectionEntry } from "astro:content";
 import type { GetStaticPaths, Page } from "astro";
-import Button from "@/components/Button.astro";
 import Pagination from "@/components/Paginator.astro";
 import PostPreview from "@/components/post/PostPreview.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
@@ -51,15 +50,26 @@ const paginationProps = {
 	description=`View all posts with the tag - ${tag}`
 	pageType="website"
 >
-	<div class="w-full">
-		<Button title="Back" href="/blog" style="button">
-			<span class="iconify ri--arrow-left-long-line" slot="icon-before"></span>
-		</Button>
-		<h1 class="mt-5 mb-6 flex items-end gap-x-2 text-2xl font-bold">
-			Tags: #{tag}
-		</h1>
+	<div class="flex w-full flex-col gap-y-8">
+		<div class="flex w-full flex-col">
+			<h1 class="mb-4 text-2xl font-semibold">Tag: {tag}</h1>
+
+			<div class="flex items-center gap-3">
+				<a
+					href="/tags"
+					class="text-muted-foreground hover:text-foreground text-sm transition-colors"
+				>
+					← All Tags
+				</a>
+				<span class="text-muted-foreground/50">|</span>
+				<span class="text-muted-foreground text-sm">
+					{page.total} post{page.total > 1 ? "s" : ""}
+				</span>
+			</div>
+		</div>
+
 		<section aria-label="Blog post list">
-			<ul class="group/list flex flex-col gap-y-3 text-start">
+			<ul class="group/list flex flex-col">
 				{page.data.map((p) => <PostPreview post={p} />)}
 			</ul>
 			<Pagination {...paginationProps} />

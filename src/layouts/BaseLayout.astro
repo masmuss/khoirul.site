@@ -28,7 +28,9 @@ const { ...head } = Astro.props;
 			transition:animate={fade({ duration: 300 })}
 		>
 			<Header />
-			<slot />
+			<div class="w-full flex-1">
+				<slot />
+			</div>
 			<Footer />
 		</main>
 	</body>
