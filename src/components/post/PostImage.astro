@@ -18,8 +18,9 @@ const isRemote = typeof src === "string";
 			<img
 				src={src}
 				loading="eager"
-				class="my-8 max-h-[300px] w-full rounded-lg object-cover md:max-h-[400px]"
-				alt={alt || ""}
+				class="my-8 max-h-75 w-full rounded-lg object-cover md:max-h-100"
+				alt={alt || "Post Image"}
+				decoding="async"
 			/>
 		) : (
 			<Image
@@ -29,8 +30,9 @@ const isRemote = typeof src === "string";
 				quality={100}
 				format="jpg"
 				loading="eager"
-				class="my-8 max-h-[300px] w-full rounded-lg object-cover md:max-h-[400px]"
-				alt={alt || ""}
+				class="my-8 max-h-75 w-full rounded-lg object-cover md:max-h-100"
+				alt={alt || "Post Image"}
+				decoding="async"
 			/>
 		)
 	}

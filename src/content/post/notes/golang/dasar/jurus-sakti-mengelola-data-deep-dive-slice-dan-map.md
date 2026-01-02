@@ -44,46 +44,45 @@ Ini adalah cara paling harfiah untuk melihat `slice` sebagai "potongan" dari `ar
 
 Untuk memahaminya, mari kita lihat diagram berikut. Bayangkan kita punya sebuah `array` berisi nama-nama bulan. Dua `slice` yang berbeda bisa merujuk ke `array` yang sama sebagai backing `array`-nya.
 
-```plantuml
-@startuml
-object array {
-  0 = "Januari"
-  1 = "Februari"
-  2 = "Maret"
-  3 = "April"
-  4 = "Mei"
-  5 = "Juni"
-  6 = "Juli"
-  7 = "Agustus"
-  8 = "September"
-  9 = "Oktober"
-  10 = "November"
-  11 = "Desember"
-}
+```mermaid
+classDiagram
+    %% Definisi Object Array
+    class array {
+        0 : "Januari"
+        1 : "Februari"
+        2 : "Maret"
+        3 : "April"
+        4 : "Mei"
+        5 : "Juni"
+        6 : "Juli"
+        7 : "Agustus"
+        8 : "September"
+        9 : "Oktober"
+        10 : "November"
+        11 : "Desember"
+    }
 
-object slice1 {
-    pointer = 4
-    length = 3
-    capacity = 8
-}
+    %% Definisi Object Slice 1
+    class slice1 {
+        pointer : 4
+        length : 3
+        capacity : 8
+    }
 
-object slice2 {
-    pointer = 6
-    length = 3
-    capacity = 6
-}
+    %% Definisi Object Slice 2
+    class slice2 {
+        pointer : 6
+        length : 3
+        capacity : 6
+    }
 
-note top of slice1
-array[4:7]
-end note
+    %% Hubungan/Relasi
+    slice1 --> array : Reference
+    slice2 --> array : Reference
 
-note top of slice2
-array[6:9]
-end note
-
-slice1 -right-> array : Reference
-slice2 -left-> array : Reference
-@enduml
+    %% Notes
+    note for slice1 "array[4:7]"
+    note for slice2 "array[6:9]"
 ```
 
 Diagram di atas menunjukkan apa yang akan kita lakukan dalam kode berikut. Kita akan membuat satu `array` bulan, lalu membuat dua `slice` yang merujuk pada `array` tersebut.

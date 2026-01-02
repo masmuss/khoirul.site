@@ -7,7 +7,6 @@ import { defineConfig } from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import astroMermaid from "astro-mermaid";
-import plantuml from "astro-plantuml";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkDirective from "remark-directive";
 import remarkGfm from "remark-gfm";
@@ -29,7 +28,6 @@ export default defineConfig({
 				},
 			},
 		}),
-		plantuml(),
 		expressiveCode(expressiveCodeOptions),
 		mdx({
 			gfm: true,

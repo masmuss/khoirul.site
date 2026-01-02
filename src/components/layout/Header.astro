@@ -40,12 +40,15 @@ const { navLinks } = siteConfig.header;
 		</div>
 
 		<!-- Mobile Navigation -->
-		<div class="flex flex-row items-center justify-center gap-x-4 md:hidden">
+		<nav
+			class="flex flex-row items-center justify-center gap-x-4 md:hidden"
+			aria-label="Mobile Navigation"
+		>
 			{
 				navLinks.map((link) => (
 					<a
 						href={link.href}
-						class="hover:text-foreground/75 flex items-center"
+						class="hover:text-foreground/75 flex items-center p-2 focus:ring-1 focus:ring-offset-1 focus:outline-none"
 						aria-label={link.text}
 					>
 						<span class={`iconify ${link.icon}`} />
@@ -53,6 +56,6 @@ const { navLinks } = siteConfig.header;
 				))
 			}
 			<ThemeToggle />
-		</div>
+		</nav>
 	</nav>
 </header>

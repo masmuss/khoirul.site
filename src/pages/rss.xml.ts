@@ -1,13 +1,13 @@
 import rss from "@astrojs/rss";
 import siteConfig from "@/config/site-config";
-import { getPosts } from "@/lib/utils/post";
+import { getPostsByPath } from "@/lib/utils/post";
 
 interface Context {
 	site: string;
 }
 
 export async function GET(context: Context) {
-	const posts = await getPosts();
+	const posts = await getPostsByPath();
 
 	return rss({
 		title: siteConfig.title,

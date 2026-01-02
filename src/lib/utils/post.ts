@@ -1,5 +1,5 @@
 import { type CollectionEntry, getCollection } from "astro:content";
-import type { CollectionPosts, PostKey } from "@/types";
+import type { CollectionPosts } from "@/types";
 
 export function sortPostsByDate(itemA: CollectionPosts, itemB: CollectionPosts): number {
 	return new Date(itemB.data.date).getTime() - new Date(itemA.data.date).getTime();
@@ -16,47 +16,29 @@ export async function getRelatedPosts(
 	title: string,
 	limit = 3,
 ): Promise<CollectionPosts[]> {
-	return await getCollection("post", (post) => {
-		return (
-			(import.meta.env.PROD ? post.data.draft !== true : true) &&
-			post.data.tags.some((tag) => tags.includes(tag) && post.data.title !== title)
-		);
-	}).then((posts) => sortMDByDate(posts).slice(0, limit));
-}
+	const posts = await getAllPosts();
 
-export function sortMDByDate(posts: Array<CollectionEntry<"post">>) {
-	return posts.sort((a, b) => {
-		const aDate = new Date(a.data.date).valueOf();
-		const bDate = new Date(b.data.date).valueOf();
-		return bDate - aDate;
-	});
-}
-
-export async function getPosts(
-	path?: string,
-	collection: PostKey = "post",
-	maxPostsCount = 100,
-): Promise<CollectionPosts[]> {
-	return (
-		await getCollection(collection, (post: CollectionPosts) => {
-			return (
-				(import.meta.env.PROD ? post.data.draft !== true : true) &&
-				(path ? post.filePath?.includes(path) : true)
-			);
+	return posts
+		.filter((post) => {
+			const hasMatchingTags = post.data.tags.some((tag) => tags.includes(tag));
+			const hasMatchingTitle = post.data.title === title;
+			return hasMatchingTags && !hasMatchingTitle;
 		})
-	)
 		.sort(sortPostsByDate)
-		.slice(0, maxPostsCount);
+		.slice(0, limit);
 }
 
-export async function getPostsByPath(path?: string): Promise<CollectionPosts[]> {
-	return (
-		await getCollection("post", (post: CollectionPosts) => {
-			const notDraft = import.meta.env.PROD ? post.data.draft !== true : true;
-			if (!path) return notDraft;
-			return notDraft && post.filePath?.includes(`/post/${path}/`);
+export async function getPostsByPath(path?: string, limit?: number): Promise<CollectionPosts[]> {
+	const posts = await getAllPosts();
+
+	const filtered = posts
+		.filter((post) => {
+			if (!path) return true;
+			return post.filePath?.includes(`/post/${path}/`);
 		})
-	).sort(sortPostsByDate);
+		.sort(sortPostsByDate);
+
+	return limit ? filtered.slice(0, limit) : filtered;
 }
 
 export function groupPostsByYear(posts: CollectionPosts[]): Map<number, CollectionPosts[]> {

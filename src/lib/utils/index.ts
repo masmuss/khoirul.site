@@ -4,13 +4,11 @@ export { generateToc } from "./generateToc";
 export {
 	getAllPosts,
 	getAllTags,
-	getPosts,
 	getPostsByPath,
 	getReadTimeCount,
 	getUniqueTags,
 	getUniqueTagsWithCount,
 	groupPostsByYear,
-	sortMDByDate,
 	sortPostsByDate,
 } from "./post";
 export { getAllProjects } from "./project";

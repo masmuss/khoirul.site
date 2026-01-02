@@ -3,7 +3,7 @@ import { type CollectionEntry, render } from "astro:content";
 import RelatedPost from "@/components/post/RelatedPost.astro";
 import TOC from "@/components/post/TOC.astro";
 import PostLayout from "@/layouts/BlogPost.astro";
-import { getPosts, getRelatedPosts } from "@/lib/utils/post";
+import { getPostsByPath, getRelatedPosts } from "@/lib/utils/post";
 import type { CollectionPosts } from "@/types";
 
 type Props = {
@@ -11,16 +11,18 @@ type Props = {
 };
 
 export async function getStaticPaths() {
-	const posts = await getPosts();
-
-	return posts.map((post: CollectionPosts) => {
-		return {
+	try {
+		const posts = await getPostsByPath();
+		return posts.map((post: CollectionPosts) => ({
 			params: { slug: post.slug },
 			props: {
 				post,
 			},
-		};
-	});
+		}));
+	} catch (error) {
+		console.error("Error generating static paths:", error);
+		return [];
+	}
 }
 
 const { post } = Astro.props;
