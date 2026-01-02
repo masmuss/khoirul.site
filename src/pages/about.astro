@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import profileImage from "@/assets/images/profile.webp";
 import Section from "@/components/Section.astro";
 import SocialLinks from "@/components/SocialLinks.astro";
 import Certifications from "@/components/sections/home/Certifications.astro";
@@ -16,41 +18,52 @@ import { experiences } from "@/lib/constants/experiences";
 	pageType="website"
 >
 	<div class="flex w-full flex-col gap-y-10">
-		<!-- Header -->
-		<section class="flex flex-col gap-y-4">
-			<h1 class="text-2xl font-semibold">About Me</h1>
-			<div class="text-muted-foreground flex flex-col gap-y-4 leading-relaxed">
-				<p>
-					Hey, I am <strong class="text-foreground">Khoirul</strong>, a full stack developer and
-					photography enthusiast.
-				</p>
-				<p>
-					Building applications that are seamless, functional, and user-friendly. Occasionally
-					sharing thoughts on Web Development, Photography, and Tech Insights.
-				</p>
-				<p>
-					Dreaming up ideas and making them come to life is where my passion lies. You can find my <a
-						href="/projects"
-						class="text-foreground underline underline-offset-2 hover:opacity-75"
-						>full projects list here</a
-					>. I also explore the art of photography, capturing moments and visual stories on <a
-						href="https://www.instagram.com/khoe__rul"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-foreground underline underline-offset-2 hover:opacity-75">Instagram</a
-					>.
-				</p>
-				<p>
-					I write <a
-						href="/blog"
-						class="text-foreground underline underline-offset-2 hover:opacity-75">blog posts</a
-					> about coding, creativity, and my experiences. If you enjoy reading about tech or want to follow
-					along, feel free to check them out.
-				</p>
-				<p>
-					Outside of coding and photography, I'm always eager to learn new things, collaborate on
-					projects, or just chat over coffee.
-				</p>
+		<!-- Header with Photo -->
+		<section class="flex flex-col gap-8 md:flex-row md:items-start">
+			<div class="shrink-0">
+				<Image
+					src={profileImage}
+					alt="Khoirul Fattah"
+					width={248}
+					height={248}
+					class="aspect-square rounded-2xl object-cover md:aspect-3/4"
+				/>
+			</div>
+			<div class="flex flex-col gap-y-4">
+				<h1 class="text-2xl font-semibold">About Me</h1>
+				<div class="text-muted-foreground flex flex-col gap-y-4 leading-relaxed">
+					<p>
+						Hey, I am <strong class="text-foreground">Khoirul</strong>, a full stack developer and
+						photography enthusiast.
+					</p>
+					<p>
+						Building applications that are seamless, functional, and user-friendly. Occasionally
+						sharing thoughts on Web Development, Photography, and Tech Insights.
+					</p>
+					<p>
+						Dreaming up ideas and making them come to life is where my passion lies. You can find my <a
+							href="/projects"
+							class="text-foreground underline underline-offset-2 hover:opacity-75"
+							>full projects list here</a
+						>. I also explore the art of photography, capturing moments and visual stories on <a
+							href="https://www.instagram.com/khoe__rul"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-foreground underline underline-offset-2 hover:opacity-75">Instagram</a
+						>.
+					</p>
+					<p>
+						I write <a
+							href="/blog"
+							class="text-foreground underline underline-offset-2 hover:opacity-75">blog posts</a
+						> about coding, creativity, and my experiences. If you enjoy reading about tech or want to
+						follow along, feel free to check them out.
+					</p>
+					<p>
+						Outside of coding and photography, I'm always eager to learn new things, collaborate on
+						projects, or just chat over coffee.
+					</p>
+				</div>
 			</div>
 		</section>
 
