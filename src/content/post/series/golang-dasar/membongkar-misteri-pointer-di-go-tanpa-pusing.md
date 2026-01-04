@@ -1,5 +1,5 @@
 ---
-title: 'Membongkar Misteri Pointer di Go (Tanpa Pusing!) - Becoming Gopher'
+title: "Becoming Gopher #8 — Membongkar Misteri Pointer di Go (Tanpa Pusing!)"
 description: "Pointer sering dianggap momok, padahal sangat berguna! Pelajari apa itu pointer, mengapa ia penting untuk efisiensi, dan cara menggunakannya di Go dengan mudah."
 date: 8 August 2025
 tags: ["tech", "golang"]

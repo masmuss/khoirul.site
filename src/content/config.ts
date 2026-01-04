@@ -28,4 +28,18 @@ const post = defineCollection({
 		}),
 });
 
-export const collections = { post };
+const series = defineCollection({
+	type: "data",
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		coverImage: z
+			.object({
+				src: z.string(),
+				alt: z.string(),
+			})
+			.optional(),
+	}),
+});
+
+export const collections = { post, series };

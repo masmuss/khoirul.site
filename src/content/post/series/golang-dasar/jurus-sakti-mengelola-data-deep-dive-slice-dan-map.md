@@ -1,5 +1,5 @@
 ---
-title: 'Jurus Sakti Mengelola Data: Deep Dive Slice dan Map - Becoming Gopher'
+title: "Becoming Gopher #5 — Jurus Sakti Mengelola Data: Deep Dive Slice dan Map"
 description: "Array terasa kaku? Saatnya keluarkan dua jurus andalan setiap Gopher! Pelajari cara mengelola data secara fleksibel dengan Slice dan menyimpan data dengan key-value menggunakan Map."
 date: 05 August 2025
 tags: ["tech", "golang"]

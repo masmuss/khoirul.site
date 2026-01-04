@@ -1,5 +1,5 @@
 ---
-title: "Jaring Pengaman: Sinkronisasi dengan `sync` & Race Detector"
+title: "Becoming Gopher: Konkurensi #4 — Jaring Pengaman: Sinkronisasi dengan `sync` & Race Detector"
 description: "Pelajari cara 'tradisional' sinkronisasi dengan sync.Mutex dan sync.WaitGroup, dan temukan alat pamungkas Go untuk mendeteksi race condition secara otomatis."
 date: 28 August 2025
 tags: ["tech", "golang", "concurrency", "goroutine"]

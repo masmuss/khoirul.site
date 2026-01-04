@@ -1,5 +1,5 @@
 ---
-title: "Menjadi Konduktor: Mengatur Banyak Channel dengan `select`"
+title: "Becoming Gopher: Konkurensi #3 — Menjadi Konduktor: Mengatur Banyak Channel dengan `select`"
 description: "Bagaimana cara menangani banyak channel sekaligus? Pelajari `select`, switch-case versi channel di Go, untuk mengelola timeout, operasi non-blocking, dan pola worker pool."
 date: 27 August 2025
 tags: ["tech", "golang", "concurrency", "goroutine"]

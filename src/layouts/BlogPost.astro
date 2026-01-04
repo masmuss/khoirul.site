@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import BlogHero from "@/components/post/Hero.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
+import { getSeriesById, getSeriesForPost } from "@/lib/utils";
 
 interface Props {
 	post: CollectionEntry<"post">;
@@ -11,6 +12,9 @@ const { post } = Astro.props;
 const {
 	data: { description, title },
 } = post;
+
+const seriesId = getSeriesForPost(post);
+const series = seriesId ? await getSeriesById(seriesId) : null;
 ---
 
 <PageLayout title={title} description={description} pageType="article">
@@ -18,6 +22,21 @@ const {
 		<div class="w-full md:flex md:items-center md:justify-center">
 			<article class="max-w-5xl grow wrap-break-word" data-pagefind-body>
 				<div id="blog-hero"><BlogHero content={post} /></div>
+				{
+					series && (
+						<div class="bg-secondary/30 mt-4 mb-8 rounded-xl p-4 text-center">
+							<p class="text-muted-foreground text-sm">
+								Part of the series:{" "}
+								<a
+									href={`/blog/series/${seriesId}`}
+									class="text-foreground font-medium underline underline-offset-4 hover:opacity-75"
+								>
+									{series.data.title}
+								</a>
+							</p>
+						</div>
+					)
+				}
 				<div>
 					<slot />
 				</div>

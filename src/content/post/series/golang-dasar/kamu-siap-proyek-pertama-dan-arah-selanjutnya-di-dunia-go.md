@@ -1,5 +1,5 @@
 ---
-title: 'Kamu Siap! Proyek Pertama dan Arah Selanjutnya di Dunia Go - Becoming Gopher'
+title: "Becoming Gopher #11 — Kamu Siap! Proyek Pertama dan Arah Selanjutnya di Dunia Go"
 description: "Babak final dari seri Becoming Gopher! Mari rangkai semua yang telah kita pelajari untuk membangun aplikasi To-Do List dan lihat sekilas kekuatan super Go: Konkurensi."
 date: 11 August 2025
 tags: ["tech", "golang"]

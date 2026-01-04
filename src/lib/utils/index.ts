@@ -12,4 +12,5 @@ export {
 	sortPostsByDate,
 } from "./post";
 export { getAllProjects } from "./project";
+export { getAllSeries, getPostsBySeries, getSeriesById, getSeriesForPost } from "./series";
 export { cn } from "./tailwind";

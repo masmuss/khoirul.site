@@ -1,0 +1,42 @@
+---
+import BlogTabs from "@/components/blog/BlogTabs.astro";
+import PageLayout from "@/layouts/BaseLayout.astro";
+import { getAllSeries } from "@/lib/utils";
+
+const allSeries = await getAllSeries();
+---
+
+<PageLayout
+	title="Series"
+	description="Daftar seri tulisan yang dikelompokkan berdasarkan topik tertentu."
+>
+	<div class="flex w-full flex-col gap-y-8">
+		<div class="flex w-full flex-col">
+			<BlogTabs activeTab="series" />
+
+			<div class="flex max-w-xl flex-col">
+				<p class="text-muted-foreground">
+					{allSeries.length} series available
+				</p>
+			</div>
+		</div>
+
+		{allSeries.length === 0 && <p class="text-muted-foreground">No series yet.</p>}
+
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+			{
+				allSeries.map((series: any) => (
+					<a
+						href={`/blog/series/${series.id}`}
+						class="group bg-secondary/30 hover:bg-secondary/50 flex flex-col gap-y-2 rounded-xl p-5 transition-all"
+					>
+						<h2 class="group-hover:text-primary text-lg font-semibold transition-colors">
+							{series.data.title}
+						</h2>
+						<p class="text-muted-foreground line-clamp-2 text-sm">{series.data.description}</p>
+					</a>
+				))
+			}
+		</div>
+	</div>
+</PageLayout>

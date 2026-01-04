@@ -1,5 +1,5 @@
 ---
-title: 'Jurus Pamungkas: Mengenal Generics di Go'
+title: "Becoming Gopher: Deep Dive #1 — Jurus Pamungkas: Mengenal Generics di Go"
 description: "Pernah merasa menulis fungsi yang sama berulang kali untuk tipe data berbeda? Pelajari Generics, fitur modern Go untuk menulis kode yang fleksibel dan aman."
 date: 12 August 2025
 tags: ["tech", "golang"]

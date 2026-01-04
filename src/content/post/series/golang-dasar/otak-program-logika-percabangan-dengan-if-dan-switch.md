@@ -1,5 +1,5 @@
 ---
-title: "Otak Program: Logika Percabangan dengan If & Switch - Becoming Gopher"
+title: "Becoming Gopher #3 — Otak Program: Logika Percabangan dengan If & Switch"
 description: Kita akan belajar cara menggunakan operator dan mengontrol alur program dengan if-else dan switch untuk membuat keputusan.
 date: 3 August 2025
 tags: ["tech", "golang"]

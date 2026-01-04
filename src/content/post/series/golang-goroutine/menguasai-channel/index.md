@@ -1,5 +1,5 @@
 ---
-title: "Berbicara Antar Goroutine: Menguasai Channels"
+title: "Becoming Gopher: Konkurensi #2 — Berbicara Antar Goroutine: Menguasai Channels"
 description: "Bagaimana goroutine berkomunikasi dengan aman? Pelajari Channels, 'pipa' data idiomatis di Go yang menyelesaikan masalah sinkronisasi dan race condition dengan elegan."
 date: 26 August 2025
 tags: ["tech", "golang", "concurrency", "goroutine"]

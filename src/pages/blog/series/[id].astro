@@ -1,0 +1,53 @@
+---
+import BlogTabs from "@/components/blog/BlogTabs.astro";
+import PostPreview from "@/components/post/PostPreview.astro";
+import PageLayout from "@/layouts/BaseLayout.astro";
+import { getPostsBySeries, getSeriesById } from "@/lib/utils";
+
+export async function getStaticPaths() {
+	const { getCollection } = await import("astro:content");
+	const allSeries = await getCollection("series");
+	return allSeries.map((series) => ({
+		params: { id: series.id },
+	}));
+}
+
+const { id } = Astro.params;
+const series = await getSeriesById(id!);
+const posts = await getPostsBySeries(id!);
+
+if (!series) {
+	return Astro.redirect("/404");
+}
+---
+
+<PageLayout title={series.data.title} description={series.data.description}>
+	<div class="flex w-full flex-col gap-y-8">
+		<div class="flex w-full flex-col">
+			<BlogTabs activeTab="series" />
+
+			<div class="flex flex-col gap-y-2">
+				<div class="flex items-center gap-3">
+					<a
+						href="/blog/series"
+						class="text-muted-foreground hover:text-foreground text-sm transition-colors"
+					>
+						← All Series
+					</a>
+					<span class="text-muted-foreground/50">|</span>
+					<span class="text-muted-foreground text-sm">
+						{posts.length} post{posts.length > 1 ? "s" : ""} in this series
+					</span>
+				</div>
+				<h1 class="text-2xl font-bold">{series.data.title}</h1>
+				<p class="text-muted-foreground">{series.data.description}</p>
+			</div>
+		</div>
+
+		<section aria-label="Series post list">
+			<ul class="group/list flex flex-col">
+				{posts.map((post) => <PostPreview post={post} />)}
+			</ul>
+		</section>
+	</div>
+</PageLayout>

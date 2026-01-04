@@ -12,7 +12,8 @@ type Props = {
 
 export async function getStaticPaths() {
 	try {
-		const posts = await getPostsByPath();
+		const { getAllPosts } = await import("@/lib/utils/post");
+		const posts = await getAllPosts();
 		return posts.map((post: CollectionPosts) => ({
 			params: { slug: post.slug },
 			props: {

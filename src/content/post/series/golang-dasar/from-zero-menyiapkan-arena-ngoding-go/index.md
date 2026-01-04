@@ -1,5 +1,5 @@
 ---
-title: "From Zero: Menyiapkan Arena Ngoding Go - Becoming Gopher"
+title: "Becoming Gopher #1 — From Zero: Menyiapkan Arena Ngoding Go"
 description: Sebelum menulis baris kode pertama, ada beberapa persiapan penting. Di bagian ini, kita akan mengunduh Go, memasang code editor Visual Studio Code beserta ekstensinya, dan membuat modul Go pertama kita. Anggap ini sebagai pemanasan sebelum petualangan dimulai!
 date: 1 August 2025
 tags: ["tech", "golang"]

@@ -1,5 +1,5 @@
 ---
-title: "Membongkar Kotak Perkakas Go: Tur Singkat Standard Library Wajib Tahu"
+title: "Becoming Gopher #12 — Membongkar Kotak Perkakas Go: Tur Singkat Standard Library Wajib Tahu"
 description: "Go hadir dengan 'kotak perkakas' super lengkap. Mari kita jelajahi beberapa paket standard library paling berguna yang akan sering Kalian gunakan, dari `fmt` hingga `net/http`."
 date: 14 August 2025
 tags: ["tech", "golang"]

@@ -1,5 +1,5 @@
 ---
-title: 'Membuat Tipe Data Sendiri: Struct, Method, dan Interface - Becoming Gopher'
+title: "Becoming Gopher #7 — Membuat Tipe Data Sendiri: Struct, Method, dan Interface"
 description: "Naik level dari pengguna menjadi pencipta! Pelajari cara merancang blueprint data dengan Struct, memberinya perilaku dengan Method, dan membuat kontrak dengan Interface."
 date: 7 August 2025
 tags: ["tech", "golang"]

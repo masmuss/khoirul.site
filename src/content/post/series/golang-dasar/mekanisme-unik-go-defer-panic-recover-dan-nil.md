@@ -1,5 +1,5 @@
 ---
-title: 'Mekanisme Unik Go: Defer, Panic, Recover, dan Nil - Becoming Gopher'
+title: "Becoming Gopher #9 — Mekanisme Unik Go: Defer, Panic, Recover, dan Nil"
 description: "Selami lebih dalam filosofi Go dengan mempelajari empat konsep uniknya: defer untuk menunda eksekusi, panic dan recover untuk menangani kesalahan fatal, serta perilaku nil."
 date: 9 August 2025
 tags: ["tech", "golang"]

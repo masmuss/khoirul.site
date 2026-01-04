@@ -1,5 +1,5 @@
 ---
-title: "Mengulang Perintah: Mengenal Perulangan For dan Array - Becoming Gopher"
+title: "Becoming Gopher #4 — Mengulang Perintah: Mengenal Perulangan For dan Array"
 description: Pelajari satu-satunya perulangan di Go, for, dan cara pertama kita untuk menyimpan sekumpulan data sejenis secara berurutan dengan array.
 date: 4 August 2025
 tags: ["tech", "golang"]

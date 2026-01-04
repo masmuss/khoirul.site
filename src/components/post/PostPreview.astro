@@ -15,10 +15,10 @@ const { post } = Astro.props;
 		href={`/blog/${post.slug}`}
 		class="group -mx-3 flex flex-col gap-1 rounded-lg px-3 py-3 opacity-70 transition-opacity hover:opacity-100 sm:flex-row sm:items-baseline sm:gap-4"
 	>
-		<span class="group-hover:text-foreground font-medium transition-colors">
+		<span class="group-hover:text-foreground flex-1 font-medium transition-colors sm:line-clamp-1">
 			{post.data.title}
 		</span>
-		<span class="text-muted-foreground text-sm">
+		<span class="text-muted-foreground shrink-0 text-sm">
 			{getFormattedDate(post.data.date)}
 			{post.body && ` · ${getReadTimeCount(post.body)}min`}
 		</span>

@@ -1,6 +1,6 @@
 ---
 interface Props {
-	activeTab?: "posts" | "notes" | "reflective";
+	activeTab?: "posts" | "notes" | "reflective" | "series";
 }
 
 const { activeTab = "posts" } = Astro.props;
@@ -9,6 +9,7 @@ const tabs = [
 	{ id: "posts", label: "Posts", href: "/blog" },
 	{ id: "notes", label: "Notes", href: "/blog/notes" },
 	{ id: "reflective", label: "Reflective", href: "/blog/reflective" },
+	{ id: "series", label: "Series", href: "/blog/series" },
 ];
 ---
 

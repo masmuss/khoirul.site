@@ -1,5 +1,5 @@
 ---
-title: 'Menjadi Profesional: Mengorganisir Kode & Menangani Error - Becoming Gopher'
+title: "Becoming Gopher #10 — Menjadi Profesional: Mengorganisir Kode & Menangani Error"
 description: "Saatnya naik kelas! Pelajari cara menata proyek dengan package, mengontrol visibilitas, dan menangani error secara elegan dan idiomatis di Go."
 date: 10 August 2025
 tags: ["tech", "golang"]

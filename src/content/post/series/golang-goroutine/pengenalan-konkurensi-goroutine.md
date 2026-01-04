@@ -1,5 +1,5 @@
 ---
-title: "Kekuatan Super Go: Pengenalan Konkurensi & Goroutine"
+title: "Becoming Gopher: Konkurensi #1 — Kekuatan Super Go: Pengenalan Konkurensi & Goroutine"
 description: "Mulai seri konkurensi dengan mempelajari apa itu goroutine, betapa mudahnya menjalankannya, dan masalah-masalah awal yang akan kita hadapi seperti race condition."
 date: 25 August 2025
 tags: ["tech", "golang", "concurrency", "goroutine"]

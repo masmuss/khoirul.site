@@ -3,10 +3,10 @@ import About from "@/components/sections/home/About.astro";
 import Hero from "@/components/sections/home/Hero.astro";
 import Posts from "@/components/sections/home/Posts.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
-import { getPostsByPath } from "@/lib/utils";
+import { getAllPosts } from "@/lib/utils";
 
 const MAX_POSTS = 5;
-const allPosts = await getPostsByPath(undefined, MAX_POSTS);
+const allPosts = await getAllPosts(MAX_POSTS);
 ---
 
 <PageLayout

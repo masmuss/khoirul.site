@@ -1,14 +1,18 @@
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, getEntry } from "astro:content";
 import type { CollectionPosts } from "@/types";
 
 export function sortPostsByDate(itemA: CollectionPosts, itemB: CollectionPosts): number {
 	return new Date(itemB.data.date).getTime() - new Date(itemA.data.date).getTime();
 }
 
-export async function getAllPosts() {
-	return await getCollection("post", ({ data }) => {
+export async function getAllPosts(limit?: number) {
+	const posts = await getCollection("post", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
+
+	const sortedPosts = posts.sort(sortPostsByDate);
+
+	return limit ? sortedPosts.slice(0, limit) : sortedPosts;
 }
 
 export async function getRelatedPosts(
@@ -24,19 +28,17 @@ export async function getRelatedPosts(
 			const hasMatchingTitle = post.data.title === title;
 			return hasMatchingTags && !hasMatchingTitle;
 		})
-		.sort(sortPostsByDate)
 		.slice(0, limit);
 }
 
 export async function getPostsByPath(path?: string, limit?: number): Promise<CollectionPosts[]> {
 	const posts = await getAllPosts();
 
-	const filtered = posts
-		.filter((post) => {
-			if (!path) return true;
-			return post.filePath?.includes(`/post/${path}/`);
-		})
-		.sort(sortPostsByDate);
+	const filtered = posts.filter((post) => {
+		if (!path) return !post.id.startsWith("series/");
+
+		return post.filePath?.includes(`/post/${path}/`);
+	});
 
 	return limit ? filtered.slice(0, limit) : filtered;
 }
