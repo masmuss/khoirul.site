@@ -1,6 +1,6 @@
 import { getCollection, getEntry } from "astro:content";
 import type { CollectionPosts } from "@/types";
-import { getAllPosts, sortPostsByDate } from "./post";
+import { getAllPosts } from "./post";
 
 export async function getAllSeries() {
 	return await getCollection("series");

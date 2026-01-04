@@ -3,7 +3,7 @@ import { type CollectionEntry, render } from "astro:content";
 import RelatedPost from "@/components/post/RelatedPost.astro";
 import TOC from "@/components/post/TOC.astro";
 import PostLayout from "@/layouts/BlogPost.astro";
-import { getPostsByPath, getRelatedPosts } from "@/lib/utils/post";
+import { getRelatedPosts } from "@/lib/utils/post";
 import type { CollectionPosts } from "@/types";
 
 type Props = {

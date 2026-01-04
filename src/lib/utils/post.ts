@@ -1,4 +1,4 @@
-import { type CollectionEntry, getCollection, getEntry } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import type { CollectionPosts } from "@/types";
 
 export function sortPostsByDate(itemA: CollectionPosts, itemB: CollectionPosts): number {
