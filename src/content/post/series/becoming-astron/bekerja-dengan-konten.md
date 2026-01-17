@@ -5,13 +5,13 @@ date: 10 January 2026
 tags: ["astro", "tech"]
 ---
 
-Kalau kamu sedang membaca tulisan ini, besar kemungkinan kamu sedang melihat hasil dari sebuah file Markdown. 
+Kalau kamu sedang membaca tulisan ini, besar kemungkinan kamu sedang melihat hasil dari sebuah file Markdown.
 
 Astro bukan cuma framework yang "bisa" baca Markdown, tapi framework yang dirancang untuk **memuliakan** Markdown.
 
 ## Markdown: Warga Kelas Satu
 
-Di banyak framework, menampilkan Markdown butuh library tambahan atau konfigurasi yang ribet. Di Astro, kamu cukup letakkan file `.md` di dalam folder `src/pages`, dan *booom!*—ia otomatis jadi halaman web.
+Di banyak framework, menampilkan Markdown butuh library tambahan atau konfigurasi yang ribet. Di Astro, kamu cukup letakkan file `.md` di dalam folder `src/pages`, dan _booom!_—ia otomatis jadi halaman web.
 
 Tapi, Astro punya cara yang lebih profesional untuk mengelola konten dalam jumlah banyak: **Content Collections**.
 
@@ -34,7 +34,7 @@ MDX memungkinkanmu menulis komponen React/Vue/Svelte langsung di dalam file Mark
 
 Ini adalah teks biasa.
 
-<InteractiveChart client:load />
+<InteractiveChart />
 
 Keren, kan?
 ```

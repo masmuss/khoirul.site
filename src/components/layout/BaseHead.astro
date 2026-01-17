@@ -2,6 +2,18 @@
 import siteConfig from "@/config/site-config";
 import "@/assets/styles/global.css";
 
+// Fonts
+import "@fontsource/ia-writer-quattro/400.css";
+import "@fontsource/ia-writer-quattro/700.css";
+import "@fontsource/ia-writer-quattro/400-italic.css";
+import "@fontsource/ia-writer-quattro/700-italic.css";
+import "@fontsource-variable/geist-mono";
+import "@fontsource-variable/lora";
+
+// Preload Fonts
+import iaWriterQuattroNormal from "@fontsource/ia-writer-quattro/files/ia-writer-quattro-latin-400-normal.woff2?url";
+import loraVariableNormal from "@fontsource-variable/lora/files/lora-latin-wght-normal.woff2?url";
+
 interface Props {
 	title?: string;
 	description?: string;
@@ -35,6 +47,10 @@ function formatCanonicalURL(url: string | URL) {
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>{title}</title>
 <meta name="generator" content={Astro.generator} />
+
+<!-- Font Preloads -->
+<link rel="preload" href={iaWriterQuattroNormal} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={loraVariableNormal} as="font" type="font/woff2" crossorigin />
 
 <!-- Low Priority Global Metadata -->
 <!-- Favicons - SVG with dark mode support -->
