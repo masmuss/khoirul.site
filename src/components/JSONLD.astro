@@ -1,0 +1,63 @@
+---
+import siteConfig from "@/config/site-config";
+
+interface Props {
+	title: string;
+	description: string;
+	image?: string;
+	date?: Date;
+	updatedDate?: Date;
+	type?: "website" | "article";
+}
+
+const { title, description, image, date, updatedDate, type = "website" } = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.toString() : "https://khoirul.site";
+
+const schema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "WebSite",
+			"@id": `${siteUrl}#website`,
+			url: siteUrl,
+			name: siteConfig.title,
+			description: siteConfig.description,
+			publisher: {
+				"@id": `${siteUrl}#person`,
+			},
+		},
+		{
+			"@type": "Person",
+			"@id": `${siteUrl}#person`,
+			name: siteConfig.author,
+			url: siteUrl,
+			image: siteConfig.image?.src,
+			sameAs: siteConfig.socialLinks.map((link) => link.href),
+			description: siteConfig.description,
+		},
+	],
+};
+
+if (type === "article") {
+	const articleSchema = {
+		"@type": "BlogPosting",
+		headline: title,
+		description: description,
+		author: {
+			"@id": `${siteUrl}#person`,
+		},
+		datePublished: date?.toISOString(),
+		dateModified: updatedDate?.toISOString() || date?.toISOString(),
+		image: image,
+		mainEntityOfPage: {
+			"@type": "WebPage",
+			"@id": Astro.url.href,
+		},
+	};
+	// @ts-expect-error - schema structure is flexible
+	schema["@graph"].push(articleSchema);
+}
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />

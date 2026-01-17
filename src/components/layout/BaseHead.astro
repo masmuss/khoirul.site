@@ -1,6 +1,7 @@
 ---
 import siteConfig from "@/config/site-config";
 import "@/assets/styles/global.css";
+import JSONLD from "@/components/JSONLD.astro";
 
 // Fonts
 import "@fontsource/ia-writer-quattro/400.css";
@@ -19,9 +20,17 @@ interface Props {
 	description?: string;
 	image?: { src: string; alt?: string };
 	pageType?: "website" | "article";
+	date?: Date;
+	updatedDate?: Date;
 }
 
-const { description = "", image = siteConfig.image, pageType = "website" }: Props = Astro.props;
+const {
+	description = "",
+	image = siteConfig.image,
+	pageType = "website",
+	date,
+	updatedDate,
+}: Props = Astro.props;
 
 const title = [Astro.props.title, siteConfig.title].filter(Boolean).join(" - ");
 
@@ -47,6 +56,15 @@ function formatCanonicalURL(url: string | URL) {
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>{title}</title>
 <meta name="generator" content={Astro.generator} />
+
+<JSONLD
+	title={title}
+	description={description}
+	image={resolvedImage?.src}
+	date={date}
+	updatedDate={updatedDate}
+	type={pageType}
+/>
 
 <!-- Font Preloads -->
 <link rel="preload" href={iaWriterQuattroNormal} as="font" type="font/woff2" crossorigin />
