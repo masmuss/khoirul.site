@@ -10,14 +10,34 @@ interface Props {
 
 const { post } = Astro.props;
 const {
-	data: { description, title },
+	data: { description, title, date, updatedDate, coverImage },
+	slug,
 } = post;
 
 const seriesId = getSeriesForPost(post);
 const series = seriesId ? await getSeriesById(seriesId) : null;
+
+const socialImage = {
+	src: new URL(`/og/${slug}.png`, Astro.url).href,
+	alt: title,
+};
+const coverImageResolved = coverImage
+	? {
+			src: typeof coverImage.src === "string" ? coverImage.src : coverImage.src.src,
+			alt: coverImage.alt,
+		}
+	: undefined;
+const ogImage = coverImageResolved || socialImage;
 ---
 
-<PageLayout title={title} description={description} pageType="article">
+<PageLayout
+	title={title}
+	description={description}
+	date={date}
+	updatedDate={updatedDate}
+	pageType="article"
+	image={ogImage}
+>
 	<div class="w-full space-y-6">
 		<div class="w-full md:flex md:items-center md:justify-center">
 			<article class="max-w-5xl grow wrap-break-word" data-pagefind-body>

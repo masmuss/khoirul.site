@@ -23,6 +23,11 @@ const post = defineCollection({
 				.string()
 				.or(z.date())
 				.transform((val: string | number | Date) => new Date(val)),
+			updatedDate: z
+				.string()
+				.or(z.date())
+				.transform((val: string | number | Date) => new Date(val))
+				.optional(),
 			draft: z.boolean().default(false).optional(),
 			tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
 		}),
