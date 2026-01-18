@@ -9,7 +9,7 @@ export const siteConfig: SiteConfig = {
 		"Fullstack wizard with a camera, weaving elegant websites while capturing the world through a lens. Transforming visions into digital and visual masterpieces.",
 	email: "ahmusafir.khoirul@gmail.com",
 	image: {
-		src: "https://khoirul.site/og.jpg",
+		src: "/og.png",
 		alt: "Open Graph",
 	},
 	date: {
