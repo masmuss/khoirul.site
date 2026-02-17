@@ -11,31 +11,23 @@ interface Tool {
 
 interface Props {
 	showDescription?: boolean;
-	gridColumns?: number;
 	class?: string;
 	title: string;
 	tools: Tool[];
 }
 
-const {
-	gridColumns,
-	showDescription,
-	class: className,
-	title,
-	tools,
-	...props
-}: Props = Astro.props;
+const { showDescription, class: className, title, tools, ...props }: Props = Astro.props;
 ---
 
 <section
-	class={cn(className, "grid grid-cols-1 gap-y-4 py-8 first:pt-0 md:grid-cols-4 md:gap-x-12")}
+	class={cn("grid grid-cols-1 gap-y-4 py-8 first:pt-0 md:grid-cols-4 md:gap-x-12")}
 	{...props}
 >
 	<h2 class="text-foreground text-sm font-semibold tracking-wider uppercase md:col-span-1">
 		{title}
 	</h2>
 	<div class="md:col-span-3">
-		<ul class={cn(`grid grid-cols-1 gap-x-2 gap-y-2 sm:grid-cols-2 md:grid-cols-${gridColumns}`)}>
+		<ul class={cn(`grid grid-cols-1 gap-x-2 gap-y-2 sm:grid-cols-2`, className)}>
 			{
 				tools.map((tool) => (
 					<li class="flex flex-col">
