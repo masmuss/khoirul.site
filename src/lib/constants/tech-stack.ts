@@ -242,14 +242,49 @@ const TECH_STACK: SkillCollection[] = [
 		],
 	},
 	{
-		title: "Data Visualization",
+		title: "Monitoring",
 		skills: [
+			{
+				name: "OpenTelemetry",
+				description: "Open-source observability framework",
+				href: "https://opentelemetry.io/",
+				iconPath: "opentelemetry",
+			},
+			{
+				name: "Prometheus",
+				description: "Open-source monitoring and alerting toolkit",
+				href: "https://prometheus.io/",
+				iconPath: "prometheus",
+			},
 			{
 				name: "Grafana",
 				description: "Open source analytics and monitoring solution",
 				href: "https://grafana.com/",
 				iconPath: "grafana",
 			},
+			{
+				name: "Loki",
+				description: "Log aggregation system",
+				href: "https://grafana.com/oss/loki/",
+				iconPath: "loki",
+			},
+			{
+				name: "Tempo",
+				description: "Distributed tracing backend",
+				href: "https://grafana.com/oss/tempo/",
+				iconPath: "tempo",
+			},
+			{
+				name: "Sentry",
+				description: "Application monitoring and error tracking",
+				href: "https://sentry.io/",
+				iconPath: "sentry",
+			},
+		],
+	},
+	{
+		title: "Data Visualization",
+		skills: [
 			{
 				name: "ChartJS",
 				description: "Simple HTML5 charts",

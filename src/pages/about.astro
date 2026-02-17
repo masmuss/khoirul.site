@@ -79,7 +79,11 @@ import TECH_STACK from "@/lib/constants/tech-stack";
 			<div class="flex flex-col gap-y-10">
 				{
 					TECH_STACK.map((stack) => (
-						<ToolSection class="md:grid-cols-3" title={stack.title} tools={stack.skills} />
+						<ToolSection
+							class="grid-cols-2 md:grid-cols-3"
+							title={stack.title}
+							tools={stack.skills}
+						/>
 					))
 				}
 			</div>
