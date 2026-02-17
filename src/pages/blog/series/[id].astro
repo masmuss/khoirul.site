@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { id } = Astro.params;
-const series = await getSeriesById(id!);
+const series = await getSeriesById(id);
 const posts = await getPostsBySeries(id);
 
 if (!series) {

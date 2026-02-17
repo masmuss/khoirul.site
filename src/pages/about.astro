@@ -6,10 +6,12 @@ import SocialLinks from "@/components/SocialLinks.astro";
 import Certifications from "@/components/sections/home/Certifications.astro";
 import Educations from "@/components/sections/home/Educations.astro";
 import Experiences from "@/components/sections/home/Experiences.astro";
+import ToolSection from "@/components/ToolSection.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { certifications } from "@/lib/constants/certifications";
 import { educations } from "@/lib/constants/educations";
 import { experiences } from "@/lib/constants/experiences";
+import TECH_STACK from "@/lib/constants/tech-stack";
 ---
 
 <PageLayout
@@ -72,6 +74,16 @@ import { experiences } from "@/lib/constants/experiences";
 		<Educations educations={educations} />
 
 		<Certifications certifications={certifications} />
+
+		<Section title="Tech Stack">
+			<div class="flex flex-col gap-y-10">
+				{
+					TECH_STACK.map((stack) => (
+						<ToolSection gridColumns={3} title={stack.title} tools={stack.skills} />
+					))
+				}
+			</div>
+		</Section>
 
 		<Section title="Get in Touch">
 			<div class="text-muted-foreground flex flex-col gap-y-4">

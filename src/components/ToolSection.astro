@@ -1,32 +1,71 @@
 ---
 import { Icon } from "astro-icon/components";
-import type { Tool } from "@/lib/constants/tools";
 import { cn } from "@/lib/utils";
 
+interface Tool {
+	name: string;
+	description: string;
+	href: string;
+	iconPath?: string;
+}
+
 interface Props {
+	showDescription?: boolean;
+	gridColumns?: number;
 	class?: string;
 	title: string;
 	tools: Tool[];
 }
-const { class: className, title, tools, ...props }: Props = Astro.props;
+
+const {
+	gridColumns,
+	showDescription,
+	class: className,
+	title,
+	tools,
+	...props
+}: Props = Astro.props;
 ---
 
-<section class={cn(className, "flex flex-col gap-y-4")} {...props}>
-	<h2 class="text-muted-foreground text-sm font-medium tracking-wider uppercase">{title}</h2>
-	<div class="grid grid-cols-3 gap-2 sm:grid-cols-5 md:grid-cols-6">
-		{
-			tools.map((tool) => (
-				<a
-					class="group hover:bg-muted/20 flex flex-col items-center gap-y-2 rounded-lg p-5 text-center opacity-60 transition-colors hover:opacity-100"
-					href={tool.href}
-					id={tool.name}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<Icon name={tool.iconPath} class="aspect-square h-8 w-8 transition-colors" />
-					<span class="text-xs font-medium transition-colors">{tool.name}</span>
-				</a>
-			))
-		}
+<section
+	class={cn(className, "grid grid-cols-1 gap-y-4 py-8 first:pt-0 md:grid-cols-4 md:gap-x-12")}
+	{...props}
+>
+	<h2 class="text-foreground text-sm font-semibold tracking-wider uppercase md:col-span-1">
+		{title}
+	</h2>
+	<div class="md:col-span-3">
+		<ul class={cn(`grid grid-cols-1 gap-x-2 gap-y-2 sm:grid-cols-2 md:grid-cols-${gridColumns}`)}>
+			{
+				tools.map((tool) => (
+					<li class="flex flex-col">
+						<a
+							href={tool.href}
+							class="group hover:bg-muted/50 mx-3 flex items-center gap-x-4 rounded-xl px-3 py-3 transition-all"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{tool.iconPath && (
+								<div class="bg-muted-foreground/10 group-hover:bg-muted-foreground/20 mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors">
+									<Icon name={tool.iconPath} class="h-5 w-5" />
+								</div>
+							)}
+							<div class="flex flex-col">
+								<div class="flex items-center gap-x-1">
+									<h3 class="text-foreground group-hover:text-primary text-sm font-medium transition-colors">
+										{tool.name}
+									</h3>
+								</div>
+								{showDescription && (
+									<p class="text-muted-foreground mt-0.5 text-xs leading-relaxed">
+										{tool.description}
+									</p>
+								)}
+							</div>
+						</a>
+					</li>
+				))
+			}
+		</ul>
 	</div>
 </section>
