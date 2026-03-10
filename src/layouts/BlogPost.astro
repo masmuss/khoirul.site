@@ -11,14 +11,14 @@ interface Props {
 const { post } = Astro.props;
 const {
 	data: { description, title, date, updatedDate, coverImage },
-	slug,
+	id,
 } = post;
 
 const seriesId = getSeriesForPost(post);
 const series = seriesId ? await getSeriesById(seriesId) : null;
 
 const socialImage = {
-	src: new URL(`/og/${slug}.png`, Astro.url).href,
+	src: new URL(`/og/${id}.png`, Astro.url).href,
 	alt: title,
 };
 const coverImageResolved = coverImage

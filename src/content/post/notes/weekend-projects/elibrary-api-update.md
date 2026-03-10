@@ -5,7 +5,7 @@ date: 16 July 2025
 tags: ["tech"]
 ---
 
-Pada [artikel sebelumnya](/blog/elibrary-api), saya telah membedah arsitektur dasar dari proyek E-Library API yang saya bangun menggunakan Hono, Bun, dan Drizzle. Saat itu, fokus utamanya adalah membuat fungsionalitas inti berjalan dengan baik. Namun, sebuah aplikasi yang siap untuk produksi membutuhkan lebih dari sekadar fitur yang berfungsi; ia memerlukan ketangguhan (resilience), keamanan, dan performa yang teruji.
+Pada [artikel sebelumnya](/blog/notes/weekend-projects/elibrary-api), saya telah membedah arsitektur dasar dari proyek E-Library API yang saya bangun menggunakan Hono, Bun, dan Drizzle. Saat itu, fokus utamanya adalah membuat fungsionalitas inti berjalan dengan baik. Namun, sebuah aplikasi yang siap untuk produksi membutuhkan lebih dari sekadar fitur yang berfungsi; ia memerlukan ketangguhan (resilience), keamanan, dan performa yang teruji.
 
 Artikel ini adalah catatan teknis tentang proses hardening API tersebut, mulai dari implementasi audit log hingga siklus load testing untuk menemukan dan memperbaiki bottleneck.
 
