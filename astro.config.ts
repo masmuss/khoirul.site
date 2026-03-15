@@ -4,13 +4,11 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
-import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import astroMermaid from "astro-mermaid";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkDirective from "remark-directive";
 import remarkGfm from "remark-gfm";
-import { expressiveCodeOptions } from "./src/config/site-config";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions";
 import { remarkGithubCard } from "./src/plugins/remark-github-card";
 
@@ -28,7 +26,6 @@ export default defineConfig({
 				},
 			},
 		}),
-		expressiveCode(expressiveCodeOptions),
 		mdx({
 			gfm: true,
 			remarkPlugins: [remarkGfm],
@@ -38,6 +35,10 @@ export default defineConfig({
 	],
 	markdown: {
 		gfm: true,
+		shikiConfig: {
+			theme: "vitesse-dark",
+			wrap: true,
+		},
 		rehypePlugins: [
 			[
 				rehypeExternalLinks,
@@ -55,6 +56,6 @@ export default defineConfig({
 		},
 	},
 	vite: {
-		plugins: [tailwindcss() as any],
+		plugins: [tailwindcss()],
 	},
 });

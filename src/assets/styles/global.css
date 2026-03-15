@@ -162,11 +162,7 @@
 		@apply prose-blockquote:font-sans;
 		@apply prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4;
 		@apply prose-pre:bg-secondary prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:font-mono prose-pre:text-sm;
-		@apply prose-code:rounded-md prose-code:px-1.5 prose-code:py-0.5 prose-code:text-teal-600 prose-code:bg-teal-100 dark:prose-code:text-teal-400 dark:prose-code:bg-teal-900 prose-code:before:content-none prose-code:after:content-none;
-	}
-
-	.expressive-code {
-		@apply my-4;
+		@apply prose-code:before:contain-none prose-code:after:contain-none;
 	}
 
 	/* NProgress loading bar */
