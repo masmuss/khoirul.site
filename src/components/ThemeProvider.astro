@@ -1,10 +1,10 @@
 {/* Inlined to avoid FOUC. This is a parser blocking script. */}
 <script is:inline>
-	const lightModePref = window.matchMedia("(prefers-color-scheme: light)");
+	const darkModePref = window.matchMedia("(prefers-color-scheme: dark)");
 
 	function getUserPref() {
 		const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("theme");
-		return storedTheme || (lightModePref.matches ? "light" : "dark");
+		return storedTheme || (darkModePref.matches ? "dark" : "light");
 	}
 
 	function setTheme(newTheme) {
@@ -15,12 +15,14 @@
 		}
 
 		const root = document.documentElement;
+		const isDark = newTheme === "dark";
 
 		// root already set to newTheme, exit early
-		if (newTheme === root.getAttribute("data-theme")) {
+		if (isDark === root.classList.contains("dark")) {
 			return;
 		}
 
+		root.classList.toggle("dark", isDark);
 		root.setAttribute("data-theme", newTheme);
 
 		if (typeof localStorage !== "undefined") {
@@ -40,5 +42,5 @@
 	});
 
 	// listen for prefers-color-scheme change.
-	lightModePref.addEventListener("change", (e) => setTheme(e.matches ? "light" : "dark"));
+	darkModePref.addEventListener("change", (e) => setTheme(e.matches ? "dark" : "light"));
 </script>
