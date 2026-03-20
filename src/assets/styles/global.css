@@ -18,24 +18,23 @@
    ======================================== */
 @theme {
 	--font-sans: "iA Writer Quattro", sans-serif;
-	--font-serif: "Lora Variable", serif;
-	--font-mono: "Geist Mono Variable", monospace;
+	--font-mono: "Fira Code", monospace;
 	--container-2xl: 1400px;
 
-	/* Woodsmoke color palette */
-	--color-woodsmoke-50: #f6f6f6;
-	--color-woodsmoke-100: #e7e7e7;
-	--color-woodsmoke-200: #d1d1d1;
-	--color-woodsmoke-300: #b0b0b0;
-	--color-woodsmoke-400: #888888;
-	--color-woodsmoke-500: #6d6d6d;
-	--color-woodsmoke-600: #5d5d5d;
-	--color-woodsmoke-700: #4f4f4f;
-	--color-woodsmoke-800: #454545;
-	--color-woodsmoke-900: #3d3d3d;
-	--color-woodsmoke-950: #171717;
+	/* Dracula Pro Palette - Base Colors */
+	--color-dracula-bg: #151417;
+	--color-dracula-fg: #f8f8f2;
+	--color-dracula-selection: #44475a;
+	--color-dracula-comment: #6272a4;
+	--color-dracula-cyan: #80ffea;
+	--color-dracula-green: #8aff80;
+	--color-dracula-orange: #ffca80;
+	--color-dracula-pink: #ff80bf;
+	--color-dracula-purple: #9580ff;
+	--color-dracula-red: #ff9580;
+	--color-dracula-yellow: #ffff80;
 
-	/* Semantic colors */
+	/* Semantic colors mapping */
 	--color-border: hsl(var(--border) / 0.8);
 	--color-input: hsl(var(--input));
 	--color-ring: hsl(var(--ring));
@@ -63,17 +62,6 @@
 	html {
 		color-scheme: light dark;
 		scroll-behavior: smooth;
-		scrollbar-width: none;
-		-ms-overflow-style: none;
-
-		/* Icon theming defaults */
-		--nextjs-logo-color: white;
-		--jetbrains-text: #fff;
-		--better-auth-inner: white;
-
-		&::-webkit-scrollbar {
-			display: none;
-		}
 
 		&[data-theme="light"] {
 			color-scheme: light;
@@ -83,8 +71,8 @@
 			--card-foreground: 0 0% 8.6%;
 			--popover: 0 0% 100%;
 			--popover-foreground: 0 0% 8.6%;
-			--primary: 0 0% 8.6%;
-			--primary-foreground: 0 0% 96.5%;
+			--primary: 250 100% 75%;
+			--primary-foreground: 0 0% 98%;
 			--secondary: 0 0% 90.6%;
 			--secondary-foreground: 0 0% 8.6%;
 			--muted: 0 0% 90.6%;
@@ -95,47 +83,41 @@
 			--destructive-foreground: 0 0% 98%;
 			--border: 0 0% 82%;
 			--input: 0 0% 82%;
-			--ring: 0 0% 8.6%;
-			--radius: 0.5rem;
-
-			/* Icon theming - light mode */
-			--nextjs-logo-color: white;
-			--jetbrains-text: #fff;
-			--better-auth-inner: white;
+			--ring: 250 100% 75%;
 		}
 
 		&[data-theme="dark"] {
 			color-scheme: dark;
-			--background: 0 0% 8.6%;
-			--foreground: 0 0% 96.5%;
-			--card: 0 0% 12%;
-			--card-foreground: 0 0% 96.5%;
-			--popover: 0 0% 12%;
-			--popover-foreground: 0 0% 96.5%;
-			--primary: 0 0% 96.5%;
-			--primary-foreground: 0 0% 8.6%;
-			--secondary: 0 0% 23.9%;
-			--secondary-foreground: 0 0% 96.5%;
-			--muted: 0 0% 23.9%;
-			--muted-foreground: 0 0% 85%;
-			--accent: 0 0% 23.9%;
-			--accent-foreground: 0 0% 96.5%;
-			--destructive: 0 62.8% 30.6%;
-			--destructive-foreground: 0 0% 98%;
-			--border: 0 0% 27.1%;
-			--input: 0 0% 27.1%;
-			--ring: 0 0% 82%;
+			/* Dracula Pro Implementation (Converted HEX to HSL) */
+			--background: 260 6% 8%; /* #151417 */
+			--foreground: 60 30% 96%; /* #f8f8f2 */
+			--card: 260 6% 12%;
+			--card-foreground: 60 30% 96%;
+			--popover: 260 6% 10%;
+			--popover-foreground: 60 30% 96%;
+			--primary: 250 100% 75%; /* #9580ff (Purple) */
+			--primary-foreground: 260 6% 8%;
+			--secondary: 231 14% 31%; /* #44475a (Selection) */
+			--secondary-foreground: 60 30% 96%;
+			--muted: 225 27% 51%; /* #6272a4 (Comment) */
+			--muted-foreground: 225 27% 85%;
+			--accent: 231 14% 31%; /* #44475a */
+			--accent-foreground: 60 30% 96%;
+			--destructive: 9 100% 75%; /* #ff9580 (Red) */
+			--destructive-foreground: 260 6% 8%;
+			--border: 240 6% 20%; /* #212024 (Hover/Darker border) */
+			--input: 240 6% 20%;
+			--ring: 250 100% 75%;
 
 			/* Icon theming - dark mode */
-			--nextjs-logo-color: black;
-			--jetbrains-text: #000;
-			--better-auth-inner: black;
+			--nextjs-logo-color: #f8f8f2;
+			--jetbrains-text: #f8f8f2;
+			--better-auth-inner: #151417;
 		}
 	}
 
 	* {
 		@apply border-border;
-		font-display: swap;
 	}
 
 	body {
@@ -147,13 +129,6 @@
    Components Layer
    ======================================== */
 @layer components {
-	@import "./components/admonition.css";
-	@import "./components/github-card.css";
-
-	h1 {
-		@apply font-serif;
-	}
-
 	.custom-prose {
 		@apply prose dark:prose-invert;
 		@apply prose-headings:font-semibold prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4;
