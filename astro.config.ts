@@ -36,7 +36,7 @@ export default defineConfig({
 	markdown: {
 		gfm: true,
 		shikiConfig: {
-			theme: "vitesse-dark",
+			theme: "dracula-soft",
 			wrap: true,
 		},
 		rehypePlugins: [

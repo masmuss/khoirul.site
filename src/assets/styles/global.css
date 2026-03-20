@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "./components/admonition.css";
+@import "./components/github-card.css";
 @plugin "@tailwindcss/typography";
 @plugin "@iconify/tailwind4" {
 	prefix: "iconify";
