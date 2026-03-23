@@ -124,41 +124,6 @@
 	body {
 		@apply bg-background text-foreground;
 	}
-
-	/* Heading Styles */
-	h1 {
-		@apply text-3xl leading-tight font-bold tracking-tight md:text-4xl lg:text-5xl;
-	}
-
-	h2 {
-		@apply text-2xl leading-snug font-semibold tracking-tight md:text-3xl lg:text-4xl;
-	}
-
-	h3 {
-		@apply text-xl leading-snug font-semibold md:text-2xl lg:text-3xl;
-	}
-
-	h4 {
-		@apply text-lg font-medium md:text-xl lg:text-2xl;
-	}
-
-	h5 {
-		@apply text-base font-medium md:text-lg lg:text-xl;
-	}
-
-	h6 {
-		@apply text-sm font-medium md:text-base lg:text-lg;
-	}
-
-	/* Paragraph & Global Text */
-	p {
-		@apply text-foreground/90 text-base leading-relaxed;
-	}
-
-	/* Small text for captions/metadata */
-	small {
-		@apply text-muted-foreground text-xs md:text-sm;
-	}
 }
 
 /* ========================================
