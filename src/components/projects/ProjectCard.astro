@@ -22,9 +22,6 @@ const { href, heading, subheading, class: className } = Astro.props;
 >
 	<div class="flex items-center gap-2">
 		<span class="font-medium">{heading}</span>
-		<span
-			class="iconify text-muted-foreground ri--external-link-line text-sm opacity-0 transition-opacity group-hover:opacity-100"
-		></span>
 	</div>
 	{subheading && <p class="text-muted-foreground text-sm">{subheading}</p>}
 </a>

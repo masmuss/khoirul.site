@@ -4,7 +4,6 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
-import icon from "astro-icon";
 import astroMermaid from "astro-mermaid";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkDirective from "remark-directive";
@@ -31,7 +30,6 @@ export default defineConfig({
 			remarkPlugins: [remarkGfm],
 		}),
 		sitemap(),
-		icon(),
 	],
 	markdown: {
 		gfm: true,

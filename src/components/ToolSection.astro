@@ -1,12 +1,9 @@
 ---
-import { Icon } from "astro-icon/components";
 import { cn } from "@/lib/utils";
 
 interface Tool {
 	name: string;
 	description: string;
-	href: string;
-	iconPath?: string;
 }
 
 interface Props {
@@ -30,31 +27,15 @@ const { showDescription, class: className, title, tools, ...props }: Props = Ast
 		<ul class={cn(`grid grid-cols-1 gap-x-2 gap-y-2 sm:grid-cols-2`, className)}>
 			{
 				tools.map((tool) => (
-					<li class="flex flex-col">
-						<a
-							href={tool.href}
-							class="group hover:bg-muted/50 flex items-center gap-x-3 rounded-xl px-2 py-2 transition-all md:mx-3 md:gap-x-4 md:px-3 md:py-3"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							{tool.iconPath && (
-								<div class="bg-muted-foreground/10 group-hover:bg-muted-foreground/20 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors md:h-9 md:w-9">
-									<Icon name={tool.iconPath} class="h-4 w-4 md:h-5 md:w-5" />
-								</div>
+					<li class="flex flex-col rounded-xl px-2 py-2 md:mx-3 md:px-3 md:py-3">
+						<div class="flex flex-col">
+							<h3 class="text-foreground text-sm font-medium">{tool.name}</h3>
+							{showDescription && (
+								<p class="text-muted-foreground mt-0.5 text-xs leading-relaxed">
+									{tool.description}
+								</p>
 							)}
-							<div class="flex flex-col">
-								<div class="flex items-center gap-x-1">
-									<h3 class="text-foreground group-hover:text-primary text-sm font-medium transition-colors">
-										{tool.name}
-									</h3>
-								</div>
-								{showDescription && (
-									<p class="text-muted-foreground mt-0.5 text-xs leading-relaxed">
-										{tool.description}
-									</p>
-								)}
-							</div>
-						</a>
+						</div>
 					</li>
 				))
 			}
