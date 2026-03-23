@@ -1,5 +1,8 @@
 import { type CollectionEntry, getCollection } from "astro:content";
+import { z } from "astro/zod";
 import type { CollectionPosts } from "@/types";
+
+void z; // Ensure z is included in the bundle for type-only imports
 
 type PostLike = Pick<CollectionEntry<"post">, "id">;
 
