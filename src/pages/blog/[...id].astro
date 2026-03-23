@@ -11,19 +11,14 @@ type Props = {
 };
 
 export async function getStaticPaths() {
-	try {
-		const { getAllPosts } = await import("@/lib/utils/post");
-		const posts = await getAllPosts();
-		return posts.map((post: CollectionPosts) => ({
-			params: { id: post.id },
-			props: {
-				post,
-			},
-		}));
-	} catch (error) {
-		console.error("Error generating static paths:", error);
-		return [];
-	}
+	const { getAllPosts } = await import("@/lib/utils/post");
+	const posts = await getAllPosts();
+	return posts.map((post: CollectionPosts) => ({
+		params: { id: post.id },
+		props: {
+			post,
+		},
+	}));
 }
 
 const { post } = Astro.props;
