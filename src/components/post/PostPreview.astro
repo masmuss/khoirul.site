@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 
 import { getFormattedDate, getReadTimeCount } from "@/lib/utils";
+import { getPostUrl } from "@/lib/utils/post";
 
 type Props = {
 	post: CollectionEntry<"post">;
@@ -12,7 +13,7 @@ const { post } = Astro.props;
 
 <li>
 	<a
-		href={`/blog/${post.id}`}
+		href={getPostUrl(post)}
 		class="group -mx-3 flex flex-col gap-1 rounded-lg px-3 py-3 opacity-70 transition-opacity hover:opacity-100 sm:flex-row sm:items-baseline sm:gap-4"
 	>
 		<span class="group-hover:text-foreground flex-1 font-medium transition-colors sm:line-clamp-1">

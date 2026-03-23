@@ -1,6 +1,8 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import type { CollectionPosts } from "@/types";
 
+type PostLike = Pick<CollectionEntry<"post">, "id">;
+
 export function sortPostsByDate(itemA: CollectionPosts, itemB: CollectionPosts): number {
 	return new Date(itemB.data.date).getTime() - new Date(itemA.data.date).getTime();
 }
@@ -53,6 +55,29 @@ export function groupPostsByYear(posts: CollectionPosts[]): Map<number, Collecti
 		grouped.get(year)?.push(post);
 	}
 	return new Map([...grouped.entries()].sort((a, b) => b[0] - a[0]));
+}
+
+export function getPostRouteId(post: PostLike): string {
+	return post.id;
+}
+
+export function getPostUrl(post: PostLike): string {
+	return `/blog/${getPostRouteId(post)}`;
+}
+
+export function getPostOgImagePath(post: PostLike): string {
+	return `/og/${getPostRouteId(post)}.png`;
+}
+
+export function getPostDisplaySlug(post: PostLike): string {
+	const parts = getPostRouteId(post).split("/");
+	const lastSegment = parts.at(-1) || "";
+
+	if (lastSegment === "index") {
+		return parts.at(-2) || "index";
+	}
+
+	return lastSegment;
 }
 
 export function getAllTags(posts: Array<CollectionEntry<"post">>) {

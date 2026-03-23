@@ -1,7 +1,7 @@
 import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
 import siteConfig from "@/config/site-config";
-import { getPostsByPath } from "@/lib/utils/post";
+import { getPostsByPath, getPostUrl } from "@/lib/utils/post";
 
 export async function GET(context: APIContext) {
 	const posts = await getPostsByPath();
@@ -14,7 +14,7 @@ export async function GET(context: APIContext) {
 		items: posts.map((item) => {
 			return {
 				...item.data,
-				link: new URL(`blog/${item.id}/`, site).toString(),
+				link: new URL(getPostUrl(item), site).toString(),
 				pubDate: new Date(item.data.date),
 				content: item.body,
 				author: `${siteConfig.author} <${siteConfig.email}>`,

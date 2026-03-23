@@ -3,7 +3,7 @@ import { type CollectionEntry, render } from "astro:content";
 import RelatedPost from "@/components/post/RelatedPost.astro";
 import TOC from "@/components/post/TOC.astro";
 import PostLayout from "@/layouts/BlogPost.astro";
-import { getRelatedPosts } from "@/lib/utils/post";
+import { getPostRouteId, getRelatedPosts } from "@/lib/utils/post";
 import type { CollectionPosts } from "@/types";
 
 type Props = {
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 	const { getAllPosts } = await import("@/lib/utils/post");
 	const posts = await getAllPosts();
 	return posts.map((post: CollectionPosts) => ({
-		params: { id: post.id },
+		params: { id: getPostRouteId(post) },
 		props: {
 			post,
 		},

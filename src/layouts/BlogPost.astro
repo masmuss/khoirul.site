@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import BlogHero from "@/components/post/Hero.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { getSeriesById, getSeriesForPost } from "@/lib/utils";
+import { getPostOgImagePath } from "@/lib/utils/post";
 
 interface Props {
 	post: CollectionEntry<"post">;
@@ -18,7 +19,7 @@ const seriesId = getSeriesForPost(post);
 const series = seriesId ? await getSeriesById(seriesId) : null;
 
 const socialImage = {
-	src: new URL(`/og/${id}.png`, Astro.url).href,
+	src: new URL(getPostOgImagePath(post), Astro.url).href,
 	alt: title,
 };
 const coverImageResolved = coverImage

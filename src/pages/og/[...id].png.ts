@@ -5,6 +5,7 @@ import type { APIContext } from "astro";
 import { satoriAstroOG } from "satori-astro";
 import { html } from "satori-html";
 import siteConfig from "@/config/site-config";
+import { getPostRouteId } from "@/lib/utils/post";
 
 export const prerender = true;
 
@@ -145,7 +146,7 @@ function buildOgMarkup({
 export async function getStaticPaths() {
 	const posts = await getCollection("post");
 	return posts.map((post) => ({
-		params: { id: post.id },
+		params: { id: getPostRouteId(post) },
 		props: post,
 	}));
 }
