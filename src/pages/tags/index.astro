@@ -11,7 +11,11 @@ const sortedTags = [...allTags].sort((a, b) => {
 });
 ---
 
-<PageLayout title="All Tags" description="A list of all the topics I've written about in my posts">
+<PageLayout
+	title="All Tags"
+	description="A list of all the topics I've written about in my posts"
+	image={{ src: "/og/tags.png", alt: "All Tags - pictogrammmer" }}
+>
 	<div class="flex w-full flex-col gap-y-8">
 		<div>
 			<h1 class="mb-2 text-2xl font-semibold">Tags</h1>
