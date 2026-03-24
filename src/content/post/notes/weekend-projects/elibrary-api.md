@@ -10,6 +10,10 @@ Proyek ini dimulai sebagai sebuah studi kasus: membangun backend API untuk siste
 Fokus utama adalah pada pemilihan *tech-stack* yang efisien dan pembentukan arsitektur yang bersih. Untuk itu, teknologi yang dipilih adalah **Bun** sebagai runtime, **Hono** sebagai web framework, dan **Drizzle** sebagai ORM. Kombinasi ini menawarkan performa tinggi dan pengalaman pengembangan yang cepat.
 
 ```mermaid
+---
+config:
+    layout: elk
+---
 graph TD;
     subgraph Core Backend
         Bun[Bun Runtime] --> Hono[Hono Web Framework];
