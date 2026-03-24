@@ -3,7 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import BlogHero from "@/components/post/Hero.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { getSeriesById, getSeriesForPost } from "@/lib/utils";
-import { getPostOgImagePath } from "@/lib/utils/post";
+import { getPostOgImagePath } from "@/lib/utils/post-route";
 
 interface Props {
 	post: CollectionEntry<"post">;

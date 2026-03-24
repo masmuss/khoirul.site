@@ -5,7 +5,7 @@ import type { APIContext } from "astro";
 import { satoriAstroOG } from "satori-astro";
 import { html } from "satori-html";
 import siteConfig from "@/config/site-config";
-import { getPostRouteId } from "@/lib/utils/post";
+import { getPostRouteId } from "@/lib/utils/post-route";
 
 export const prerender = true;
 
