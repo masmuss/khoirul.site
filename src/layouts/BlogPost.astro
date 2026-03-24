@@ -12,7 +12,6 @@ interface Props {
 const { post } = Astro.props;
 const {
 	data: { description, title, date, updatedDate, coverImage },
-	id,
 } = post;
 
 const seriesId = getSeriesForPost(post);
