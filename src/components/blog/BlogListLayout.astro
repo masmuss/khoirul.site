@@ -8,18 +8,19 @@ interface Props {
 	activeTab: "posts" | "notes" | "reflective";
 	title: string;
 	description: string;
+	image?: { src: string; alt?: string };
 	path?: string;
 	emptyMessage?: string;
 }
 
-const { activeTab, title, description, path, emptyMessage } = Astro.props;
+const { activeTab, title, description, image, path, emptyMessage } = Astro.props;
 
 const allPosts = await getPostsByPath(path);
 const postsByYear = groupPostsByYear(allPosts);
 const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 ---
 
-<PageLayout {title} {description} pageType="website">
+<PageLayout {title} {description} image={image} pageType="website">
 	<div class="flex w-full flex-col gap-y-12">
 		<div class="flex w-full flex-col">
 			<BlogTabs {activeTab} />

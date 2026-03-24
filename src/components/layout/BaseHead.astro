@@ -93,6 +93,7 @@ function formatCanonicalURL(url: string | URL) {
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={pageType} />
 <meta property="og:url" content={formatCanonicalURL(canonicalURL)} />
+<meta property="og:site_name" content={siteConfig.title} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 {resolvedImage?.src && <meta property="og:image" content={resolvedImage.src} />}
