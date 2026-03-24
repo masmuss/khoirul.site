@@ -19,6 +19,7 @@
 
 		// root already set to newTheme, exit early
 		if (isDark === root.classList.contains("dark")) {
+			root.setAttribute("data-theme", newTheme);
 			return;
 		}
 
