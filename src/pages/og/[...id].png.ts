@@ -13,12 +13,13 @@ export async function getStaticPaths() {
 	}));
 }
 
-export async function GET({ props }: APIContext) {
+export async function GET({ props, url }: APIContext) {
 	const { title, description } = props.data;
 
 	return createOgImageResponse({
 		title,
 		description,
 		decodeEntities: true,
+		origin: url.origin,
 	});
 }

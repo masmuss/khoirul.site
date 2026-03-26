@@ -1,18 +1,9 @@
 ---
 import siteConfig from "@/config/site-config";
 import "@/assets/styles/global.css";
+import { Font } from "astro:assets";
+
 import JSONLD from "@/components/JSONLD.astro";
-
-// Fonts
-import "@fontsource/ia-writer-quattro/400.css";
-import "@fontsource/ia-writer-quattro/700.css";
-import "@fontsource/ia-writer-quattro/400-italic.css";
-import "@fontsource/ia-writer-quattro/700-italic.css";
-import "@fontsource-variable/fira-code";
-
-// Preload Fonts
-import iaWriterQuattroNormal from "@fontsource/ia-writer-quattro/files/ia-writer-quattro-latin-400-normal.woff2?url";
-import firaCodeNormal from "@fontsource-variable/fira-code/files/fira-code-latin-wght-normal.woff2?url";
 
 interface Props {
 	title?: string;
@@ -65,9 +56,9 @@ function formatCanonicalURL(url: string | URL) {
 	type={pageType}
 />
 
-<!-- Font Preloads -->
-<link rel="preload" href={iaWriterQuattroNormal} as="font" type="font/woff2" crossorigin />
-<link rel="preload" href={firaCodeNormal} as="font" type="font/woff2" crossorigin />
+<!-- Fonts -->
+<Font cssVariable="--font-ia-writer-quattro" />
+<Font cssVariable="--font-fira-code" />
 
 <!-- Low Priority Global Metadata -->
 <!-- Favicons - SVG with dark mode support -->

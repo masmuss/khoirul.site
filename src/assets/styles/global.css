@@ -18,9 +18,12 @@
 /* ========================================
    Theme Configuration
    ======================================== */
+@theme inline {
+	--font-sans: var(--font-ia-writer-quattro);
+	--font-mono: var(--font-fira-code);
+}
+
 @theme {
-	--font-sans: "iA Writer Quattro", sans-serif;
-	--font-mono: "Fira Code", monospace;
 	--container-2xl: 1400px;
 
 	/* Dracula Pro Palette - Base Colors */

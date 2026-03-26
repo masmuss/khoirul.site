@@ -1,3 +1,4 @@
+import { fontData } from "astro:assets";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { satoriAstroOG } from "satori-astro";
@@ -8,16 +9,68 @@ const OG_WIDTH = 1200;
 const OG_HEIGHT = 630;
 const DESCRIPTION_MAX_LENGTH = 200;
 const OG_FONT_NAME = "iA Writer Quattro";
+const OG_FONT_CSS_VARIABLE = "--font-ia-writer-quattro";
+const OG_FONT_STYLE = "normal";
 
-const FONT_URLS = {
-	normal: "https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-normal.ttf",
-	bold: "https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-700-normal.ttf",
+const FONT_WEIGHTS = {
+	normal: 400,
+	bold: 700,
 } as const;
 
 const LOGO_PATH = join(process.cwd(), "src", "assets", "images", "logo-dark.svg");
 
-const fontNormalPromise = fetch(FONT_URLS.normal).then((res) => res.arrayBuffer());
-const fontBoldPromise = fetch(FONT_URLS.bold).then((res) => res.arrayBuffer());
+type FontSource = {
+	weight?: number | string;
+	style?: string;
+	src?: Array<{ url?: string }>;
+};
+
+const ogFontSources = (fontData[OG_FONT_CSS_VARIABLE] ?? []) as FontSource[];
+const fontPromiseByOrigin = new Map<string, Promise<{ normal: ArrayBuffer; bold: ArrayBuffer }>>();
+
+async function fetchArrayBuffer(url: string) {
+	const response = await fetch(url);
+	if (!response.ok) {
+		throw new Error(`Failed to fetch font from ${url} (${response.status})`);
+	}
+	return response.arrayBuffer();
+}
+
+function resolveFontUrl({ origin, weight }: { origin: string; weight: number }) {
+	if (!ogFontSources.length) {
+		throw new Error(`No font sources found for ${OG_FONT_CSS_VARIABLE}`);
+	}
+
+	const exactMatch = ogFontSources.find(
+		(fontSource) => Number(fontSource.weight) === weight && fontSource.style === OG_FONT_STYLE,
+	);
+	const weightMatch = ogFontSources.find((fontSource) => Number(fontSource.weight) === weight);
+	const fallbackMatch = ogFontSources.find((fontSource) => fontSource.style === OG_FONT_STYLE);
+	const selected = exactMatch ?? weightMatch ?? fallbackMatch ?? ogFontSources[0];
+	const relativeUrl = selected?.src?.[0]?.url;
+
+	if (!relativeUrl) {
+		throw new Error(`No usable source URL for ${OG_FONT_NAME} (${weight})`);
+	}
+
+	return new URL(relativeUrl, origin).toString();
+}
+
+function getOgFonts(origin: string) {
+	const cachedPromise = fontPromiseByOrigin.get(origin);
+	if (cachedPromise) return cachedPromise;
+
+	const normalUrl = resolveFontUrl({ origin, weight: FONT_WEIGHTS.normal });
+	const boldUrl = resolveFontUrl({ origin, weight: FONT_WEIGHTS.bold });
+
+	const newPromise = Promise.all([fetchArrayBuffer(normalUrl), fetchArrayBuffer(boldUrl)]).then(
+		([normal, bold]) => ({ normal, bold }),
+	);
+
+	fontPromiseByOrigin.set(origin, newPromise);
+	return newPromise;
+}
+
 const logoBase64Promise = readFile(LOGO_PATH).then(
 	(logoBuffer) => `data:image/svg+xml;base64,${logoBuffer.toString("base64")}`,
 );
@@ -141,20 +194,21 @@ type CreateOgImageResponseOptions = {
 	title: string;
 	description?: string;
 	decodeEntities?: boolean;
+	origin: string;
 };
 
 export async function createOgImageResponse({
 	title,
 	description = "",
 	decodeEntities = false,
+	origin,
 }: CreateOgImageResponseOptions) {
 	const safeTitle = decodeEntities ? decodeHtmlEntities(title) : title;
 	const safeDescription = decodeEntities ? decodeHtmlEntities(description) : description;
 	const clampedDescription = truncateText(safeDescription, DESCRIPTION_MAX_LENGTH);
 
-	const [fontNormal, fontBold, logoBase64] = await Promise.all([
-		fontNormalPromise,
-		fontBoldPromise,
+	const [{ normal: fontNormal, bold: fontBold }, logoBase64] = await Promise.all([
+		getOgFonts(origin),
 		logoBase64Promise,
 	]);
 

@@ -48,11 +48,12 @@ export async function getStaticPaths() {
 	}));
 }
 
-export async function GET({ props }: APIContext) {
+export async function GET({ props, url }: APIContext) {
 	const { title, description } = props as { title: string; description: string };
 
 	return createOgImageResponse({
 		title,
 		description,
+		origin: url.origin,
 	});
 }
