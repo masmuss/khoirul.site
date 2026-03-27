@@ -5,7 +5,7 @@ date: 12 August 2025
 tags: ["tech", "golang"]
 ---
 
-Selamat datang kembali, Gopher! Di [babak terakhir](/blog/kamu-siap-proyek-pertama-dan-arah-selanjutnya-di-dunia-go), kita sudah menyelesaikan proyek pertama kita dan melihat sekilas ke arah konkurensi. Sebenarnya, petualangan inti kita sudah selesai... tapi ada satu 'jurus pamungkas' lagi yang sengaja kita simpan untuk episode spesial ini.
+Selamat datang kembali, Gopher! Di [babak terakhir](/blog/series/golang-dasar/kamu-siap-proyek-pertama-dan-arah-selanjutnya-di-dunia-go), kita sudah menyelesaikan proyek pertama kita dan melihat sekilas ke arah konkurensi. Sebenarnya, petualangan inti kita sudah selesai... tapi ada satu 'jurus pamungkas' lagi yang sengaja kita simpan untuk episode spesial ini.
 
 Ini adalah topik yang akan menjawab pertanyaan yang mungkin pernah muncul di benakmu...
 

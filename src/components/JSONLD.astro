@@ -45,7 +45,17 @@ if (type === "article") {
 		headline: title,
 		description: description,
 		author: {
-			"@id": `${siteUrl}#person`,
+			"@type": "Person",
+			name: siteConfig.author,
+			url: siteUrl,
+		},
+		publisher: {
+			"@type": "Organization",
+			name: siteConfig.title,
+			logo: {
+				"@type": "ImageObject",
+				url: siteConfig.image?.src || `${siteUrl}/logo.png`,
+			},
 		},
 		datePublished: date?.toISOString(),
 		dateModified: updatedDate?.toISOString() || date?.toISOString(),

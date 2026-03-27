@@ -22,6 +22,7 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 
 <PageLayout {title} {description} image={image} pageType="website">
 	<div class="flex w-full flex-col gap-y-12">
+		<h1 class="sr-only">{title}</h1>
 		<div class="flex w-full flex-col">
 			<BlogTabs {activeTab} />
 
