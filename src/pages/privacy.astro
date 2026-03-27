@@ -1,0 +1,49 @@
+---
+import Section from "@/components/Section.astro";
+import PageLayout from "@/layouts/BaseLayout.astro";
+---
+
+<PageLayout
+	title="Privacy Policy"
+	description="Privacy operations and data tracking policy for khoirul.site"
+	pageType="website"
+>
+	<div class="flex w-full flex-col gap-y-10">
+		<div>
+			<h1 class="mb-2 text-2xl font-semibold">Privacy Policy</h1>
+			<p class="text-muted-foreground">
+				Last updated: {
+					new Date().toLocaleDateString("en-US", {
+						year: "numeric",
+						month: "long",
+						day: "numeric",
+					})
+				}
+			</p>
+		</div>
+
+		<div class="flex flex-col gap-y-8">
+			<Section title="1. Information Collection">
+				<p>
+					This website does not directly collect, track, or share any personal data. There are no
+					tracking cookies or invasive analytics scripts affecting visitors.
+				</p>
+			</Section>
+
+			<Section title="2. External Links">
+				<p>
+					Some links on this site may lead to external websites (like GitHub, LinkedIn, or
+					Unsplash). I am not responsible for the privacy practices or content of these external
+					sites.
+				</p>
+			</Section>
+
+			<Section title="3. Contact">
+				<p>
+					If you reach out to me via email or social media, any information you provide will be kept
+					strictly confidential and only used to respond to your inquiry.
+				</p>
+			</Section>
+		</div>
+	</div>
+</PageLayout>

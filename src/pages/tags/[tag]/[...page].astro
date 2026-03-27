@@ -46,8 +46,8 @@ const paginationProps = {
 ---
 
 <PageLayout
-	title=`Tag: ${tag}`
-	description=`View all posts with the tag - ${tag}`
+	title={`Tag: ${tag}${page.currentPage > 1 ? ` - Page ${page.currentPage}` : ""}`}
+	description={`View all posts with the tag - ${tag}${page.currentPage > 1 ? ` - Page ${page.currentPage}` : ""}`}
 	pageType="website"
 >
 	<div class="flex w-full flex-col gap-y-8">

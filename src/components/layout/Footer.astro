@@ -8,12 +8,12 @@ import siteConfig from "@/config/site-config";
 		<div
 			class="flex flex-col items-center gap-y-3 sm:flex sm:flex-row sm:items-center sm:justify-between sm:gap-y-0"
 		>
-			<div class="flex gap-x-4 text-sm">
-				<span class="opacity-65"
-					>2018&nbsp;&mdash;&nbsp;{new Date().getFullYear()}&nbsp;&copy;&nbsp;{
-						siteConfig.author
-					}.</span
-				>
+			<div class="flex items-center gap-x-4 text-sm">
+				<span class="opacity-65">
+					2018&nbsp;&mdash;&nbsp;{new Date().getFullYear()}&nbsp;&copy;&nbsp;{siteConfig.author}.
+				</span>
+				<span class="opacity-65">|</span>
+				<a href="/privacy" class="opacity-65 transition-opacity hover:opacity-100">Privacy</a>
 			</div>
 
 			<SocialLinks />
