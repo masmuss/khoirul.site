@@ -21,8 +21,20 @@ const { navLinks } = siteConfig.header;
 			pictogrammer<span class="text-secondary">.</span>
 		</a>
 		<a class="block flex-none font-mono md:hidden" href="/" aria-label="pictogrammer logo">
-			<Image src={logoLight} alt="pictogrammer logo" class="w-14 dark:hidden" />
-			<Image src={logoDark} alt="pictogrammer logo" class="hidden w-14 dark:block" />
+			<Image
+				src={logoLight}
+				alt="pictogrammer logo"
+				class="w-14 dark:hidden"
+				loading="eager"
+				fetchpriority="high"
+			/>
+			<Image
+				src={logoDark}
+				alt="pictogrammer logo"
+				class="hidden w-14 dark:block"
+				loading="eager"
+				fetchpriority="high"
+			/>
 		</a>
 
 		<!-- Desktop Navigation -->

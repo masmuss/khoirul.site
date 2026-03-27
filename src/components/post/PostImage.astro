@@ -10,14 +10,23 @@ interface Props {
 
 const { src, alt, class: customClass } = Astro.props;
 const isRemote = typeof src === "string";
+
+const optimizedSrc = isRemote
+	? src.includes("unsplash.com") && !src.includes("w=")
+		? `${src}&w=1200&q=80`
+		: src
+	: src;
 ---
 
 <figure class:list={["flex flex-col items-center", customClass]}>
 	{
 		isRemote ? (
 			<img
-				src={src}
+				src={optimizedSrc as string}
 				loading="eager"
+				fetchpriority="high"
+				width="1000"
+				height="500"
 				class="my-8 max-h-75 w-full rounded-lg object-cover md:max-h-100"
 				alt={alt || "Post Image"}
 				decoding="async"
@@ -30,6 +39,7 @@ const isRemote = typeof src === "string";
 				quality={100}
 				format="jpg"
 				loading="eager"
+				fetchpriority="high"
 				class="my-8 max-h-75 w-full rounded-lg object-cover md:max-h-100"
 				alt={alt || "Post Image"}
 				decoding="async"
