@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, render } from "astro:content";
+import Comment from "@/components/features/blog/Comment.astro";
 import RelatedPost from "@/components/features/blog/RelatedPost.astro";
 import TOC from "@/components/features/blog/TOC.astro";
 import PostLayout from "@/layouts/BlogPost.astro";
@@ -44,7 +45,8 @@ const relatedPosts = await getRelatedPosts(post.data.tags, post.data.title, 4);
 			</div>
 		</article>
 	</div>
-	<footer>
+	<footer class="mx-auto mt-16 max-w-3xl">
 		<RelatedPost relatedPosts={relatedPosts} />
+		<Comment />
 	</footer>
 </PostLayout>

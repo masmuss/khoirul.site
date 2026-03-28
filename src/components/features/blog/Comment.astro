@@ -1,35 +1,66 @@
-<section class="mx-auto mt-12">
-	<script
-		is:inline
-		src="https://giscus.app/client.js"
-		data-repo="masmuss/khoirul.site"
-		data-repo-id="R_kgDOPKC8fg"
-		data-category="General"
-		data-category-id="DIC_kwDOPKC8fs4Ct6-3"
-		data-mapping="title"
-		data-strict="0"
-		data-reactions-enabled="1"
-		data-emit-metadata="1"
-		data-input-position="bottom"
-		data-theme="preferred_color_scheme"
-		data-lang="en"
-		data-loading="lazy"
-		crossorigin="anonymous"
-		async></script>
+<section class="mx-auto mt-12 w-full" id="giscus-container">
+	<!-- Giscus will be loaded dynamically with the correct theme here -->
 </section>
 
 <script is:inline>
-	function updateGiscusTheme() {
-		const theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
-		const iframe = document.querySelector("iframe.giscus-frame");
-		if (!iframe) return;
-		iframe.contentWindow.postMessage({ giscus: { setConfig: { theme } } }, "https://giscus.app");
+	function getGiscusTheme() {
+		return document.documentElement.classList.contains("dark") ? "transparent_dark" : "light";
 	}
 
-	const observer = new MutationObserver(updateGiscusTheme);
+	function setGiscusTheme() {
+		const iframe = document.querySelector("iframe.giscus-frame");
+		if (!iframe) return;
+		iframe.contentWindow?.postMessage(
+			{ giscus: { setConfig: { theme: getGiscusTheme() } } },
+			"https://giscus.app",
+		);
+	}
+
+	function loadGiscus() {
+		const container = document.getElementById("giscus-container");
+		// Don't render twice if iframe already exists
+		if (!container || container.querySelector("iframe.giscus-frame")) return;
+
+		const script = document.createElement("script");
+		script.src = "https://giscus.app/client.js";
+		script.setAttribute("data-repo", "masmuss/khoirul.site");
+		script.setAttribute("data-repo-id", "R_kgDOPKC8fg");
+		script.setAttribute("data-category", "General");
+		script.setAttribute("data-category-id", "DIC_kwDOPKC8fs4Ct6-3");
+		script.setAttribute("data-mapping", "title");
+		script.setAttribute("data-strict", "0");
+		script.setAttribute("data-reactions-enabled", "1");
+		script.setAttribute("data-emit-metadata", "0");
+		script.setAttribute("data-input-position", "bottom");
+
+		// Determine the theme with TEPAT before giscus loads the iframe
+		script.setAttribute("data-theme", getGiscusTheme());
+		script.setAttribute("data-lang", "en");
+		script.setAttribute("data-loading", "lazy");
+		script.crossOrigin = "anonymous";
+		script.async = true;
+
+		container.appendChild(script);
+	}
+
+	// Handle initial load (Astro View Transitions compatible)
+	document.addEventListener("astro:page-load", loadGiscus);
+
+	if (document.readyState === "complete" || document.readyState === "interactive") {
+		setTimeout(loadGiscus, 1);
+	} else {
+		document.addEventListener("DOMContentLoaded", loadGiscus);
+	}
+
+	// Observer to listen when the user presses the theme toggle button (ThemeToggle.astro)
+	const observer = new MutationObserver(setGiscusTheme);
 	observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
 
-	window.onload = () => {
-		updateGiscusTheme();
-	};
+	// Fallback synchronization. Sometimes the iframe is slow to respond to the first `postMessage`
+	window.addEventListener("message", (event) => {
+		if (event.origin !== "https://giscus.app") return;
+		if (!(typeof event.data === "object" && event.data.giscus)) return;
+		// Giscus already sent ready/metadata status, make sure the theme is emphasized again
+		setGiscusTheme();
+	});
 </script>
