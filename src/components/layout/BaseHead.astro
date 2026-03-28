@@ -61,7 +61,14 @@ function formatCanonicalURL(url: string | URL) {
 <Font cssVariable="--font-fira-code" />
 
 <!-- Low Priority Global Metadata -->
-<!-- Favicons - SVG with dark mode support -->
+<!-- Favicons - Primary for Google Search & Apple Devices -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+<link rel="manifest" href="/favicon/site.webmanifest" />
+
+<!-- Favicons - Fallback to SVG with dark mode support for modern browsers -->
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" media="(prefers-color-scheme: light)" />
 <link
@@ -70,7 +77,8 @@ function formatCanonicalURL(url: string | URL) {
 	type="image/svg+xml"
 	media="(prefers-color-scheme: dark)"
 />
-<link rel="apple-touch-icon" href="/favicon.svg" />
+
+<!-- Theme Colors -->
 <meta name="theme-color" content="#18181b" media="(prefers-color-scheme: dark)" />
 <meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)" />
 
