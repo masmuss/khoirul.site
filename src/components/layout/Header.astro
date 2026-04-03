@@ -8,30 +8,23 @@ import siteConfig from "@/config/site-config";
 const { navLinks } = siteConfig.header;
 ---
 
-<header class="mb-12 flex w-full flex-wrap py-8 text-sm sm:flex-nowrap sm:justify-start md:py-12">
+<header class="mb-10 flex w-full flex-wrap py-8 text-sm sm:flex-nowrap sm:justify-start md:py-12">
 	<nav
 		class="relative mx-auto flex w-full items-center justify-between sm:flex sm:items-center"
 		aria-label="global"
 	>
-		<a
-			class="hidden flex-none font-mono text-lg font-bold md:block md:text-2xl"
-			href="/"
-			aria-label="pictogrammer."
-		>
-			pictogrammer<span class="text-secondary">.</span>
-		</a>
-		<a class="block flex-none font-mono md:hidden" href="/" aria-label="pictogrammer logo">
+		<a class="flex flex-none" href="/" aria-label="pictogrammer logo">
 			<Image
 				src={logoLight}
 				alt="pictogrammer logo"
-				class="w-14 dark:hidden"
+				class="w-12 md:w-14 lg:w-16 dark:hidden"
 				loading="eager"
 				fetchpriority="high"
 			/>
 			<Image
 				src={logoDark}
 				alt="pictogrammer logo"
-				class="hidden w-14 dark:block"
+				class="hidden w-12 md:w-14 lg:w-16 dark:block"
 				loading="eager"
 				fetchpriority="high"
 			/>
