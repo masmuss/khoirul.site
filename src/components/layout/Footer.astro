@@ -1,22 +1,109 @@
 ---
-import SocialLinks from "@/components/common/SocialLinks.astro";
 import siteConfig from "@/config/site-config";
+
+const navigateLinks = [
+	{ text: "Home", href: "/" },
+	{ text: "Blog", href: "/blog" },
+	{ text: "Projects", href: "/projects" },
+	{ text: "About", href: "/about" },
+];
+
+const connectLinks = [
+	{ text: "GitHub", href: "https://github.com/masmuss", external: true },
+	{ text: "LinkedIn", href: "https://www.linkedin.com/in/masmuss", external: true },
+	{ text: "Twitter", href: "https://x.com/rexbocho", external: true },
+	{ text: "RSS Feed", href: "/rss.xml", external: false },
+];
 ---
 
-<footer class="mt-18 flex w-full flex-col gap-4 pt-6 pb-14 text-sm">
-	<div class="border-seashell-400 border-t pt-5">
+<footer
+	class="mt-18 border-t border-zinc-200/80 bg-zinc-50/70 dark:border-zinc-800/80 dark:bg-zinc-950/40"
+>
+	<div
+		class="mx-auto flex w-full max-w-2xl flex-col gap-4 px-5 pt-12 pb-8 text-sm md:max-w-5xl md:pt-16 lg:px-0"
+	>
+		<div class="mx-auto">
+			<div class="grid grid-cols-1 gap-8 pb-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
+				<div class="space-y-4">
+					<h2 class="text-base font-semibold">{siteConfig.title}</h2>
+					<p class="leading-relaxed text-zinc-600 dark:text-zinc-400">
+						Thoughts, stories, and ideas.
+					</p>
+				</div>
+
+				<div class="space-y-4">
+					<h3
+						class="text-sm font-semibold tracking-widest text-zinc-800 uppercase dark:text-zinc-200"
+					>
+						Navigate
+					</h3>
+					<ul class="space-y-3">
+						{
+							navigateLinks.map((link) => (
+								<li>
+									<a
+										href={link.href}
+										class="text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+									>
+										{link.text}
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+
+				<div class="space-y-4">
+					<h3
+						class="text-sm font-semibold tracking-widest text-zinc-800 uppercase dark:text-zinc-200"
+					>
+						Connect
+					</h3>
+					<ul class="space-y-3">
+						{
+							connectLinks.map((link) => (
+								<li>
+									<a
+										href={link.href}
+										class="text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+										target={link.external ? "_blank" : undefined}
+										rel={link.external ? "noopener noreferrer" : undefined}
+									>
+										{link.text}
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+
+				<div class="space-y-4">
+					<h3
+						class="text-sm font-semibold tracking-widest text-zinc-800 uppercase dark:text-zinc-200"
+					>
+						About
+					</h3>
+					<p class="leading-relaxed text-zinc-600 dark:text-zinc-400">
+						Fullstack notes, visual experiments, and stories behind the lens.
+					</p>
+				</div>
+			</div>
+		</div>
 		<div
-			class="flex flex-col items-center gap-y-3 sm:flex sm:flex-row sm:items-center sm:justify-between sm:gap-y-0"
+			class="mx-auto flex w-full flex-col gap-4 border-t border-zinc-200/80 pt-8 md:flex-row md:items-center md:justify-between dark:border-zinc-800/80"
 		>
-			<div class="flex items-center gap-x-4 text-sm">
-				<span class="opacity-65">
+			<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+				<span class="text-zinc-500 dark:text-zinc-400">
 					2018&nbsp;&mdash;&nbsp;{new Date().getFullYear()}&nbsp;&copy;&nbsp;{siteConfig.author}.
 				</span>
-				<span class="opacity-65">|</span>
-				<a href="/privacy" class="opacity-65 transition-opacity hover:opacity-100">Privacy</a>
+				<span class="text-zinc-500 dark:text-zinc-400">|</span>
+				<a
+					href="/privacy"
+					class="text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+				>
+					Privacy
+				</a>
 			</div>
-
-			<SocialLinks />
 		</div>
 	</div>
 </footer>
