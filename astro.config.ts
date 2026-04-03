@@ -28,8 +28,8 @@ export default defineConfig({
 		},
 		{
 			provider: fontProviders.fontsource(),
-			name: "Fira Code",
-			cssVariable: "--font-fira-code",
+			name: "IBM Plex Mono",
+			cssVariable: "--font-ibm-plex-mono",
 			styles: ["normal", "italic"],
 			fallbacks: ["monospace"],
 			display: "swap",
