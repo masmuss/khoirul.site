@@ -77,14 +77,14 @@
 			--secondary: 0 0% 90.6%;
 			--secondary-foreground: 0 0% 8.6%;
 			--muted: 0 0% 90.6%;
-			--muted-foreground: 0 0% 40%;
+			--muted-foreground: 0 0% 30%;
 			--accent: 0 0% 90.6%;
 			--accent-foreground: 0 0% 8.6%;
 			--destructive: 0 72.22% 50.59%;
 			--destructive-foreground: 0 0% 98%;
 			--border: 0 0% 82%;
 			--input: 0 0% 82%;
-			--ring: 250 100% 75%;
+			--ring: 250 69% 42%;
 		}
 
 		&.dark {
@@ -122,7 +122,11 @@
 	}
 
 	body {
-		@apply bg-background text-foreground;
+		@apply bg-background text-foreground text-base leading-7;
+	}
+
+	a {
+		@apply focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none;
 	}
 }
 
@@ -134,7 +138,7 @@
 		@apply prose dark:prose-invert;
 		@apply prose-headings:font-semibold prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4;
 		@apply prose-th:before:content-none prose-th:after:content-none prose-th:font-semibold prose-th:border-border prose-th:pb-2;
-		@apply prose-td:text-xs md:prose-td:text-sm;
+		@apply prose-td:text-sm md:prose-td:text-base;
 		@apply prose-blockquote:font-sans;
 		@apply prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4;
 		@apply prose-pre:bg-secondary prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:font-mono prose-pre:text-sm;

@@ -36,7 +36,7 @@ const { navLinks } = siteConfig.header;
 				navLinks.map((link) => (
 					<a
 						href={link.href}
-						class="hover:text-foreground/75 flex-none font-medium"
+						class="text-muted-foreground hover:text-foreground flex-none font-medium transition-colors"
 						aria-label={link.text}
 					>
 						{link.text}
@@ -55,7 +55,7 @@ const { navLinks } = siteConfig.header;
 				navLinks.map((link) => (
 					<a
 						href={link.href}
-						class="hover:text-foreground/75 flex items-center p-2 focus:ring-1 focus:ring-offset-1 focus:outline-none"
+						class="text-muted-foreground hover:text-foreground flex items-center p-2 transition-colors focus:ring-1 focus:ring-offset-1 focus:outline-none"
 						aria-label={link.text}
 					>
 						<span class={`iconify ${link.icon}`} />
