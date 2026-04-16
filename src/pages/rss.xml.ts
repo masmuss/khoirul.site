@@ -6,7 +6,7 @@ import { getPostUrl } from "@/lib/utils/post-route";
 
 export async function GET(context: APIContext) {
 	const posts = await getPostsByPath();
-	const site = context.site ?? "https://khoirul.site";
+	const site = context.site ?? "https://khoirul.me";
 
 	return rss({
 		title: siteConfig.title,

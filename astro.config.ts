@@ -13,7 +13,7 @@ import { remarkGithubCard } from "./src/plugins/remark-github-card";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://khoirul.site",
+	site: "https://khoirul.me",
 	trailingSlash: "never",
 	fonts: [
 		{
