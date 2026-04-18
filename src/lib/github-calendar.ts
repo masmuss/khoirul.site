@@ -9,24 +9,112 @@ export type ApiResponse = {
 	contributions: Activity[];
 };
 
+type CacheEntry = {
+	data: Activity[];
+	fetchedAt: number;
+};
+
+type FetchGitHubContributionsOptions = {
+	forceRefresh?: boolean;
+	enableLogging?: boolean;
+};
+
+const GITHUB_CACHE_TTL_MS = 60 * 60 * 1000;
+const GITHUB_STALE_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+const contributionsCache = new Map<string, CacheEntry>();
+const GITHUB_API_BASE_URL = "https://github-contributions-api.jogruber.de/v4/";
+
+export const GITHUB_CACHE_POLICY = {
+	sMaxAge: 60 * 60,
+	staleWhileRevalidate: 24 * 60 * 60,
+} as const;
+
+function getCacheKey(username: string, year: number | "last"): string {
+	return `${username}:${year}`;
+}
+
+function getCachedEntry(cacheKey: string): CacheEntry | undefined {
+	const entry = contributionsCache.get(cacheKey);
+	if (!entry) return undefined;
+
+	const age = Date.now() - entry.fetchedAt;
+	if (age > GITHUB_STALE_CACHE_TTL_MS) {
+		contributionsCache.delete(cacheKey);
+		return undefined;
+	}
+
+	return entry;
+}
+
+function logCacheEvent(enableLogging: boolean, message: string): void {
+	if (!enableLogging) return;
+	console.info(`[github-calendar] ${message}`);
+}
+
+async function fetchFromGitHubApi(username: string, year: number | "last"): Promise<Activity[]> {
+	const response = await fetch(`${GITHUB_API_BASE_URL}${username}?y=${String(year)}`);
+
+	if (!response.ok) {
+		throw new Error(`Failed to fetch GitHub contributions: ${response.statusText}`);
+	}
+
+	const data = (await response.json()) as ApiResponse;
+	return data.contributions || [];
+}
+
 export async function fetchGitHubContributions(
 	username: string,
 	year: number | "last" = "last",
+	options: FetchGitHubContributionsOptions = {},
 ): Promise<Activity[]> {
-	const apiUrl = "https://github-contributions-api.jogruber.de/v4/";
-	const yearParam = String(year);
+	const forceRefresh = options.forceRefresh ?? false;
+	const enableLogging = options.enableLogging ?? false;
+	const queryParams = new URLSearchParams({
+		username,
+		year: String(year),
+	});
+
+	if (forceRefresh) {
+		queryParams.set("force", "1");
+	}
+
+	if (enableLogging) {
+		queryParams.set("log", "1");
+	}
+
+	const cacheKey = getCacheKey(username, year);
+	const cachedEntry = getCachedEntry(cacheKey);
+
+	if (cachedEntry && Date.now() - cachedEntry.fetchedAt < GITHUB_CACHE_TTL_MS && !forceRefresh) {
+		logCacheEvent(enableLogging, `cache hit for ${cacheKey}`);
+		return cachedEntry.data;
+	}
+
+	if (forceRefresh) {
+		logCacheEvent(enableLogging, `force refresh requested for ${cacheKey}`);
+	} else {
+		logCacheEvent(enableLogging, `cache miss for ${cacheKey}`);
+	}
 
 	try {
-		const response = await fetch(`${apiUrl}${username}?y=${yearParam}`);
-
-		if (!response.ok) {
-			throw new Error(`Failed to fetch GitHub contributions: ${response.statusText}`);
-		}
-
-		const data = (await response.json()) as ApiResponse;
-		return data.contributions || [];
+		const contributions = await fetchFromGitHubApi(username, year);
+		contributionsCache.set(cacheKey, { data: contributions, fetchedAt: Date.now() });
+		logCacheEvent(
+			enableLogging,
+			`cache updated for ${cacheKey} with ${contributions.length} entries`,
+		);
+		return contributions;
 	} catch (error) {
 		console.error("Error fetching GitHub contributions:", error);
+
+		if (cachedEntry) {
+			console.warn("Using stale GitHub contribution cache after fetch failure");
+			logCacheEvent(enableLogging, `serving stale cache for ${cacheKey}`);
+			return cachedEntry.data;
+		}
+
+		logCacheEvent(enableLogging, `no cache fallback available for ${cacheKey}`);
+
 		return [];
 	}
 }

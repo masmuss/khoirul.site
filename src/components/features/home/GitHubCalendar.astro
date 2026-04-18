@@ -94,7 +94,7 @@ function getColorForLevel(level: number): { light: string; dark: string } {
 	};
 }
 
-const svgWidth = weeks.length * (blockSize + blockMargin) - blockMargin;
+const svgWidth = Math.max(blockSize, weeks.length * (blockSize + blockMargin) - blockMargin);
 const svgHeight = 7 * (blockSize + blockMargin) - blockMargin;
 const topPadding = showMonthLabels ? blockSize + 8 : 0;
 ---
@@ -118,7 +118,7 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 		<svg
 			class="mb-2"
 			width="100%"
-			height="auto"
+			height="100%"
 			viewBox={`0 0 ${svgWidth} ${svgHeight + topPadding}`}
 			preserveAspectRatio="xMidYMid meet"
 			xmlns="http://www.w3.org/2000/svg"
@@ -148,9 +148,6 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 						const x = weekIndex * (blockSize + blockMargin);
 						const y = topPadding + dayIndex * (blockSize + blockMargin);
 						const level = activity?.level ?? 0;
-						const tooltipText = activity
-							? `${activity.count} contributions on ${formatDate(activity.date)}`
-							: "No data";
 
 						return (
 							<rect
@@ -160,13 +157,11 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 								height={blockSize}
 								rx="2"
 								ry="2"
-								class={`calendar-level-${level} cursor-help transition-opacity hover:opacity-80`}
+								class={`calendar-level-${level} transition-opacity hover:opacity-80`}
 								data-date={activity?.date ?? ""}
 								data-count={activity?.count ?? 0}
 								data-level={level}
-							>
-								<title>{tooltipText}</title>
-							</rect>
+							/>
 						);
 					}),
 				)
@@ -176,7 +171,7 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 		<!-- Stats -->
 		{
 			showTotalCount && (
-				<div class="text-muted-foreground mt-4 flex flex-row items-center justify-between gap-1 text-xs">
+				<div class="text-muted-foreground mt-4 flex flex-col items-center justify-between gap-1 text-xs md:flex-row">
 					<p>
 						<strong>{totalCount}</strong> contributions in {yearLabel}
 					</p>
