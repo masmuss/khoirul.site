@@ -8,11 +8,9 @@ import Section from "@/components/ui/Section.astro";
 import AboutContent from "@/content/pages/about.md";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import TECH_STACK from "@/lib/constants/tech-stack";
-import { getAllCertifications, getAllEducations, getAllExperiences } from "@/lib/contents";
+import { getAboutPageData } from "@/lib/contents";
 
-const experiences = await getAllExperiences();
-const educations = await getAllEducations();
-const certifications = await getAllCertifications();
+const { experiences, educations, certifications } = await getAboutPageData();
 ---
 
 <PageLayout

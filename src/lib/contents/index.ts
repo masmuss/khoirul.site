@@ -1,3 +1,4 @@
+export * from "./about";
 export * from "./certifications";
 export * from "./educations";
 export * from "./experiences";
