@@ -15,13 +15,12 @@ export async function getAllPosts(limit?: number) {
 	return limit ? sortedPosts.slice(0, limit) : sortedPosts;
 }
 
-export async function getRelatedPosts(
+export function getRelatedPosts(
+	posts: CollectionPosts[],
 	tags: string[],
 	title: string,
 	limit = 3,
-): Promise<CollectionPosts[]> {
-	const posts = await getAllPosts();
-
+): CollectionPosts[] {
 	return posts
 		.filter((post) => {
 			const hasMatchingTags = post.data.tags.some((tag) => tags.includes(tag));

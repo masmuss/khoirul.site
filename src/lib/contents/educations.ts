@@ -1,12 +1,6 @@
-import { getEntry } from "astro:content";
 import type { Education } from "@/types";
+import { getContentEntryData } from "./loader";
 
 export async function getAllEducations(): Promise<Education[]> {
-	const educationsEntry = await getEntry("educations", "index");
-
-	if (!educationsEntry) {
-		throw new Error("Missing educations content at src/content/educations/index.json");
-	}
-
-	return educationsEntry.data;
+	return getContentEntryData<Education[]>("educations");
 }

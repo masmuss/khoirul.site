@@ -23,45 +23,40 @@ const certifications = await getAllCertifications();
 >
 	<div class="flex w-full flex-col gap-y-10">
 		<h1 class="sr-only">About Khoirul Fattah</h1>
-		<!-- Header with Photo -->
 		<Section title="About Me">
-			<section class="flex flex-col gap-8 md:flex-row md:items-start">
-				<div class="shrink-0">
-					<div class="custom-prose max-w-none">
-						<AboutContent />
-					</div>
-				</div>
-			</section>
+			<div class="custom-prose max-w-none">
+				<AboutContent />
+			</div>
+		</Section>
 
-			<Experiences experiences={experiences} />
+		<Experiences experiences={experiences} />
 
-			<Educations educations={educations} />
+		<Educations educations={educations} />
 
-			<Certifications certifications={certifications} />
+		<Certifications certifications={certifications} />
 
-			<Section title="Tech Stack">
-				<div class="flex flex-col gap-y-10">
-					{
-						TECH_STACK.map((stack) => (
-							<ToolSection
-								class="grid-cols-2 md:grid-cols-3"
-								title={stack.title}
-								tools={stack.skills}
-							/>
-						))
-					}
-				</div>
-			</Section>
+		<Section title="Tech Stack">
+			<div class="flex flex-col gap-y-10">
+				{
+					TECH_STACK.map((stack) => (
+						<ToolSection
+							class="grid-cols-2 md:grid-cols-3"
+							title={stack.title}
+							tools={stack.skills}
+						/>
+					))
+				}
+			</div>
+		</Section>
 
-			<Section title="Get in Touch">
-				<div class="text-muted-foreground flex flex-col gap-y-4">
-					<p>
-						Feel free to reach out if you want to collaborate, have a project in mind, or just want
-						to say hi!
-					</p>
-					<SocialLinks variant="button" showEmail />
-				</div>
-			</Section>
+		<Section title="Get in Touch">
+			<div class="text-muted-foreground flex flex-col gap-y-4">
+				<p>
+					Feel free to reach out if you want to collaborate, have a project in mind, or just want to
+					say hi!
+				</p>
+				<SocialLinks variant="button" showEmail />
+			</div>
 		</Section>
 	</div>
 </PageLayout>
