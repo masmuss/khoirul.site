@@ -23,24 +23,29 @@
 	--font-mono: var(--font-ibm-plex-mono);
 	--container-2xl: 1400px;
 
-	/* Dracula Pro Palette - Base Colors */
-	--color-dracula-bg: #151417;
-	--color-dracula-fg: #f8f8f2;
-	--color-dracula-selection: #44475a;
-	--color-dracula-comment: #6272a4;
-	--color-dracula-cyan: #80ffea;
-	--color-dracula-green: #8aff80;
-	--color-dracula-orange: #ffca80;
-	--color-dracula-pink: #ff80bf;
-	--color-dracula-purple: #9580ff;
-	--color-dracula-red: #ff9580;
-	--color-dracula-yellow: #ffff80;
+	/* Flexoki accents (400 for light mode, 600 for dark mode use-cases) */
+	--color-flexoki-red-400: #d14d41;
+	--color-flexoki-red-600: #af3029;
+	--color-flexoki-orange-400: #da702c;
+	--color-flexoki-orange-600: #bc5215;
+	--color-flexoki-yellow-400: #d0a215;
+	--color-flexoki-yellow-600: #ad8301;
+	--color-flexoki-green-400: #879a39;
+	--color-flexoki-green-600: #66800b;
+	--color-flexoki-cyan-400: #3aa99f;
+	--color-flexoki-cyan-600: #24837b;
+	--color-flexoki-blue-400: #4385be;
+	--color-flexoki-blue-600: #205ea6;
+	--color-flexoki-purple-400: #8b7ec8;
+	--color-flexoki-purple-600: #5e409d;
+	--color-flexoki-magenta-400: #ce5d97;
+	--color-flexoki-magenta-600: #a02f6f;
 
 	/* Semantic colors mapping */
 	--color-border: hsl(var(--border) / 0.8);
 	--color-input: hsl(var(--input));
 	--color-ring: hsl(var(--ring));
-	--color-background: hsl(var(--background));
+	--color-background: var(--background);
 	--color-foreground: hsl(var(--foreground));
 	--color-primary: hsl(var(--primary));
 	--color-primary-foreground: hsl(var(--primary-foreground));
@@ -66,54 +71,48 @@
 		color-scheme: light;
 
 		&:not(.dark) {
-			--background: 0 0% 96.5%;
-			--foreground: 0 0% 8.6%;
-			--card: 0 0% 100%;
-			--card-foreground: 0 0% 8.6%;
-			--popover: 0 0% 100%;
-			--popover-foreground: 0 0% 8.6%;
-			--primary: 250 100% 75%;
-			--primary-foreground: 0 0% 98%;
-			--secondary: 0 0% 90.6%;
-			--secondary-foreground: 0 0% 8.6%;
-			--muted: 0 0% 90.6%;
-			--muted-foreground: 0 0% 30%;
-			--accent: 0 0% 90.6%;
-			--accent-foreground: 0 0% 8.6%;
-			--destructive: 0 72.22% 50.59%;
-			--destructive-foreground: 0 0% 98%;
-			--border: 0 0% 82%;
-			--input: 0 0% 82%;
-			--ring: 250 69% 42%;
+			--background: #fffcf0;
+			--foreground: 0 3% 6%;
+			--card: 48 100% 97%;
+			--card-foreground: 0 3% 6%;
+			--popover: 48 100% 97%;
+			--popover-foreground: 0 3% 6%;
+			--primary: 0 3% 6%;
+			--primary-foreground: 48 100% 97%;
+			--secondary: 50 14% 83%;
+			--secondary-foreground: 50 3% 42%;
+			--muted: 51 33% 92%;
+			--muted-foreground: 50 3% 42%;
+			--accent: 51 21% 88%;
+			--accent-foreground: 50 3% 42%;
+			--destructive: 3 62% 42%;
+			--destructive-foreground: 48 100% 97%;
+			--border: 50 14% 83%;
+			--input: 50 14% 83%;
+			--ring: 55 10% 79%;
 		}
 
 		&.dark {
 			color-scheme: dark;
-			/* Dracula Pro Implementation (Converted HEX to HSL) */
-			--background: 260 6% 8%; /* #151417 */
-			--foreground: 60 30% 96%; /* #f8f8f2 */
-			--card: 260 6% 12%;
-			--card-foreground: 60 30% 96%;
-			--popover: 260 6% 10%;
-			--popover-foreground: 60 30% 96%;
-			--primary: 250 100% 75%; /* #9580ff (Purple) */
-			--primary-foreground: 260 6% 8%;
-			--secondary: 231 14% 31%; /* #44475a (Selection) */
-			--secondary-foreground: 60 30% 96%;
-			--muted: 225 27% 51%; /* #6272a4 (Comment) */
-			--muted-foreground: 225 27% 85%;
-			--accent: 231 14% 31%; /* #44475a */
-			--accent-foreground: 60 30% 96%;
-			--destructive: 9 100% 75%; /* #ff9580 (Red) */
-			--destructive-foreground: 260 6% 8%;
-			--border: 240 6% 20%; /* #212024 (Hover/Darker border) */
-			--input: 240 6% 20%;
-			--ring: 250 100% 75%;
-
-			/* Icon theming - dark mode */
-			--nextjs-logo-color: #f8f8f2;
-			--jetbrains-text: #f8f8f2;
-			--better-auth-inner: #151417;
+			--background: #100f0f;
+			--foreground: 55 10% 79%;
+			--card: 0 3% 6%;
+			--card-foreground: 55 10% 79%;
+			--popover: 0 3% 6%;
+			--popover-foreground: 55 10% 79%;
+			--primary: 55 10% 79%;
+			--primary-foreground: 0 3% 6%;
+			--secondary: 40 3% 20%;
+			--secondary-foreground: 43 3% 52%;
+			--muted: 30 4% 11%;
+			--muted-foreground: 43 3% 52%;
+			--accent: 30 3% 15%;
+			--accent-foreground: 43 3% 52%;
+			--destructive: 5 61% 54%;
+			--destructive-foreground: 0 3% 6%;
+			--border: 40 3% 20%;
+			--input: 40 3% 20%;
+			--ring: 30 3% 24%;
 		}
 	}
 
