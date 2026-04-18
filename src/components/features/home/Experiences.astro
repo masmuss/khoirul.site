@@ -1,5 +1,4 @@
 ---
-import Card from "@/components/ui/Card.astro";
 import Section from "@/components/ui/Section.astro";
 import type { Experience } from "@/types";
 
@@ -7,23 +6,138 @@ interface Props {
 	experiences: Experience[];
 }
 
+type ExperienceOrgGroup = {
+	company: string;
+	location?: string;
+	kind?: Experience["kind"];
+	umbrellaOrg?: string;
+	positions: Experience[];
+};
+
 const { experiences }: Props = Astro.props;
+
+function getEndSortValue(period: string): number {
+	if (/present/i.test(period)) {
+		return 999999;
+	}
+
+	const dates = period.match(/(\d{4})/g);
+	if (dates && dates.length > 0) {
+		return Number(dates[dates.length - 1]);
+	}
+
+	return 0;
+}
+
+const groupedByCompany = Array.from(
+	experiences
+		.reduce((acc, experience) => {
+			const existing = acc.get(experience.company);
+
+			if (!existing) {
+				acc.set(experience.company, {
+					company: experience.company,
+					location: experience.location,
+					kind: experience.kind,
+					umbrellaOrg: experience.umbrellaOrg,
+					positions: [experience],
+				});
+				return acc;
+			}
+
+			existing.positions.push(experience);
+			if (!existing.location && experience.location) {
+				existing.location = experience.location;
+			}
+			if (!existing.kind && experience.kind) {
+				existing.kind = experience.kind;
+			}
+			if (!existing.umbrellaOrg && experience.umbrellaOrg) {
+				existing.umbrellaOrg = experience.umbrellaOrg;
+			}
+
+			return acc;
+		}, new Map<string, ExperienceOrgGroup>())
+		.values(),
+)
+	.map((organization) => ({
+		...organization,
+		positions: [...organization.positions].sort(
+			(a, b) => getEndSortValue(b.period) - getEndSortValue(a.period),
+		),
+	}))
+	.sort(
+		(a, b) =>
+			getEndSortValue(b.positions[0]?.period ?? "") - getEndSortValue(a.positions[0]?.period ?? ""),
+	);
 ---
 
 <Section title="Experience">
-	{
-		experiences.map((experience) => (
-			<Card
-				heading={experience.title}
-				subheading={`${experience.company} · ${experience.location}`}
-				date={experience.period}
-			>
-				<ul class="text-muted-foreground ml-4 list-disc">
-					{experience.highlights.map((highlight) => (
-						<li>{highlight}</li>
-					))}
-				</ul>
-			</Card>
-		))
-	}
+	<div class="relative pl-6 md:pl-8">
+		<div class="bg-border absolute top-0 bottom-0 left-0 w-px" aria-hidden="true"></div>
+
+		{
+			groupedByCompany.map((organization) => (
+				<article class="relative pb-8 last:pb-0">
+					<div
+						class="bg-primary absolute top-2 -left-7 h-2.5 w-2.5 rounded-full md:-left-9"
+						aria-hidden="true"
+					/>
+
+					<header class="space-y-1">
+						<div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+							<h3 class="leading-tight font-semibold">{organization.company}</h3>
+							{organization.kind === "campus" && organization.umbrellaOrg && (
+								<span class="text-muted-foreground rounded-full border px-2 py-0.5 text-[11px]">
+									Campus Experience · {organization.umbrellaOrg}
+								</span>
+							)}
+						</div>
+						<p class="text-muted-foreground text-sm leading-relaxed">
+							{organization.location ?? "Remote"}
+							<span aria-hidden="true"> · </span>
+							{organization.positions.length} role{organization.positions.length > 1 ? "s" : ""}
+						</p>
+					</header>
+
+					<div class="mt-4 space-y-3">
+						{organization.positions.map((position) => (
+							<div class="border-border/60 border-l pl-4">
+								<div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+									<div class="min-w-0">
+										<h4 class="text-base leading-tight font-medium">{position.title}</h4>
+										<p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+											{position.summary ?? position.highlights[0]}
+										</p>
+									</div>
+									<span class="text-muted-foreground inline-flex w-fit shrink-0 text-xs font-medium">
+										{position.period}
+									</span>
+								</div>
+
+								{position.skills && position.skills.length > 0 && (
+									<p class="text-muted-foreground mt-2 text-xs leading-relaxed">
+										Tech: {position.skills.join(" · ")}
+									</p>
+								)}
+
+								{position.highlights.length > 0 && (
+									<details class="mt-2">
+										<summary class="text-muted-foreground cursor-pointer text-xs">
+											Show details
+										</summary>
+										<ul class="text-muted-foreground mt-2 ml-4 list-disc space-y-1.5 text-sm leading-relaxed">
+											{position.highlights.map((highlight) => (
+												<li>{highlight}</li>
+											))}
+										</ul>
+									</details>
+								)}
+							</div>
+						))}
+					</div>
+				</article>
+			))
+		}
+	</div>
 </Section>

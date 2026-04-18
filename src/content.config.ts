@@ -49,4 +49,22 @@ const series = defineCollection({
 	}),
 });
 
-export const collections = { post, series };
+const experiences = defineCollection({
+	loader: glob({ pattern: "**/**/*.json", base: "./src/content/experiences" }),
+	schema: z.array(
+		z.object({
+			id: z.string(),
+			period: z.string(),
+			title: z.string(),
+			company: z.string(),
+			location: z.string().optional(),
+			kind: z.enum(["professional", "campus"]).optional(),
+			umbrellaOrg: z.string().optional(),
+			summary: z.string().optional(),
+			skills: z.array(z.string()).optional(),
+			highlights: z.array(z.string()),
+		}),
+	),
+});
+
+export const collections = { post, series, experiences };

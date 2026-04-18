@@ -25,10 +25,15 @@ export type ProjectCollection = {
 };
 
 export type Experience = {
+	id: string;
 	period: string;
 	title: string;
 	company: string;
 	location?: string;
+	kind?: "professional" | "campus";
+	umbrellaOrg?: string;
+	summary?: string;
+	skills?: string[];
 	highlights: string[];
 };
 

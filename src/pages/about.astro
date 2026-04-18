@@ -10,8 +10,10 @@ import Section from "@/components/ui/Section.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { certifications } from "@/lib/constants/certifications";
 import { educations } from "@/lib/constants/educations";
-import { experiences } from "@/lib/constants/experiences";
 import TECH_STACK from "@/lib/constants/tech-stack";
+import { getAllExperiences } from "@/lib/contents";
+
+const experiences = await getAllExperiences();
 ---
 
 <PageLayout

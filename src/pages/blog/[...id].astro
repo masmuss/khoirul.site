@@ -4,7 +4,7 @@ import Comment from "@/components/features/blog/Comment.astro";
 import RelatedPost from "@/components/features/blog/RelatedPost.astro";
 import TOC from "@/components/features/blog/TOC.astro";
 import PostLayout from "@/layouts/BlogPost.astro";
-import { getRelatedPosts } from "@/lib/utils/post";
+import { getRelatedPosts } from "@/lib/contents/post";
 import { getPostRouteId } from "@/lib/utils/post-route";
 import type { CollectionPosts } from "@/types";
 
@@ -13,7 +13,7 @@ type Props = {
 };
 
 export async function getStaticPaths() {
-	const { getAllPosts } = await import("@/lib/utils/post");
+	const { getAllPosts } = await import("@/lib/contents/post");
 	const posts = await getAllPosts();
 	return posts.map((post: CollectionPosts) => ({
 		params: { id: getPostRouteId(post) },
