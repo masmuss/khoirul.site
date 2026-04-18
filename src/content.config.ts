@@ -1,6 +1,12 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
-import { experiencesSchema, postSchema, seriesSchema } from "@/lib/contents/schemas";
+import {
+	certificationsSchema,
+	educationsSchema,
+	experiencesSchema,
+	postSchema,
+	seriesSchema,
+} from "@/lib/contents/schemas";
 
 const post = defineCollection({
 	loader: glob({ pattern: "**/**/*.{md,mdx}", base: "./src/content/post" }),
@@ -17,4 +23,14 @@ const experiences = defineCollection({
 	schema: experiencesSchema,
 });
 
-export const collections = { post, series, experiences };
+const educations = defineCollection({
+	loader: glob({ pattern: "**/**/*.json", base: "./src/content/educations" }),
+	schema: educationsSchema,
+});
+
+const certifications = defineCollection({
+	loader: glob({ pattern: "**/**/*.json", base: "./src/content/certifications" }),
+	schema: certificationsSchema,
+});
+
+export const collections = { post, series, experiences, educations, certifications };

@@ -53,7 +53,9 @@
 		"umbrellaOrg": "PENS",
 		"summary": "Built a productivity app for web and mobile with mind mapping capabilities.",
 		"skills": ["Fullstack", "Web", "Mobile"],
-		"highlights": ["Built a mind mapping productivity app for mobile and web platforms"]
+		"highlights": [
+			"Built a mind mapping productivity app for mobile and web platforms"
+		]
 	},
 	{
 		"id": "pens-aquaculture-fullstack-developer",
@@ -65,7 +67,9 @@
 		"umbrellaOrg": "PENS",
 		"summary": "Developed monitoring tools for IoT-based aquaculture operations.",
 		"skills": ["IoT", "Web", "Monitoring"],
-		"highlights": ["Developed web-based monitoring for IoT-enabled shrimp farming"]
+		"highlights": [
+			"Developed web-based monitoring for IoT-enabled shrimp farming"
+		]
 	},
 	{
 		"id": "himit-backend-developer",
@@ -77,7 +81,9 @@
 		"umbrellaOrg": "PENS",
 		"summary": "Built backend systems for student organization digital elections.",
 		"skills": ["Backend", "API", "Auth"],
-		"highlights": ["Created an online election platform for campus student organization elections"]
+		"highlights": [
+			"Created an online election platform for campus student organization elections"
+		]
 	},
 	{
 		"id": "ent-fullstack-developer",

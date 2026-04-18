@@ -56,3 +56,24 @@ export const experiencesSchema = z.array(
 		highlights: z.array(z.string()),
 	}),
 );
+
+export const educationsSchema = z.array(
+	z.object({
+		period: z.string(),
+		institution: z.string(),
+		degree: z.string(),
+		gpa: z.string().optional(),
+		coursework: z.array(z.string()),
+	}),
+);
+
+export const certificationsSchema = z.array(
+	z.object({
+		title: z.string(),
+		issuer: z.string(),
+		date: z.string(),
+		expiredDate: z.string().optional(),
+		credentialUrl: z.string().url().optional(),
+		description: z.string().optional(),
+	}),
+);

@@ -1,19 +1,18 @@
 ---
-import { Image } from "astro:assets";
-import profileImage from "@/assets/images/profile.webp";
 import SocialLinks from "@/components/common/SocialLinks.astro";
 import Certifications from "@/components/features/home/Certifications.astro";
 import Educations from "@/components/features/home/Educations.astro";
 import Experiences from "@/components/features/home/Experiences.astro";
 import ToolSection from "@/components/features/tools/ToolSection.astro";
 import Section from "@/components/ui/Section.astro";
+import AboutContent from "@/content/pages/about.md";
 import PageLayout from "@/layouts/BaseLayout.astro";
-import { certifications } from "@/lib/constants/certifications";
-import { educations } from "@/lib/constants/educations";
 import TECH_STACK from "@/lib/constants/tech-stack";
-import { getAllExperiences } from "@/lib/contents";
+import { getAllCertifications, getAllEducations, getAllExperiences } from "@/lib/contents";
 
 const experiences = await getAllExperiences();
+const educations = await getAllEducations();
+const certifications = await getAllCertifications();
 ---
 
 <PageLayout
@@ -28,84 +27,41 @@ const experiences = await getAllExperiences();
 		<Section title="About Me">
 			<section class="flex flex-col gap-8 md:flex-row md:items-start">
 				<div class="shrink-0">
-					<Image
-						src={profileImage}
-						alt="Khoirul Fattah"
-						width={248}
-						height={248}
-						loading="eager"
-						fetchpriority="high"
-						class="aspect-square rounded-2xl object-cover md:aspect-3/4"
-					/>
-				</div>
-				<div class="flex flex-col gap-y-4">
-					<div class="flex flex-col gap-y-2">
-						<p>
-							Hey, I am <span class="font-semibold">Khoirul</span>, a full stack developer and
-							photography enthusiast.
-						</p>
-						<p>
-							Building applications that are seamless, functional, and user-friendly. Occasionally
-							sharing thoughts on Web Development, Photography, and Tech Insights.
-						</p>
-						<p>
-							Dreaming up ideas and making them come to life is where my passion lies. You can find
-							my <a
-								href="/projects"
-								class="text-primary hover:text-foreground underline underline-offset-2"
-								>full projects list here</a
-							>. I also explore the art of photography, capturing moments and visual stories on <a
-								href="https://www.instagram.com/khoe__rul"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="text-primary hover:text-foreground underline underline-offset-2">Instagram</a
-							>.
-						</p>
-						<p>
-							I write <a
-								href="/blog"
-								class="text-primary hover:text-foreground underline underline-offset-2"
-								>blog posts</a
-							> about coding, creativity, and my experiences. If you enjoy reading about tech or want
-							to follow along, feel free to check them out.
-						</p>
-						<p>
-							Outside of coding and photography, I'm always eager to learn new things, collaborate
-							on projects, or just chat over coffee.
-						</p>
+					<div class="custom-prose max-w-none">
+						<AboutContent />
 					</div>
 				</div>
 			</section>
-		</Section>
 
-		<Experiences experiences={experiences} />
+			<Experiences experiences={experiences} />
 
-		<Educations educations={educations} />
+			<Educations educations={educations} />
 
-		<Certifications certifications={certifications} />
+			<Certifications certifications={certifications} />
 
-		<Section title="Tech Stack">
-			<div class="flex flex-col gap-y-10">
-				{
-					TECH_STACK.map((stack) => (
-						<ToolSection
-							class="grid-cols-2 md:grid-cols-3"
-							title={stack.title}
-							tools={stack.skills}
-						/>
-					))
-				}
-			</div>
-		</Section>
+			<Section title="Tech Stack">
+				<div class="flex flex-col gap-y-10">
+					{
+						TECH_STACK.map((stack) => (
+							<ToolSection
+								class="grid-cols-2 md:grid-cols-3"
+								title={stack.title}
+								tools={stack.skills}
+							/>
+						))
+					}
+				</div>
+			</Section>
 
-		<Section title="Get in Touch">
-			<div class="text-muted-foreground flex flex-col gap-y-4">
-				<p>
-					Feel free to reach out if you want to collaborate, have a project in mind, or just want to
-					say hi!
-				</p>
-				<SocialLinks variant="button" showEmail />
-			</div>
+			<Section title="Get in Touch">
+				<div class="text-muted-foreground flex flex-col gap-y-4">
+					<p>
+						Feel free to reach out if you want to collaborate, have a project in mind, or just want
+						to say hi!
+					</p>
+					<SocialLinks variant="button" showEmail />
+				</div>
+			</Section>
 		</Section>
 	</div>
 </PageLayout>
