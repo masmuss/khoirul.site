@@ -68,6 +68,8 @@
 @layer base {
 	html {
 		scroll-behavior: smooth;
+		font-size: 100%;
+		-webkit-text-size-adjust: 100%;
 		color-scheme: light;
 
 		&:not(.dark) {
@@ -80,11 +82,11 @@
 			--primary: 0 3% 6%;
 			--primary-foreground: 48 100% 97%;
 			--secondary: 50 14% 83%;
-			--secondary-foreground: 50 3% 42%;
+			--secondary-foreground: 50 6% 30%;
 			--muted: 51 33% 92%;
 			--muted-foreground: 50 3% 42%;
 			--accent: 51 21% 88%;
-			--accent-foreground: 50 3% 42%;
+			--accent-foreground: 50 6% 30%;
 			--destructive: 3 62% 42%;
 			--destructive-foreground: 48 100% 97%;
 			--border: 50 14% 83%;
@@ -103,11 +105,11 @@
 			--primary: 55 10% 79%;
 			--primary-foreground: 0 3% 6%;
 			--secondary: 40 3% 20%;
-			--secondary-foreground: 43 3% 52%;
+			--secondary-foreground: 50 8% 72%;
 			--muted: 30 4% 11%;
-			--muted-foreground: 43 3% 52%;
+			--muted-foreground: 50 8% 72%;
 			--accent: 30 3% 15%;
-			--accent-foreground: 43 3% 52%;
+			--accent-foreground: 50 8% 72%;
 			--destructive: 5 61% 54%;
 			--destructive-foreground: 0 3% 6%;
 			--border: 40 3% 20%;
@@ -122,6 +124,10 @@
 
 	body {
 		@apply bg-background text-foreground text-base leading-7;
+	}
+
+	:where(p, li, dd, dt, figcaption) {
+		line-height: 1.6;
 	}
 
 	a {
