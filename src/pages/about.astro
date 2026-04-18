@@ -3,14 +3,31 @@ import SocialLinks from "@/components/common/SocialLinks.astro";
 import Certifications from "@/components/features/home/Certifications.astro";
 import Educations from "@/components/features/home/Educations.astro";
 import Experiences from "@/components/features/home/Experiences.astro";
-import ToolSection from "@/components/features/tools/ToolSection.astro";
+import GitHubCalendar from "@/components/features/home/GitHubCalendar.astro";
+import SkillsTabs from "@/components/features/home/SkillsTabs.astro";
+import AsideListPanel from "@/components/ui/AsideListPanel.astro";
 import Section from "@/components/ui/Section.astro";
+import siteConfig from "@/config/site-config";
 import AboutContent from "@/content/pages/about.md";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import TECH_STACK from "@/lib/constants/tech-stack";
 import { getAboutPageData } from "@/lib/contents";
 
 const { experiences, educations, certifications } = await getAboutPageData();
+const currentWork = experiences.slice(0, 1);
+
+const currentWorkItems = currentWork.map((work) => ({
+	title: work.title,
+	meta: work.company,
+}));
+
+const githubProfile = siteConfig.socialLinks.find((social) => social.text === "GitHub")?.href;
+const githubUsername = githubProfile?.split("/").filter(Boolean).at(-1) ?? "masmuss";
+
+const githubCalendarTheme = {
+	light: ["rgba(235, 237, 240, 0.4)", "#c6e48b", "#7bc96f", "#239a3b", "#196127"],
+	dark: ["rgba(22, 27, 34, 0.8)", "#0e4429", "#006d32", "#26a641", "#39d353"],
+} as const;
 ---
 
 <PageLayout
@@ -21,10 +38,34 @@ const { experiences, educations, certifications } = await getAboutPageData();
 >
 	<div class="flex w-full flex-col gap-y-10">
 		<h1 class="sr-only">About Khoirul Fattah</h1>
-		<Section title="About Me">
-			<div class="custom-prose max-w-none">
-				<AboutContent />
+
+		<div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-[minmax(0,5fr)_256px] lg:gap-10">
+			<div class="flex flex-col gap-y-10">
+				<Section title="About Me">
+					<div class="prose-sm prose-a:underline max-w-none underline-offset-2">
+						<AboutContent />
+					</div>
+				</Section>
+
+				<Section title="Contribution Activity">
+					<GitHubCalendar
+						username={githubUsername}
+						blockSize={10}
+						blockMargin={2}
+						showMonthLabels={true}
+						year="last"
+						theme={githubCalendarTheme}
+					/>
+				</Section>
 			</div>
+
+			<aside class="flex flex-col gap-6">
+				<AsideListPanel title="Current Work" items={currentWorkItems} />
+			</aside>
+		</div>
+
+		<Section title="Skills">
+			<SkillsTabs collections={TECH_STACK} />
 		</Section>
 
 		<Experiences experiences={experiences} />
@@ -32,20 +73,6 @@ const { experiences, educations, certifications } = await getAboutPageData();
 		<Educations educations={educations} />
 
 		<Certifications certifications={certifications} />
-
-		<Section title="Tech Stack">
-			<div class="flex flex-col gap-y-10">
-				{
-					TECH_STACK.map((stack) => (
-						<ToolSection
-							class="grid-cols-2 md:grid-cols-3"
-							title={stack.title}
-							tools={stack.skills}
-						/>
-					))
-				}
-			</div>
-		</Section>
 
 		<Section title="Get in Touch">
 			<div class="text-muted-foreground flex flex-col gap-y-4">
