@@ -126,7 +126,7 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 							x={entry.centerX}
 							y={blockSize * 0.7}
 							class="calendar-month-label"
-							font-size="12"
+							font-size="11"
 							font-weight="400"
 							text-anchor="middle"
 							dominant-baseline="middle"
@@ -170,20 +170,16 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 					<p>
 						<strong>{totalCount}</strong> contributions in {yearLabel}
 					</p>
-					<div class="flex items-center gap-2">
+					<div class="flex items-center gap-3">
 						<span>Less</span>
-						{[0, 1, 2, 3, 4].map((level) => {
-							const colors = getColorForLevel(level);
-							return (
+						<div class="flex items-center space-x-1">
+							{[0, 1, 2, 3, 4].map((level) => (
 								<div
-									class="h-3 w-3 rounded"
-									style={{
-										backgroundColor: colors.dark,
-									}}
+									class={`calendar-legend-level-${level} h-3 w-3 rounded`}
 									title={`Level ${level}`}
 								/>
-							);
-						})}
+							))}
+						</div>
 						<span>More</span>
 					</div>
 				</div>
@@ -241,6 +237,46 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 
 	:global(.dark) .calendar-level-4 {
 		fill: var(--calendar-level-4-dark);
+	}
+
+	.calendar-legend-level-0 {
+		background-color: var(--calendar-level-0-light);
+	}
+
+	.calendar-legend-level-1 {
+		background-color: var(--calendar-level-1-light);
+	}
+
+	.calendar-legend-level-2 {
+		background-color: var(--calendar-level-2-light);
+	}
+
+	.calendar-legend-level-3 {
+		background-color: var(--calendar-level-3-light);
+	}
+
+	.calendar-legend-level-4 {
+		background-color: var(--calendar-level-4-light);
+	}
+
+	:global(.dark) .calendar-legend-level-0 {
+		background-color: var(--calendar-level-0-dark);
+	}
+
+	:global(.dark) .calendar-legend-level-1 {
+		background-color: var(--calendar-level-1-dark);
+	}
+
+	:global(.dark) .calendar-legend-level-2 {
+		background-color: var(--calendar-level-2-dark);
+	}
+
+	:global(.dark) .calendar-legend-level-3 {
+		background-color: var(--calendar-level-3-dark);
+	}
+
+	:global(.dark) .calendar-legend-level-4 {
+		background-color: var(--calendar-level-4-dark);
 	}
 
 	.calendar-month-label {
