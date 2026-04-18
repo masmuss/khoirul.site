@@ -1,9 +1,11 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import BlogTabs from "@/components/features/blog/BlogTabs.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { getAllSeries } from "@/lib/contents";
 
 const allSeries = await getAllSeries();
+type SeriesEntry = CollectionEntry<"series">;
 ---
 
 <PageLayout
@@ -27,7 +29,7 @@ const allSeries = await getAllSeries();
 
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 			{
-				allSeries.map((series: any) => (
+				allSeries.map((series: SeriesEntry) => (
 					<a
 						href={`/blog/series/${series.id}`}
 						class="group bg-secondary/30 hover:bg-secondary/50 flex flex-col gap-y-2 rounded-xl p-5 transition-all"

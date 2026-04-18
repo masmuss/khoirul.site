@@ -70,7 +70,10 @@ export function getUniqueTagsWithCount(
 			(acc, t) => acc.set(t, (acc.get(t) || 0) + 1),
 			new Map<string, number>(),
 		),
-	].sort((a, b) => b[1] - a[1]);
+	].sort((a, b) => {
+		if (b[1] !== a[1]) return b[1] - a[1];
+		return a[0].localeCompare(b[0]);
+	});
 }
 
 export function getReadTimeCount(content: string): number {
