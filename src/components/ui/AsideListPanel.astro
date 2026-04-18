@@ -1,0 +1,41 @@
+---
+import InfoPanel from "@/components/ui/InfoPanel.astro";
+
+type AsideItem = {
+	title: string;
+	meta?: string;
+	href?: string;
+};
+
+interface Props {
+	title: string;
+	items: AsideItem[];
+}
+
+const { title, items }: Props = Astro.props;
+---
+
+<InfoPanel title={title} contentClass="p-0">
+	<div class="divide-border/60 flex flex-col divide-y">
+		{
+			items.map((item) => {
+				const content = (
+					<article class="py-4">
+						<h3 class="text-sm leading-relaxed font-medium">{item.title}</h3>
+						{item.meta && (
+							<p class="text-muted-foreground mt-1 text-xs tracking-wide">{item.meta}</p>
+						)}
+					</article>
+				);
+
+				return item.href ? (
+					<a href={item.href} rel="noopener noreferrer" target="_blank">
+						{content}
+					</a>
+				) : (
+					content
+				);
+			})
+		}
+	</div>
+</InfoPanel>

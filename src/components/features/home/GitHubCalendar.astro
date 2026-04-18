@@ -1,0 +1,254 @@
+---
+import {
+	fetchGitHubContributions,
+	formatDate,
+	getTotalCount,
+	groupByWeeks,
+} from "@/lib/github-calendar";
+
+type CalendarTheme = {
+	light: readonly [string, string, string, string, string];
+	dark?: readonly [string, string, string, string, string];
+};
+
+interface Props {
+	username: string;
+	year?: number | "last";
+	blockSize?: number;
+	blockMargin?: number;
+	showTotalCount?: boolean;
+	showMonthLabels?: boolean;
+	theme?: CalendarTheme;
+}
+
+const defaultTheme: CalendarTheme = {
+	light: ["rgba(235, 237, 240, 0.4)", "#c6e48b", "#7bc96f", "#239a3b", "#196127"],
+	dark: ["rgba(22, 27, 34, 0.8)", "#0e4429", "#006d32", "#26a641", "#39d353"],
+};
+
+const {
+	username,
+	year = "last",
+	blockSize = 14,
+	blockMargin = 3,
+	showTotalCount = true,
+	showMonthLabels = true,
+	theme = defaultTheme,
+} = Astro.props;
+
+const activities = await fetchGitHubContributions(username, year);
+const weeks = groupByWeeks(activities);
+const totalCount = getTotalCount(activities);
+
+const yearLabel = year === "last" ? "the last year" : `${year}`;
+
+const resolvedTheme: Required<CalendarTheme> = {
+	light: theme.light,
+	dark: theme.dark ?? theme.light,
+};
+
+const monthLabels = [
+	"Jan",
+	"Feb",
+	"Mar",
+	"Apr",
+	"May",
+	"Jun",
+	"Jul",
+	"Aug",
+	"Sep",
+	"Oct",
+	"Nov",
+	"Dec",
+];
+
+const monthLabelWeeks = new Map<number, number>();
+
+weeks.forEach((week, weekIndex) => {
+	const firstActivityInWeek = week.find((activity) => activity !== undefined);
+	if (!firstActivityInWeek) return;
+
+	const month = new Date(`${firstActivityInWeek.date}T00:00:00`).getMonth();
+	if (!monthLabelWeeks.has(month)) {
+		monthLabelWeeks.set(month, weekIndex);
+	}
+});
+
+const monthLabelEntries = Array.from(monthLabelWeeks.entries())
+	.sort(([, leftWeekIndex], [, rightWeekIndex]) => leftWeekIndex - rightWeekIndex)
+	.map(([month, weekIndex], entryIndex, entries) => {
+		const nextWeekIndex = entries[entryIndex + 1]?.[1];
+		const span = (nextWeekIndex ?? weekIndex + 4) - weekIndex;
+		return {
+			month,
+			weekIndex,
+			centerX: (weekIndex + span / 2) * (blockSize + blockMargin),
+		};
+	});
+
+function getColorForLevel(level: number): { light: string; dark: string } {
+	const safeLevel = Math.max(0, Math.min(level, 4));
+	return {
+		light: resolvedTheme.light[safeLevel],
+		dark: resolvedTheme.dark[safeLevel],
+	};
+}
+
+const svgWidth = Math.max(blockSize, weeks.length * (blockSize + blockMargin) - blockMargin);
+const svgHeight = 7 * (blockSize + blockMargin) - blockMargin;
+const topPadding = showMonthLabels ? blockSize + 8 : 0;
+---
+
+<div
+	class="w-full"
+	style={{
+		"--calendar-level-0-light": resolvedTheme.light[0],
+		"--calendar-level-1-light": resolvedTheme.light[1],
+		"--calendar-level-2-light": resolvedTheme.light[2],
+		"--calendar-level-3-light": resolvedTheme.light[3],
+		"--calendar-level-4-light": resolvedTheme.light[4],
+		"--calendar-level-0-dark": resolvedTheme.dark[0],
+		"--calendar-level-1-dark": resolvedTheme.dark[1],
+		"--calendar-level-2-dark": resolvedTheme.dark[2],
+		"--calendar-level-3-dark": resolvedTheme.dark[3],
+		"--calendar-level-4-dark": resolvedTheme.dark[4],
+	}}
+>
+	<div class="w-full min-w-0">
+		<svg
+			class="mb-2"
+			width="100%"
+			height="100%"
+			viewBox={`0 0 ${svgWidth} ${svgHeight + topPadding}`}
+			preserveAspectRatio="xMidYMid meet"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<!-- Month labels -->
+			{
+				showMonthLabels &&
+					monthLabelEntries.map((entry) => (
+						<text
+							x={entry.centerX}
+							y={blockSize * 0.7}
+							class="calendar-month-label"
+							font-size="12"
+							font-weight="400"
+							text-anchor="middle"
+							dominant-baseline="middle"
+						>
+							{monthLabels[entry.month]}
+						</text>
+					))
+			}
+
+			<!-- Contribution blocks -->
+			{
+				weeks.map((week, weekIndex) =>
+					week.map((activity, dayIndex) => {
+						const x = weekIndex * (blockSize + blockMargin);
+						const y = topPadding + dayIndex * (blockSize + blockMargin);
+						const level = activity?.level ?? 0;
+
+						return (
+							<rect
+								x={x}
+								y={y}
+								width={blockSize}
+								height={blockSize}
+								rx="2"
+								ry="2"
+								class={`calendar-level-${level} transition-opacity hover:opacity-80`}
+								data-date={activity?.date ?? ""}
+								data-count={activity?.count ?? 0}
+								data-level={level}
+							/>
+						);
+					}),
+				)
+			}
+		</svg>
+
+		<!-- Stats -->
+		{
+			showTotalCount && (
+				<div class="text-muted-foreground mt-4 flex flex-col items-center justify-between gap-1 text-xs md:flex-row">
+					<p>
+						<strong>{totalCount}</strong> contributions in {yearLabel}
+					</p>
+					<div class="flex items-center gap-2">
+						<span>Less</span>
+						{[0, 1, 2, 3, 4].map((level) => {
+							const colors = getColorForLevel(level);
+							return (
+								<div
+									class="h-3 w-3 rounded"
+									style={{
+										backgroundColor: colors.dark,
+									}}
+									title={`Level ${level}`}
+								/>
+							);
+						})}
+						<span>More</span>
+					</div>
+				</div>
+			)
+		}
+	</div>
+</div>
+
+<style scoped>
+	svg {
+		display: block;
+		margin: 0 auto;
+	}
+
+	rect {
+		stroke: transparent;
+		stroke-width: 0;
+	}
+
+	.calendar-level-0 {
+		fill: var(--calendar-level-0-light);
+	}
+
+	.calendar-level-1 {
+		fill: var(--calendar-level-1-light);
+	}
+
+	.calendar-level-2 {
+		fill: var(--calendar-level-2-light);
+	}
+
+	.calendar-level-3 {
+		fill: var(--calendar-level-3-light);
+	}
+
+	.calendar-level-4 {
+		fill: var(--calendar-level-4-light);
+	}
+
+	:global(.dark) .calendar-level-0 {
+		fill: var(--calendar-level-0-dark);
+	}
+
+	:global(.dark) .calendar-level-1 {
+		fill: var(--calendar-level-1-dark);
+	}
+
+	:global(.dark) .calendar-level-2 {
+		fill: var(--calendar-level-2-dark);
+	}
+
+	:global(.dark) .calendar-level-3 {
+		fill: var(--calendar-level-3-dark);
+	}
+
+	:global(.dark) .calendar-level-4 {
+		fill: var(--calendar-level-4-dark);
+	}
+
+	.calendar-month-label {
+		fill: hsl(var(--foreground));
+	}
+</style>
