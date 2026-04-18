@@ -21,6 +21,7 @@ const { ...head } = Astro.props;
 			class="relative z-10 mx-auto flex min-h-screen w-screen max-w-2xl flex-col items-center px-5 leading-relaxed md:max-w-5xl lg:px-0"
 			transition:animate={fade({ duration: 300 })}
 		>
+			<div id="progress"></div>
 			<Header />
 			<div class="w-full flex-1">
 				<slot />

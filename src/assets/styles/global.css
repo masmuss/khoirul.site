@@ -145,19 +145,25 @@
 		@apply prose-code:before:contain-none prose-code:after:contain-none;
 	}
 
-	/* NProgress loading bar */
-	#nprogress {
-		pointer-events: none;
+	#progress {
+		@apply bg-muted-foreground fixed top-0 left-0 z-50 h-1 w-full origin-left;
+		transform: scaleX(0);
+		animation: progressGrow linear both;
+		animation-timeline: scroll(root block);
+	}
 
-		.bar {
-			background: #888;
-			opacity: 0.75;
-			position: fixed;
-			z-index: 999;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 2px;
+	@supports not (animation-timeline: scroll()) {
+		#progress {
+			animation: none;
+		}
+	}
+
+	@keyframes progressGrow {
+		from {
+			transform: scaleX(0);
+		}
+		to {
+			transform: scaleX(1);
 		}
 	}
 }
