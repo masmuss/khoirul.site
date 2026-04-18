@@ -1,8 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import FormattedDate from "@/components/common/FormattedDate.astro";
+import PostMetadata from "@/components/common/PostMetadata.astro";
 import siteConfig from "@/config/site-config";
-import { getReadTimeCount } from "@/lib/utils";
 import PostImage from "./PostImage.astro";
 
 interface Props {
@@ -25,9 +24,7 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 		<div class="text-muted-foreground flex items-center gap-2 text-sm">
 			<span>{siteConfig.author}</span>
 			<span>·</span>
-			<FormattedDate date={new Date(content.data.date)} dateTimeOptions={dateTimeOptions} />
-			<span>·</span>
-			<span>{getReadTimeCount(content.body!)} min read</span>
+			<PostMetadata post={content} dateTimeOptions={dateTimeOptions} readTimeStyle="long" />
 		</div>
 		<h1 class="text-center text-2xl leading-tight font-semibold md:text-3xl">
 			{content.data.title}

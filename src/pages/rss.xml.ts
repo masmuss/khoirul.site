@@ -1,7 +1,7 @@
 import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
 import siteConfig from "@/config/site-config";
-import { getPostsByPath } from "@/lib/utils/post";
+import { getPostsByPath } from "@/lib/contents/post";
 import { getPostUrl } from "@/lib/utils/post-route";
 
 export async function GET(context: APIContext) {

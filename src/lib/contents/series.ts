@@ -2,18 +2,31 @@ import { getCollection, getEntry } from "astro:content";
 import type { CollectionPosts } from "@/types";
 import { getAllPosts } from "./post";
 
+const SERIES_PREFIX = "series";
+
+export function getSeriesIdFromPostId(postId: string): string | null {
+	const parts = postId.split("/");
+
+	if (parts[0] !== SERIES_PREFIX) return null;
+
+	const seriesId = parts[1];
+	if (!seriesId) return null;
+
+	return seriesId;
+}
+
 export async function getAllSeries() {
-	return await getCollection("series");
+	return getCollection("series");
 }
 
 export async function getSeriesById(id: string) {
-	return await getEntry("series", id);
+	return getEntry("series", id);
 }
 
 export async function getPostsBySeries(seriesId: string) {
 	const posts = await getAllPosts();
 	return posts
-		.filter((post) => post.id.startsWith(`series/${seriesId}/`))
+		.filter((post) => getSeriesIdFromPostId(post.id) === seriesId)
 		.sort((a, b) => {
 			const dateA = new Date(a.data.date).getTime();
 			const dateB = new Date(b.data.date).getTime();
@@ -33,9 +46,5 @@ export async function getPostsBySeries(seriesId: string) {
 }
 
 export function getSeriesForPost(post: CollectionPosts) {
-	if (post.id.startsWith("series/")) {
-		const parts = post.id.split("/");
-		return parts[1];
-	}
-	return null;
+	return getSeriesIdFromPostId(post.id);
 }

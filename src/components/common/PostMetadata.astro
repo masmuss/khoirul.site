@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getReadTimeCount } from "@/lib/contents";
+import { getFormattedDate } from "@/lib/utils";
+
+interface Props {
+	post: CollectionEntry<"post">;
+	dateTimeOptions?: Intl.DateTimeFormatOptions;
+	separator?: string;
+	readTimeStyle?: "short" | "long";
+}
+
+const { post, dateTimeOptions, separator = " \u00b7 ", readTimeStyle = "short" } = Astro.props;
+
+const readTime = post.body ? getReadTimeCount(post.body) : null;
+const readTimeLabel =
+	readTime === null ? null : readTimeStyle === "long" ? `${readTime} min read` : `${readTime}min`;
+---
+
+<>
+	<time datetime={new Date(post.data.date).toISOString()}>
+		{getFormattedDate(post.data.date, dateTimeOptions)}
+	</time>
+	{readTimeLabel && `${separator}${readTimeLabel}`}
+</>

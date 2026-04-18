@@ -1,6 +1,6 @@
 ---
-import { getFormattedDate, getReadTimeCount } from "@/lib/utils";
-import { getPostUrl } from "@/lib/utils/post-route";
+import PostMetadata from "@/components/common/PostMetadata.astro";
+import { getPostUrl } from "@/lib/utils";
 import type { CollectionPosts } from "@/types";
 
 interface Props {
@@ -27,8 +27,7 @@ const { relatedPosts } = Astro.props;
 							{post.data.title}
 						</span>
 						<span class="text-muted-foreground mt-auto pt-2 text-xs">
-							{getFormattedDate(post.data.date)}
-							{post.body && ` · ${getReadTimeCount(post.body)} min(s) read`}
+							<PostMetadata post={post} readTimeStyle="long" />
 						</span>
 					</a>
 				))}

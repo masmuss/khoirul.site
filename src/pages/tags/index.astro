@@ -1,14 +1,9 @@
 ---
 import PageLayout from "@/layouts/BaseLayout.astro";
-import { getAllPosts, getUniqueTagsWithCount } from "@/lib/utils";
+import { getAllPosts, getUniqueTagsWithCount } from "@/lib/contents";
 
 const allPosts = await getAllPosts();
-const allTags = getUniqueTagsWithCount(allPosts);
-
-const sortedTags = [...allTags].sort((a, b) => {
-	if (b[1] !== a[1]) return b[1] - a[1];
-	return a[0].localeCompare(b[0]);
-});
+const sortedTags = getUniqueTagsWithCount(allPosts);
 ---
 
 <PageLayout

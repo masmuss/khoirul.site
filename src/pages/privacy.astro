@@ -1,6 +1,13 @@
 ---
 import Section from "@/components/ui/Section.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
+import { getFormattedDate } from "@/lib/utils";
+
+const lastUpdated = getFormattedDate(new Date(), {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+});
 ---
 
 <PageLayout
@@ -11,15 +18,7 @@ import PageLayout from "@/layouts/BaseLayout.astro";
 	<div class="flex w-full flex-col gap-y-10">
 		<div>
 			<h1 class="mb-2 text-2xl font-semibold">Privacy Policy</h1>
-			<p class="text-muted-foreground">
-				Last updated: {
-					new Date().toLocaleDateString("en-US", {
-						year: "numeric",
-						month: "long",
-						day: "numeric",
-					})
-				}
-			</p>
+			<p class="text-muted-foreground">Last updated: {lastUpdated}</p>
 		</div>
 
 		<div class="flex flex-col gap-y-8">

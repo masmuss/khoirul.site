@@ -1,52 +1,36 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
-import { z } from "astro/zod";
-
-function removeDupsAndLowerCase(array: string[]) {
-	if (!array.length) return array;
-	const lowercaseItems = array.map((str) => str.toLowerCase());
-	const distinctItems = new Set(lowercaseItems);
-	return Array.from(distinctItems);
-}
+import {
+	certificationsSchema,
+	educationsSchema,
+	experiencesSchema,
+	postSchema,
+	seriesSchema,
+} from "@/lib/contents/schemas";
 
 const post = defineCollection({
 	loader: glob({ pattern: "**/**/*.{md,mdx}", base: "./src/content/post" }),
-	schema: ({ image }) =>
-		z.object({
-			title: z.string(),
-			description: z.string().optional(),
-			coverImage: z
-				.object({
-					src: z.union([image(), z.url()]),
-					alt: z.string(),
-				})
-				.optional(),
-			date: z
-				.string()
-				.or(z.date())
-				.transform((val: string | number | Date) => new Date(val)),
-			updatedDate: z
-				.string()
-				.or(z.date())
-				.transform((val: string | number | Date) => new Date(val))
-				.optional(),
-			draft: z.boolean().default(false).optional(),
-			tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
-		}),
+	schema: postSchema,
 });
 
 const series = defineCollection({
 	loader: glob({ pattern: "**/**/*.json", base: "./src/content/series" }),
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		coverImage: z
-			.object({
-				src: z.string(),
-				alt: z.string(),
-			})
-			.optional(),
-	}),
+	schema: seriesSchema,
 });
 
-export const collections = { post, series };
+const experiences = defineCollection({
+	loader: glob({ pattern: "**/**/*.json", base: "./src/content/experiences" }),
+	schema: experiencesSchema,
+});
+
+const educations = defineCollection({
+	loader: glob({ pattern: "**/**/*.json", base: "./src/content/educations" }),
+	schema: educationsSchema,
+});
+
+const certifications = defineCollection({
+	loader: glob({ pattern: "**/**/*.json", base: "./src/content/certifications" }),
+	schema: certificationsSchema,
+});
+
+export const collections = { post, series, experiences, educations, certifications };

@@ -19,5 +19,13 @@ module.exports = {
 				printWidth: 80,
 			},
 		},
+		{
+			files: ["*.json", "*.jsonc"],
+			options: {
+				printWidth: 80,
+			},
+			parser: "jsonc",
+			tabWidth: 2,
+		},
 	],
 };

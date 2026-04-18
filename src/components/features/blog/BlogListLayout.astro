@@ -2,7 +2,7 @@
 import BlogTabs from "@/components/features/blog/BlogTabs.astro";
 import PostPreview from "@/components/features/blog/PostPreview.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
-import { getPostsByPath, groupPostsByYear } from "@/lib/utils";
+import { getPostsByPath, groupPostsByYear } from "@/lib/contents";
 
 interface Props {
 	activeTab: "posts" | "notes" | "reflective";

@@ -2,7 +2,7 @@
 import BlogTabs from "@/components/features/blog/BlogTabs.astro";
 import PostPreview from "@/components/features/blog/PostPreview.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
-import { getPostsBySeries, getSeriesById } from "@/lib/utils";
+import { getPostsBySeries, getSeriesById } from "@/lib/contents";
 
 export async function getStaticPaths() {
 	const { getCollection } = await import("astro:content");

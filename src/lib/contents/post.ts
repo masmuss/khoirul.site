@@ -15,13 +15,12 @@ export async function getAllPosts(limit?: number) {
 	return limit ? sortedPosts.slice(0, limit) : sortedPosts;
 }
 
-export async function getRelatedPosts(
+export function getRelatedPosts(
+	posts: CollectionPosts[],
 	tags: string[],
 	title: string,
 	limit = 3,
-): Promise<CollectionPosts[]> {
-	const posts = await getAllPosts();
-
+): CollectionPosts[] {
 	return posts
 		.filter((post) => {
 			const hasMatchingTags = post.data.tags.some((tag) => tags.includes(tag));
@@ -71,7 +70,10 @@ export function getUniqueTagsWithCount(
 			(acc, t) => acc.set(t, (acc.get(t) || 0) + 1),
 			new Map<string, number>(),
 		),
-	].sort((a, b) => b[1] - a[1]);
+	].sort((a, b) => {
+		if (b[1] !== a[1]) return b[1] - a[1];
+		return a[0].localeCompare(b[0]);
+	});
 }
 
 export function getReadTimeCount(content: string): number {
