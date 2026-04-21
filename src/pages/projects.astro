@@ -24,12 +24,13 @@ import { projectData } from "@/lib/constants/projects";
 					<h2 class="text-muted-foreground text-base font-medium tracking-wide uppercase">
 						{category.title}
 					</h2>
-					<div class="flex flex-col">
+					<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
 						{category.projects.map((project) => (
 							<ProjectCard
 								href={project.href}
 								heading={project.text}
 								subheading={project.description}
+								thumbnail={project.thumbnail}
 								class="w-full"
 							/>
 						))}

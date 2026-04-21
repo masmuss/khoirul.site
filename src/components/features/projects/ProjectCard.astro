@@ -1,14 +1,30 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import { cn } from "@/lib/utils/tailwind";
 
 interface Props {
 	href: string;
 	heading: string;
 	subheading?: string;
+	thumbnail?: string;
 	class?: string;
 }
 
-const { href, heading, subheading, class: className } = Astro.props;
+const { href, heading, subheading, thumbnail, class: className } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+	"/src/assets/images/**/*.{jpeg,jpg,png,gif,webp,avif}",
+);
+
+const fallbackThumbnailPath = "/src/assets/images/coming-soon.png";
+const thumbnailCandidates = thumbnail
+	? [thumbnail, `/src/assets/images/projects/${thumbnail}`, `/src/assets/images/${thumbnail}`]
+	: [];
+
+const thumbnailPath =
+	thumbnailCandidates.find((candidate) => Boolean(images[candidate])) ?? fallbackThumbnailPath;
+const thumbnailImage = await images[thumbnailPath]();
 ---
 
 <a
@@ -16,12 +32,20 @@ const { href, heading, subheading, class: className } = Astro.props;
 	target="_blank"
 	rel="noopener noreferrer"
 	class={cn(
-		"group hover:bg-muted dark:hover:bg-muted/30 -mx-3 flex flex-col gap-y-1 rounded-lg px-3 py-3 transition-colors",
+		"group bg-card/50 hover:bg-card border-border/70 flex h-full flex-col overflow-hidden rounded-2xl border transition-colors",
 		className,
 	)}
 >
-	<div class="flex items-center gap-2">
-		<span class="font-medium">{heading}</span>
+	<div class="bg-muted aspect-video w-full overflow-hidden">
+		<Image
+			src={thumbnailImage.default}
+			alt={`${heading} thumbnail`}
+			class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+			loading="lazy"
+		/>
 	</div>
-	{subheading && <p class="text-muted-foreground text-sm">{subheading}</p>}
+	<div class="flex flex-1 flex-col gap-y-2 p-5">
+		<span class="font-semibold">{heading}</span>
+		{subheading && <p class="text-muted-foreground line-clamp-2 text-xs">{subheading}</p>}
+	</div>
 </a>

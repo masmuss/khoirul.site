@@ -7,13 +7,13 @@ export const projectData: ProjectCollection[] = [
 			{
 				text: "IdeaHive",
 				description: "Mind-mapping app by PENS Agile PBL and Agileteknik, Laravel, MySQL, Flutter",
-				thumbnail: "/src/assets/images/projects/ideahive.png",
+				thumbnail: "ideahive.png",
 				href: "https://secimap.agileteknik.com",
 			},
 			{
 				text: "IoT Dashboard",
 				description: "IoT Dashboard for monitoring and controlling IoT devices",
-				thumbnail: "/src/assets/images/projects/web-monitoring.png",
+				thumbnail: "web-monitoring.png",
 				href: "https://github.com/masmuss/next-hydroponic-monitoring",
 			},
 			{
@@ -45,7 +45,7 @@ export const projectData: ProjectCollection[] = [
 			{
 				text: "eLibrary API",
 				description: "An API for eLibrary system built with Hono, Bun, and Scalar API reference",
-				thumbnail: "/src/assets/images/projects/elibrary.png",
+				thumbnail: "elibrary.png",
 				href: "https://github.com/masmuss/hono-elibrary.git",
 			},
 		],
@@ -56,7 +56,7 @@ export const projectData: ProjectCollection[] = [
 			{
 				text: "IoT Monitoring and Control",
 				description: "IoT Monitoring and Control App for Hydroponic System, Flutter, Firebase",
-				thumbnail: "/src/assets/images/projects/mobile-monitoring.png",
+				thumbnail: "mobile-monitoring.png",
 				href: "https://github.com/masmuss/mobile-hydroponic-monitoring",
 			},
 		],
@@ -68,7 +68,7 @@ export const projectData: ProjectCollection[] = [
 				text: "DSS for Hydroponic System",
 				description:
 					"Decision Support System for analyzing environmental data in hydroponic system using Sugeno Fuzzy Inference System",
-				thumbnail: "/src/assets/images/projects/dss-hydroponic.png",
+				thumbnail: "dss-hydroponic.png",
 				href: "https://github.com/masmuss/sugeno-fuzzy-simulator",
 			},
 		],
