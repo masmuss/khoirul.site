@@ -81,14 +81,6 @@ const monthLabelEntries = Array.from(monthLabelWeeks.entries())
 		};
 	});
 
-function getColorForLevel(level: number): { light: string; dark: string } {
-	const safeLevel = Math.max(0, Math.min(level, 4));
-	return {
-		light: resolvedTheme.light[safeLevel],
-		dark: resolvedTheme.dark[safeLevel],
-	};
-}
-
 const svgWidth = Math.max(blockSize, weeks.length * (blockSize + blockMargin) - blockMargin);
 const svgHeight = 7 * (blockSize + blockMargin) - blockMargin;
 const topPadding = showMonthLabels ? blockSize + 8 : 0;
