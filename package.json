@@ -10,8 +10,7 @@
 		"format": "bun run format:code && bun run format:imports",
 		"format:code": "biome format . --write && prettier -w \"**/*\" \"!**/*.{md,mdx}\" --ignore-unknown --cache",
 		"format:imports": "biome check --formatter-enabled=false --write",
-		"check": "astro check",
-		"img:webp": "node scripts/img-to-webp.js"
+		"check": "astro check"
 	},
 	"dependencies": {
 		"@astrojs/check": "0.9.8",
