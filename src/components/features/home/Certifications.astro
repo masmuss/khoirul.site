@@ -1,4 +1,6 @@
 ---
+import Card from "@/components/ui/card/Card.astro";
+import CardContent from "@/components/ui/card/CardContent.astro";
 import Section from "@/components/ui/Section.astro";
 import type { Certification } from "@/types";
 
@@ -16,7 +18,7 @@ const { certifications } = Astro.props;
 				const dateText = cert.expiredDate ? `${cert.date} - ${cert.expiredDate}` : cert.date;
 
 				const content = (
-					<div class="group flex flex-col gap-y-0.5 rounded-lg py-2">
+					<div class="group flex flex-col gap-y-0.5">
 						<div class="flex items-center gap-2">
 							<span class="font-medium">{cert.title}</span>
 							{cert.credentialUrl && (
@@ -35,16 +37,19 @@ const { certifications } = Astro.props;
 				);
 
 				return cert.credentialUrl ? (
-					<a
+					<Card
+						as="a"
 						href={cert.credentialUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="hover:bg-muted/20 -mx-3 rounded-lg px-3 transition-colors"
+						class="hover:bg-muted/20 -mx-3 border-0 bg-transparent px-3 py-0 ring-0 transition-colors"
 					>
-						{content}
-					</a>
+						<CardContent class="px-0 py-2">{content}</CardContent>
+					</Card>
 				) : (
-					<div class="-mx-3 px-3">{content}</div>
+					<Card class="-mx-3 border-0 bg-transparent px-3 py-0 ring-0">
+						<CardContent class="px-0 py-2">{content}</CardContent>
+					</Card>
 				);
 			})
 		}
