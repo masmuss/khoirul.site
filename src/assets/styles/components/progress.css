@@ -1,0 +1,26 @@
+/* ========================================
+   Reading Progress Component
+   ======================================== */
+@keyframes progressGrow {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+@layer components {
+	#progress {
+		@apply bg-muted-foreground fixed top-0 left-0 z-50 h-1 w-full origin-left;
+		transform: scaleX(0);
+		animation: progressGrow linear both;
+		animation-timeline: scroll(root block);
+	}
+
+	@supports not (animation-timeline: scroll()) {
+		#progress {
+			animation: none;
+		}
+	}
+}

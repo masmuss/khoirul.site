@@ -1,0 +1,15 @@
+/* ========================================
+   Prose Component
+   ======================================== */
+@layer components {
+	.custom-prose {
+		@apply prose dark:prose-invert;
+		@apply prose-headings:font-semibold prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4;
+		@apply prose-th:before:content-none prose-th:after:content-none prose-th:font-semibold prose-th:border-border prose-th:pb-2;
+		@apply prose-td:text-sm md:prose-td:text-base;
+		@apply prose-blockquote:font-sans;
+		@apply prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4;
+		@apply prose-pre:bg-secondary prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:font-mono prose-pre:text-sm;
+		@apply prose-code:before:contain-none prose-code:after:contain-none;
+	}
+}
