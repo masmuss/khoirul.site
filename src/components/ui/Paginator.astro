@@ -1,4 +1,5 @@
 ---
+import Button from "@/components/ui/Button.astro";
 import type { PaginationLink } from "@/types";
 
 interface Props {
@@ -13,16 +14,16 @@ const { nextUrl, prevUrl }: Props = Astro.props;
 	(prevUrl || nextUrl) && (
 		<nav class="mt-8 flex items-center gap-x-4">
 			{prevUrl && (
-				<a class="me-auto py-2" data-astro-prefetch href={prevUrl.url}>
+				<Button as="a" href={prevUrl.url} variant="ghost" size="sm" class="me-auto">
 					{prevUrl.srLabel && <span class="sr-only">{prevUrl.srLabel}</span>}
 					{prevUrl.text ? prevUrl.text : "Previous"}
-				</a>
+				</Button>
 			)}
 			{nextUrl && (
-				<a class="ms-auto py-2" data-astro-prefetch href={nextUrl.url}>
+				<Button as="a" href={nextUrl.url} variant="ghost" size="sm" class="ms-auto">
 					{nextUrl.srLabel && <span class="sr-only">{nextUrl.srLabel}</span>}
 					{nextUrl.text ? nextUrl.text : "Next"}
-				</a>
+				</Button>
 			)}
 		</nav>
 	)

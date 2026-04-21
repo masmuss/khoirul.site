@@ -69,7 +69,8 @@ const isButton = as === "button";
 const hasStartIcon = Astro.slots.has("icon-before");
 const hasEndIcon = Astro.slots.has("icon-after");
 const hasDefaultSlot = Astro.slots.has("default");
-const prefetchProps = href && !isButton ? { "data-astro-prefetch": true as const } : {};
+const shouldPrefetch = Boolean(href && !isButton && href.startsWith("/"));
+const prefetchProps = shouldPrefetch ? { "data-astro-prefetch": true as const } : {};
 ---
 
 {
@@ -85,17 +86,18 @@ const prefetchProps = href && !isButton ? { "data-astro-prefetch": true as const
 				variantClass[resolvedVariant],
 				sizeClass[resolvedSize],
 				legacyClass,
+				"leading-none",
 				className,
 			)}
 		>
 			{hasStartIcon && (
-				<span data-icon="inline-start">
+				<span data-icon="inline-start" class="inline-flex items-center justify-center leading-none">
 					<slot name="icon-before" />
 				</span>
 			)}
-			{title ? <span>{title}</span> : hasDefaultSlot && <slot />}
+			{title ? <span class="leading-none">{title}</span> : hasDefaultSlot && <slot />}
 			{hasEndIcon && (
-				<span data-icon="inline-end">
+				<span data-icon="inline-end" class="inline-flex items-center justify-center leading-none">
 					<slot name="icon-after" />
 				</span>
 			)}
@@ -113,17 +115,18 @@ const prefetchProps = href && !isButton ? { "data-astro-prefetch": true as const
 				variantClass[resolvedVariant],
 				sizeClass[resolvedSize],
 				legacyClass,
+				"leading-none",
 				className,
 			)}
 		>
 			{hasStartIcon && (
-				<span data-icon="inline-start">
+				<span data-icon="inline-start" class="inline-flex items-center justify-center leading-none">
 					<slot name="icon-before" />
 				</span>
 			)}
-			{title ? <span>{title}</span> : hasDefaultSlot && <slot />}
+			{title ? <span class="leading-none">{title}</span> : hasDefaultSlot && <slot />}
 			{hasEndIcon && (
-				<span data-icon="inline-end">
+				<span data-icon="inline-end" class="inline-flex items-center justify-center leading-none">
 					<slot name="icon-after" />
 				</span>
 			)}

@@ -1,4 +1,5 @@
 ---
+import Button from "@/components/ui/Button.astro";
 import siteConfig from "@/config/site-config";
 import { cn } from "@/lib/utils";
 
@@ -9,41 +10,49 @@ interface Props {
 }
 
 const { variant = "icon", showEmail = false, class: className } = Astro.props;
-
-const iconClass = cn(
-	"text-muted-foreground hover:text-foreground transition-colors",
-	variant === "button" &&
-		"hover:bg-muted/20 border-border inline-flex items-center gap-x-2 rounded-lg border px-4 py-2 text-sm",
-);
 ---
 
 <div class={cn("flex items-center", variant === "button" ? "flex-wrap gap-3" : "gap-4", className)}>
 	{
 		showEmail && (
-			<a
+			<Button
+				as="a"
 				href={`mailto:${siteConfig.email}`}
 				target="_blank"
 				rel="noopener noreferrer"
-				class={iconClass}
+				variant={variant === "button" ? "outline" : "ghost"}
+				size={variant === "button" ? "default" : "icon-sm"}
+				class={cn("text-muted-foreground hover:text-foreground", variant === "button" && "gap-x-2")}
 				aria-label="Email"
+				title={variant === "button" ? "Email" : undefined}
 			>
-				<span class={cn("iconify ri--mail-line", variant === "icon" && "text-xl")} />
-				{variant === "button" && "Email"}
-			</a>
+				<span
+					slot="icon-before"
+					class={cn("iconify ri--mail-line", variant === "icon" && "text-xl")}
+				/>
+				{variant === "icon" && <span class="sr-only">Email</span>}
+			</Button>
 		)
 	}
 	{
 		siteConfig.socialLinks.map((link) => (
-			<a
+			<Button
+				as="a"
 				href={link.href}
 				target="_blank"
 				rel="noopener noreferrer"
-				class={iconClass}
+				variant={variant === "button" ? "outline" : "ghost"}
+				size={variant === "button" ? "default" : "icon-sm"}
+				class={cn("text-muted-foreground hover:text-foreground", variant === "button" && "gap-x-2")}
 				aria-label={link.text}
+				title={variant === "button" ? link.text : undefined}
 			>
-				<span class={cn("iconify", link.icon, variant === "icon" && "text-xl")} />
-				{variant === "button" && link.text}
-			</a>
+				<span
+					slot="icon-before"
+					class={cn("iconify", link.icon, variant === "icon" && "text-xl")}
+				/>
+				{variant === "icon" && <span class="sr-only">{link.text}</span>}
+			</Button>
 		))
 	}
 </div>

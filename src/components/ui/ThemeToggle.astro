@@ -1,11 +1,18 @@
+---
+import Button from "@/components/ui/Button.astro";
+---
+
 <theme-toggle class="ms-2 sm:ms-4">
-	<button
-		class="hover:bg-border dark:border-accent relative flex items-center justify-center rounded-md p-1.5 transition-all"
+	<Button
+		as="button"
+		variant="ghost"
+		size="icon-sm"
+		class="text-muted-foreground hover:text-foreground"
 		aria-label="Toggle Dark Mode"
 	>
 		<span class="iconify ri--sun-line dark:hidden"></span>
 		<span class="iconify ri--moon-line hidden dark:inline-block"></span>
-	</button>
+	</Button>
 </theme-toggle>
 
 <script>
