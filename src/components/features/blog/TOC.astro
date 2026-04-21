@@ -1,5 +1,7 @@
 ---
 import type { MarkdownHeading } from "astro";
+import Card from "@/components/ui/card/Card.astro";
+import CardContent from "@/components/ui/card/CardContent.astro";
 import { generateToc } from "@/lib/utils";
 
 import TOCHeading from "./TOCHeading.astro";
@@ -27,13 +29,15 @@ const toc = generateToc(headings);
 			<span class="iconify ri--menu-line text-lg transition-transform duration-300"></span>
 		</button>
 
-		<div
-			class="toc-popover bg-primary-foreground border-border pointer-events-none absolute top-full left-0 z-20 w-72 rounded-xl border p-3 opacity-0 shadow-sm transition-all duration-200 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100"
+		<Card
+			class="toc-popover bg-primary-foreground border-border pointer-events-none absolute top-full left-0 z-20 w-72 gap-0 py-0 opacity-0 shadow-sm transition-all duration-200 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100"
 		>
-			<ul id="toc-list" class="flex max-h-[70vh] flex-col overflow-y-auto text-pretty">
-				{toc.map((heading) => <TOCHeading heading={heading} />)}
-			</ul>
-		</div>
+			<CardContent class="p-3">
+				<ul id="toc-list" class="flex max-h-[70vh] flex-col overflow-y-auto text-pretty">
+					{toc.map((heading) => <TOCHeading heading={heading} />)}
+				</ul>
+			</CardContent>
+		</Card>
 	</div>
 </nav>
 
