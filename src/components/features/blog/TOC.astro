@@ -62,6 +62,7 @@ const toc = generateToc(headings);
 
 		document.addEventListener("click", (event) => {
 			const target = event.target;
+			if (!(target instanceof Node)) return;
 			if (!group.contains(target)) setOpen(false);
 		});
 

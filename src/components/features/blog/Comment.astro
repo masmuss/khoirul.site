@@ -3,6 +3,8 @@
 </section>
 
 <script is:inline>
+	const GISCUS_ORIGIN = "https://giscus.app";
+
 	function getGiscusTheme() {
 		return document.documentElement.classList.contains("dark") ? "transparent_dark" : "light";
 	}
@@ -12,7 +14,7 @@
 		if (!iframe) return;
 		iframe.contentWindow?.postMessage(
 			{ giscus: { setConfig: { theme: getGiscusTheme() } } },
-			"https://giscus.app",
+			GISCUS_ORIGIN,
 		);
 	}
 
@@ -22,7 +24,7 @@
 		if (!container || container.querySelector("iframe.giscus-frame")) return;
 
 		const script = document.createElement("script");
-		script.src = "https://giscus.app/client.js";
+		script.src = `${GISCUS_ORIGIN}/client.js`;
 		script.setAttribute("data-repo", "masmuss/khoirul.site");
 		script.setAttribute("data-repo-id", "R_kgDOPKC8fg");
 		script.setAttribute("data-category", "General");
@@ -58,7 +60,7 @@
 
 	// Fallback synchronization. Sometimes the iframe is slow to respond to the first `postMessage`
 	window.addEventListener("message", (event) => {
-		if (event.origin !== "https://giscus.app") return;
+		if (event.origin !== GISCUS_ORIGIN) return;
 		if (!(typeof event.data === "object" && event.data.giscus)) return;
 		// Giscus already sent ready/metadata status, make sure the theme is emphasized again
 		setGiscusTheme();

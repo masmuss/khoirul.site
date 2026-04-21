@@ -78,17 +78,20 @@ const ogImage = coverImageResolved || socialImage;
 <script>
 	const scrollBtn = document.getElementById("to-top-btn") as HTMLButtonElement;
 	const targetHeader = document.getElementById("blog-hero") as HTMLDivElement;
+	if (!scrollBtn || !targetHeader) {
+		console.warn("Back to top controls are unavailable on this page.");
+	} else {
+		function callback(entries: IntersectionObserverEntry[]) {
+			entries.forEach((entry) => {
+				scrollBtn.dataset.show = (!entry.isIntersecting).toString();
+			});
+		}
 
-	function callback(entries: IntersectionObserverEntry[]) {
-		entries.forEach((entry) => {
-			scrollBtn.dataset.show = (!entry.isIntersecting).toString();
+		scrollBtn.addEventListener("click", () => {
+			document.documentElement.scrollTo({ behavior: "smooth", top: 0 });
 		});
+
+		const observer = new IntersectionObserver(callback);
+		observer.observe(targetHeader);
 	}
-
-	scrollBtn.addEventListener("click", () => {
-		document.documentElement.scrollTo({ behavior: "smooth", top: 0 });
-	});
-
-	const observer = new IntersectionObserver(callback);
-	observer.observe(targetHeader);
 </script>

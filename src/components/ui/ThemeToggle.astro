@@ -24,22 +24,17 @@ import Button from "@/components/ui/Button.astro";
 			const button = this.querySelector<HTMLButtonElement>("button");
 
 			if (button) {
-				// set aria role value
 				button.setAttribute("role", "switch");
 				button.setAttribute("aria-checked", String(rootInDarkMode()));
 
-				// button event
 				button.addEventListener("click", () => {
-					// invert theme
-					let themeChangeEvent = new CustomEvent("theme-change", {
+					const themeChangeEvent = new CustomEvent("theme-change", {
 						detail: {
 							theme: rootInDarkMode() ? "light" : "dark",
 						},
 					});
-					// dispatch event -> ThemeProvider.astro
 					document.dispatchEvent(themeChangeEvent);
 
-					// set the aria-checked attribute
 					button.setAttribute("aria-checked", String(rootInDarkMode()));
 				});
 			} else {
@@ -48,5 +43,7 @@ import Button from "@/components/ui/Button.astro";
 		}
 	}
 
-	customElements.define("theme-toggle", ThemeToggle);
+	if (!customElements.get("theme-toggle")) {
+		customElements.define("theme-toggle", ThemeToggle);
+	}
 </script>

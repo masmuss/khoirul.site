@@ -58,21 +58,21 @@ const tabs = getSkillsTabs(collections);
 	const tabRoots = document.querySelectorAll("[data-skills-tabs]");
 
 	for (const root of tabRoots) {
-		const tabs = root.querySelectorAll<HTMLButtonElement>(".skills-tab");
-		const panels = root.querySelectorAll<HTMLElement>(".skills-panel");
+		const tabButtons = root.querySelectorAll<HTMLButtonElement>(".skills-tab");
+		const tabPanels = root.querySelectorAll<HTMLElement>(".skills-panel");
 
-		for (const tab of tabs) {
+		for (const tab of tabButtons) {
 			tab.addEventListener("click", () => {
 				const id = tab.dataset.tab;
 				if (!id) return;
 
-				for (const item of tabs) {
+				for (const item of tabButtons) {
 					const isActive = item.dataset.tab === id;
 					item.setAttribute("aria-selected", isActive ? "true" : "false");
 					item.dataset.active = isActive ? "true" : "false";
 				}
 
-				for (const panel of panels) {
+				for (const panel of tabPanels) {
 					panel.classList.toggle("hidden", panel.dataset.panel !== id);
 				}
 			});
