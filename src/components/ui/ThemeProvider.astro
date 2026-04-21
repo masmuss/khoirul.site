@@ -4,7 +4,11 @@
 
 	function getUserPref() {
 		const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("theme");
-		return storedTheme || (darkModePref.matches ? "dark" : "light");
+		return storedTheme === "light" || storedTheme === "dark"
+			? storedTheme
+			: darkModePref.matches
+				? "dark"
+				: "light";
 	}
 
 	function setTheme(newTheme) {
@@ -31,17 +35,16 @@
 		}
 	}
 
-	// initial setup
 	setTheme(getUserPref());
 
-	// View Transitions hook to restore theme
 	document.addEventListener("astro:after-swap", () => setTheme(getUserPref()));
 
-	// listen for theme-change custom event, fired in src/components/ui/ThemeToggle.astro
-	document.addEventListener("theme-change", (e) => {
-		setTheme(e.detail.theme);
+	document.addEventListener("theme-change", (event) => {
+		if (!(event instanceof CustomEvent)) return;
+		const theme = event.detail?.theme;
+		if (typeof theme !== "string") return;
+		setTheme(theme);
 	});
 
-	// listen for prefers-color-scheme change.
 	darkModePref.addEventListener("change", (e) => setTheme(e.matches ? "dark" : "light"));
 </script>

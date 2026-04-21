@@ -1,62 +1,16 @@
 ---
 import Button from "@/components/ui/Button.astro";
-import type { Skill, SkillCollection } from "@/lib/constants/tech-stack";
+import type { SkillCollection } from "@/lib/constants/tech-stack";
 import { cn } from "@/lib/utils";
+import { getSkillsTabs } from "@/lib/utils/skills";
 
 interface Props {
 	collections: SkillCollection[];
 	class?: string;
 }
 
-type Tab = {
-	id: string;
-	label: string;
-	skills: Skill[];
-};
-
 const { collections, class: className } = Astro.props;
-
-const allSkills = Array.from(
-	new Map(
-		collections.flatMap((collection) => collection.skills).map((skill) => [skill.name, skill]),
-	).values(),
-);
-
-const featuredNames = [
-	"TypeScript",
-	"Next.js",
-	"Astro",
-	"Go",
-	"PostgreSQL",
-	"Redis",
-	"Tailwind CSS",
-	"Playwright",
-	"OpenTelemetry",
-	"Cloudflare",
-];
-
-const featuredFromPreset = featuredNames
-	.map((name) => allSkills.find((skill) => skill.name === name))
-	.filter((skill): skill is Skill => Boolean(skill));
-
-const featuredSkills = featuredFromPreset.length >= 8 ? featuredFromPreset : allSkills.slice(0, 10);
-
-const slugify = (text: string) =>
-	text
-		.toLowerCase()
-		.replace(/&/g, "and")
-		.replace(/[^a-z0-9]+/g, "-")
-		.replace(/(^-|-$)/g, "");
-
-const tabs: Tab[] = [
-	{ id: "featured", label: "Featured", skills: featuredSkills },
-	{ id: "all", label: "All", skills: allSkills },
-	...collections.map((collection) => ({
-		id: slugify(collection.title),
-		label: collection.title,
-		skills: collection.skills,
-	})),
-];
+const tabs = getSkillsTabs(collections);
 ---
 
 <section class={className} data-skills-tabs>
@@ -104,21 +58,21 @@ const tabs: Tab[] = [
 	const tabRoots = document.querySelectorAll("[data-skills-tabs]");
 
 	for (const root of tabRoots) {
-		const tabs = root.querySelectorAll<HTMLButtonElement>(".skills-tab");
-		const panels = root.querySelectorAll<HTMLElement>(".skills-panel");
+		const tabButtons = root.querySelectorAll<HTMLButtonElement>(".skills-tab");
+		const tabPanels = root.querySelectorAll<HTMLElement>(".skills-panel");
 
-		for (const tab of tabs) {
+		for (const tab of tabButtons) {
 			tab.addEventListener("click", () => {
 				const id = tab.dataset.tab;
 				if (!id) return;
 
-				for (const item of tabs) {
+				for (const item of tabButtons) {
 					const isActive = item.dataset.tab === id;
 					item.setAttribute("aria-selected", isActive ? "true" : "false");
 					item.dataset.active = isActive ? "true" : "false";
 				}
 
-				for (const panel of panels) {
+				for (const panel of tabPanels) {
 					panel.classList.toggle("hidden", panel.dataset.panel !== id);
 				}
 			});

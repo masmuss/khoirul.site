@@ -10,6 +10,7 @@ interface Props {
 
 const { src, alt, class: customClass } = Astro.props;
 const isRemote = typeof src === "string";
+const fallbackAlt = alt || "Post Image";
 
 const optimizedSrc = isRemote
 	? src.includes("unsplash.com") && !src.includes("w=")
@@ -28,7 +29,7 @@ const optimizedSrc = isRemote
 				width="1000"
 				height="500"
 				class="my-8 max-h-75 w-full rounded-lg object-cover md:max-h-100"
-				alt={alt || "Post Image"}
+				alt={fallbackAlt}
 				decoding="async"
 			/>
 		) : (
@@ -41,7 +42,7 @@ const optimizedSrc = isRemote
 				loading="eager"
 				fetchpriority="high"
 				class="my-8 max-h-75 w-full rounded-lg object-cover md:max-h-100"
-				alt={alt || "Post Image"}
+				alt={fallbackAlt}
 				decoding="async"
 			/>
 		)
@@ -56,7 +57,7 @@ const optimizedSrc = isRemote
 
 <script is:inline>
 	document.addEventListener("astro:page-load", () => {
-		document.querySelectorAll(".post-image-caption a").forEach((link) => {
+		document.querySelectorAll<HTMLAnchorElement>(".post-image-caption a").forEach((link) => {
 			link.setAttribute("target", "_blank");
 			link.setAttribute("rel", "noopener noreferrer");
 		});

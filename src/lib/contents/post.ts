@@ -1,6 +1,8 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import type { CollectionPosts } from "@/types";
 
+const AVERAGE_READING_WORDS_PER_MINUTE = 200;
+
 export function sortPostsByDate(itemA: CollectionPosts, itemB: CollectionPosts): number {
 	return new Date(itemB.data.date).getTime() - new Date(itemA.data.date).getTime();
 }
@@ -77,8 +79,7 @@ export function getUniqueTagsWithCount(
 }
 
 export function getReadTimeCount(content: string): number {
-	const wordsPerMinute = 200; // Average reading speed
 	const words = content.split(/\s+/).filter((word) => word.length > 0);
-	const readTime = words.length / wordsPerMinute; // Assuming average reading speed of 200 words per minute
+	const readTime = words.length / AVERAGE_READING_WORDS_PER_MINUTE;
 	return Math.ceil(readTime);
 }
