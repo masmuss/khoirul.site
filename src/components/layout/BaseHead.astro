@@ -23,11 +23,68 @@ const {
 }: Props = Astro.props;
 
 const pageTitle = Astro.props.title?.trim();
-const title = pageTitle
-	? pageTitle.length <= 45
-		? `${pageTitle} | ${siteConfig.title}`
-		: pageTitle
-	: siteConfig.title;
+const titleMinLength = 30;
+const titleMaxLength = 60;
+const descriptionMinLength = 120;
+const descriptionMaxLength = 160;
+
+function truncateByWordBoundary(text: string, maxLength: number) {
+	if (text.length <= maxLength) return text;
+	const sliced = text.slice(0, maxLength + 1);
+	const cutIndex = Math.max(
+		sliced.lastIndexOf(" "),
+		sliced.lastIndexOf("-"),
+		sliced.lastIndexOf("|"),
+	);
+	const safeText = (
+		cutIndex > Math.floor(maxLength * 0.7) ? sliced.slice(0, cutIndex) : text.slice(0, maxLength)
+	).trim();
+	return `${safeText}...`;
+}
+
+function normalizeTitle(rawTitle: string | undefined, type: Props["pageType"]) {
+	if (!rawTitle) return siteConfig.title;
+
+	const articleSuffix = " | Articles by Khoirul Fattah";
+	const websiteSuffix = ` | ${siteConfig.title}`;
+	let normalized = rawTitle;
+
+	if (normalized.length < titleMinLength) {
+		normalized = `${normalized}${type === "article" ? articleSuffix : websiteSuffix}`;
+	}
+
+	if (normalized.length > titleMaxLength) {
+		normalized = truncateByWordBoundary(normalized, titleMaxLength - 3);
+	}
+
+	return normalized;
+}
+
+function normalizeDescription(rawDescription: string, type: Props["pageType"]) {
+	const fallbackDescription =
+		type === "article"
+			? "Read this article on pictogrammmer for practical lessons, context, and related insights from Khoirul Fattah."
+			: siteConfig.description;
+
+	let normalized = rawDescription.trim() || fallbackDescription;
+
+	if (normalized.length < descriptionMinLength) {
+		const suffix =
+			type === "article"
+				? " Read the full article on pictogrammmer for complete context and practical takeaways."
+				: " Explore more writing and projects on pictogrammmer for deeper context and practical resources.";
+		normalized = `${normalized}${suffix}`;
+	}
+
+	if (normalized.length > descriptionMaxLength) {
+		normalized = truncateByWordBoundary(normalized, descriptionMaxLength - 3);
+	}
+
+	return normalized;
+}
+
+const title = normalizeTitle(pageTitle, pageType);
+const normalizedDescription = normalizeDescription(description, pageType);
 
 const resolvedImage = image?.src
 	? {
@@ -57,7 +114,7 @@ function formatCanonicalURL(url: string | URL) {
 
 <JSONLD
 	title={title}
-	description={description}
+	description={normalizedDescription}
 	image={resolvedImage?.src}
 	date={date}
 	updatedDate={updatedDate}
@@ -95,14 +152,14 @@ function formatCanonicalURL(url: string | URL) {
 
 <!-- Page Metadata -->
 <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
-<meta name="description" content={description} />
+<meta name="description" content={normalizedDescription} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={pageType} />
 <meta property="og:url" content={formatCanonicalURL(canonicalURL)} />
 <meta property="og:site_name" content={siteConfig.title} />
 <meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+<meta property="og:description" content={normalizedDescription} />
 {resolvedImage?.src && <meta property="og:image" content={resolvedImage.src} />}
 {resolvedImage?.alt && <meta property="og:image:alt" content={resolvedImage.alt} />}
 
@@ -110,6 +167,6 @@ function formatCanonicalURL(url: string | URL) {
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={formatCanonicalURL(canonicalURL)} />
 <meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
+<meta property="twitter:description" content={normalizedDescription} />
 {resolvedImage?.src && <meta property="twitter:image" content={resolvedImage.src} />}
 {resolvedImage?.alt && <meta name="twitter:image:alt" content={resolvedImage?.alt} />}

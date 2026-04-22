@@ -26,8 +26,8 @@ const optimizedSrc = isRemote
 				src={optimizedSrc as string}
 				loading="eager"
 				fetchpriority="high"
-				width="1000"
-				height="500"
+				width="960"
+				height="540"
 				class="my-8 max-h-75 w-full rounded-lg object-cover md:max-h-100"
 				alt={fallbackAlt}
 				decoding="async"
@@ -35,10 +35,10 @@ const optimizedSrc = isRemote
 		) : (
 			<Image
 				src={src}
-				width={1000}
-				height={500}
-				quality={100}
-				format="jpg"
+				width={960}
+				height={540}
+				quality={74}
+				format="webp"
 				loading="eager"
 				fetchpriority="high"
 				class="my-8 max-h-75 w-full rounded-lg object-cover md:max-h-100"

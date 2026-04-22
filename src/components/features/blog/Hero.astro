@@ -12,7 +12,7 @@ interface Props {
 	};
 }
 
-const { content, coverImageResolved } = Astro.props;
+const { content, coverImageResolved }: Props = Astro.props;
 
 const dateTimeOptions: Intl.DateTimeFormatOptions = {
 	month: "long",
