@@ -26,6 +26,12 @@ export const projectData: ProjectCollection[] = [
 				description: "Super app used for administration at EEPIS News and Network Team",
 				href: "https://ent.pens.ac.id",
 			},
+			{
+				text: "Devtoolbox",
+				description: "A web-based utility toolbox for developers.",
+				thumbnail: "devtoolbox.png",
+				href: "https://devtoolbox.khoirul.me",
+			},
 		],
 	},
 	{
