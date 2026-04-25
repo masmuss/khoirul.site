@@ -2,7 +2,7 @@
 title: "Menjinakkan Proxmox & SSH Hardening - Weekend Projects"
 description: Catatan teknis tentang pengalamanku mengelola server Proxmox, termasuk hardening SSH untuk meningkatkan keamanan.
 date: 24 April 2026
-tags: ["tech", "homelab"]
+tags: ["tech", "devlog", "homelab"]
 ---
 
 **tl;dr**

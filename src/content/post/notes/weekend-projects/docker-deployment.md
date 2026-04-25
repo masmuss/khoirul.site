@@ -2,7 +2,7 @@
 title: "Orchestration Laravel Octane via Cloudflare Tunnel - Weekend Projects"
 description: Catatan teknis tentang pengalamanku mengorkestrasi Laravel Octane dengan Cloudflare Tunnel untuk deployment yang lebih aman dan praktis.
 date: 25 April 2026
-tags: ["tech", "homelab", "docker"]
+tags: ["tech", "homelab", "devlog", "docker"]
 ---
 
 **tl;dr**
