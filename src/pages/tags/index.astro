@@ -29,7 +29,7 @@ const sortedTags = getUniqueTagsWithCount(allPosts);
 				<div class="flex flex-wrap gap-3">
 					{sortedTags.map(([tag, count]) => (
 						<a
-							href={`/tags/${tag}/`}
+							href={`/tags/${tag}`}
 							title={`View ${count} post${count > 1 ? "s" : ""} tagged with "${tag}"`}
 							data-astro-prefetch
 							class="group bg-secondary/50 hover:bg-secondary text-foreground/80 hover:text-foreground flex items-center gap-2 rounded-lg px-4 py-2 transition-all"
