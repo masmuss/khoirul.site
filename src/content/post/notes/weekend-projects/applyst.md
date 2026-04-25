@@ -4,7 +4,7 @@ description: Catatan pengembangan Applyst, sebuah platform tracking lamaran kerj
 date: 26 April 2026
 coverImage:
     src: ../../../../assets/images/projects/applyst.png
-    alt: Tampilan dashboard aplikasi Applyst
+    alt: Applyst
 tags: ["tech", "laravel", "devlog", "performance"]
 ---
 
