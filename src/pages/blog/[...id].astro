@@ -47,6 +47,6 @@ const { Content, headings } = await render(post);
 	</div>
 	<footer class="mx-auto mt-16 max-w-3xl">
 		<RelatedPost relatedPosts={relatedPosts} />
-		<Comment />
+		<Comment client:visible />
 	</footer>
 </PostLayout>

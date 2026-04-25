@@ -15,6 +15,7 @@ const { post } = Astro.props;
 	<Card
 		as="a"
 		href={getPostUrl(post)}
+		reload
 		class="group -mx-3 overflow-visible rounded-none border-0 bg-transparent px-3 py-3 text-base opacity-90 ring-0 transition-opacity hover:opacity-100"
 	>
 		<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
