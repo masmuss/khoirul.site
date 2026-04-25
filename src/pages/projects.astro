@@ -28,6 +28,8 @@ import { projectData } from "@/lib/constants/projects";
 						{category.projects.map((project) => (
 							<ProjectCard
 								href={project.href}
+								liveHref={project.liveHref}
+								repoHref={project.repoHref}
 								heading={project.text}
 								subheading={project.description}
 								thumbnail={project.thumbnail}
