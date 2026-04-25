@@ -32,6 +32,13 @@ export const projectData: ProjectCollection[] = [
 				thumbnail: "devtoolbox.png",
 				href: "https://devtoolbox.khoirul.me",
 			},
+			{
+				text: "Applyst",
+				description:
+					"A job application tracking web app built with Laravel and React, designed to help users manage their job applications effectively.",
+				thumbnail: "applyst.png",
+				href: "https://applyst.khoirul.me",
+			},
 		],
 	},
 	{
