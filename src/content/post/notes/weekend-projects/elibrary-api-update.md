@@ -1,5 +1,5 @@
 ---
-title: "Studi Kasus: Dari Audit Log hingga Uji Beban pada API E-Library - Weekend Project"
+title: "Studi Kasus: Dari Audit Log hingga Uji Beban pada API E-Library - Weekend Projects"
 description: Catatan teknis tentang hardening API E-Library, mulai dari audit log hingga load testing untuk menemukan dan memperbaiki bottleneck.
 date: 16 July 2025
 tags: ["tech"]

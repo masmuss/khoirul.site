@@ -1,5 +1,5 @@
 ---
-title: E-Library API - A Weekend Project
+title: E-Library API - Weekend Projects
 description: A technical breakdown of building a modern backend API over several focused development sessions.
 date: 25 June 2025
 tags: ["tech"]
