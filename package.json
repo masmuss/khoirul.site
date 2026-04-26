@@ -9,7 +9,7 @@
 		"lint": "biome lint .",
 		"format": "bun run format:code && bun run format:imports",
 		"format:code": "biome format . --write",
-		"format:imports": "biome check --formatter-enabled=false --write",
+		"format:imports": "biome check --formatter-enabled=true --write",
 		"check": "astro check"
 	},
 	"dependencies": {

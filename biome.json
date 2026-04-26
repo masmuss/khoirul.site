@@ -34,7 +34,7 @@
 				"useSortedClasses": {
 					"level": "warn",
 					"options": {
-						"attributes": ["class", "class:list", "contentClass", "classNames"],
+						"attributes": ["class", "class:list", "contentClass", "className"],
 						"functions": ["cva", "cn"]
 					}
 				}
