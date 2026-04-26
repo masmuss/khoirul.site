@@ -2,8 +2,23 @@
    Base Layer
    ======================================== */
 @layer base {
+	::-webkit-scrollbar {
+		width: 5px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: var(--color-border);
+		border-radius: 5px;
+	}
+
 	* {
 		@apply border-border;
+		scrollbar-width: thin;
+		scrollbar-color: var(--color-border) transparent;
 	}
 
 	body {
