@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import PostMetadata from "@/components/common/PostMetadata.astro";
+import Heading from "@/components/ui/Heading.astro";
 import siteConfig from "@/config/site-config";
 import PostImage from "./PostImage.astro";
 
@@ -26,9 +27,9 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 			<span>·</span>
 			<PostMetadata post={content} dateTimeOptions={dateTimeOptions} readTimeStyle="long" />
 		</div>
-		<h1 class="text-center text-2xl leading-tight font-semibold md:text-3xl">
-			{content.data.title}
-		</h1>
+		   <Heading as="h1" size="2xl" weight="semibold" class="text-center leading-tight md:text-3xl">
+			   {content.data.title}
+		   </Heading>
 		{
 			content.data.tags.length > 0 && (
 				<div class="flex flex-wrap items-center justify-center gap-2">
