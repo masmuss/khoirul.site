@@ -29,6 +29,15 @@
 				"useNumberNamespace": "error",
 				"noInferrableTypes": "error",
 				"noUselessElse": "error"
+			},
+			"nursery": {
+				"useSortedClasses": {
+					"level": "warn",
+					"options": {
+						"attributes": ["class", "class:list", "contentClass", "classNames"],
+						"functions": ["cva", "cn"]
+					}
+				}
 			}
 		}
 	},
@@ -36,6 +45,20 @@
 		"formatter": {
 			"trailingCommas": "all",
 			"semicolons": "always"
+		}
+	},
+	"css": {
+		"formatter": {
+			"indentStyle": "tab",
+			"indentWidth": 2,
+			"lineWidth": 80
+		}
+	},
+	"json": {
+		"formatter": {
+			"indentStyle": "tab",
+			"indentWidth": 2,
+			"lineWidth": 80
 		}
 	},
 	"vcs": {
@@ -53,6 +76,14 @@
 						"noUnusedImports": "off"
 					}
 				}
+			}
+		},
+		{
+			"includes": ["**/*.md", "**/*.mdx"],
+			"formatter": {
+				"indentStyle": "tab",
+				"indentWidth": 2,
+				"lineWidth": 80
 			}
 		}
 	]
