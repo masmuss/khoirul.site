@@ -17,8 +17,14 @@
 	const observer = new MutationObserver(() => {
 		restoreMermaidDiagrams();
 	});
-	observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-	observer.observe(document.body, { attributes: true, attributeFilter: ["data-theme"] });
+	const rootEl = document.documentElement;
+	const bodyEl = document.body;
+	if (rootEl && typeof rootEl === "object") {
+		observer.observe(rootEl, { attributes: true, attributeFilter: ["data-theme"] });
+	}
+	if (bodyEl && typeof bodyEl === "object") {
+		observer.observe(bodyEl, { attributes: true, attributeFilter: ["data-theme"] });
+	}
 
 	// Also patch after Astro SPA navigation
 	document.addEventListener("astro:after-swap", restoreMermaidDiagrams);
