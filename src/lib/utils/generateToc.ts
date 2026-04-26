@@ -1,5 +1,8 @@
 import type { MarkdownHeading } from "astro";
 
+const MIN_HEADING_DEPTH = 2;
+const MAX_HEADING_DEPTH = 4;
+
 export interface TocItem extends MarkdownHeading {
 	subheadings: Array<TocItem>;
 }
@@ -12,7 +15,9 @@ function diveChildren(item: TocItem, depth: number): Array<TocItem> {
 }
 
 export function generateToc(headings: ReadonlyArray<MarkdownHeading>) {
-	const bodyHeadings = [...headings.filter(({ depth }) => depth > 1)];
+	const bodyHeadings = [
+		...headings.filter(({ depth }) => depth >= MIN_HEADING_DEPTH && depth <= MAX_HEADING_DEPTH),
+	];
 	const toc: Array<TocItem> = [];
 
 	for (const h of bodyHeadings) {
