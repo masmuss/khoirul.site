@@ -12,7 +12,13 @@ interface Props {
 const { variant = "icon", showEmail = false, class: className } = Astro.props;
 ---
 
-<div class={cn("flex items-center", variant === "button" ? "flex-wrap gap-3" : "gap-4", className)}>
+<div
+	class={cn(
+		"flex items-center",
+		variant === "button" ? "flex-wrap gap-3" : "gap-4",
+		className
+	)}
+>
 	{
 		showEmail && (
 			<Button
@@ -22,7 +28,10 @@ const { variant = "icon", showEmail = false, class: className } = Astro.props;
 				rel="noopener noreferrer"
 				variant={variant === "button" ? "outline" : "ghost"}
 				size={variant === "button" ? "default" : "icon-sm"}
-				class={cn("text-muted-foreground hover:text-foreground", variant === "button" && "gap-x-2")}
+				class={cn(
+					"text-muted-foreground hover:text-foreground",
+					variant === "button" && "gap-x-2"
+				)}
 				aria-label="Email"
 				title={variant === "button" ? "Email" : undefined}
 			>
@@ -43,7 +52,10 @@ const { variant = "icon", showEmail = false, class: className } = Astro.props;
 				rel="noopener noreferrer"
 				variant={variant === "button" ? "outline" : "ghost"}
 				size={variant === "button" ? "default" : "icon-sm"}
-				class={cn("text-muted-foreground hover:text-foreground", variant === "button" && "gap-x-2")}
+				class={cn(
+					"text-muted-foreground hover:text-foreground",
+					variant === "button" && "gap-x-2"
+				)}
 				aria-label={link.text}
 				title={variant === "button" ? link.text : undefined}
 			>

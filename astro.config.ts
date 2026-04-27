@@ -24,7 +24,7 @@ export default defineConfig({
 			styles: ["normal", "italic"],
 			fallbacks: ["sans-serif"],
 			display: "swap",
-			formats: ["woff2"],
+			formats: ["woff2"]
 		},
 		{
 			provider: fontProviders.fontsource(),
@@ -33,8 +33,8 @@ export default defineConfig({
 			styles: ["normal", "italic"],
 			fallbacks: ["monospace"],
 			display: "swap",
-			formats: ["woff2"],
-		},
+			formats: ["woff2"]
+		}
 	],
 	integrations: [
 		astroMermaid({
@@ -43,39 +43,44 @@ export default defineConfig({
 			mermaidConfig: {
 				flowchart: {
 					htmlLabels: true,
-					curve: "basis",
-				},
-			},
+					curve: "basis"
+				}
+			}
 		}),
 		mdx({
 			gfm: true,
-			remarkPlugins: [remarkGfm],
+			remarkPlugins: [remarkGfm]
 		}),
-		sitemap(),
+		sitemap()
 	],
 	markdown: {
 		gfm: true,
 		shikiConfig: {
 			theme: "dracula-soft",
-			wrap: true,
+			wrap: true
 		},
 		rehypePlugins: [
 			[
 				rehypeExternalLinks,
 				{
 					rel: ["noreferrer", "noopener"],
-					target: "_blank",
-				},
-			],
+					target: "_blank"
+				}
+			]
 		],
-		remarkPlugins: [remarkGfm, remarkDirective, remarkGithubCard, remarkAdmonitions],
+		remarkPlugins: [
+			remarkGfm,
+			remarkDirective,
+			remarkGithubCard,
+			remarkAdmonitions
+		],
 		remarkRehype: {
 			footnoteLabelProperties: {
-				className: [""],
-			},
-		},
+				className: [""]
+			}
+		}
 	},
 	vite: {
-		plugins: [tailwindcss()],
-	},
+		plugins: [tailwindcss()]
+	}
 });

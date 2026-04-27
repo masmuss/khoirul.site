@@ -11,6 +11,6 @@ export function GET(context: APIContext) {
 	Sitemap: ${new URL("sitemap-index.xml", site).href}`.trim();
 
 	return new Response(robots, {
-		headers: { "Content-Type": "text/plain; charset=utf-8" },
+		headers: { "Content-Type": "text/plain; charset=utf-8" }
 	});
 }

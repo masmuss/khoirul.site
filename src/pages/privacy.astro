@@ -1,4 +1,6 @@
 ---
+import Heading from "@/components/ui/Heading.astro";
+import PageHeader from "@/components/ui/PageHeader.astro";
 import Section from "@/components/ui/Section.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { getFormattedDate } from "@/lib/utils";
@@ -6,7 +8,7 @@ import { getFormattedDate } from "@/lib/utils";
 const lastUpdated = getFormattedDate(new Date(), {
 	year: "numeric",
 	month: "long",
-	day: "numeric",
+	day: "numeric"
 });
 ---
 
@@ -16,31 +18,40 @@ const lastUpdated = getFormattedDate(new Date(), {
 	pageType="website"
 >
 	<div class="flex w-full flex-col gap-y-10">
-		<div>
-			<h1 class="mb-2 text-2xl font-semibold">Privacy Policy</h1>
-			<p class="text-muted-foreground">Last updated: {lastUpdated}</p>
-		</div>
+		<PageHeader
+			title="Privacy Policy"
+			description={`Last updated on ${lastUpdated}. This page outlines how I handle privacy, data collection, and external links on khoirul.me.`}
+			as="h1"
+			class="mb-6"
+		/>
 
 		<div class="flex flex-col gap-y-8">
-			<Section title="1. Information Collection">
+			<Section>
+				<Heading as="h2" size="xl" weight="bold"
+					>1. Information Collection</Heading
+				>
 				<p>
-					This website does not directly collect, track, or share any personal data. There are no
-					tracking cookies or invasive analytics scripts affecting visitors.
+					This website does not directly collect, track, or share any personal
+					data. There are no tracking cookies or invasive analytics scripts
+					affecting visitors.
 				</p>
 			</Section>
 
-			<Section title="2. External Links">
+			<Section>
+				<Heading as="h2" size="xl" weight="bold">2. External Links</Heading>
 				<p>
-					Some links on this site may lead to external websites (like GitHub, LinkedIn, or
-					Unsplash). I am not responsible for the privacy practices or content of these external
-					sites.
+					Some links on this site may lead to external websites (like GitHub,
+					LinkedIn, or Unsplash). I am not responsible for the privacy practices
+					or content of these external sites.
 				</p>
 			</Section>
 
-			<Section title="3. Contact">
+			<Section>
+				<Heading as="h2" size="xl" weight="bold">3. Contact</Heading>
 				<p>
-					If you reach out to me via email or social media, any information you provide will be kept
-					strictly confidential and only used to respond to your inquiry.
+					If you reach out to me via email or social media, any information you
+					provide will be kept strictly confidential and only used to respond to
+					your inquiry.
 				</p>
 			</Section>
 		</div>

@@ -9,81 +9,81 @@ export const siteConfig: SiteConfig = {
 	email: "ahmusafir.khoirul@gmail.com",
 	image: {
 		src: "/og.png",
-		alt: "Open Graph",
+		alt: "Open Graph"
 	},
 	date: {
 		locale: "id-ID",
 		options: {
 			day: "numeric",
 			month: "short",
-			year: "numeric",
-		},
+			year: "numeric"
+		}
 	},
 	socialLinks: [
 		{
 			text: "GitHub",
 			href: "https://github.com/masmuss",
 			icon: "ri--github-line",
-			header: "ri--github-line",
+			header: "ri--github-line"
 		},
 		{
 			text: "Twitter",
 			href: "https://x.com/rexbocho",
 			icon: "ri--twitter-x-line",
-			header: "ri--twitter-x-line",
+			header: "ri--twitter-x-line"
 		},
 		{
 			text: "LinkedIn",
 			href: "https://www.linkedin.com/in/masmuss",
-			icon: "ri--linkedin-box-line",
+			icon: "ri--linkedin-box-line"
 		},
 		{
 			text: "Instagram",
 			href: "https://www.instagram.com/pictogrammmer",
-			icon: "ri--instagram-line",
+			icon: "ri--instagram-line"
 		},
 		{
 			text: "Threads",
 			href: "https://www.threads.net/@khoe__rul",
-			icon: "ri--threads-line",
-		},
+			icon: "ri--threads-line"
+		}
 	],
 	header: {
 		logo: {
 			src: "/logo.svg",
-			alt: "Website Logo",
+			alt: "Website Logo"
 		},
 		navLinks: [
 			{
 				text: "About",
 				href: "/about",
-				icon: "ri--user-line",
+				icon: "ri--user-line"
 			},
 			{
 				text: "Blog",
 				href: "/blog",
-				icon: "ri--article-line",
+				icon: "ri--article-line"
 			},
 			{
 				text: "Projects",
 				href: "/projects",
-				icon: "ri--code-line",
+				icon: "ri--code-line"
 			},
 			{
 				text: "Tools",
 				href: "/tools",
-				icon: "ri--tools-line",
-			},
-		],
+				icon: "ri--tools-line"
+			}
+		]
 	},
 	page: {
 		blogLinks: [
 			{
 				text: "Blog",
-				href: "/blog",
-			},
-		],
-	},
+				href: "/blog"
+			}
+		]
+	}
 };
 
 export default siteConfig;

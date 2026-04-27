@@ -19,8 +19,8 @@ export async function getStaticPaths() {
 		params: { id: getPostRouteId(post) },
 		props: {
 			post,
-			relatedPosts: getRelatedPosts(posts, post.data.tags, post.data.title, 4),
-		},
+			relatedPosts: getRelatedPosts(posts, post.data.tags, post.data.title, 4)
+		}
 	}));
 }
 

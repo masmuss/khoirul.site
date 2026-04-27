@@ -1,0 +1,39 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+const weights = {
+	bold: "font-bold",
+	semibold: "font-semibold",
+	medium: "font-medium",
+	light: "font-light"
+};
+
+const sizes = {
+	"6xl": "text-6xl",
+	"5xl": "text-5xl",
+	"4xl": "text-4xl",
+	"3xl": "text-3xl",
+	"2xl": "text-2xl",
+	xl: "text-xl",
+	lg: "text-lg",
+	base: "text-base",
+	sm: "text-sm"
+};
+
+interface Props extends HTMLAttributes<"h1"> {
+	as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+	weight?: keyof typeof weights;
+	size?: keyof typeof sizes;
+}
+
+const {
+	as: As = "h2",
+	weight = "medium",
+	size = "base",
+	...attrs
+}: Props = Astro.props;
+---
+
+<As class:list={[sizes[size], weights[weight]]} {...attrs}>
+	<slot />
+</As>

@@ -6,7 +6,7 @@ interface Props {
 }
 
 const {
-	heading: { slug, subheadings, text },
+	heading: { slug, subheadings, text }
 } = Astro.props;
 ---
 
@@ -16,7 +16,7 @@ const {
 		class:list={[
 			"toc-link block transition-colors",
 			"mb-2 text-sm",
-			"text-foreground/70 hover:underline",
+			"text-foreground/70 hover:underline"
 		]}
 		href={`#${slug}`}>{text}</a
 	>

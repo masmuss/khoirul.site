@@ -3,7 +3,8 @@
 	const darkModePref = window.matchMedia("(prefers-color-scheme: dark)");
 
 	function getUserPref() {
-		const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("theme");
+		const storedTheme =
+			typeof localStorage !== "undefined" && localStorage.getItem("theme");
 		return storedTheme === "light" || storedTheme === "dark"
 			? storedTheme
 			: darkModePref.matches
@@ -14,7 +15,7 @@
 	function setTheme(newTheme) {
 		if (newTheme !== "light" && newTheme !== "dark") {
 			return console.warn(
-				`Invalid theme value '${newTheme}' received. Expected 'light' or 'dark'.`,
+				`Invalid theme value '${newTheme}' received. Expected 'light' or 'dark'.`
 			);
 		}
 
@@ -46,5 +47,7 @@
 		setTheme(theme);
 	});
 
-	darkModePref.addEventListener("change", (e) => setTheme(e.matches ? "dark" : "light"));
+	darkModePref.addEventListener("change", (e) =>
+		setTheme(e.matches ? "dark" : "light")
+	);
 </script>

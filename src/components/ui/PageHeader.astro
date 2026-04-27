@@ -1,0 +1,22 @@
+---
+import Heading from "./Heading.astro";
+
+interface Props {
+	title: string;
+	description?: string;
+	as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+	class?: string;
+}
+
+const {
+	title,
+	description,
+	as = "h1",
+	class: className = ""
+}: Props = Astro.props;
+---
+
+<div class={className}>
+	<Heading as={as} size="2xl" weight="semibold" class="mb-2">{title}</Heading>
+	{description && <p class="text-muted-foreground">{description}</p>}
+</div>

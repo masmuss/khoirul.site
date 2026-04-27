@@ -15,7 +15,7 @@ export const postSchema = ({ image }: SchemaContext) =>
 		coverImage: z
 			.object({
 				src: z.union([image(), z.url()]),
-				alt: z.string(),
+				alt: z.string()
 			})
 			.optional(),
 		date: z
@@ -28,7 +28,7 @@ export const postSchema = ({ image }: SchemaContext) =>
 			.transform((val: string | number | Date) => new Date(val))
 			.optional(),
 		draft: z.boolean().default(false).optional(),
-		tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
+		tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase)
 	});
 
 export const seriesSchema = z.object({
@@ -37,9 +37,9 @@ export const seriesSchema = z.object({
 	coverImage: z
 		.object({
 			src: z.string(),
-			alt: z.string(),
+			alt: z.string()
 		})
-		.optional(),
+		.optional()
 });
 
 export const experiencesSchema = z.array(
@@ -53,8 +53,8 @@ export const experiencesSchema = z.array(
 		umbrellaOrg: z.string().optional(),
 		summary: z.string().optional(),
 		skills: z.array(z.string()).optional(),
-		highlights: z.array(z.string()),
-	}),
+		highlights: z.array(z.string())
+	})
 );
 
 export const educationsSchema = z.array(
@@ -63,8 +63,8 @@ export const educationsSchema = z.array(
 		institution: z.string(),
 		degree: z.string(),
 		gpa: z.string().optional(),
-		coursework: z.array(z.string()),
-	}),
+		coursework: z.array(z.string())
+	})
 );
 
 export const certificationsSchema = z.array(
@@ -74,6 +74,6 @@ export const certificationsSchema = z.array(
 		date: z.string(),
 		expiredDate: z.string().optional(),
 		credentialUrl: z.url().optional(),
-		description: z.string().optional(),
-	}),
+		description: z.string().optional()
+	})
 );

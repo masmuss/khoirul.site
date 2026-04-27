@@ -26,7 +26,7 @@ const GITHUB_API_BASE_URL = "https://github-contributions-api.jogruber.de/v4/";
 
 export const GITHUB_CACHE_POLICY = {
 	sMaxAge: 60 * 60,
-	staleWhileRevalidate: 24 * 60 * 60,
+	staleWhileRevalidate: 24 * 60 * 60
 } as const;
 
 function getCacheKey(username: string, year: number | "last"): string {
@@ -51,11 +51,18 @@ function logCacheEvent(enableLogging: boolean, message: string): void {
 	console.info(`[github-calendar] ${message}`);
 }
 
-async function fetchFromGitHubApi(username: string, year: number | "last"): Promise<Activity[]> {
-	const response = await fetch(`${GITHUB_API_BASE_URL}${username}?y=${String(year)}`);
+async function fetchFromGitHubApi(
+	username: string,
+	year: number | "last"
+): Promise<Activity[]> {
+	const response = await fetch(
+		`${GITHUB_API_BASE_URL}${username}?y=${String(year)}`
+	);
 
 	if (!response.ok) {
-		throw new Error(`Failed to fetch GitHub contributions: ${response.statusText}`);
+		throw new Error(
+			`Failed to fetch GitHub contributions: ${response.statusText}`
+		);
 	}
 
 	const data = (await response.json()) as ApiResponse;
@@ -65,13 +72,13 @@ async function fetchFromGitHubApi(username: string, year: number | "last"): Prom
 export async function fetchGitHubContributions(
 	username: string,
 	year: number | "last" = "last",
-	options: FetchGitHubContributionsOptions = {},
+	options: FetchGitHubContributionsOptions = {}
 ): Promise<Activity[]> {
 	const forceRefresh = options.forceRefresh ?? false;
 	const enableLogging = options.enableLogging ?? false;
 	const queryParams = new URLSearchParams({
 		username,
-		year: String(year),
+		year: String(year)
 	});
 
 	if (forceRefresh) {
@@ -85,7 +92,11 @@ export async function fetchGitHubContributions(
 	const cacheKey = getCacheKey(username, year);
 	const cachedEntry = getCachedEntry(cacheKey);
 
-	if (cachedEntry && Date.now() - cachedEntry.fetchedAt < GITHUB_CACHE_TTL_MS && !forceRefresh) {
+	if (
+		cachedEntry &&
+		Date.now() - cachedEntry.fetchedAt < GITHUB_CACHE_TTL_MS &&
+		!forceRefresh
+	) {
 		logCacheEvent(enableLogging, `cache hit for ${cacheKey}`);
 		return cachedEntry.data;
 	}
@@ -98,10 +109,13 @@ export async function fetchGitHubContributions(
 
 	try {
 		const contributions = await fetchFromGitHubApi(username, year);
-		contributionsCache.set(cacheKey, { data: contributions, fetchedAt: Date.now() });
+		contributionsCache.set(cacheKey, {
+			data: contributions,
+			fetchedAt: Date.now()
+		});
 		logCacheEvent(
 			enableLogging,
-			`cache updated for ${cacheKey} with ${contributions.length} entries`,
+			`cache updated for ${cacheKey} with ${contributions.length} entries`
 		);
 		return contributions;
 	} catch (error) {
@@ -121,11 +135,13 @@ export async function fetchGitHubContributions(
 
 export function groupByWeeks(
 	activities: Activity[],
-	weekStart: 0 | 1 = 0, // 0 = Sunday, 1 = Monday
+	weekStart: 0 | 1 = 0 // 0 = Sunday, 1 = Monday
 ): Array<Array<Activity | undefined>> {
 	if (activities.length === 0) return [];
 
-	const sortedActivities = [...activities].sort((a, b) => a.date.localeCompare(b.date));
+	const sortedActivities = [...activities].sort((a, b) =>
+		a.date.localeCompare(b.date)
+	);
 	const firstActivity = sortedActivities[0];
 	const lastActivity = sortedActivities[sortedActivities.length - 1];
 	if (!firstActivity || !lastActivity) return [];
@@ -165,7 +181,10 @@ export function groupByWeeks(
 	return weeks;
 }
 
-export function getActivityLevel(count: number, allCounts: number[]): 0 | 1 | 2 | 3 | 4 {
+export function getActivityLevel(
+	count: number,
+	allCounts: number[]
+): 0 | 1 | 2 | 3 | 4 {
 	if (count === 0) return 0;
 
 	const maxCount = Math.max(...allCounts);
@@ -180,7 +199,11 @@ export function getActivityLevel(count: number, allCounts: number[]): 0 | 1 | 2 
 
 export function formatDate(dateStr: string): string {
 	const date = new Date(`${dateStr}T00:00:00`);
-	return date.toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" });
+	return date.toLocaleDateString("id-ID", {
+		day: "numeric",
+		month: "short",
+		year: "numeric"
+	});
 }
 
 export function getTotalCount(activities: Activity[]): number {

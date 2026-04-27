@@ -1,26 +1,43 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 import Card from "@/components/ui/card/Card.astro";
 import CardContent from "@/components/ui/card/CardContent.astro";
 import CardHeader from "@/components/ui/card/CardHeader.astro";
 import CardTitle from "@/components/ui/card/CardTitle.astro";
 import { cn } from "@/lib/utils";
 
-interface Props {
+interface Props extends HTMLAttributes<"section"> {
 	title: string;
-	class?: string;
+	titleAs?: keyof HTMLElementTagNameMap;
+	titleClass?: string;
 	contentClass?: string;
 }
 
-const { title, class: className, contentClass }: Props = Astro.props;
+const {
+	title,
+	titleAs = "h2",
+	titleClass = "text-muted-foreground text-xs font-medium tracking-widest uppercase",
+	contentClass = "",
+	class: className = "",
+	...attrs
+}: Props = Astro.props;
 ---
 
-<Card class={cn("gap-0 rounded-none border-0 bg-transparent py-0 ring-0", className)}>
-	<CardHeader class="border-border/70 border-b px-0 py-3">
-		<CardTitle as="h2" class="text-muted-foreground text-xs font-medium tracking-widest uppercase">
-			{title}
-		</CardTitle>
-	</CardHeader>
-	<CardContent class={cn("p-4", contentClass)}>
-		<slot />
-	</CardContent>
-</Card>
+<section
+	{...attrs}
+	class={cn(
+		"gap-0 rounded-none border-0 bg-transparent py-0 ring-0",
+		className
+	)}
+>
+	<Card class="ring-0">
+		<CardHeader class="border-border/70 border-b px-0 py-3">
+			<CardTitle as={titleAs} class={titleClass}>
+				{title}
+			</CardTitle>
+		</CardHeader>
+		<CardContent class={cn("p-4", contentClass)}>
+			<slot />
+		</CardContent>
+	</Card>
+</section>

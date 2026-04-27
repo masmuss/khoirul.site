@@ -2,11 +2,7 @@
 	"$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
 	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"formatter": {
-		"indentStyle": "tab",
-		"indentWidth": 2,
-		"lineWidth": 100,
-		"formatWithErrors": true,
-		"includes": ["**", "!**/*.astro"]
+		"enabled": false
 	},
 	"linter": {
 		"enabled": true,
@@ -29,36 +25,7 @@
 				"useNumberNamespace": "error",
 				"noInferrableTypes": "error",
 				"noUselessElse": "error"
-			},
-			"nursery": {
-				"useSortedClasses": {
-					"level": "warn",
-					"options": {
-						"attributes": ["class", "class:list", "contentClass", "className"],
-						"functions": ["cva", "cn"]
-					}
-				}
 			}
-		}
-	},
-	"javascript": {
-		"formatter": {
-			"trailingCommas": "all",
-			"semicolons": "always"
-		}
-	},
-	"css": {
-		"formatter": {
-			"indentStyle": "tab",
-			"indentWidth": 2,
-			"lineWidth": 80
-		}
-	},
-	"json": {
-		"formatter": {
-			"indentStyle": "tab",
-			"indentWidth": 2,
-			"lineWidth": 80
 		}
 	},
 	"vcs": {
@@ -76,14 +43,6 @@
 						"noUnusedImports": "off"
 					}
 				}
-			}
-		},
-		{
-			"includes": ["**/*.md", "**/*.mdx"],
-			"formatter": {
-				"indentStyle": "tab",
-				"indentWidth": 2,
-				"lineWidth": 80
 			}
 		}
 	]

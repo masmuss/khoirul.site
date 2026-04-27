@@ -1,5 +1,9 @@
 ---
-import { fetchGitHubContributions, getTotalCount, groupByWeeks } from "@/lib/github-calendar";
+import {
+	fetchGitHubContributions,
+	getTotalCount,
+	groupByWeeks
+} from "@/lib/github-calendar";
 
 type CalendarTheme = {
 	light: readonly [string, string, string, string, string];
@@ -17,8 +21,14 @@ interface Props {
 }
 
 const defaultTheme: CalendarTheme = {
-	light: ["rgba(235, 237, 240, 0.4)", "#c6e48b", "#7bc96f", "#239a3b", "#196127"],
-	dark: ["rgba(22, 27, 34, 0.8)", "#0e4429", "#006d32", "#26a641", "#39d353"],
+	light: [
+		"rgba(235, 237, 240, 0.4)",
+		"#c6e48b",
+		"#7bc96f",
+		"#239a3b",
+		"#196127"
+	],
+	dark: ["rgba(22, 27, 34, 0.8)", "#0e4429", "#006d32", "#26a641", "#39d353"]
 };
 
 const {
@@ -28,7 +38,7 @@ const {
 	blockMargin = 3,
 	showTotalCount = true,
 	showMonthLabels = true,
-	theme = defaultTheme,
+	theme = defaultTheme
 } = Astro.props;
 
 const activities = await fetchGitHubContributions(username, year);
@@ -39,7 +49,7 @@ const yearLabel = year === "last" ? "the last year" : `${year}`;
 
 const resolvedTheme: Required<CalendarTheme> = {
 	light: theme.light,
-	dark: theme.dark ?? theme.light,
+	dark: theme.dark ?? theme.light
 };
 
 const monthLabels = [
@@ -54,7 +64,7 @@ const monthLabels = [
 	"Sep",
 	"Oct",
 	"Nov",
-	"Dec",
+	"Dec"
 ];
 
 const monthLabelWeeks = new Map<number, number>();
@@ -70,18 +80,23 @@ weeks.forEach((week, weekIndex) => {
 });
 
 const monthLabelEntries = Array.from(monthLabelWeeks.entries())
-	.sort(([, leftWeekIndex], [, rightWeekIndex]) => leftWeekIndex - rightWeekIndex)
+	.sort(
+		([, leftWeekIndex], [, rightWeekIndex]) => leftWeekIndex - rightWeekIndex
+	)
 	.map(([month, weekIndex], entryIndex, entries) => {
 		const nextWeekIndex = entries[entryIndex + 1]?.[1];
 		const span = (nextWeekIndex ?? weekIndex + 4) - weekIndex;
 		return {
 			month,
 			weekIndex,
-			centerX: (weekIndex + span / 2) * (blockSize + blockMargin),
+			centerX: (weekIndex + span / 2) * (blockSize + blockMargin)
 		};
 	});
 
-const svgWidth = Math.max(blockSize, weeks.length * (blockSize + blockMargin) - blockMargin);
+const svgWidth = Math.max(
+	blockSize,
+	weeks.length * (blockSize + blockMargin) - blockMargin
+);
 const svgHeight = 7 * (blockSize + blockMargin) - blockMargin;
 const topPadding = showMonthLabels ? blockSize + 8 : 0;
 ---
@@ -98,7 +113,7 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 		"--calendar-level-1-dark": resolvedTheme.dark[1],
 		"--calendar-level-2-dark": resolvedTheme.dark[2],
 		"--calendar-level-3-dark": resolvedTheme.dark[3],
-		"--calendar-level-4-dark": resolvedTheme.dark[4],
+		"--calendar-level-4-dark": resolvedTheme.dark[4]
 	}}
 >
 	<div class="w-full min-w-0">
@@ -150,7 +165,7 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 								data-level={level}
 							/>
 						);
-					}),
+					})
 				)
 			}
 		</svg>

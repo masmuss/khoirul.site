@@ -1,4 +1,5 @@
 ---
+import PageHeader from "@/components/ui/PageHeader.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { getAllPosts, getUniqueTagsWithCount } from "@/lib/contents";
 
@@ -12,17 +13,24 @@ const sortedTags = getUniqueTagsWithCount(allPosts);
 	image={{ src: "/og/tags.png", alt: "All Tags - pictogrammmer" }}
 >
 	<div class="flex w-full flex-col gap-y-8">
-		<div>
-			<h1 class="mb-2 text-2xl font-semibold">Tags</h1>
-			<p class="text-muted-foreground">A list of all the topics I've written about in my posts</p>
-		</div>
+		<PageHeader
+			title="Tags"
+			description="A list of all the topics I've written about in my posts."
+			as="h1"
+			class="mb-6"
+		/>
+
 		<div class="flex max-w-xl flex-col">
 			<p class="text-muted-foreground">
 				{sortedTags.length} tags across {allPosts.length} posts
 			</p>
 		</div>
 
-		{sortedTags.length === 0 && <p class="text-muted-foreground">No posts yet.</p>}
+		{
+			sortedTags.length === 0 && (
+				<p class="text-muted-foreground">No posts yet.</p>
+			)
+		}
 
 		{
 			sortedTags.length > 0 && (

@@ -3,8 +3,13 @@ import type { CollectionPosts } from "@/types";
 
 const AVERAGE_READING_WORDS_PER_MINUTE = 200;
 
-export function sortPostsByDate(itemA: CollectionPosts, itemB: CollectionPosts): number {
-	return new Date(itemB.data.date).getTime() - new Date(itemA.data.date).getTime();
+export function sortPostsByDate(
+	itemA: CollectionPosts,
+	itemB: CollectionPosts
+): number {
+	return (
+		new Date(itemB.data.date).getTime() - new Date(itemA.data.date).getTime()
+	);
 }
 
 export async function getAllPosts(limit?: number) {
@@ -21,7 +26,7 @@ export function getRelatedPosts(
 	posts: CollectionPosts[],
 	tags: string[],
 	title: string,
-	limit = 3,
+	limit = 3
 ): CollectionPosts[] {
 	return posts
 		.filter((post) => {
@@ -32,7 +37,10 @@ export function getRelatedPosts(
 		.slice(0, limit);
 }
 
-export async function getPostsByPath(path?: string, limit?: number): Promise<CollectionPosts[]> {
+export async function getPostsByPath(
+	path?: string,
+	limit?: number
+): Promise<CollectionPosts[]> {
 	const posts = await getAllPosts();
 
 	const filtered = posts.filter((post) => {
@@ -44,7 +52,9 @@ export async function getPostsByPath(path?: string, limit?: number): Promise<Col
 	return limit ? filtered.slice(0, limit) : filtered;
 }
 
-export function groupPostsByYear(posts: CollectionPosts[]): Map<number, CollectionPosts[]> {
+export function groupPostsByYear(
+	posts: CollectionPosts[]
+): Map<number, CollectionPosts[]> {
 	const grouped = new Map<number, CollectionPosts[]>();
 	for (const post of posts) {
 		const year = new Date(post.data.date).getFullYear();
@@ -65,13 +75,13 @@ export function getUniqueTags(posts: Array<CollectionEntry<"post">>) {
 }
 
 export function getUniqueTagsWithCount(
-	posts: Array<CollectionEntry<"post">>,
+	posts: Array<CollectionEntry<"post">>
 ): Array<[string, number]> {
 	return [
 		...getAllTags(posts).reduce(
 			(acc, t) => acc.set(t, (acc.get(t) || 0) + 1),
-			new Map<string, number>(),
-		),
+			new Map<string, number>()
+		)
 	].sort((a, b) => {
 		if (b[1] !== a[1]) return b[1] - a[1];
 		return a[0].localeCompare(b[0]);

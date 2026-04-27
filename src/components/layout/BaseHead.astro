@@ -19,7 +19,7 @@ const {
 	image = siteConfig.image,
 	pageType = "website",
 	date,
-	updatedDate,
+	updatedDate
 }: Props = Astro.props;
 
 const pageTitle = Astro.props.title?.trim();
@@ -34,10 +34,12 @@ function truncateByWordBoundary(text: string, maxLength: number) {
 	const cutIndex = Math.max(
 		sliced.lastIndexOf(" "),
 		sliced.lastIndexOf("-"),
-		sliced.lastIndexOf("|"),
+		sliced.lastIndexOf("|")
 	);
 	const safeText = (
-		cutIndex > Math.floor(maxLength * 0.7) ? sliced.slice(0, cutIndex) : text.slice(0, maxLength)
+		cutIndex > Math.floor(maxLength * 0.7)
+			? sliced.slice(0, cutIndex)
+			: text.slice(0, maxLength)
 	).trim();
 	return `${safeText}...`;
 }
@@ -89,7 +91,7 @@ const normalizedDescription = normalizeDescription(description, pageType);
 const resolvedImage = image?.src
 	? {
 			src: new URL(image.src, Astro.site).toString(),
-			alt: image.alt,
+			alt: image.alt
 		}
 	: undefined;
 
@@ -100,7 +102,9 @@ function formatCanonicalURL(url: string | URL) {
 	normalizedUrl.hash = "";
 
 	const normalizedPath =
-		normalizedUrl.pathname === "/" ? "/" : normalizedUrl.pathname.replace(/\/+$/, "");
+		normalizedUrl.pathname === "/"
+			? "/"
+			: normalizedUrl.pathname.replace(/\/+$/, "");
 
 	return `${normalizedUrl.origin}${normalizedPath}${normalizedUrl.search}`;
 }
@@ -127,15 +131,39 @@ function formatCanonicalURL(url: string | URL) {
 
 <!-- Low Priority Global Metadata -->
 <!-- Favicons - Primary for Google Search & Apple Devices -->
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+<link
+	rel="apple-touch-icon"
+	sizes="180x180"
+	href="/favicon/apple-touch-icon.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="192x192"
+	href="/favicon/android-chrome-192x192.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="32x32"
+	href="/favicon/favicon-32x32.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="16x16"
+	href="/favicon/favicon-16x16.png"
+/>
 <link rel="manifest" href="/favicon/site.webmanifest" />
 
 <!-- Favicons - Fallback to SVG with dark mode support for modern browsers -->
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" media="(prefers-color-scheme: light)" />
+<link
+	rel="icon"
+	href="/favicon.svg"
+	type="image/svg+xml"
+	media="(prefers-color-scheme: light)"
+/>
 <link
 	rel="icon"
 	href="/favicon-dark.svg"
@@ -144,8 +172,16 @@ function formatCanonicalURL(url: string | URL) {
 />
 
 <!-- Theme Colors -->
-<meta name="theme-color" content="#18181b" media="(prefers-color-scheme: dark)" />
-<meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)" />
+<meta
+	name="theme-color"
+	content="#18181b"
+	media="(prefers-color-scheme: dark)"
+/>
+<meta
+	name="theme-color"
+	content="#f4f4f5"
+	media="(prefers-color-scheme: light)"
+/>
 
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
@@ -161,12 +197,24 @@ function formatCanonicalURL(url: string | URL) {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={normalizedDescription} />
 {resolvedImage?.src && <meta property="og:image" content={resolvedImage.src} />}
-{resolvedImage?.alt && <meta property="og:image:alt" content={resolvedImage.alt} />}
+{
+	resolvedImage?.alt && (
+		<meta property="og:image:alt" content={resolvedImage.alt} />
+	)
+}
 
 <!-- X / Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={formatCanonicalURL(canonicalURL)} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={normalizedDescription} />
-{resolvedImage?.src && <meta property="twitter:image" content={resolvedImage.src} />}
-{resolvedImage?.alt && <meta name="twitter:image:alt" content={resolvedImage?.alt} />}
+{
+	resolvedImage?.src && (
+		<meta property="twitter:image" content={resolvedImage.src} />
+	)
+}
+{
+	resolvedImage?.alt && (
+		<meta name="twitter:image:alt" content={resolvedImage?.alt} />
+	)
+}

@@ -1,12 +1,14 @@
 import type { Project } from "@/types";
 import { projectData } from "../constants/projects";
 
-function resolveLinkTarget(project: Project): Pick<Project, "liveHref" | "repoHref" | "href"> {
+function resolveLinkTarget(
+	project: Project
+): Pick<Project, "liveHref" | "repoHref" | "href"> {
 	if (project.liveHref || project.repoHref) {
 		return {
 			liveHref: project.liveHref,
 			repoHref: project.repoHref,
-			href: project.liveHref ?? project.repoHref,
+			href: project.liveHref ?? project.repoHref
 		};
 	}
 
@@ -18,7 +20,7 @@ function resolveLinkTarget(project: Project): Pick<Project, "liveHref" | "repoHr
 	return {
 		liveHref: isGitHubUrl ? undefined : project.href,
 		repoHref: isGitHubUrl ? project.href : undefined,
-		href: project.href,
+		href: project.href
 	};
 }
 
@@ -29,6 +31,6 @@ export function getAllProjects(limit = 10): Project[] {
 		.map((project) => ({
 			...project,
 			...resolveLinkTarget(project),
-			thumbnail: project.thumbnail || "/src/assets/images/coming-soon.png",
+			thumbnail: project.thumbnail || "/src/assets/images/coming-soon.png"
 		}));
 }

@@ -6,7 +6,9 @@
 	const GISCUS_ORIGIN = "https://giscus.app";
 
 	function getGiscusTheme() {
-		return document.documentElement.classList.contains("dark") ? "transparent_dark" : "light";
+		return document.documentElement.classList.contains("dark")
+			? "transparent_dark"
+			: "light";
 	}
 
 	function setGiscusTheme() {
@@ -14,7 +16,7 @@
 		if (!iframe) return;
 		iframe.contentWindow?.postMessage(
 			{ giscus: { setConfig: { theme: getGiscusTheme() } } },
-			GISCUS_ORIGIN,
+			GISCUS_ORIGIN
 		);
 	}
 
@@ -48,7 +50,10 @@
 	// Handle initial load (Astro View Transitions compatible)
 	document.addEventListener("astro:page-load", loadGiscus);
 
-	if (document.readyState === "complete" || document.readyState === "interactive") {
+	if (
+		document.readyState === "complete" ||
+		document.readyState === "interactive"
+	) {
 		setTimeout(loadGiscus, 1);
 	} else {
 		document.addEventListener("DOMContentLoaded", loadGiscus);
@@ -56,7 +61,10 @@
 
 	// Observer to listen when the user presses the theme toggle button (ThemeToggle.astro)
 	const observer = new MutationObserver(setGiscusTheme);
-	observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+	observer.observe(document.documentElement, {
+		attributes: true,
+		attributeFilter: ["class"]
+	});
 
 	// Fallback synchronization. Sometimes the iframe is slow to respond to the first `postMessage`
 	window.addEventListener("message", (event) => {

@@ -6,6 +6,6 @@ export const prerender = true;
 export async function GET() {
 	return createOgImageResponse({
 		title: siteConfig.title,
-		description: siteConfig.description,
+		description: siteConfig.description
 	});
 }

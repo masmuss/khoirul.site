@@ -11,12 +11,17 @@ function diveChildren(item: TocItem, depth: number): Array<TocItem> {
 	if (depth === 1 || !item.subheadings.length) {
 		return item.subheadings;
 	}
-	return diveChildren(item.subheadings[item.subheadings.length - 1] as TocItem, depth - 1);
+	return diveChildren(
+		item.subheadings[item.subheadings.length - 1] as TocItem,
+		depth - 1
+	);
 }
 
 export function generateToc(headings: ReadonlyArray<MarkdownHeading>) {
 	const bodyHeadings = [
-		...headings.filter(({ depth }) => depth >= MIN_HEADING_DEPTH && depth <= MAX_HEADING_DEPTH),
+		...headings.filter(
+			({ depth }) => depth >= MIN_HEADING_DEPTH && depth <= MAX_HEADING_DEPTH
+		)
 	];
 	const toc: Array<TocItem> = [];
 

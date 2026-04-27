@@ -1,12 +1,13 @@
 ---
 import SocialLinks from "@/components/common/SocialLinks.astro";
+import Heading from "@/components/ui/Heading.astro";
 ---
 
 <section class="flex flex-col gap-y-4">
-	<h1 class="text-2xl font-semibold">Khoirul Fattah</h1>
+	<Heading as="h1" size="2xl" weight="semibold">Khoirul Fattah</Heading>
 	<p class="text-muted-foreground max-w-md leading-relaxed">
-		Full-stack developer & photographer based in Surabaya. Building web experiences and capturing
-		moments through a lens.
+		Full-stack developer & photographer based in Surabaya. Building web
+		experiences and capturing moments through a lens.
 	</p>
 	<SocialLinks variant="icon" showEmail />
 </section>

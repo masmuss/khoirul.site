@@ -1,5 +1,7 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 import InfoPanel from "@/components/ui/InfoPanel.astro";
+import Heading from "./Heading.astro";
 
 type AsideItem = {
 	title: string;
@@ -7,35 +9,48 @@ type AsideItem = {
 	href?: string;
 };
 
-interface Props {
+interface Props extends HTMLAttributes<"aside"> {
 	title: string;
 	items: AsideItem[];
+	itemTitleClass?: string;
+	itemMetaClass?: string;
+	itemArticleClass?: string;
+	listClass?: string;
 }
 
-const { title, items }: Props = Astro.props;
+const {
+	title,
+	items,
+	itemTitleClass = "text-sm leading-relaxed font-medium",
+	itemMetaClass = "text-muted-foreground mt-1 text-xs tracking-wide",
+	itemArticleClass = "py-4",
+	listClass = "divide-border/60 flex flex-col divide-y",
+	...attrs
+}: Props = Astro.props;
 ---
 
-<InfoPanel title={title} contentClass="p-0">
-	<div class="divide-border/60 flex flex-col divide-y">
-		{
-			items.map((item) => {
-				const content = (
-					<article class="py-4">
-						<h3 class="text-sm leading-relaxed font-medium">{item.title}</h3>
-						{item.meta && (
-							<p class="text-muted-foreground mt-1 text-xs tracking-wide">{item.meta}</p>
-						)}
-					</article>
-				);
-
-				return item.href ? (
-					<a href={item.href} rel="noopener noreferrer" target="_blank">
-						{content}
-					</a>
-				) : (
-					content
-				);
-			})
-		}
-	</div>
-</InfoPanel>
+<aside {...attrs}>
+	<InfoPanel title={title} contentClass="p-0">
+		<div class={listClass}>
+			{
+				items.map((item) => {
+					const content = (
+						<article class={itemArticleClass}>
+							<Heading as="h3" class={itemTitleClass}>
+								{item.title}
+							</Heading>
+							{item.meta && <p class={itemMetaClass}>{item.meta}</p>}
+						</article>
+					);
+					return item.href ? (
+						<a href={item.href} rel="noopener noreferrer" target="_blank">
+							{content}
+						</a>
+					) : (
+						content
+					);
+				})
+			}
+		</div>
+	</InfoPanel>
+</aside>
