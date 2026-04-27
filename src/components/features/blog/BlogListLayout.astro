@@ -1,6 +1,7 @@
 ---
 import BlogTabs from "@/components/features/blog/BlogTabs.astro";
 import PostPreview from "@/components/features/blog/PostPreview.astro";
+import Heading from "@/components/ui/Heading.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { getPostsByPath, groupPostsByYear } from "@/lib/contents";
 
@@ -23,7 +24,7 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 
 <PageLayout {title} {description} image={image} pageType="website">
 	<div class="flex w-full flex-col gap-y-12">
-		<h1 class="sr-only">{title}</h1>
+		<Heading as="h1" class="sr-only">{title}</Heading>
 		<div class="flex w-full flex-col">
 			<BlogTabs {activeTab} />
 
