@@ -10,11 +10,20 @@ interface Props {
 	readTimeStyle?: "short" | "long";
 }
 
-const { post, dateTimeOptions, separator = " \u00b7 ", readTimeStyle = "short" } = Astro.props;
+const {
+	post,
+	dateTimeOptions,
+	separator = " \u00b7 ",
+	readTimeStyle = "short"
+} = Astro.props;
 
 const readTime = post.body ? getReadTimeCount(post.body) : null;
 const readTimeLabel =
-	readTime === null ? null : readTimeStyle === "long" ? `${readTime} min read` : `${readTime}min`;
+	readTime === null
+		? null
+		: readTimeStyle === "long"
+			? `${readTime} min read`
+			: `${readTime}min`;
 ---
 
 <>

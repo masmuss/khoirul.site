@@ -14,7 +14,11 @@ const tabs = getSkillsTabs(collections);
 ---
 
 <section class={className} data-skills-tabs>
-	<div class="mb-4 flex flex-wrap gap-2" role="tablist" aria-label="Skill categories">
+	<div
+		class="mb-4 flex flex-wrap gap-2"
+		role="tablist"
+		aria-label="Skill categories"
+	>
 		{
 			tabs.map((tab, index) => (
 				<Button

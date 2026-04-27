@@ -16,7 +16,7 @@ const featuredNames = [
 	"Tailwind CSS",
 	"Playwright",
 	"OpenTelemetry",
-	"Cloudflare",
+	"Cloudflare"
 ];
 
 const slugify = (text: string) =>
@@ -29,8 +29,10 @@ const slugify = (text: string) =>
 export function getSkillsTabs(collections: SkillCollection[]): SkillsTab[] {
 	const allSkills = Array.from(
 		new Map(
-			collections.flatMap((collection) => collection.skills).map((skill) => [skill.name, skill]),
-		).values(),
+			collections
+				.flatMap((collection) => collection.skills)
+				.map((skill) => [skill.name, skill])
+		).values()
 	);
 
 	const featuredFromPreset = featuredNames
@@ -38,7 +40,9 @@ export function getSkillsTabs(collections: SkillCollection[]): SkillsTab[] {
 		.filter((skill): skill is Skill => Boolean(skill));
 
 	const featuredSkills =
-		featuredFromPreset.length >= 8 ? featuredFromPreset : allSkills.slice(0, 10);
+		featuredFromPreset.length >= 8
+			? featuredFromPreset
+			: allSkills.slice(0, 10);
 
 	return [
 		{ id: "featured", label: "Featured", skills: featuredSkills },
@@ -46,7 +50,7 @@ export function getSkillsTabs(collections: SkillCollection[]): SkillsTab[] {
 		...collections.map((collection) => ({
 			id: slugify(collection.title),
 			label: collection.title,
-			skills: collection.skills,
-		})),
+			skills: collection.skills
+		}))
 	];
 }

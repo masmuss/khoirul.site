@@ -16,7 +16,9 @@ const { educations }: Props = Astro.props;
 			educations.map((edu) => (
 				<div class="flex flex-col gap-y-1">
 					<div class="flex flex-col gap-y-0.5 sm:flex-row sm:items-center sm:justify-between">
-						<Heading as="h3" weight="medium">{edu.degree}</Heading>
+						<Heading as="h3" weight="medium">
+							{edu.degree}
+						</Heading>
 						<span class="text-muted-foreground text-sm">{edu.period}</span>
 					</div>
 					<p class="text-muted-foreground text-sm">
@@ -25,8 +27,12 @@ const { educations }: Props = Astro.props;
 					</p>
 					{edu.coursework && edu.coursework.length > 0 && (
 						<div class="mt-2">
-							<p class="text-muted-foreground text-sm font-medium">Relevant Coursework:</p>
-							<p class="text-muted-foreground text-sm">{edu.coursework.join(", ")}</p>
+							<p class="text-muted-foreground text-sm font-medium">
+								Relevant Coursework:
+							</p>
+							<p class="text-muted-foreground text-sm">
+								{edu.coursework.join(", ")}
+							</p>
 						</div>
 					)}
 				</div>

@@ -57,30 +57,30 @@ export const remarkGithubCard: Plugin<[], Root> = () => (tree) => {
         	document.getElementById('${SimpleUUID}').classList.add("gh-error")
          	console.warn("[GITHUB-CARD] Error loading card for ${repoName} | ${SimpleUUID}.", err)
       	})
-			`,
-				},
+			`
+				}
 			]);
 
 			const hTitle = h("div", { class: "gh-title title" }, [
 				h("span", { class: "gh-avatar" }),
 				h("a", { class: "gh-text not-prose cactus-link", href: realUrl }, [
-					{ type: "text", value: `${repoParts[0]}/${repoParts[1]}` },
+					{ type: "text", value: `${repoParts[0]}/${repoParts[1]}` }
 				]),
-				h("span", { class: "gh-icon" }),
+				h("span", { class: "gh-icon" })
 			]);
 
 			const hChips = h("div", { class: "gh-chips" }, [
 				h("span", { class: "gh-stars" }, [{ type: "text", value: "00K" }]),
 				h("span", { class: "gh-forks" }, [{ type: "text", value: "00K" }]),
 				h("span", { class: "gh-license" }, [{ type: "text", value: "MIT" }]),
-				h("span", { class: "gh-language" }, [{ type: "text", value: "" }]),
+				h("span", { class: "gh-language" }, [{ type: "text", value: "" }])
 			]);
 
 			const hDescription = h("div", { class: "gh-description" }, [
 				{
 					type: "text",
-					value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-				},
+					value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+				}
 			]);
 
 			parent.children.splice(
@@ -90,8 +90,8 @@ export const remarkGithubCard: Plugin<[], Root> = () => (tree) => {
 					hTitle,
 					hDescription,
 					hChips,
-					script,
-				]),
+					script
+				])
 			);
 		}
 
@@ -118,28 +118,38 @@ export const remarkGithubCard: Plugin<[], Root> = () => (tree) => {
         	const c = document.getElementById('${SimpleUUID}').classList.add("gh-error")
          	console.warn("[GITHUB-CARD] Error loading card for ${repoName} | ${SimpleUUID}.", err)
       	})
-			`,
-				},
+			`
+				}
 			]);
 
 			parent.children.splice(
 				index,
 				1,
-				h("div", { id: SimpleUUID, class: "github-card gh-simple gh-loading" }, [
-					h("div", { class: "gh-title title" }, [
-						h("span", { class: "gh-avatar" }),
-						h("a", { class: "gh-text not-prose cactus-link", href: realUrl }, [
-							{ type: "text", value: repoParts[0] },
+				h(
+					"div",
+					{ id: SimpleUUID, class: "github-card gh-simple gh-loading" },
+					[
+						h("div", { class: "gh-title title" }, [
+							h("span", { class: "gh-avatar" }),
+							h(
+								"a",
+								{ class: "gh-text not-prose cactus-link", href: realUrl },
+								[{ type: "text", value: repoParts[0] }]
+							),
+							h("span", { class: "gh-icon" })
 						]),
-						h("span", { class: "gh-icon" }),
-					]),
-					h("div", { class: "gh-chips" }, [
-						h("span", { class: "gh-followers" }, [{ type: "text", value: "00K" }]),
-						h("span", { class: "gh-repositories" }, [{ type: "text", value: "00K" }]),
-						h("span", { class: "gh-region" }, [{ type: "text", value: "" }]),
-					]),
-					script,
-				]),
+						h("div", { class: "gh-chips" }, [
+							h("span", { class: "gh-followers" }, [
+								{ type: "text", value: "00K" }
+							]),
+							h("span", { class: "gh-repositories" }, [
+								{ type: "text", value: "00K" }
+							]),
+							h("span", { class: "gh-region" }, [{ type: "text", value: "" }])
+						]),
+						script
+					]
+				)
 			);
 		}
 	});

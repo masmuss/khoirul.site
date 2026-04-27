@@ -16,7 +16,7 @@ interface Props {
 const { content, coverImageResolved }: Props = Astro.props;
 
 const dateTimeOptions: Intl.DateTimeFormatOptions = {
-	month: "long",
+	month: "long"
 };
 ---
 
@@ -25,11 +25,20 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 		<div class="text-muted-foreground flex items-center gap-2 text-sm">
 			<span>{siteConfig.author}</span>
 			<span>·</span>
-			<PostMetadata post={content} dateTimeOptions={dateTimeOptions} readTimeStyle="long" />
+			<PostMetadata
+				post={content}
+				dateTimeOptions={dateTimeOptions}
+				readTimeStyle="long"
+			/>
 		</div>
-		   <Heading as="h1" size="2xl" weight="semibold" class="text-center leading-tight md:text-3xl">
-			   {content.data.title}
-		   </Heading>
+		<Heading
+			as="h1"
+			size="2xl"
+			weight="semibold"
+			class="text-center leading-tight md:text-3xl"
+		>
+			{content.data.title}
+		</Heading>
 		{
 			content.data.tags.length > 0 && (
 				<div class="flex flex-wrap items-center justify-center gap-2">
@@ -50,7 +59,10 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 <>
 	{
 		content.data.coverImage && (
-			<PostImage src={coverImageResolved.src} alt={coverImageResolved.alt || content.data.title} />
+			<PostImage
+				src={coverImageResolved.src}
+				alt={coverImageResolved.alt || content.data.title}
+			/>
 		)
 	}
 </>

@@ -8,5 +8,8 @@ export function elementHasClass(element: HTMLElement, className: string) {
 
 export function rootInDarkMode() {
 	const root = document.documentElement;
-	return root.classList.contains("dark") || root.getAttribute("data-theme") === "dark";
+	return (
+		root.classList.contains("dark") ||
+		root.getAttribute("data-theme") === "dark"
+	);
 }

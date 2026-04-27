@@ -6,12 +6,12 @@ export async function getAboutPageData() {
 	const [experiences, educations, certifications] = await Promise.all([
 		getAllExperiences(),
 		getAllEducations(),
-		getAllCertifications(),
+		getAllCertifications()
 	]);
 
 	return {
 		experiences,
 		educations,
-		certifications,
+		certifications
 	};
 }

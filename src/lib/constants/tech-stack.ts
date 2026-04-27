@@ -14,220 +14,220 @@ const TECH_STACK: SkillCollection[] = [
 		skills: [
 			{
 				name: "JavaScript",
-				description: "Versatile scripting language",
+				description: "Versatile scripting language"
 			},
 			{
 				name: "TypeScript",
-				description: "Typed superset of JavaScript",
+				description: "Typed superset of JavaScript"
 			},
 			{
 				name: "Go",
-				description: "Language for scalable systems",
+				description: "Language for scalable systems"
 			},
 			{
 				name: "PHP",
-				description: "Server-side scripting language",
+				description: "Server-side scripting language"
 			},
 			{
 				name: "Dart",
-				description: "Language for Flutter apps",
+				description: "Language for Flutter apps"
 			},
 			{
 				name: "Bash",
-				description: "Unix shell and scripting language",
-			},
-		],
+				description: "Unix shell and scripting language"
+			}
+		]
 	},
 	{
 		title: "Databases",
 		skills: [
 			{
 				name: "PostgreSQL",
-				description: "Advanced relational database",
+				description: "Advanced relational database"
 			},
 			{
 				name: "MySQL",
-				description: "Popular relational database",
+				description: "Popular relational database"
 			},
 			{
 				name: "MongoDB",
-				description: "NoSQL document database",
+				description: "NoSQL document database"
 			},
 			{
 				name: "Redis",
-				description: "In-memory data store",
+				description: "In-memory data store"
 			},
 			{
 				name: "Supabase",
-				description: "Open source Firebase alternative",
-			},
-		],
+				description: "Open source Firebase alternative"
+			}
+		]
 	},
 	{
 		title: "Frameworks",
 		skills: [
 			{
 				name: "Next.js",
-				description: "React framework for production",
+				description: "React framework for production"
 			},
 			{
 				name: "Astro",
-				description: "Static site generator",
+				description: "Static site generator"
 			},
 			{
 				name: "React.js",
-				description: "Library for building UIs",
+				description: "Library for building UIs"
 			},
 			{
 				name: "Vue.js",
-				description: "Progressive JavaScript framework",
+				description: "Progressive JavaScript framework"
 			},
 			{
 				name: "Svelte",
-				description: "Compiler-based UI framework",
+				description: "Compiler-based UI framework"
 			},
 			{
 				name: "Redux",
-				description: "State container for JS apps",
+				description: "State container for JS apps"
 			},
 			{
 				name: "NestJS",
-				description: "Progressive Node.js framework",
+				description: "Progressive Node.js framework"
 			},
 			{
 				name: "Hono",
-				description: "Lightweight web framework",
+				description: "Lightweight web framework"
 			},
 			{
 				name: "Express.js",
-				description: "Minimal Node.js framework",
+				description: "Minimal Node.js framework"
 			},
 			{
 				name: "Laravel",
-				description: "PHP web application framework",
+				description: "PHP web application framework"
 			},
 			{
 				name: "Flutter",
-				description: "Cross-platform UI toolkit",
+				description: "Cross-platform UI toolkit"
 			},
 			{
 				name: "Tailwind CSS",
-				description: "Utility-first CSS framework",
-			},
-		],
+				description: "Utility-first CSS framework"
+			}
+		]
 	},
 	{
 		title: "Libraries & Tools",
 		skills: [
 			{
 				name: "Bun",
-				description: "Fast JavaScript runtime",
+				description: "Fast JavaScript runtime"
 			},
 			{
 				name: "Node.js",
-				description: "JavaScript runtime engine",
+				description: "JavaScript runtime engine"
 			},
 			{
 				name: "Drizzle ORM",
-				description: "TypeScript ORM for SQL",
+				description: "TypeScript ORM for SQL"
 			},
 			{
 				name: "Prisma",
-				description: "Next-gen Node.js ORM",
+				description: "Next-gen Node.js ORM"
 			},
 			{
 				name: "TanStack",
-				description: "Headless UI libraries",
+				description: "Headless UI libraries"
 			},
 			{
 				name: "Zod",
-				description: "TypeScript schema validation",
+				description: "TypeScript schema validation"
 			},
 			{
 				name: "Vitest",
-				description: "Fast unit test framework",
+				description: "Fast unit test framework"
 			},
 			{
 				name: "Playwright",
-				description: "End-to-end testing for modern web apps",
+				description: "End-to-end testing for modern web apps"
 			},
 			{
 				name: "Better Auth",
-				description: "Authentication library",
+				description: "Authentication library"
 			},
 			{
 				name: "Shadcn UI",
-				description: "Radix UI + Tailwind components",
+				description: "Radix UI + Tailwind components"
 			},
 			{
 				name: "Swagger",
-				description: "API design and documentation",
+				description: "API design and documentation"
 			},
 			{
 				name: "Prettier",
-				description: "Opinionated code formatter",
-			},
-		],
+				description: "Opinionated code formatter"
+			}
+		]
 	},
 	{
 		title: "Monitoring",
 		skills: [
 			{
 				name: "OpenTelemetry",
-				description: "Open-source observability framework",
+				description: "Open-source observability framework"
 			},
 			{
 				name: "Prometheus",
-				description: "Open-source monitoring and alerting toolkit",
+				description: "Open-source monitoring and alerting toolkit"
 			},
 			{
 				name: "Grafana",
-				description: "Open source analytics and monitoring solution",
+				description: "Open source analytics and monitoring solution"
 			},
 			{
 				name: "Loki",
-				description: "Log aggregation system",
+				description: "Log aggregation system"
 			},
 			{
 				name: "Tempo",
-				description: "Distributed tracing backend",
+				description: "Distributed tracing backend"
 			},
 			{
 				name: "Sentry",
-				description: "Application monitoring and error tracking",
-			},
-		],
+				description: "Application monitoring and error tracking"
+			}
+		]
 	},
 	{
 		title: "Data Visualization",
 		skills: [
 			{
 				name: "ChartJS",
-				description: "Simple HTML5 charts",
+				description: "Simple HTML5 charts"
 			},
 			{
 				name: "D3",
-				description: "Data-driven documents",
+				description: "Data-driven documents"
 			},
 			{
 				name: "Mermaid",
-				description: "Diagrams from text",
-			},
-		],
+				description: "Diagrams from text"
+			}
+		]
 	},
 	{
 		title: "Infrastructure",
 		skills: [
 			{
 				name: "Vercel",
-				description: "Frontend cloud platform",
+				description: "Frontend cloud platform"
 			},
 			{
 				name: "Cloudflare",
-				description: "CDN and edge computing",
-			},
-		],
-	},
+				description: "CDN and edge computing"
+			}
+		]
+	}
 ];
 
 export default TECH_STACK;

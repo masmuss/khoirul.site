@@ -16,7 +16,9 @@ const { ...head } = Astro.props;
 		<ClientRouter />
 		<script src="/src/assets/scripts/mermaid-theme-fix.js" is:inline></script>
 	</head>
-	<body class="bg-background flex flex-col justify-center antialiased transition-all">
+	<body
+		class="bg-background flex flex-col justify-center antialiased transition-all"
+	>
 		<main
 			class="relative z-10 mx-auto flex min-h-screen w-screen max-w-2xl flex-col items-center px-5 leading-relaxed md:max-w-5xl md:px-10 lg:px-0"
 			transition:animate={fade({ duration: 300 })}

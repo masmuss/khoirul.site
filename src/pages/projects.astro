@@ -13,16 +13,24 @@ import { projectData } from "@/lib/constants/projects";
 >
 	<div class="flex w-full flex-col gap-y-10">
 		<div>
-			<Heading as="h1" size="2xl" weight="semibold" class="mb-2">Projects</Heading>
+			<Heading as="h1" size="2xl" weight="semibold" class="mb-2"
+				>Projects</Heading
+			>
 			<p class="text-muted-foreground">
-				A collection of projects I've worked on, from web applications to experiments.
+				A collection of projects I've worked on, from web applications to
+				experiments.
 			</p>
 		</div>
 
 		{
 			projectData.map((category) => (
 				<section class="flex flex-col gap-y-4">
-					<Heading as="h2" size="base" weight="medium" class="text-muted-foreground font-medium tracking-wide uppercase">
+					<Heading
+						as="h2"
+						size="base"
+						weight="medium"
+						class="text-muted-foreground font-medium tracking-wide uppercase"
+					>
 						{category.title}
 					</Heading>
 					<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">

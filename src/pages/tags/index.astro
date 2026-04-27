@@ -14,7 +14,9 @@ const sortedTags = getUniqueTagsWithCount(allPosts);
 	<div class="flex w-full flex-col gap-y-8">
 		<div>
 			<h1 class="mb-2 text-2xl font-semibold">Tags</h1>
-			<p class="text-muted-foreground">A list of all the topics I've written about in my posts</p>
+			<p class="text-muted-foreground">
+				A list of all the topics I've written about in my posts
+			</p>
 		</div>
 		<div class="flex max-w-xl flex-col">
 			<p class="text-muted-foreground">
@@ -22,7 +24,11 @@ const sortedTags = getUniqueTagsWithCount(allPosts);
 			</p>
 		</div>
 
-		{sortedTags.length === 0 && <p class="text-muted-foreground">No posts yet.</p>}
+		{
+			sortedTags.length === 0 && (
+				<p class="text-muted-foreground">No posts yet.</p>
+			)
+		}
 
 		{
 			sortedTags.length > 0 && (

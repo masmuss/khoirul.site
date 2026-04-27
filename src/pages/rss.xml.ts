@@ -20,8 +20,8 @@ export async function GET(context: APIContext) {
 				link: new URL(getPostUrl(item), site).toString(),
 				pubDate: new Date(item.data.date),
 				content: item.body,
-				author: `${siteConfig.author} <${siteConfig.email}>`,
+				author: `${siteConfig.author} <${siteConfig.email}>`
 			};
-		}),
+		})
 	});
 }

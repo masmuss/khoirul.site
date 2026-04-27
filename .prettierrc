@@ -1,0 +1,36 @@
+{
+	"printWidth": 80,
+	"semi": true,
+	"singleQuote": false,
+	"useTabs": true,
+	"tabWidth": 2,
+	"trailingComma": "none",
+	"plugins": [
+		"prettier-plugin-astro",
+		"prettier-plugin-organize-attributes",
+		"prettier-plugin-organize-imports",
+		"prettier-plugin-tailwindcss"
+	],
+	"overrides": [
+		{
+			"files": "**/*.astro",
+			"options": {
+				"parser": "astro"
+			}
+		},
+		{
+			"files": ["*.mdx", "*.md"],
+			"options": {
+				"printWidth": 80
+			}
+		},
+		{
+			"files": ["*.json", "*.jsonc"],
+			"options": {
+				"printWidth": 80,
+				"parser": "jsonc",
+				"tabWidth": 2
+			}
+		}
+	]
+}

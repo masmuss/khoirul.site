@@ -18,82 +18,82 @@ const { experiences, educations, certifications } = await getAboutPageData();
 const currentWork = experiences.slice(0, 1);
 
 const currentWorkItems = currentWork.map((work) => ({
-  title: work.title,
-  meta: work.company,
+	title: work.title,
+	meta: work.company
 }));
 
 const githubProfile = siteConfig.socialLinks.find(
-  (social) => social.text === "GitHub",
+	(social) => social.text === "GitHub"
 )?.href;
 const githubUsername =
-  githubProfile?.split("/").filter(Boolean).at(-1) ?? "masmuss";
+	githubProfile?.split("/").filter(Boolean).at(-1) ?? "masmuss";
 
 const githubCalendarTheme = {
-  light: ["#E6E4D9", "#DDE2B2", "#BEC97E", "#A0AF54", "#879A39"],
-  dark: ["#282726", "#3D4C07", "#536907", "#66800B", "#879A39"],
+	light: ["#E6E4D9", "#DDE2B2", "#BEC97E", "#A0AF54", "#879A39"],
+	dark: ["#282726", "#3D4C07", "#536907", "#66800B", "#879A39"]
 } as const;
 ---
 
 <PageLayout
-  title="About Khoirul Fattah"
-  description="Learn about Khoirul Fattah, a full-stack developer and photographer based in Surabaya, including experience, skills, education, certifications, and current focus."
-  image={{ src: "/og/about.png", alt: "About - pictogrammmer" }}
-  pageType="website"
+	title="About Khoirul Fattah"
+	description="Learn about Khoirul Fattah, a full-stack developer and photographer based in Surabaya, including experience, skills, education, certifications, and current focus."
+	image={{ src: "/og/about.png", alt: "About - pictogrammmer" }}
+	pageType="website"
 >
-  <div class="flex w-full flex-col gap-y-10">
-    <Heading as="h1" class="sr-only">About Khoirul Fattah</Heading>
+	<div class="flex w-full flex-col gap-y-10">
+		<Heading as="h1" class="sr-only">About Khoirul Fattah</Heading>
 
-    <div
-      class="grid w-full grid-cols-1 gap-8 lg:grid-cols-[minmax(0,5fr)_256px] lg:gap-10"
-    >
-      <div class="flex flex-col gap-y-10">
-        <Section>
-          <Heading as="h2" size="2xl" weight="bold">About Me</Heading>
-          <div class="prose-sm prose-a:underline max-w-none underline-offset-2">
-            <AboutContent />
-          </div>
-        </Section>
+		<div
+			class="grid w-full grid-cols-1 gap-8 lg:grid-cols-[minmax(0,5fr)_256px] lg:gap-10"
+		>
+			<div class="flex flex-col gap-y-10">
+				<Section>
+					<Heading as="h2" size="2xl" weight="bold">About Me</Heading>
+					<div class="prose-sm prose-a:underline max-w-none underline-offset-2">
+						<AboutContent />
+					</div>
+				</Section>
 
-        <Section>
-          <Heading as="h2" size="2xl" weight="bold"
-            >Contribution Activity</Heading
-          >
-          <GitHubCalendar
-            username={githubUsername}
-            blockSize={10}
-            blockMargin={2}
-            showMonthLabels={true}
-            year="last"
-            theme={githubCalendarTheme}
-          />
-        </Section>
-      </div>
+				<Section>
+					<Heading as="h2" size="2xl" weight="bold"
+						>Contribution Activity</Heading
+					>
+					<GitHubCalendar
+						username={githubUsername}
+						blockSize={10}
+						blockMargin={2}
+						showMonthLabels={true}
+						year="last"
+						theme={githubCalendarTheme}
+					/>
+				</Section>
+			</div>
 
-      <aside class="flex flex-col gap-6">
-        <AsideListPanel title="Current Work" items={currentWorkItems} />
-      </aside>
-    </div>
+			<aside class="flex flex-col gap-6">
+				<AsideListPanel title="Current Work" items={currentWorkItems} />
+			</aside>
+		</div>
 
-    <Section>
-      <Heading as="h2" size="2xl" weight="bold">Skills</Heading>
-      <SkillsTabs collections={TECH_STACK} />
-    </Section>
+		<Section>
+			<Heading as="h2" size="2xl" weight="bold">Skills</Heading>
+			<SkillsTabs collections={TECH_STACK} />
+		</Section>
 
-    <Experiences experiences={experiences} />
+		<Experiences experiences={experiences} />
 
-    <Educations educations={educations} />
+		<Educations educations={educations} />
 
-    <Certifications certifications={certifications} />
+		<Certifications certifications={certifications} />
 
-    <Section>
-      <Heading as="h2" size="2xl" weight="bold">Get in Touch</Heading>
-      <div class="text-muted-foreground flex flex-col gap-y-4">
-        <p>
-          Feel free to reach out if you want to collaborate, have a project in
-          mind, or just want to say hi!
-        </p>
-        <SocialLinks variant="button" showEmail />
-      </div>
-    </Section>
-  </div>
+		<Section>
+			<Heading as="h2" size="2xl" weight="bold">Get in Touch</Heading>
+			<div class="text-muted-foreground flex flex-col gap-y-4">
+				<p>
+					Feel free to reach out if you want to collaborate, have a project in
+					mind, or just want to say hi!
+				</p>
+				<SocialLinks variant="button" showEmail />
+			</div>
+		</Section>
+	</div>
 </PageLayout>

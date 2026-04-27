@@ -25,7 +25,11 @@ type SeriesEntry = CollectionEntry<"series">;
 			</div>
 		</div>
 
-		{allSeries.length === 0 && <p class="text-muted-foreground">No series yet.</p>}
+		{
+			allSeries.length === 0 && (
+				<p class="text-muted-foreground">No series yet.</p>
+			)
+		}
 
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 			{
@@ -37,7 +41,9 @@ type SeriesEntry = CollectionEntry<"series">;
 						<h2 class="group-hover:text-primary text-lg font-semibold transition-colors">
 							{series.data.title}
 						</h2>
-						<p class="text-muted-foreground line-clamp-2 text-sm">{series.data.description}</p>
+						<p class="text-muted-foreground line-clamp-2 text-sm">
+							{series.data.description}
+						</p>
 					</a>
 				))
 			}

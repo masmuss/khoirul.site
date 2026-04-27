@@ -26,7 +26,9 @@ function getEndSortValue(period: string): number {
 	return 0;
 }
 
-export function getExperienceGroups(experiences: Experience[]): ExperienceOrgGroup[] {
+export function getExperienceGroups(
+	experiences: Experience[]
+): ExperienceOrgGroup[] {
 	return Array.from(
 		experiences
 			.reduce((acc, experience) => {
@@ -38,7 +40,7 @@ export function getExperienceGroups(experiences: Experience[]): ExperienceOrgGro
 						location: experience.location,
 						kind: experience.kind,
 						umbrellaOrg: experience.umbrellaOrg,
-						positions: [experience],
+						positions: [experience]
 					});
 					return acc;
 				}
@@ -56,17 +58,17 @@ export function getExperienceGroups(experiences: Experience[]): ExperienceOrgGro
 
 				return acc;
 			}, new Map<string, ExperienceOrgGroup>())
-			.values(),
+			.values()
 	)
 		.map((organization) => ({
 			...organization,
 			positions: [...organization.positions].sort(
-				(a, b) => getEndSortValue(b.period) - getEndSortValue(a.period),
-			),
+				(a, b) => getEndSortValue(b.period) - getEndSortValue(a.period)
+			)
 		}))
 		.sort(
 			(a, b) =>
 				getEndSortValue(b.positions[0]?.period ?? "") -
-				getEndSortValue(a.positions[0]?.period ?? ""),
+				getEndSortValue(a.positions[0]?.period ?? "")
 		);
 }

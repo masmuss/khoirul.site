@@ -9,7 +9,7 @@ export async function getStaticPaths() {
 	const posts = await getCollection("post");
 	return posts.map((post) => ({
 		params: { id: getPostRouteId(post) },
-		props: post,
+		props: post
 	}));
 }
 
@@ -19,6 +19,6 @@ export async function GET({ props }: APIContext) {
 	return createOgImageResponse({
 		title,
 		description,
-		decodeEntities: true,
+		decodeEntities: true
 	});
 }

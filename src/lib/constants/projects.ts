@@ -6,32 +6,34 @@ export const projectData: ProjectCollection[] = [
 		projects: [
 			{
 				text: "IdeaHive",
-				description: "Mind-mapping app by PENS Agile PBL and Agileteknik, Laravel, MySQL, Flutter",
+				description:
+					"Mind-mapping app by PENS Agile PBL and Agileteknik, Laravel, MySQL, Flutter",
 				thumbnail: "ideahive.png",
-				liveHref: "https://secimap.agileteknik.com",
+				liveHref: "https://secimap.agileteknik.com"
 			},
 			{
 				text: "IoT Dashboard",
 				description: "IoT Dashboard for monitoring and controlling IoT devices",
 				thumbnail: "web-monitoring.png",
-				repoHref: "https://github.com/masmuss/next-hydroponic-monitoring",
+				repoHref: "https://github.com/masmuss/next-hydroponic-monitoring"
 			},
 			{
 				text: "PENS Aquaculture",
 				description: "Dashboard for realtime water quality monitoring",
-				liveHref: "https://aquaculturepens.com",
+				liveHref: "https://aquaculturepens.com"
 			},
 			{
 				text: "ENT Satu Atap",
-				description: "Super app used for administration at EEPIS News and Network Team",
-				liveHref: "https://ent.pens.ac.id",
+				description:
+					"Super app used for administration at EEPIS News and Network Team",
+				liveHref: "https://ent.pens.ac.id"
 			},
 			{
 				text: "Devtoolbox",
 				description: "A web-based utility toolbox for developers.",
 				thumbnail: "devtoolbox.png",
 				liveHref: "https://devtoolbox.khoirul.me",
-				repoHref: "https://github.com/masmuss/devtoolbox.git",
+				repoHref: "https://github.com/masmuss/devtoolbox.git"
 			},
 			{
 				text: "Applyst",
@@ -39,42 +41,45 @@ export const projectData: ProjectCollection[] = [
 					"A job application tracking web app built with Laravel and React, designed to help users manage their job applications effectively.",
 				thumbnail: "applyst.png",
 				liveHref: "https://applyst.khoirul.me",
-				repoHref: "https://github.com/masmuss/applyst.git",
-			},
-		],
+				repoHref: "https://github.com/masmuss/applyst.git"
+			}
+		]
 	},
 	{
 		title: "API",
 		projects: [
 			{
 				text: "Qasir API",
-				description: "Learning NestJS by creating API for Point of Sales system",
-				repoHref: "https://github.com/masmuss/qasir-api",
+				description:
+					"Learning NestJS by creating API for Point of Sales system",
+				repoHref: "https://github.com/masmuss/qasir-api"
 			},
 			{
 				text: "Hono API Boilerplate",
 				description:
 					"An API boilerplate was built using Bun, Hono, drizzle ORM and integrated with Scalar API reference",
-				repoHref: "https://github.com/masmuss/hono-api-boilerplate",
+				repoHref: "https://github.com/masmuss/hono-api-boilerplate"
 			},
 			{
 				text: "eLibrary API",
-				description: "An API for eLibrary system built with Hono, Bun, and Scalar API reference",
+				description:
+					"An API for eLibrary system built with Hono, Bun, and Scalar API reference",
 				thumbnail: "elibrary.png",
-				repoHref: "https://github.com/masmuss/hono-elibrary.git",
-			},
-		],
+				repoHref: "https://github.com/masmuss/hono-elibrary.git"
+			}
+		]
 	},
 	{
 		title: "Mobile App",
 		projects: [
 			{
 				text: "IoT Monitoring and Control",
-				description: "IoT Monitoring and Control App for Hydroponic System, Flutter, Firebase",
+				description:
+					"IoT Monitoring and Control App for Hydroponic System, Flutter, Firebase",
 				thumbnail: "mobile-monitoring.png",
-				repoHref: "https://github.com/masmuss/mobile-hydroponic-monitoring",
-			},
-		],
+				repoHref: "https://github.com/masmuss/mobile-hydroponic-monitoring"
+			}
+		]
 	},
 	{
 		title: "Artificial Intelligence",
@@ -84,8 +89,8 @@ export const projectData: ProjectCollection[] = [
 				description:
 					"Decision Support System for analyzing environmental data in hydroponic system using Sugeno Fuzzy Inference System",
 				thumbnail: "dss-hydroponic.png",
-				repoHref: "https://github.com/masmuss/sugeno-fuzzy-simulator",
-			},
-		],
-	},
+				repoHref: "https://github.com/masmuss/sugeno-fuzzy-simulator"
+			}
+		]
+	}
 ];

@@ -13,7 +13,8 @@ interface Props {
 	emptyMessage?: string;
 }
 
-const { activeTab, title, description, image, path, emptyMessage } = Astro.props;
+const { activeTab, title, description, image, path, emptyMessage } =
+	Astro.props;
 
 const allPosts = await getPostsByPath(path);
 const postsByYear = groupPostsByYear(allPosts);

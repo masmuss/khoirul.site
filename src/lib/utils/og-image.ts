@@ -10,40 +10,52 @@ const DESCRIPTION_MAX_LENGTH = 200;
 const OG_FONT_NAME = "iA Writer Quattro";
 
 const FONT_URLS = {
-	normal: "https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-normal.ttf",
-	bold: "https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-700-normal.ttf",
+	normal:
+		"https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-normal.ttf",
+	bold: "https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-700-normal.ttf"
 } as const;
 
-const LOGO_PATH = join(process.cwd(), "src", "assets", "images", "logo-dark.svg");
+const LOGO_PATH = join(
+	process.cwd(),
+	"src",
+	"assets",
+	"images",
+	"logo-dark.svg"
+);
 
-const fontNormalPromise = fetch(FONT_URLS.normal).then((res) => res.arrayBuffer());
+const fontNormalPromise = fetch(FONT_URLS.normal).then((res) =>
+	res.arrayBuffer()
+);
 const fontBoldPromise = fetch(FONT_URLS.bold).then((res) => res.arrayBuffer());
 const logoBase64Promise = readFile(LOGO_PATH).then(
-	(logoBuffer) => `data:image/svg+xml;base64,${logoBuffer.toString("base64")}`,
+	(logoBuffer) => `data:image/svg+xml;base64,${logoBuffer.toString("base64")}`
 );
 
 function decodeHtmlEntities(text: string) {
 	if (!text) return text;
-	return text.replace(/&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});/gi, (match, entity) => {
-		const entities: Record<string, string> = {
-			amp: "&",
-			apos: "'",
-			lt: "<",
-			gt: ">",
-			quot: '"',
-			nbsp: "\u00A0",
-		};
-		if (entities[entity]) {
-			return entities[entity];
+	return text.replace(
+		/&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});/gi,
+		(match, entity) => {
+			const entities: Record<string, string> = {
+				amp: "&",
+				apos: "'",
+				lt: "<",
+				gt: ">",
+				quot: '"',
+				nbsp: "\u00A0"
+			};
+			if (entities[entity]) {
+				return entities[entity];
+			}
+			if (entity.startsWith("#x")) {
+				return String.fromCharCode(Number.parseInt(entity.slice(2), 16));
+			}
+			if (entity.startsWith("#")) {
+				return String.fromCharCode(Number.parseInt(entity.slice(1), 10));
+			}
+			return match;
 		}
-		if (entity.startsWith("#x")) {
-			return String.fromCharCode(Number.parseInt(entity.slice(2), 16));
-		}
-		if (entity.startsWith("#")) {
-			return String.fromCharCode(Number.parseInt(entity.slice(1), 10));
-		}
-		return match;
-	});
+	);
 }
 
 function truncateText(text: string, maxLength: number) {
@@ -53,7 +65,7 @@ function truncateText(text: string, maxLength: number) {
 function buildOgMarkup({
 	title,
 	description,
-	logoBase64,
+	logoBase64
 }: {
 	title: string;
 	description: string;
@@ -90,8 +102,13 @@ function buildOgMarkup({
 			></div>
 
 			<div style="display: flex; flex-direction: row; align-items: center;">
-				<img src="${logoBase64}" style="width: 48px; height: 48px; margin-right: 16px;" />
-				<span style="font-size: 24px; font-weight: 400; opacity: 0.8;">${siteConfig.title}</span>
+				<img
+					src="${logoBase64}"
+					style="width: 48px; height: 48px; margin-right: 16px;"
+				/>
+				<span style="font-size: 24px; font-weight: 400; opacity: 0.8;"
+					>${siteConfig.title}</span
+				>
 			</div>
 
 			<div
@@ -131,7 +148,9 @@ function buildOgMarkup({
 			</div>
 
 			<div style="display: flex; flex-direction: row; align-items: center;">
-				<span style="font-size: 24px; opacity: 0.6;">by ${siteConfig.author}</span>
+				<span style="font-size: 24px; opacity: 0.6;"
+					>by ${siteConfig.author}</span
+				>
 			</div>
 		</div>
 	`;
@@ -146,24 +165,33 @@ type CreateOgImageResponseOptions = {
 export async function createOgImageResponse({
 	title,
 	description = "",
-	decodeEntities = false,
+	decodeEntities = false
 }: CreateOgImageResponseOptions) {
 	const safeTitle = decodeEntities ? decodeHtmlEntities(title) : title;
-	const safeDescription = decodeEntities ? decodeHtmlEntities(description) : description;
-	const clampedDescription = truncateText(safeDescription, DESCRIPTION_MAX_LENGTH);
+	const safeDescription = decodeEntities
+		? decodeHtmlEntities(description)
+		: description;
+	const clampedDescription = truncateText(
+		safeDescription,
+		DESCRIPTION_MAX_LENGTH
+	);
 
 	const [fontNormal, fontBold, logoBase64] = await Promise.all([
 		fontNormalPromise,
 		fontBoldPromise,
-		logoBase64Promise,
+		logoBase64Promise
 	]);
 
-	const markup = buildOgMarkup({ title: safeTitle, description: clampedDescription, logoBase64 });
+	const markup = buildOgMarkup({
+		title: safeTitle,
+		description: clampedDescription,
+		logoBase64
+	});
 
 	return satoriAstroOG({
 		template: markup,
 		width: OG_WIDTH,
-		height: OG_HEIGHT,
+		height: OG_HEIGHT
 	}).toResponse({
 		satori: {
 			fonts: [
@@ -171,15 +199,15 @@ export async function createOgImageResponse({
 					name: OG_FONT_NAME,
 					data: fontNormal,
 					weight: 400,
-					style: "normal",
+					style: "normal"
 				},
 				{
 					name: OG_FONT_NAME,
 					data: fontBold,
 					weight: 700,
-					style: "normal",
-				},
-			],
-		},
+					style: "normal"
+				}
+			]
+		}
 	});
 }

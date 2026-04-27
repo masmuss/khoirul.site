@@ -19,19 +19,32 @@ interface Props {
 	class?: string;
 }
 
-const { href, liveHref, repoHref, heading, subheading, thumbnail, class: className } = Astro.props;
+const {
+	href,
+	liveHref,
+	repoHref,
+	heading,
+	subheading,
+	thumbnail,
+	class: className
+} = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-	"/src/assets/images/**/*.{jpeg,jpg,png,gif,webp,avif}",
+	"/src/assets/images/**/*.{jpeg,jpg,png,gif,webp,avif}"
 );
 
 const fallbackThumbnailPath = "/src/assets/images/coming-soon.png";
 const thumbnailCandidates = thumbnail
-	? [thumbnail, `/src/assets/images/projects/${thumbnail}`, `/src/assets/images/${thumbnail}`]
+	? [
+			thumbnail,
+			`/src/assets/images/projects/${thumbnail}`,
+			`/src/assets/images/${thumbnail}`
+		]
 	: [];
 
 const thumbnailPath =
-	thumbnailCandidates.find((candidate) => Boolean(images[candidate])) ?? fallbackThumbnailPath;
+	thumbnailCandidates.find((candidate) => Boolean(images[candidate])) ??
+	fallbackThumbnailPath;
 const thumbnailImage = await images[thumbnailPath]();
 
 const effectiveLiveHref = liveHref ?? (!repoHref ? href : undefined);
@@ -44,7 +57,7 @@ const hasSingleAction =
 <Card
 	class={cn(
 		"mx-auto w-full max-w-sm pt-0 transition-all duration-300 hover:-translate-y-0.5 hover:ring-primary/40",
-		className,
+		className
 	)}
 >
 	<Image
@@ -55,7 +68,13 @@ const hasSingleAction =
 	/>
 	<CardHeader class="flex flex-1 flex-col">
 		<CardTitle class="text-base">{heading}</CardTitle>
-		{subheading && <CardDescription class="line-clamp-2 text-xs">{subheading}</CardDescription>}
+		{
+			subheading && (
+				<CardDescription class="line-clamp-2 text-xs">
+					{subheading}
+				</CardDescription>
+			)
+		}
 	</CardHeader>
 
 	{
@@ -63,7 +82,7 @@ const hasSingleAction =
 			<CardFooter
 				class={cn(
 					"grid w-full gap-2 pt-3",
-					hasSingleAction ? "grid-cols-1" : "grid-cols-2",
+					hasSingleAction ? "grid-cols-1" : "grid-cols-2"
 				)}
 			>
 				{effectiveRepoHref && (
@@ -76,7 +95,11 @@ const hasSingleAction =
 						size="sm"
 						class="w-full"
 					>
-						<span slot="icon-before" class="iconify ri--github-line" aria-hidden="true" />
+						<span
+							slot="icon-before"
+							class="iconify ri--github-line"
+							aria-hidden="true"
+						/>
 						Repo
 					</Button>
 				)}
@@ -91,7 +114,11 @@ const hasSingleAction =
 						size="sm"
 						class="w-full"
 					>
-						<span slot="icon-before" class="iconify ri--external-link-line" aria-hidden="true" />
+						<span
+							slot="icon-before"
+							class="iconify ri--external-link-line"
+							aria-hidden="true"
+						/>
 						Live
 					</Button>
 				)}

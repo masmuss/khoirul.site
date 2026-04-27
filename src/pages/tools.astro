@@ -17,6 +17,10 @@ import TOOLS from "@/lib/constants/tools";
 			<p class="text-muted-foreground">Software and hardware I use daily.</p>
 		</div>
 
-		{TOOLS.map((tool) => <ToolSection showDescription title={tool.title} tools={tool.tools} />)}
+		{
+			TOOLS.map((tool) => (
+				<ToolSection showDescription title={tool.title} tools={tool.tools} />
+			))
+		}
 	</div>
 </PageLayout>

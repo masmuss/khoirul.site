@@ -14,9 +14,17 @@ interface Props {
 const { title, class: className, contentClass }: Props = Astro.props;
 ---
 
-<Card class={cn("gap-0 rounded-none border-0 bg-transparent py-0 ring-0", className)}>
+<Card
+	class={cn(
+		"gap-0 rounded-none border-0 bg-transparent py-0 ring-0",
+		className
+	)}
+>
 	<CardHeader class="border-border/70 border-b px-0 py-3">
-		<CardTitle as="h2" class="text-muted-foreground text-xs font-medium tracking-widest uppercase">
+		<CardTitle
+			as="h2"
+			class="text-muted-foreground text-xs font-medium tracking-widest uppercase"
+		>
 			{title}
 		</CardTitle>
 	</CardHeader>

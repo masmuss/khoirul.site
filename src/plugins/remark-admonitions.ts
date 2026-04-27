@@ -9,7 +9,13 @@ import type { AdmonitionType } from "@/types";
 import { h, isNodeDirective } from "../lib/utils/remark";
 
 // Supported admonition types
-const Admonitions = new Set<AdmonitionType>(["tip", "note", "important", "caution", "warning"]);
+const Admonitions = new Set<AdmonitionType>([
+	"tip",
+	"note",
+	"important",
+	"caution",
+	"warning"
+]);
 
 /** Checks if a string is a supported admonition type. */
 function isAdmonition(s: string): s is AdmonitionType {
@@ -23,18 +29,18 @@ function isAdmonition(s: string): s is AdmonitionType {
 function transformUnhandledDirective(
 	node: LeafDirective | TextDirective,
 	index: number,
-	parent: Parent,
+	parent: Parent
 ) {
 	const textNode = {
 		type: "text",
-		value: toMarkdown(node, { extensions: [directiveToMarkdown()] }),
+		value: toMarkdown(node, { extensions: [directiveToMarkdown()] })
 	} as const;
 	if (node.type === "textDirective") {
 		parent.children[index] = textNode;
 	} else {
 		parent.children[index] = {
 			children: [textNode],
-			type: "paragraph",
+			type: "paragraph"
 		};
 	}
 }
@@ -70,11 +76,17 @@ export const remarkAdmonitions: Plugin<[], Root> = () => (tree) => {
 		// Do not change prefix to AD, ADM, or similar, adblocks will block the content inside.
 		const admonition = h(
 			"aside",
-			{ "aria-label": title, class: "admonition", "data-admonition-type": admonitionType },
+			{
+				"aria-label": title,
+				class: "admonition",
+				"data-admonition-type": admonitionType
+			},
 			[
-				h("p", { class: "admonition-title", "aria-hidden": "true" }, [...titleNode]),
-				h("div", { class: "admonition-content" }, node.children),
-			],
+				h("p", { class: "admonition-title", "aria-hidden": "true" }, [
+					...titleNode
+				]),
+				h("div", { class: "admonition-content" }, node.children)
+			]
 		);
 
 		parent.children[index] = admonition;

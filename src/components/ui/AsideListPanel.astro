@@ -23,7 +23,9 @@ const { title, items }: Props = Astro.props;
 					<article class="py-4">
 						<h3 class="text-sm leading-relaxed font-medium">{item.title}</h3>
 						{item.meta && (
-							<p class="text-muted-foreground mt-1 text-xs tracking-wide">{item.meta}</p>
+							<p class="text-muted-foreground mt-1 text-xs tracking-wide">
+								{item.meta}
+							</p>
 						)}
 					</article>
 				);
