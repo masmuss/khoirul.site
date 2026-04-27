@@ -1,5 +1,6 @@
 ---
 import ToolSection from "@/components/features/tools/ToolSection.astro";
+import PageHeader from "@/components/ui/PageHeader.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 
 import TOOLS from "@/lib/constants/tools";
@@ -12,10 +13,12 @@ import TOOLS from "@/lib/constants/tools";
 	pageType="website"
 >
 	<div class="flex w-full flex-col gap-y-10">
-		<div>
-			<h1 class="mb-2 text-2xl font-semibold">Tools</h1>
-			<p class="text-muted-foreground">Software and hardware I use daily.</p>
-		</div>
+		<PageHeader
+			title="Tools"
+			description="Software and hardware I use daily."
+			as="h1"
+			class="mb-6"
+		/>
 
 		{
 			TOOLS.map((tool) => (

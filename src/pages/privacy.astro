@@ -1,5 +1,6 @@
 ---
 import Heading from "@/components/ui/Heading.astro";
+import PageHeader from "@/components/ui/PageHeader.astro";
 import Section from "@/components/ui/Section.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { getFormattedDate } from "@/lib/utils";
@@ -17,12 +18,12 @@ const lastUpdated = getFormattedDate(new Date(), {
 	pageType="website"
 >
 	<div class="flex w-full flex-col gap-y-10">
-		<div>
-			<Heading as="h1" size="2xl" weight="semibold" class="mb-2"
-				>Privacy Policy</Heading
-			>
-			<p class="text-muted-foreground">Last updated: {lastUpdated}</p>
-		</div>
+		<PageHeader
+			title="Privacy Policy"
+			description={`Last updated on ${lastUpdated}. This page outlines how I handle privacy, data collection, and external links on khoirul.me.`}
+			as="h1"
+			class="mb-6"
+		/>
 
 		<div class="flex flex-col gap-y-8">
 			<Section>
