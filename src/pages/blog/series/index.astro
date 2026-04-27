@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BlogTabs from "@/components/features/blog/BlogTabs.astro";
+import Heading from "@/components/ui/Heading.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { getAllSeries } from "@/lib/contents";
 
@@ -14,7 +15,7 @@ type SeriesEntry = CollectionEntry<"series">;
 	image={{ src: "/og/series.png", alt: "Series - pictogrammmer" }}
 >
 	<div class="flex w-full flex-col gap-y-8">
-		<h1 class="sr-only">Series</h1>
+		<Heading as="h1" class="sr-only">Series</Heading>
 		<div class="flex w-full flex-col">
 			<BlogTabs activeTab="series" />
 
