@@ -1,48 +1,58 @@
 ---
+import Heading from "@/components/ui/Heading.astro";
 import Section from "@/components/ui/Section.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { getFormattedDate } from "@/lib/utils";
 
 const lastUpdated = getFormattedDate(new Date(), {
-	year: "numeric",
-	month: "long",
-	day: "numeric",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
 });
 ---
 
 <PageLayout
-	title="Privacy Policy and Data Usage"
-	description="Read how khoirul.me handles privacy, external links, and contact information, with a clear commitment to minimal data collection and transparent usage practices."
-	pageType="website"
+  title="Privacy Policy and Data Usage"
+  description="Read how khoirul.me handles privacy, external links, and contact information, with a clear commitment to minimal data collection and transparent usage practices."
+  pageType="website"
 >
-	<div class="flex w-full flex-col gap-y-10">
-		<div>
-			<h1 class="mb-2 text-2xl font-semibold">Privacy Policy</h1>
-			<p class="text-muted-foreground">Last updated: {lastUpdated}</p>
-		</div>
+  <div class="flex w-full flex-col gap-y-10">
+    <div>
+      <Heading as="h1" size="2xl" weight="semibold" class="mb-2"
+        >Privacy Policy</Heading
+      >
+      <p class="text-muted-foreground">Last updated: {lastUpdated}</p>
+    </div>
 
-		<div class="flex flex-col gap-y-8">
-			<Section title="1. Information Collection">
-				<p>
-					This website does not directly collect, track, or share any personal data. There are no
-					tracking cookies or invasive analytics scripts affecting visitors.
-				</p>
-			</Section>
+    <div class="flex flex-col gap-y-8">
+      <Section>
+        <Heading as="h2" size="xl" weight="bold"
+          >1. Information Collection</Heading
+        >
+        <p>
+          This website does not directly collect, track, or share any personal
+          data. There are no tracking cookies or invasive analytics scripts
+          affecting visitors.
+        </p>
+      </Section>
 
-			<Section title="2. External Links">
-				<p>
-					Some links on this site may lead to external websites (like GitHub, LinkedIn, or
-					Unsplash). I am not responsible for the privacy practices or content of these external
-					sites.
-				</p>
-			</Section>
+      <Section>
+        <Heading as="h2" size="xl" weight="bold">2. External Links</Heading>
+        <p>
+          Some links on this site may lead to external websites (like GitHub,
+          LinkedIn, or Unsplash). I am not responsible for the privacy practices
+          or content of these external sites.
+        </p>
+      </Section>
 
-			<Section title="3. Contact">
-				<p>
-					If you reach out to me via email or social media, any information you provide will be kept
-					strictly confidential and only used to respond to your inquiry.
-				</p>
-			</Section>
-		</div>
-	</div>
+      <Section>
+        <Heading as="h2" size="xl" weight="bold">3. Contact</Heading>
+        <p>
+          If you reach out to me via email or social media, any information you
+          provide will be kept strictly confidential and only used to respond to
+          your inquiry.
+        </p>
+      </Section>
+    </div>
+  </div>
 </PageLayout>
