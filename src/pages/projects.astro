@@ -1,7 +1,7 @@
 ---
 import ProjectCard from "@/components/features/projects/ProjectCard.astro";
-import Heading from "@/components/ui/Heading.astro";
 import PageHeader from "@/components/ui/PageHeader.astro";
+import Section from "@/components/ui/Section.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { projectData } from "@/lib/constants/projects";
 ---
@@ -22,15 +22,13 @@ import { projectData } from "@/lib/constants/projects";
 
 		{
 			projectData.map((category) => (
-				<section class="flex flex-col gap-y-4">
-					<Heading
-						as="h2"
-						size="base"
-						weight="medium"
-						class="text-muted-foreground font-medium tracking-wide uppercase"
-					>
-						{category.title}
-					</Heading>
+				<Section
+					title={category.title}
+					titleAs="h2"
+					titleSize="base"
+					titleWeight="medium"
+					class="gap-y-4"
+				>
 					<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
 						{category.projects.map((project) => (
 							<ProjectCard
@@ -44,7 +42,7 @@ import { projectData } from "@/lib/constants/projects";
 							/>
 						))}
 					</div>
-				</section>
+				</Section>
 			))
 		}
 	</div>
