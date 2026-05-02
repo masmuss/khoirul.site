@@ -3,6 +3,7 @@ import { expect, test } from "@playwright/test";
 /**
  * Visual Regression Tests (Snapshot Testing).
  * Compares the current page render against stored master images.
+ * Snapshots are OS-specific (e.g., -linux, -darwin).
  */
 test.describe("Visual Regression", () => {
 	const pagesToSnapshot = [
@@ -18,18 +19,14 @@ test.describe("Visual Regression", () => {
 		}) => {
 			await page.goto(pageInfo.path);
 
-			// Wait for font and images to settle
+			// Wait for everything to settle
 			await page.waitForLoadState("networkidle");
 
 			// Take a full page screenshot and compare it
-			// Note: First run will fail and create the base snapshots
-			await expect(page).toHaveScreenshot(
-				`${pageInfo.name.toLowerCase()}.png`,
-				{
-					fullPage: true,
-					maxDiffPixelRatio: 0.05 // Allow small variations for minor rendering differences
-				}
-			);
+			// Playwright will automatically append the OS name to the snapshot
+			await expect(page).toHaveScreenshot({
+				fullPage: true
+			});
 		});
 	}
 });
