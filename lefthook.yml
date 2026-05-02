@@ -2,7 +2,7 @@
 # https://github.com/evilmartians/lefthook
 
 pre-commit:
-  parallel: false
+  parallel: true
   commands:
     typecheck:
       glob: "*.{ts,tsx,astro}"
@@ -17,4 +17,19 @@ pre-commit:
     format:
       glob: "*.{ts,tsx,js,jsx,astro,css,json,md,mdx}"
       run: bun run format
+      stage_fixed: true
+
+pre-push:
+  parallel: true
+  commands:
+    test:unit:
+      run: bun run test:unit
+      stage_fixed: true
+
+    test:e2e:
+      run: bun run test:e2e
+      stage_fixed: true
+
+    build:
+      run: bun run build
       stage_fixed: true

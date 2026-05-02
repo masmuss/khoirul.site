@@ -1,23 +1,33 @@
 import { expect, test } from "@playwright/test";
 
+/**
+ * Basic E2E tests for the homepage and core global site features.
+ */
 test("homepage has correct title and brand", async ({ page }) => {
 	await page.goto("/");
 
+	// Verify the page title contains the brand name
 	await expect(page).toHaveTitle(/pictogrammmer/);
 
+	// Ensure author name is present on the page
 	const bodyText = await page.textContent("body");
 	expect(bodyText).toContain("Khoirul");
 });
 
 test("navigation to blog works", async ({ page }) => {
 	await page.goto("/");
+
+	// Click the "Blog" link in the navigation bar
 	await page.click("nav >> text=Blog");
+
+	// Verify that the URL has changed to the blog index
 	await expect(page).toHaveURL(/\/blog/);
 });
 
 test("404 page shows correct content", async ({ page }) => {
 	await page.goto("/non-existent-page");
 
+	// Verify that the 404 heading and return link are visible
 	await expect(page.getByRole("heading", { name: "404" })).toBeVisible();
 	await expect(page.locator("text=Back to home")).toBeVisible();
 });
@@ -27,14 +37,17 @@ test("theme toggle changes mode", async ({ page }) => {
 
 	const html = page.locator("html");
 
+	// Locate the first dark mode toggle button (handles desktop/mobile duplicates)
 	const toggle = page.locator('button[aria-label="Toggle Dark Mode"]').first();
 
+	// Capture the initial theme state
 	const isInitiallyDark = await html.evaluate((el) =>
 		el.classList.contains("dark")
 	);
 
 	await toggle.click();
 
+	// Verify that the 'dark' class was toggled on the <html> element
 	if (isInitiallyDark) {
 		await expect(html).not.toHaveClass(/dark/);
 	} else {
