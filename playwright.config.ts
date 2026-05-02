@@ -11,6 +11,13 @@ export default defineConfig({
 		baseURL: "http://localhost:4321",
 		trace: "on-first-retry"
 	},
+	/* Configure visual regression tests */
+	expect: {
+		toHaveScreenshot: {
+			maxDiffPixelRatio: 0.05, // Toleransi 5% perbedaan pixel (aman buat beda OS)
+			threshold: 0.2 // Sensitivitas warna
+		}
+	},
 	projects: [
 		{
 			name: "chromium",
