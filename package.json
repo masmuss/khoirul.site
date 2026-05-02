@@ -37,6 +37,7 @@
 		"typescript": "^5.9.3"
 	},
 	"devDependencies": {
+		"@axe-core/playwright": "^4.11.3",
 		"@biomejs/biome": "2.1.2",
 		"@iconify-json/carbon": "^1.2.15",
 		"@iconify-json/logos": "^1.2.10",

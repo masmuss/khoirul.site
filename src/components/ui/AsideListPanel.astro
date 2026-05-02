@@ -29,7 +29,7 @@ const {
 }: Props = Astro.props;
 ---
 
-<aside {...attrs}>
+<aside {...attrs} aria-label={title}>
 	<InfoPanel title={title} contentClass="p-0">
 		<div class={listClass}>
 			{
