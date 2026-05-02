@@ -1,9 +1,7 @@
 ---
-import siteConfig from "@/config/site-config";
 import "@/assets/styles/global.css";
 import { Font } from "astro:assets";
-
-import JSONLD from "@/components/layout/JSONLD.astro";
+import Seo from "@/components/common/Seo.astro";
 
 interface Props {
 	title?: string;
@@ -15,161 +13,80 @@ interface Props {
 }
 
 const {
-	description = "",
-	image = siteConfig.image,
+	title,
+	description,
+	image,
 	pageType = "website",
 	date,
 	updatedDate
 }: Props = Astro.props;
-
-const pageTitle = Astro.props.title?.trim();
-const titleMinLength = 30;
-const titleMaxLength = 60;
-const descriptionMinLength = 120;
-const descriptionMaxLength = 160;
-
-function truncateByWordBoundary(text: string, maxLength: number) {
-	if (text.length <= maxLength) return text;
-	const sliced = text.slice(0, maxLength + 1);
-	const cutIndex = Math.max(
-		sliced.lastIndexOf(" "),
-		sliced.lastIndexOf("-"),
-		sliced.lastIndexOf("|")
-	);
-	const safeText = (
-		cutIndex > Math.floor(maxLength * 0.7)
-			? sliced.slice(0, cutIndex)
-			: text.slice(0, maxLength)
-	).trim();
-	return `${safeText}...`;
-}
-
-function normalizeTitle(rawTitle: string | undefined, type: Props["pageType"]) {
-	if (!rawTitle) return siteConfig.title;
-
-	const articleSuffix = " | Articles by Khoirul Fattah";
-	const websiteSuffix = ` | ${siteConfig.title}`;
-	let normalized = rawTitle;
-
-	if (normalized.length < titleMinLength) {
-		normalized = `${normalized}${type === "article" ? articleSuffix : websiteSuffix}`;
-	}
-
-	if (normalized.length > titleMaxLength) {
-		normalized = truncateByWordBoundary(normalized, titleMaxLength - 3);
-	}
-
-	return normalized;
-}
-
-function normalizeDescription(rawDescription: string, type: Props["pageType"]) {
-	const fallbackDescription =
-		type === "article"
-			? "Read this article on pictogrammmer for practical lessons, context, and related insights from Khoirul Fattah."
-			: siteConfig.description;
-
-	let normalized = rawDescription.trim() || fallbackDescription;
-
-	if (normalized.length < descriptionMinLength) {
-		const suffix =
-			type === "article"
-				? " Read the full article on pictogrammmer for complete context and practical takeaways."
-				: " Explore more writing and projects on pictogrammmer for deeper context and practical resources.";
-		normalized = `${normalized}${suffix}`;
-	}
-
-	if (normalized.length > descriptionMaxLength) {
-		normalized = truncateByWordBoundary(normalized, descriptionMaxLength - 3);
-	}
-
-	return normalized;
-}
-
-const title = normalizeTitle(pageTitle, pageType);
-const normalizedDescription = normalizeDescription(description, pageType);
-
-const resolvedImage = image?.src
-	? {
-			src: new URL(image.src, Astro.site).toString(),
-			alt: image.alt
-		}
-	: undefined;
-
-const canonicalURL = new URL(Astro.request.url, Astro.site);
-
-function formatCanonicalURL(url: string | URL) {
-	const normalizedUrl = new URL(url.toString());
-	normalizedUrl.hash = "";
-
-	const normalizedPath =
-		normalizedUrl.pathname === "/"
-			? "/"
-			: normalizedUrl.pathname.replace(/\/+$/, "");
-
-	return `${normalizedUrl.origin}${normalizedPath}${normalizedUrl.search}`;
-}
 ---
 
 <!-- High Priority Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>{title}</title>
 <meta name="generator" content={Astro.generator} />
 
-<JSONLD
+<Seo
 	title={title}
-	description={normalizedDescription}
-	image={resolvedImage?.src}
-	date={date}
-	updatedDate={updatedDate}
-	type={pageType}
+	description={description}
+	ogType={pageType}
+	ogImage={image?.src}
+	ogImageAlt={image?.alt}
+	article={pageType === "article"
+		? { publishedTime: date, modifiedTime: updatedDate }
+		: undefined}
+	extraLinks={[
+		{
+			rel: "apple-touch-icon",
+			sizes: "180x180",
+			href: "/favicon/apple-touch-icon.png"
+		},
+		{
+			rel: "icon",
+			type: "image/png",
+			sizes: "192x192",
+			href: "/favicon/android-chrome-192x192.png"
+		},
+		{
+			rel: "icon",
+			type: "image/png",
+			sizes: "32x32",
+			href: "/favicon/favicon-32x32.png"
+		},
+		{
+			rel: "icon",
+			type: "image/png",
+			sizes: "16x16",
+			href: "/favicon/favicon-16x16.png"
+		},
+		{ rel: "manifest", href: "/favicon/site.webmanifest" },
+		{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+		{
+			rel: "icon",
+			href: "/favicon.svg",
+			type: "image/svg+xml",
+			media: "(prefers-color-scheme: light)"
+		},
+		{
+			rel: "icon",
+			href: "/favicon-dark.svg",
+			type: "image/svg+xml",
+			media: "(prefers-color-scheme: dark)"
+		},
+		{ rel: "sitemap", href: "/sitemap-index.xml" },
+		{
+			rel: "alternate",
+			type: "application/rss+xml",
+			href: "/rss.xml",
+			title: "RSS"
+		}
+	]}
 />
 
 <!-- Fonts -->
 <Font cssVariable="--font-ia-writer-quattro" />
 <Font cssVariable="--font-ibm-plex-mono" />
-
-<!-- Low Priority Global Metadata -->
-<!-- Favicons - Primary for Google Search & Apple Devices -->
-<link
-	rel="apple-touch-icon"
-	sizes="180x180"
-	href="/favicon/apple-touch-icon.png"
-/>
-<link
-	rel="icon"
-	type="image/png"
-	sizes="192x192"
-	href="/favicon/android-chrome-192x192.png"
-/>
-<link
-	rel="icon"
-	type="image/png"
-	sizes="32x32"
-	href="/favicon/favicon-32x32.png"
-/>
-<link
-	rel="icon"
-	type="image/png"
-	sizes="16x16"
-	href="/favicon/favicon-16x16.png"
-/>
-<link rel="manifest" href="/favicon/site.webmanifest" />
-
-<!-- Favicons - Fallback to SVG with dark mode support for modern browsers -->
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<link
-	rel="icon"
-	href="/favicon.svg"
-	type="image/svg+xml"
-	media="(prefers-color-scheme: light)"
-/>
-<link
-	rel="icon"
-	href="/favicon-dark.svg"
-	type="image/svg+xml"
-	media="(prefers-color-scheme: dark)"
-/>
 
 <!-- Theme Colors -->
 <meta
@@ -182,39 +99,3 @@ function formatCanonicalURL(url: string | URL) {
 	content="#f4f4f5"
 	media="(prefers-color-scheme: light)"
 />
-
-<link rel="sitemap" href="/sitemap-index.xml" />
-<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
-
-<!-- Page Metadata -->
-<link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
-<meta name="description" content={normalizedDescription} />
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content={pageType} />
-<meta property="og:url" content={formatCanonicalURL(canonicalURL)} />
-<meta property="og:site_name" content={siteConfig.title} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={normalizedDescription} />
-{resolvedImage?.src && <meta property="og:image" content={resolvedImage.src} />}
-{
-	resolvedImage?.alt && (
-		<meta property="og:image:alt" content={resolvedImage.alt} />
-	)
-}
-
-<!-- X / Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={formatCanonicalURL(canonicalURL)} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={normalizedDescription} />
-{
-	resolvedImage?.src && (
-		<meta property="twitter:image" content={resolvedImage.src} />
-	)
-}
-{
-	resolvedImage?.alt && (
-		<meta name="twitter:image:alt" content={resolvedImage?.alt} />
-	)
-}
