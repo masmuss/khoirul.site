@@ -33,7 +33,10 @@ const { Content, headings } = await render(post);
 	<div class:list={["relative mt-8 grid grid-cols-1"]}>
 		{
 			headings.length > 0 && (
-				<aside class="fixed top-24 left-8 hidden w-1/6 xl:block">
+				<aside
+					class="fixed top-24 left-8 hidden w-1/6 xl:block"
+					aria-label="Table of Contents"
+				>
 					<TOC {headings} />
 				</aside>
 			)
