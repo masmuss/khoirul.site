@@ -20,16 +20,13 @@ pre-commit:
       stage_fixed: true
 
 pre-push:
-  parallel: true
+  # Sequential execution is safer for resource-heavy tasks like builds and E2E
+  parallel: false
   commands:
+    # 1. Run unit tests first (fastest)
     test:unit:
-      run: bun run test:unit
-      stage_fixed: true
-
+      run: bun run test:unit:run
+    
+    # 2. Run E2E tests (this automatically builds the site as per playwright.config.ts)
     test:e2e:
       run: bun run test:e2e
-      stage_fixed: true
-
-    build:
-      run: bun run build
-      stage_fixed: true
