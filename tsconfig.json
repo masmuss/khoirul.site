@@ -1,7 +1,14 @@
 {
 	"extends": "astro/tsconfigs/base",
-	"include": [".astro/types.d.ts", "**/*"],
-	"exclude": ["dist"],
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"src/**/*.astro",
+		"tests/**/*.ts",
+		".astro/types.d.ts",
+		"env.d.ts"
+	],
+	"exclude": ["dist", "node_modules", "playwright-report", "test-results"],
 	"compilerOptions": {
 		"jsx": "preserve",
 		"paths": {

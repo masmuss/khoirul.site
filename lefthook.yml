@@ -2,7 +2,7 @@
 # https://github.com/evilmartians/lefthook
 
 pre-commit:
-  parallel: false
+  parallel: true
   commands:
     typecheck:
       glob: "*.{ts,tsx,astro}"
@@ -18,3 +18,15 @@ pre-commit:
       glob: "*.{ts,tsx,js,jsx,astro,css,json,md,mdx}"
       run: bun run format
       stage_fixed: true
+
+pre-push:
+  # Sequential execution is safer for resource-heavy tasks like builds and E2E
+  parallel: false
+  commands:
+    # 1. Run unit tests first (fastest)
+    test:unit:
+      run: bun run test:unit:run
+    
+    # 2. Run E2E tests (this automatically builds the site as per playwright.config.ts)
+    test:e2e:
+      run: bun run test:e2e
