@@ -6,10 +6,17 @@ export default defineConfig({
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 2 : 0,
 	workers: process.env.CI ? 1 : undefined,
-	reporter: "html",
+	reporter: [["html", { open: "never" }]],
 	use: {
 		baseURL: "http://localhost:4321",
 		trace: "on-first-retry"
+	},
+	/* Configure visual regression tests */
+	expect: {
+		toHaveScreenshot: {
+			maxDiffPixelRatio: 0.05, // Toleransi 5% perbedaan pixel (aman buat beda OS)
+			threshold: 0.2 // Sensitivitas warna
+		}
 	},
 	projects: [
 		{

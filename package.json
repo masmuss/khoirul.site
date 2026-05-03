@@ -14,6 +14,8 @@
 		"test:unit": "vitest",
 		"test:unit:run": "vitest run",
 		"test:e2e": "playwright test",
+		"test:e2e:update": "playwright test --update-snapshots",
+		"test:e2e:sync-snapshots": "find tests/e2e/visual.spec.ts-snapshots -name '*-darwin.png' -exec sh -c 'cp \"$1\" \"${1%-darwin.png}-linux.png\"' _ {} \\;",
 		"test:e2e:ui": "playwright test --ui"
 	},
 	"dependencies": {
@@ -37,6 +39,7 @@
 		"typescript": "^5.9.3"
 	},
 	"devDependencies": {
+		"@axe-core/playwright": "^4.11.3",
 		"@biomejs/biome": "2.1.2",
 		"@iconify-json/carbon": "^1.2.15",
 		"@iconify-json/logos": "^1.2.10",
