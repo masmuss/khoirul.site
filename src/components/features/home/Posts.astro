@@ -1,6 +1,5 @@
 ---
 import PostPreview from "@/components/features/blog/PostPreview.astro";
-import Section from "@/components/ui/Section.astro";
 import type { CollectionPosts } from "@/types";
 
 interface Props {
@@ -12,7 +11,7 @@ const { posts }: Props = Astro.props;
 
 {
 	posts.length > 0 && (
-		<Section title="Posts">
+		<Fragment>
 			<ul class="flex flex-col">
 				{posts.map((p) => (
 					<PostPreview post={p} />
@@ -24,6 +23,6 @@ const { posts }: Props = Astro.props;
 					<span class="iconify ri--arrow-right-long-line" />
 				</a>
 			</div>
-		</Section>
+		</Fragment>
 	)
 }

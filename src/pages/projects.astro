@@ -21,13 +21,14 @@ import { projectData } from "@/lib/constants/projects";
 		/>
 
 		{
-			projectData.map((category) => (
+			projectData.map((category, index) => (
 				<Section
 					title={category.title}
 					titleAs="h2"
 					titleSize="base"
 					titleWeight="medium"
 					class="gap-y-4"
+					transitionDelay={index * 150}
 				>
 					<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
 						{category.projects.map((project) => (
