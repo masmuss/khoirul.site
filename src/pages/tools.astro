@@ -21,8 +21,14 @@ import TOOLS from "@/lib/constants/tools";
 		/>
 
 		{
-			TOOLS.map((tool) => (
-				<ToolSection showDescription title={tool.title} tools={tool.tools} />
+			// Ambil "index" dari fungsi map
+			TOOLS.map((tool, index) => (
+				<ToolSection
+					showDescription
+					title={tool.title}
+					tools={tool.tools}
+					transitionDelay={index * 150}
+				/>
 			))
 		}
 	</div>

@@ -19,6 +19,8 @@ interface Props extends HTMLAttributes<"section"> {
 		| "base"
 		| "sm";
 	titleWeight?: "bold" | "semibold" | "medium" | "light";
+	titleUppercase?: boolean;
+	transitionDelay?: number;
 }
 
 const {
@@ -28,18 +30,33 @@ const {
 	titleAs = "h2",
 	titleSize = "base",
 	titleWeight = "medium",
+	titleUppercase = false,
+	transitionDelay = 0,
 	...attrs
 }: Props = Astro.props;
 ---
 
-<SectionTag class={cn(className, "flex flex-col gap-y-4")} {...attrs}>
+<SectionTag
+	class={cn(
+		className,
+		"flex flex-col gap-y-4",
+		"fade-up-section opacity-0 translate-y-4 transition-all duration-500 ease-out"
+	)}
+	style={transitionDelay > 0
+		? { transitionDelay: `${transitionDelay}ms` }
+		: undefined}
+	{...attrs}
+>
 	{
 		title && (
 			<Heading
 				as={titleAs}
 				size={titleSize}
 				weight={titleWeight}
-				class="text-muted-foreground font-medium tracking-wider uppercase"
+				class={cn(
+					"text-muted-foreground tracking-wider",
+					titleUppercase ? "uppercase" : ""
+				)}
 			>
 				{title}
 			</Heading>
@@ -49,3 +66,33 @@ const {
 		<slot />
 	</div>
 </SectionTag>
+
+<script>
+	function setupFadeUpObserver() {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.remove("opacity-0", "translate-y-4");
+						entry.target.classList.add("opacity-100", "translate-y-0");
+
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{
+				rootMargin: "0px",
+				threshold: 0.1
+			}
+		);
+
+		const fadeUpSections = document.querySelectorAll(".fade-up-section");
+		fadeUpSections.forEach((section) => {
+			observer.observe(section);
+		});
+	}
+
+	setupFadeUpObserver();
+
+	document.addEventListener("astro:page-load", setupFadeUpObserver);
+</script>

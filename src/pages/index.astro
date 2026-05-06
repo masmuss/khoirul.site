@@ -2,6 +2,7 @@
 import About from "@/components/features/home/About.astro";
 import Hero from "@/components/features/home/Hero.astro";
 import Posts from "@/components/features/home/Posts.astro";
+import Section from "@/components/ui/Section.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { getAllPosts } from "@/lib/contents";
 
@@ -15,8 +16,27 @@ const allPosts = await getAllPosts(MAX_POSTS);
 	pageType="website"
 >
 	<div class="flex w-full flex-col gap-y-12">
-		<Hero />
-		<About />
-		<Posts posts={allPosts} />
+		<Section
+			title="Ahmad Musafir Khoirul Fattah"
+			titleAs="h1"
+			titleSize="2xl"
+			titleWeight="semibold"
+			transitionDelay={150}
+		>
+			<Hero />
+		</Section>
+
+		<Section title="About" titleAs="h2" titleUppercase transitionDelay={150}>
+			<About />
+		</Section>
+
+		<Section
+			title="Latest Posts"
+			titleAs="h2"
+			titleUppercase
+			transitionDelay={300}
+		>
+			<Posts posts={allPosts} />
+		</Section>
 	</div>
 </PageLayout>

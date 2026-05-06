@@ -47,17 +47,24 @@ const githubCalendarTheme = {
 			class="grid w-full grid-cols-1 gap-8 lg:grid-cols-[minmax(0,5fr)_256px] lg:gap-10"
 		>
 			<div class="flex flex-col gap-y-10">
-				<Section>
-					<Heading as="h2" size="2xl" weight="bold">About Me</Heading>
+				<Section
+					title="About Me"
+					titleAs="h2"
+					titleSize="2xl"
+					titleWeight="bold"
+					transitionDelay={0}
+				>
 					<div class="prose-sm prose-a:underline max-w-none underline-offset-2">
 						<AboutContent />
 					</div>
 				</Section>
 
-				<Section>
-					<Heading as="h2" size="2xl" weight="bold"
-						>Contribution Activity</Heading
-					>
+				<Section
+					title="Contribution Activity"
+					titleUppercase
+					titleAs="h2"
+					transitionDelay={150}
+				>
 					<GitHubCalendar
 						username={githubUsername}
 						blockSize={10}
@@ -74,19 +81,43 @@ const githubCalendarTheme = {
 			</div>
 		</div>
 
-		<Section>
-			<Heading as="h2" size="2xl" weight="bold">Skills</Heading>
+		<Section title="Skills" titleAs="h2" titleUppercase transitionDelay={150}>
 			<SkillsTabs collections={TECH_STACK} />
 		</Section>
 
-		<Experiences experiences={experiences} />
+		<Section
+			title="Experiences"
+			titleAs="h2"
+			titleUppercase
+			transitionDelay={150}
+		>
+			<Experiences experiences={experiences} />
+		</Section>
 
-		<Educations educations={educations} />
+		<Section
+			title="Educations"
+			titleAs="h2"
+			titleUppercase
+			transitionDelay={150}
+		>
+			<Educations educations={educations} />
+		</Section>
 
-		<Certifications certifications={certifications} />
+		<Section
+			title="Certifications"
+			titleAs="h2"
+			titleUppercase
+			transitionDelay={150}
+		>
+			<Certifications certifications={certifications} />
+		</Section>
 
-		<Section>
-			<Heading as="h2" size="2xl" weight="bold">Get in Touch</Heading>
+		<Section
+			title="Get in Touch"
+			titleAs="h2"
+			titleUppercase
+			transitionDelay={150}
+		>
 			<div class="text-muted-foreground flex flex-col gap-y-4">
 				<p>
 					Feel free to reach out if you want to collaborate, have a project in

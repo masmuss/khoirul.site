@@ -1,5 +1,4 @@
 ---
-import Heading from "@/components/ui/Heading.astro";
 import PageHeader from "@/components/ui/PageHeader.astro";
 import Section from "@/components/ui/Section.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
@@ -26,10 +25,12 @@ const lastUpdated = getFormattedDate(new Date(), {
 		/>
 
 		<div class="flex flex-col gap-y-8">
-			<Section>
-				<Heading as="h2" size="xl" weight="bold"
-					>1. Information Collection</Heading
-				>
+			<Section
+				title="1. Information Collection"
+				titleAs="h2"
+				titleWeight="semibold"
+				titleUppercase
+			>
 				<p>
 					This website does not directly collect, track, or share any personal
 					data. There are no tracking cookies or invasive analytics scripts
@@ -37,8 +38,12 @@ const lastUpdated = getFormattedDate(new Date(), {
 				</p>
 			</Section>
 
-			<Section>
-				<Heading as="h2" size="xl" weight="bold">2. External Links</Heading>
+			<Section
+				title="2. External Links"
+				titleAs="h2"
+				titleWeight="semibold"
+				titleUppercase
+			>
 				<p>
 					Some links on this site may lead to external websites (like GitHub,
 					LinkedIn, or Unsplash). I am not responsible for the privacy practices
@@ -46,8 +51,12 @@ const lastUpdated = getFormattedDate(new Date(), {
 				</p>
 			</Section>
 
-			<Section>
-				<Heading as="h2" size="xl" weight="bold">3. Contact</Heading>
+			<Section
+				title="3. Contact"
+				titleAs="h2"
+				titleWeight="semibold"
+				titleUppercase
+			>
 				<p>
 					If you reach out to me via email or social media, any information you
 					provide will be kept strictly confidential and only used to respond to

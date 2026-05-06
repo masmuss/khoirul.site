@@ -22,6 +22,21 @@ test.describe("Visual Regression", () => {
 			// Wait for the page to be fully loaded and settled
 			await page.waitForLoadState("networkidle");
 
+			await page.addStyleTag({
+				content: `
+          *, *::before, *::after {
+            transition-duration: 0s !important;
+            animation-duration: 0s !important;
+            transition-delay: 0s !important;
+            animation-delay: 0s !important;
+          }
+          .fade-up-section {
+              opacity: 1 !important;
+              transform: none !important;
+          }
+        `
+			});
+
 			// Take a full page screenshot and compare it.
 			// We use a specific name to keep it organized.
 			await expect(page).toHaveScreenshot(

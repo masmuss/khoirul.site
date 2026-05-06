@@ -22,6 +22,17 @@ test.describe("Accessibility Audit", () => {
 			// Wait for the page to be fully loaded and settled
 			await page.waitForLoadState("networkidle");
 
+			// Force visibility and disable animations for consistent audit
+			await page.addStyleTag({
+				content: `
+					.fade-up-section {
+						opacity: 1 !important;
+						transform: translateY(0) !important;
+						transition: none !important;
+					}
+				`
+			});
+
 			// Inject axe-core and run the audit
 			const accessibilityScanResults = await new AxeBuilder({ page })
 				.withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"])
@@ -40,6 +51,17 @@ test("individual blog post should be accessible", async ({ page }) => {
 	await firstPostLink.click();
 
 	await page.waitForLoadState("networkidle");
+
+	// Force visibility and disable animations for consistent audit
+	await page.addStyleTag({
+		content: `
+			.fade-up-section {
+				opacity: 1 !important;
+				transform: translateY(0) !important;
+				transition: none !important;
+			}
+		`
+	});
 
 	const accessibilityScanResults = await new AxeBuilder({ page })
 		.withTags(["wcag2a", "wcag2aa"])
