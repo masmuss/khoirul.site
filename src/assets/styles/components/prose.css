@@ -31,6 +31,9 @@
 		@apply prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4;
 		@apply prose-pre:bg-secondary prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:font-mono prose-pre:text-sm;
 
+		/* <hr/> tag subtitution */
+		@apply prose-hr:w-24 prose-hr:h-px prose-hr:mx-auto prose-hr:border-0 prose-hr:bg-muted-foreground;
+
 		/* Reset inline code styling inside code blocks so they render as-is from Shiki */
 		pre code {
 			@apply rounded-none bg-transparent px-0 py-0 text-inherit;
