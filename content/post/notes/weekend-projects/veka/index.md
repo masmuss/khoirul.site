@@ -3,7 +3,7 @@ title: "Veka: Digital Garden Minimalis di Atas Astro - Weekend Projects"
 description: Kadang, kita tidak butuh framework dokumentasi berskala enterprise. Kita hanya butuh tempat sepi untuk merajut isi kepala. Inilah cerita akhir pekan di balik lahirnya Veka
 date: 07 July 2026
 coverImage:
-  src: ../../../../../assets/images/projects/veka/thumbnail.png
+  src: ./images/thumbnail.png
   alt: Thumbnail Veka
 tags: ["tech", "astro", "devlog", "digital-garden"]
 ---
