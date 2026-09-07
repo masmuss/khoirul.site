@@ -1,3 +1,17 @@
+# [1.46.0](https://github.com/masmuss/pictogrammer/compare/v1.45.0...v1.46.0) (2026-09-07)
+
+
+### Bug Fixes
+
+* **blog:** update github shortcode check for github card component ([4196631](https://github.com/masmuss/pictogrammer/commit/4196631bb9afd8f34dfc5d284d74d572e68a5a0d))
+* **og:** format font path declarations ([4f8e339](https://github.com/masmuss/pictogrammer/commit/4f8e339a552ff2d7225d7de3953b708b9a4d48a5))
+
+
+### Features
+
+* **og:** replace iA Writer Quattro font with Geist Sans ([d442e3d](https://github.com/masmuss/pictogrammer/commit/d442e3d05f87d997b481657c12d95d9783742197))
+* **styles:** replace Newsreader font with Merriweather ([cef5f5c](https://github.com/masmuss/pictogrammer/commit/cef5f5c62ef9b27cc8a8a313ab7fd0305e3b3e38))
+
 # [1.45.0](https://github.com/masmuss/pictogrammer/compare/v1.44.0...v1.45.0) (2026-09-06)
 
 
