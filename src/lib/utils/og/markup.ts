@@ -4,7 +4,7 @@ import siteConfig from "@/config/site";
 export const OG_WIDTH = 1200;
 export const OG_HEIGHT = 630;
 export const DESCRIPTION_MAX_LENGTH = 200;
-export const OG_FONT_NAME = "iA Writer Quattro";
+export const OG_FONT_NAME = "Geist Sans";
 
 export function decodeHtmlEntities(text: string) {
 	if (!text) return text;
