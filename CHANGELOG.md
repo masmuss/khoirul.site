@@ -1,3 +1,10 @@
+## [1.46.1](https://github.com/masmuss/pictogrammer/compare/v1.46.0...v1.46.1) (2026-09-07)
+
+
+### Bug Fixes
+
+* **favicon:** update svg paths with fill colors ([d12ac8b](https://github.com/masmuss/pictogrammer/commit/d12ac8b104cd165cf0b3481f38d3a1b2fc930a20))
+
 # [1.46.0](https://github.com/masmuss/pictogrammer/compare/v1.45.0...v1.46.0) (2026-09-07)
 
 
