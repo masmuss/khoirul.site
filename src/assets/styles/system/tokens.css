@@ -28,7 +28,7 @@
 		"JetBrains Mono",
 		monospace
 	);
-	--font-serif: var(--font-newsreader, "Lyon Text", "Newsreader", serif);
+	--font-serif: var(--font-merriweather, "Lyon Text", serif);
 	--container-2xl: 1400px;
 
 	/* ── Spacing Scale (4px base) ──────────── */

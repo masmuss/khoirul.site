@@ -12,7 +12,7 @@
 			font-size: 1rem;
 		}
 
-		@apply prose-headings:font-semibold prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4;
+		@apply prose-headings:font-serif prose-headings:font-semibold prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4;
 
 		/* Heading sizes balancing for mobile and desktop */
 		@apply prose-h1:text-3xl md:prose-h1:text-3xl lg:prose-h1:text-4xl;
