@@ -24,7 +24,7 @@ const { post, allPosts } = Astro.props;
 
 const { Content, headings } = await render(post);
 const relatedPosts = getRelatedPosts(allPosts, post);
-const hasGithubCard = post.body?.includes("::github-card");
+const hasGithubCard = post.body?.includes("::github");
 ---
 
 <PostLayout post={post} hasGithubCard={hasGithubCard}>
