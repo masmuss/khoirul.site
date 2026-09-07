@@ -12,37 +12,39 @@ import {
 	toolsSchema
 } from "@/lib/contents/schemas";
 
+const CONTENT_DIR = "./content";
+
 const post = defineCollection({
 	loader: glob({
 		pattern: "**/**/*.{md,mdx}",
-		base: "./src/content/post",
+		base: `${CONTENT_DIR}/post`,
 		deferRender: true
 	}),
 	schema: postSchema
 });
 
 const series = defineCollection({
-	loader: glob({ pattern: "**/**/*.json", base: "./src/content/series" }),
+	loader: glob({ pattern: "**/**/*.json", base: `${CONTENT_DIR}/series` }),
 	schema: seriesSchema
 });
 
 const experiences = defineCollection({
 	loader: glob({
 		pattern: "**/**/*.json",
-		base: "./src/content/experiences"
+		base: `${CONTENT_DIR}/experiences`
 	}),
 	schema: experiencesSchema
 });
 
 const educations = defineCollection({
-	loader: glob({ pattern: "**/**/*.json", base: "./src/content/educations" }),
+	loader: glob({ pattern: "**/**/*.json", base: `${CONTENT_DIR}/educations` }),
 	schema: educationsSchema
 });
 
 const certifications = defineCollection({
 	loader: glob({
 		pattern: "**/**/*.json",
-		base: "./src/content/certifications"
+		base: `${CONTENT_DIR}/certifications`
 	}),
 	schema: certificationsSchema
 });
@@ -50,7 +52,7 @@ const certifications = defineCollection({
 const projects = defineCollection({
 	loader: glob({
 		pattern: "**/**/*.json",
-		base: "./src/content/projects"
+		base: `${CONTENT_DIR}/projects`
 	}),
 	schema: projectsSchema
 });
@@ -58,7 +60,7 @@ const projects = defineCollection({
 const skills = defineCollection({
 	loader: glob({
 		pattern: "**/**/*.json",
-		base: "./src/content/skills"
+		base: `${CONTENT_DIR}/skills`
 	}),
 	schema: skillsSchema
 });
@@ -66,7 +68,7 @@ const skills = defineCollection({
 const tools = defineCollection({
 	loader: glob({
 		pattern: "**/**/*.json",
-		base: "./src/content/tools"
+		base: `${CONTENT_DIR}/tools`
 	}),
 	schema: toolsSchema
 });
@@ -74,7 +76,7 @@ const tools = defineCollection({
 const reading = defineCollection({
 	loader: glob({
 		pattern: "**/**/*.json",
-		base: "./src/content/reading"
+		base: `${CONTENT_DIR}/reading`
 	}),
 	schema: readingSchema
 });

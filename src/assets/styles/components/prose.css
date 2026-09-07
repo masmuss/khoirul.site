@@ -12,7 +12,7 @@
 			font-size: 1rem;
 		}
 
-		@apply prose-headings:font-semibold prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4;
+		@apply prose-headings:font-serif prose-headings:font-semibold prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4;
 
 		/* Heading sizes balancing for mobile and desktop */
 		@apply prose-h1:text-3xl md:prose-h1:text-3xl lg:prose-h1:text-4xl;
@@ -30,6 +30,9 @@
 
 		@apply prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4;
 		@apply prose-pre:bg-secondary prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:font-mono prose-pre:text-sm;
+
+		/* <hr/> tag subtitution */
+		@apply prose-hr:w-24 prose-hr:h-px prose-hr:mx-auto prose-hr:border-0 prose-hr:bg-muted-foreground;
 
 		/* Reset inline code styling inside code blocks so they render as-is from Shiki */
 		pre code {

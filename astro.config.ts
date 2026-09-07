@@ -45,8 +45,8 @@ export default defineConfig({
 		},
 		{
 			provider: fontProviders.fontsource(),
-			name: "Newsreader",
-			cssVariable: "--font-newsreader",
+			name: "Merriweather",
+			cssVariable: "--font-merriweather",
 			styles: ["normal", "italic"],
 			fallbacks: ["serif"],
 			display: "swap",

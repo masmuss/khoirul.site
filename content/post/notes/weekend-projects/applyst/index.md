@@ -3,7 +3,7 @@ title: "Applyst: Membangun 'Command Center' Lamaran Kerja dengan Laravel Octane 
 description: Catatan pengembangan Applyst, sebuah platform tracking lamaran kerja yang dibangun untuk efisiensi dan performa tinggi di hardware terbatas.
 date: 26 April 2026
 coverImage:
-  src: ../../../../../assets/images/projects/applyst.png
+  src: ./images/applyst.png
   alt: Applyst
 tags: ["tech", "laravel", "devlog", "performance"]
 ---
