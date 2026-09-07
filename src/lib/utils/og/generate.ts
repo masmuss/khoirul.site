@@ -12,14 +12,8 @@ import {
 import { renderOgResponse } from "./render";
 
 const FONTS_DIR = join(process.cwd(), "src", "assets", "fonts");
-const FONT_NORMAL_PATH = join(
-	FONTS_DIR,
-	"geist-sans-latin-400-normal.ttf"
-);
-const FONT_BOLD_PATH = join(
-	FONTS_DIR,
-	"geist-sans-latin-700-normal.ttf"
-);
+const FONT_NORMAL_PATH = join(FONTS_DIR, "geist-sans-latin-400-normal.ttf");
+const FONT_BOLD_PATH = join(FONTS_DIR, "geist-sans-latin-700-normal.ttf");
 
 const LOGO_PATH = join(
 	process.cwd(),
