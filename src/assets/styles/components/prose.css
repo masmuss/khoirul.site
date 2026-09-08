@@ -3,32 +3,34 @@
    ======================================== */
 @layer components {
 	.custom-prose {
-		@apply prose max-w-none dark:prose-invert;
+		@apply prose prose-base max-w-none dark:prose-invert;
 
 		--tw-prose-body: var(--color-foreground);
-		font-size: 0.9375rem;
 
-		@media (min-width: 768px) {
-			font-size: 1rem;
-		}
-
-		@apply prose-headings:font-serif prose-headings:font-semibold prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4;
+		@apply prose-headings:font-serif prose-headings:font-semibold prose-headings:text-foreground prose-headings:text-balance prose-headings:before:absolute prose-headings:before:-ms-4;
 
 		/* Heading sizes balancing for mobile and desktop */
-		@apply prose-h1:text-3xl md:prose-h1:text-3xl lg:prose-h1:text-4xl;
-		@apply prose-h2:text-xl md:prose-h2:text-2xl lg:prose-h2:text-3xl;
-		@apply prose-h3:text-lg md:prose-h3:text-xl;
-		@apply prose-h4:text-base prose-h4:font-semibold;
-		@apply prose-h5:text-sm prose-h5:font-semibold;
+		@apply prose-h1:text-lg md:prose-h1:text-xl;
+		@apply prose-h2:text-lg md:prose-h2:text-xl;
+		@apply prose-h3:text-base;
+		@apply prose-h4:text-base;
+		@apply prose-h5:text-sm;
+		@apply prose-h6:text-sm;
 
 		/* Table */
 		@apply prose-th:before:content-none prose-th:after:content-none prose-th:font-semibold prose-th:border-border prose-th:pb-2;
 		@apply prose-td:text-sm;
 
 		/* Blockquote: Elegant minimal line, no ugly quotes, using muted text */
-		@apply prose-blockquote:border-l-2 prose-blockquote:border-primary/40 prose-blockquote:py-1 prose-blockquote:pl-6 prose-blockquote:pr-4 prose-blockquote:rounded-r-lg prose-blockquote:text-muted-foreground prose-blockquote:font-normal prose-blockquote:italic prose-blockquote:before:content-none prose-blockquote:after:content-none;
+		blockquote {
+			@apply border-l-2 border-muted-foreground pl-6 not-italic;
 
-		@apply prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4;
+			& p {
+				@apply text-muted-foreground before:first-of-type:content-none after:last-of-type:content-none;
+			}
+		}
+
+		@apply prose-p:text-foreground prose-p:leading-relaxed prose-p:tracking-[-0.005rem] prose-p:mb-4;
 		@apply prose-pre:bg-secondary prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:font-mono prose-pre:text-sm;
 
 		/* <hr/> tag subtitution */
@@ -43,9 +45,7 @@
 		@apply prose-code:font-mono prose-code:text-accent-foreground prose-code:bg-accent prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-normal prose-code:before:content-none prose-code:after:content-none;
 
 		/* Prevent long URLs (DOIs, etc.) from overflowing on mobile */
-		.custom-prose a {
-			overflow-wrap: anywhere;
-		}
+		@apply prose-a:underline prose-a:decoration-accent-foreground prose-a:underline-offset-2 prose-a:hover:no-underline prose-a:wrap-anywhere;
 
 		/* Fix for lists disappearing on mobile */
 		@apply prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:my-1;
