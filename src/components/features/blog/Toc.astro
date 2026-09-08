@@ -17,23 +17,27 @@ const toc = generateToc(headings);
 	class="toc-container hidden text-sm xl:block"
 	aria-label="Table of Contents"
 >
-	<div class="toc-group group relative w-fit" data-open="false">
+	<div class="toc-group relative w-fit" data-open="false">
 		<button
 			id="toc-toggle"
 			class="text-muted-foreground hover:text-foreground focus-visible:text-foreground flex cursor-pointer items-center gap-2 transition-colors"
-			aria-label="Toggle table of contents"
 			aria-controls="toc-list"
 			aria-haspopup="true"
 			aria-expanded="false"
 			type="button"
 		>
-			<Icon name="ph:list" class="duration-base transition-transform" />
+			<Icon
+				name="ph:list"
+				class="duration-base transition-transform"
+				aria-hidden="true"
+			/>
+			<span class="text-xs font-medium">On this page</span>
 		</button>
 
 		<div
-			class="toc-popover duration-base absolute top-full left-0 z-20 w-72 py-0 transition-all group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100"
+			class="toc-popover duration-base pointer-events-none absolute top-full left-0 z-20 w-72 mt-2 -translate-y-1 opacity-0 transition-all"
 		>
-			<div class="py-4">
+			<div class="py-2">
 				<ul
 					id="toc-list"
 					class="flex max-h-[70vh] flex-col overflow-y-auto text-pretty"
@@ -48,10 +52,9 @@ const toc = generateToc(headings);
 <script is:inline>
 	document.addEventListener("astro:page-load", () => {
 		const group = document.querySelector(".toc-group");
-		if (!group) return;
-
-		const toggle = group.querySelector("#toc-toggle");
-		if (!toggle) return;
+		const toggle = group?.querySelector("#toc-toggle");
+		const links = document.querySelectorAll(".toc-link");
+		if (!group || !toggle) return;
 
 		const setOpen = (isOpen) => {
 			group.dataset.open = isOpen ? "true" : "false";
@@ -60,14 +63,12 @@ const toc = generateToc(headings);
 
 		toggle.addEventListener("click", (event) => {
 			event.stopPropagation();
-			const isOpen = group.dataset.open === "true";
-			setOpen(!isOpen);
+			setOpen(group.dataset.open !== "true");
 		});
 
 		document.addEventListener("click", (event) => {
 			const target = event.target;
-			if (!(target instanceof Node)) return;
-			if (!group.contains(target)) setOpen(false);
+			if (target instanceof Node && !group.contains(target)) setOpen(false);
 		});
 
 		document.addEventListener("keydown", (event) => {
@@ -77,13 +78,6 @@ const toc = generateToc(headings);
 		group.querySelectorAll('a[href^="#"]').forEach((link) => {
 			link.addEventListener("click", () => setOpen(false));
 		});
-	});
-</script>
-
-<script is:inline>
-	document.addEventListener("astro:page-load", () => {
-		const links = document.querySelectorAll(".toc-link");
-		if (links.length === 0) return;
 
 		const headings = Array.from(
 			document.querySelectorAll(
