@@ -45,7 +45,7 @@
 		@apply prose-code:font-mono prose-code:text-accent-foreground prose-code:bg-accent prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-normal prose-code:before:content-none prose-code:after:content-none;
 
 		/* Prevent long URLs (DOIs, etc.) from overflowing on mobile */
-		@apply prose-a:underline prose-a:decoration-accent-foreground prose-a:underline-offset-2 prose-a:hover:no-underline prose-a:wrap-anywhere;
+		@apply prose-a:underline prose-a:decoration-accent-foreground prose-a:text-accent-foreground prose-a:underline-offset-4 prose-a:hover:no-underline prose-a:wrap-anywhere prose-a:transition-all;
 
 		/* Fix for lists disappearing on mobile */
 		@apply prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:my-1;

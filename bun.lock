@@ -9,11 +9,7 @@
         "@astrojs/markdown-remark": "7.3.0",
         "@astrojs/rss": "4.0.19",
         "@astrojs/sitemap": "3.7.4",
-        "@data-slot/command": "^0.2.166",
         "@data-slot/dialog": "^0.2.166",
-        "@data-slot/navigation-menu": "^0.2.166",
-        "@data-slot/tabs": "^0.2.166",
-        "@data-slot/toggle": "^0.2.166",
         "@data-slot/tooltip": "^0.2.166",
         "@richardtowers/remark-abbr": "^1.1.5",
         "@tailwindcss/typography": "^0.5.20",
@@ -233,17 +229,9 @@
 
     "@cyberalien/svg-utils": ["@cyberalien/svg-utils@1.2.19", "", { "dependencies": { "@iconify/types": "^2.0.0" } }, "sha512-paDJoDu+LhuH5Ma1q0BDqBpg6d16Xk22cZZrlg/s/J9oB8KgnnpU/snaEETJu2G1pwYcWQINUz6WUqu0Wm9k6A=="],
 
-    "@data-slot/command": ["@data-slot/command@0.2.166", "", { "dependencies": { "@data-slot/core": "0.2.166" } }, "sha512-+RRwXkjspJeD7gHYgVUXxvF/CkGFJS6OvRauUNhxvbaMxdCLf3KkOinFv/RKtzRFaOEEkjpanFy/DrO9agy3Cw=="],
-
     "@data-slot/core": ["@data-slot/core@0.2.166", "", {}, "sha512-/DuzMFIqiefdjheX5fMhaqs4YPp0/t+/pN9EgnB2jLSDk8384WkBCPGq76T/Ypb0MjVlHFiexKDnx9+k+bdcjw=="],
 
     "@data-slot/dialog": ["@data-slot/dialog@0.2.166", "", { "dependencies": { "@data-slot/core": "0.2.166" } }, "sha512-ioMkbfCMVt4x8VrNEa0V32ncs57Q3GEVqEn+uDUBoOU6Qyv2q1ebI0IMkK/54kSeUHut7FilECGUJzuvc7TJAQ=="],
-
-    "@data-slot/navigation-menu": ["@data-slot/navigation-menu@0.2.166", "", { "dependencies": { "@data-slot/core": "0.2.166" } }, "sha512-1yttL2tjMFsvQ4dfNMqC6MG5yABI7DGgK2Un89NGEXAG37uPmai5/KTf+68VO9gQhhLlmUkmvokyIFBFoBkF/A=="],
-
-    "@data-slot/tabs": ["@data-slot/tabs@0.2.166", "", { "dependencies": { "@data-slot/core": "0.2.166" } }, "sha512-nM+kE5IgZeyX+fUq+LUiDQrbB1F47WcLtmwTngVShsMJcjFUJPrLI8snadcWJ2xD34yi6Jeq3X7iNFjK9tYfXQ=="],
-
-    "@data-slot/toggle": ["@data-slot/toggle@0.2.166", "", { "dependencies": { "@data-slot/core": "0.2.166" } }, "sha512-L9ejpPH75UA8zdbr1wb3DYF/nD7h+VdyyvYgJjGzjQ6J65O5s6qn8jEbPHQPlSQwyjoHyqMWvNoU359j648+BA=="],
 
     "@data-slot/tooltip": ["@data-slot/tooltip@0.2.166", "", { "dependencies": { "@data-slot/core": "0.2.166" } }, "sha512-tpt0oqhiMhp0AeTG23S0iW27SGrRcaUZt0h3IK7H6z/a1LwCItl+8PUqqaSaHKUKlOc4oyccES4ZxlsOxW1jvA=="],
 

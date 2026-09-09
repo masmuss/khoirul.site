@@ -2,10 +2,9 @@
 import { Icon } from "astro-icon/components";
 import Button from "@/components/ui/button/Button.astro";
 import siteConfig from "@/config/site";
-import type { NavLink } from "@/config/types";
 import { getCurrentRole } from "@/lib/contents";
-import SocialLinks from "../common/SocialLinks.astro";
-import MobileMenuStatus from "./MobileMenuStatus.astro";
+import MobileMenuExtras from "./MobileMenuExtras.astro";
+import MobileMenuLinks from "./MobileMenuLinks.astro";
 
 const { navLinks } = Astro.props;
 const { email } = siteConfig;
@@ -54,72 +53,8 @@ const isActive = Astro.url.pathname;
 		</div>
 
 		<div class="flex flex-1 flex-col justify-between space-y-8 py-8">
-			<nav class="flex flex-col" aria-label="mobile navigation">
-				{
-					navLinks.map((link: NavLink, i: number) => (
-						<a
-							href={link.href}
-							class:list={[
-								"group flex translate-y-4 items-center gap-2 text-2xl font-semibold tracking-tight opacity-0 transition-all duration-slow ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background rounded-md",
-								isActive === link.href && "text-accent-cta"
-							]}
-							style={`transition-delay: ${150 + i * 75}ms`}
-						>
-							{isActive === link.href && (
-								<div class="bg-accent-cta h-5 w-5 shrink-0 rounded-sm" />
-							)}
-							{link.text}
-						</a>
-					))
-				}
-			</nav>
-
-			<!-- Extra Sections -->
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 translate-y-4 opacity-0 transition-all duration-slow ease-out"
-				data-mobile-entrance
-				style="transition-delay: 500ms"
-			>
-				<!-- Contact -->
-				<div class="flex flex-col gap-y-4">
-					<h3 class="text-muted-foreground text-xs font-semibold">Contact</h3>
-					<div class="flex flex-col gap-y-2 text-sm">
-						<a
-							href={`mailto:${email}`}
-							class="hover:text-accent-cta-text transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm w-fit"
-						>
-							{email}
-						</a>
-					</div>
-				</div>
-
-				<!-- Socials -->
-				<div class="flex flex-col gap-y-4">
-					<h3 class="text-muted-foreground text-xs font-semibold">Connect</h3>
-					<SocialLinks class="flex flex-row" />
-				</div>
-			</div>
-
-			<!-- Status -->
-			<div
-				class="border-border/50 flex flex-col gap-y-6 border-t pt-8 translate-y-4 opacity-0 transition-all duration-slow ease-out"
-				data-mobile-entrance
-				style="transition-delay: 600ms"
-			>
-				<p class="text-muted-foreground text-xs font-semibold">Status</p>
-				<div class="flex flex-col gap-y-4">
-					<MobileMenuStatus
-						status={currentRole == null ? (
-							<span>Accepting new projects</span>
-						) : (
-							<span>
-								{currentRole.title} at {currentRole.company}
-							</span>
-						)}
-					/>
-					<MobileMenuStatus status="Surabaya, Indonesia (UTC+7)" />
-				</div>
-			</div>
+			<MobileMenuLinks links={navLinks} currentPath={isActive} />
+			<MobileMenuExtras {email} {currentRole} />
 		</div>
 	</div>
 </mobile-menu>

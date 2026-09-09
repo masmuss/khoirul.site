@@ -35,8 +35,8 @@
 
 	function loadGiscus() {
 		const container = document.getElementById("giscus-container");
-		// Don't render twice if iframe already exists
-		if (!container || container.querySelector("iframe.giscus-frame")) return;
+		if (!container || container.dataset.giscusLoaded === "true") return;
+		container.dataset.giscusLoaded = "true";
 
 		const script = document.createElement("script");
 		script.src = `${GISCUS_ORIGIN}/client.js`;
@@ -63,32 +63,36 @@
 		container.appendChild(script);
 	}
 
-	// Handle initial load (Astro View Transitions compatible)
-	document.addEventListener("astro:page-load", loadGiscus);
+	function setupGiscus() {
+		const container = document.getElementById("giscus-container");
+		if (!container || container.dataset.giscusObserver === "true") return;
+		container.dataset.giscusObserver = "true";
 
-	if (
-		document.readyState === "complete" ||
-		document.readyState === "interactive"
-	) {
-		setTimeout(loadGiscus, 1);
-	} else {
-		document.addEventListener("DOMContentLoaded", loadGiscus);
+		const loadWhenVisible = new IntersectionObserver(
+			(entries) => {
+				if (!entries.some((entry) => entry.isIntersecting)) return;
+				loadGiscus();
+				loadWhenVisible.disconnect();
+
+				const themeObserver = new MutationObserver(setGiscusTheme);
+				themeObserver.observe(document.documentElement, {
+					attributes: true,
+					attributeFilter: ["class"]
+				});
+
+				window.addEventListener("message", (event) => {
+					if (event.origin !== GISCUS_ORIGIN) return;
+					if (!(typeof event.data === "object" && event.data.giscus)) return;
+					setGiscusTheme();
+				});
+			},
+			{ rootMargin: "300px 0px" }
+		);
+		loadWhenVisible.observe(container);
 	}
 
-	// Observer to listen when the user presses the theme toggle button (ThemeToggle.astro)
-	const observer = new MutationObserver(setGiscusTheme);
-	observer.observe(document.documentElement, {
-		attributes: true,
-		attributeFilter: ["class"]
-	});
-
-	// Fallback synchronization. Sometimes the iframe is slow to respond to the first `postMessage`
-	window.addEventListener("message", (event) => {
-		if (event.origin !== GISCUS_ORIGIN) return;
-		if (!(typeof event.data === "object" && event.data.giscus)) return;
-		// Giscus already sent ready/metadata status, make sure the theme is emphasized again
-		setGiscusTheme();
-	});
+	document.addEventListener("astro:page-load", setupGiscus);
+	setupGiscus();
 </script>
 
 <style is:global>
