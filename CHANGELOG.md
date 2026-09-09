@@ -1,3 +1,10 @@
+# [1.47.0](https://github.com/masmuss/pictogrammer/compare/v1.46.1...v1.47.0) (2026-09-09)
+
+
+### Features
+
+* **blog,shell:** optimize Giscus loading with intersection observer and ([c4291b0](https://github.com/masmuss/pictogrammer/commit/c4291b03d1f4c0d8ca47ca4adef530e28ce469d7))
+
 ## [1.46.1](https://github.com/masmuss/pictogrammer/compare/v1.46.0...v1.46.1) (2026-09-07)
 
 
