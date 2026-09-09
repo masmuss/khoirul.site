@@ -1,6 +1,7 @@
 import type { APIContext } from "astro";
 import siteConfig from "@/config/site";
 import { getAllPosts } from "@/lib/contents";
+import { getLlmPageLinks } from "@/lib/utils/llms";
 import { getPostUrl } from "@/lib/utils/post-route";
 
 export async function GET(context: APIContext) {
@@ -17,12 +18,7 @@ export async function GET(context: APIContext) {
 		`**CV:** ${siteConfig.cvLink}`,
 		"",
 		"## Pages",
-		...siteConfig.header.textLinks.map(
-			(link) => `- [${link.text}](${new URL(link.href, site)})`
-		),
-		...siteConfig.header.iconLinks
-			.slice(0, 3)
-			.map((link) => `- [${link.text}](${new URL(link.href, site)})`),
+		...getLlmPageLinks(site),
 		"",
 		"## Social Links",
 		...siteConfig.socialLinks.map((link) => `- ${link.text}: ${link.href}`),
