@@ -4,20 +4,7 @@ import Search from "@/components/features/search/Search.astro";
 import Logo from "@/components/shell/Logo.astro";
 import MobileMenu from "@/components/shell/MobileMenu.astro";
 import ThemeToggle from "@/components/shell/ThemeToggle.astro";
-import {
-	NavigationMenu,
-	NavigationMenuItem,
-	NavigationMenuLink,
-	NavigationMenuList
-} from "@/components/ui/navigation-menu";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu/NavigationMenuTrigger.astro";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipTrigger
-} from "@/components/ui/tooltip";
 import { header } from "@/config/site";
-import { cn } from "@/lib/utils/tailwind";
 
 const { textLinks, iconLinks } = header;
 ---
@@ -34,25 +21,22 @@ const { textLinks, iconLinks } = header;
 		<div class="ml-auto flex flex-row items-center md:gap-x-5">
 			<!-- Desktop Navigation -->
 			<div class="hidden lg:block">
-				<NavigationMenu>
-					<NavigationMenuList>
+				<nav aria-label="primary">
+					<ul class="flex items-center gap-1">
 						{
 							textLinks.map((link) => (
-								<NavigationMenuItem>
-									<NavigationMenuLink
+								<li>
+									<a
 										href={link.href}
-										class={cn(
-											navigationMenuTriggerStyle(),
-											"bg-transparent p-0 px-2 text-muted-foreground hover:bg-transparent hover:text-foreground text-sm"
-										)}
+										class="inline-flex h-9 items-center justify-center rounded-md px-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
 									>
 										{link.text}
-									</NavigationMenuLink>
-								</NavigationMenuItem>
+									</a>
+								</li>
 							))
 						}
-					</NavigationMenuList>
-				</NavigationMenu>
+					</ul>
+				</nav>
 			</div>
 
 			<div class="hidden lg:block w-px h-4 bg-border"></div>
@@ -61,22 +45,16 @@ const { textLinks, iconLinks } = header;
 			<div class="hidden items-center gap-x-4 lg:flex">
 				{
 					iconLinks.map((link) => (
-						<Tooltip delay={0}>
-							<TooltipTrigger asChild>
-								<a
-									href={link.href}
-									class="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-									target={link.href.startsWith("http") ? "_blank" : "_self"}
-									rel={
-										link.href.startsWith("http") ? "noopener noreferrer" : ""
-									}
-									aria-label={link.text}
-								>
-									<Icon name={link.icon} class="w-5 h-5" />
-								</a>
-							</TooltipTrigger>
-							<TooltipContent side="bottom">{link.text}</TooltipContent>
-						</Tooltip>
+						<a
+							href={link.href}
+							class="rounded-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+							target={link.href.startsWith("http") ? "_blank" : "_self"}
+							rel={link.href.startsWith("http") ? "noopener noreferrer" : ""}
+							aria-label={link.text}
+							title={link.text}
+						>
+							<Icon name={link.icon} class="h-5 w-5" />
+						</a>
 					))
 				}
 			</div>
